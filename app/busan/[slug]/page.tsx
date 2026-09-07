@@ -24,6 +24,10 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
   const region = regions[slug as RegionSlug];
   if (!region) notFound();
 
+  const validServices = region.services
+    .map((serviceSlug) => ({ serviceSlug, item: services[serviceSlug as ServiceSlug] }))
+    .filter((entry) => Boolean(entry.item));
+
   const structuredData = [
     {
       "@context": "https://schema.org",
@@ -70,9 +74,26 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         <div className="feature-grid">{region.points.map((point, i) => <article className="feature-card" key={point}><div className="feature-no">0{i+1}</div><p>{point}</p></article>)}</div>
       </section>
 
+      <section className="section soft-section">
+        <div className="section-heading">
+          <div><span className="section-kicker">NEIGHBORHOOD CHECK</span><h2>{region.neighborhoods.slice(0, 3).join(" · ")} 등 현장별 확인사항</h2></div>
+          <p>같은 {region.name} 안에서도 건물 연식, 도로 폭, 주차와 승강기 조건은 현장마다 다릅니다. 동네명만으로 비용을 정하기보다 실제 반출 조건을 함께 확인하세요.</p>
+        </div>
+        <div className="link-cloud" aria-label={`${region.name} 주요 동네`}>
+          {region.neighborhoods.map((name) => <span className="info-chip" key={name}>{name} 현장</span>)}
+        </div>
+      </section>
+
       <section className="section">
-        <div className="section-heading"><div><span className="section-kicker">RELATED SERVICES</span><h2>{region.name}에서 함께 확인할 서비스</h2></div><p>업종과 공간 특성에 따라 철거 범위와 원상복구 항목이 달라집니다.</p></div>
-        <div className="service-grid">{region.services.map((serviceSlug) => { const item = services[serviceSlug as ServiceSlug]; if (!item) return null; return <a className="service-card" href={`/service/${serviceSlug}`} key={serviceSlug}><div className="service-card-top"><span className="service-card-icon">{item.name.slice(0,1)}</span><span className="service-card-arrow">↗</span></div><strong>{item.primary}</strong><span>{item.summary}</span></a>; })}</div>
+        <div className="section-heading"><div><span className="section-kicker">RELATED SERVICES</span><h2>{region.name}에서 함께 확인할 업종별 철거</h2></div><p>지역 조건과 업종별 설비 조건을 함께 확인하면 철거 범위와 원상복구 항목을 더 구체적으로 정리할 수 있습니다.</p></div>
+        <div className="service-grid">{validServices.map(({ serviceSlug, item }) => (
+          <a className="service-card" href={`/service/${serviceSlug}`} key={serviceSlug}>
+            <div className="service-card-top"><span className="service-card-icon">{item.name.slice(0,1)}</span><span className="service-card-arrow">↗</span></div>
+            <strong>{region.name} {item.name}</strong>
+            <span>{item.summary}</span>
+          </a>
+        ))}</div>
+        <div className="cta-row"><a className="btn btn-glass" href="/service">전체 업종별 철거서비스 보기</a></div>
       </section>
 
       <section className="section">

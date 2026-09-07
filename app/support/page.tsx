@@ -1,6 +1,7 @@
 export const metadata = {
   title: "2026 폐업지원금·점포철거비 지원",
-  description: "2026 희망리턴패키지 원스톱폐업지원의 점포철거비 지원 내용을 정리합니다."
+  description: "2026 희망리턴패키지 원스톱폐업지원의 점포철거비 지원 기준과 공사 전 확인사항을 정리합니다.",
+  alternates: { canonical: "/support" }
 };
 
 const checks = [

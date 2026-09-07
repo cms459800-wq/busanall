@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const guide = guideBySlug(slug);
   if (!guide) return {};
   return {
-    title: `${guide.title} | 올바른철거`,
+    title: guide.title,
     description: guide.description,
     keywords: guide.keywords,
     alternates: { canonical: `/guide/${slug}` }
@@ -80,6 +80,11 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
       <section className="section">
         <div className="section-heading"><div><span className="section-kicker">RELATED SERVICE</span><h2>관련 철거 서비스</h2></div><p>가이드 내용을 실제 업종별 철거 범위와 연결해서 확인하세요.</p></div>
         <div className="cta-row">{guide.relatedServices.map((serviceSlug) => <a className="btn btn-glass" href={`/service/${serviceSlug}`} key={serviceSlug}>서비스 자세히 보기</a>)}</div>
+      </section>
+
+      <section className="section soft-section">
+        <div className="section-heading"><div><span className="section-kicker">LOCAL GUIDE</span><h2>부산 지역별 현장 조건도 확인하세요</h2></div><p>같은 업종이라도 층수, 골목 진입, 주차, 엘리베이터와 관리규정에 따라 작업 방식이 달라질 수 있습니다.</p></div>
+        <div className="cta-row"><a className="btn btn-glass" href="/busan">부산 16개 구·군 보기</a><a className="btn btn-glass" href="/service">전체 철거서비스 보기</a><a className="btn btn-glass" href="/guide">전체 가이드 보기</a></div>
       </section>
 
       <section className="final-cta"><div><span className="section-kicker">FIELD CHECK</span><h2>내 현장에 적용되는 범위는<br/>현장에서 확인하세요</h2><p>임대차 조건과 설비, 폐기물 반출조건을 함께 확인해야 실제 철거범위와 견적을 구체화할 수 있습니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>

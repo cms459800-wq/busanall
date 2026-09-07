@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { regions, type RegionSlug } from "@/data/regions";
 import { services, type ServiceSlug } from "@/data/services";
 
+const baseUrl = "https://busanall.vercel.app";
+
 export function generateStaticParams() {
   return Object.keys(regions).map((slug) => ({ slug }));
 }
@@ -10,7 +12,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const region = regions[slug as RegionSlug];
   if (!region) return {};
-  return { title: `${region.primary}·원상복구 | 올바른철거`, description: region.summary };
+  return {
+    title: `${region.primary}·원상복구 | 올바른철거`,
+    description: region.summary,
+    alternates: { canonical: `/busan/${slug}` }
+  };
 }
 
 export default async function RegionPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -18,8 +24,32 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
   const region = regions[slug as RegionSlug];
   if (!region) notFound();
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "홈", item: baseUrl },
+        { "@type": "ListItem", position: 2, name: "부산지역", item: `${baseUrl}/busan` },
+        { "@type": "ListItem", position: 3, name: region.name, item: `${baseUrl}/busan/${slug}` }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: region.primary,
+      description: region.summary,
+      serviceType: "철거·원상복구",
+      areaServed: { "@type": "AdministrativeArea", name: `부산광역시 ${region.name}` },
+      provider: { "@type": "Organization", name: "올바른철거", url: baseUrl },
+      url: `${baseUrl}/busan/${slug}`
+    }
+  ];
+
   return (
     <main className="page-shell">
+      {structuredData.map((data, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />)}
+
       <nav className="breadcrumb" aria-label="breadcrumb"><a href="/">홈</a><span>›</span><a href="/busan">부산지역</a><span>›</span><strong>{region.name}</strong></nav>
 
       <header className="list-hero">

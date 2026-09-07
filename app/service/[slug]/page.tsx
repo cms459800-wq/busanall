@@ -3,6 +3,7 @@ import { services, type ServiceSlug } from "@/data/services";
 import { regions } from "@/data/regions";
 import { getServiceDetail } from "@/data/serviceDetails";
 import { getExtraServiceDetail } from "@/data/serviceDetailsExtra";
+import { getMoreServiceDetail } from "@/data/serviceDetailsMore";
 
 const support = {
   rate: "전용면적 3.3㎡당 20만원 한도",
@@ -32,7 +33,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const serviceSlug = slug as ServiceSlug;
   const item = services[serviceSlug];
   if (!item) notFound();
-  const detail = getServiceDetail(serviceSlug) ?? getExtraServiceDetail(serviceSlug);
+  const detail = getServiceDetail(serviceSlug) ?? getExtraServiceDetail(serviceSlug) ?? getMoreServiceDetail(serviceSlug);
 
   const relatedRegions = Object.entries(regions)
     .filter(([, region]) => (region.services as readonly string[]).includes(slug))

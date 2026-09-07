@@ -2,7 +2,20 @@ import { guides } from "@/data/guides";
 
 export const metadata = {
   title: "부산 철거·폐업 가이드 | 올바른철거",
-  description: "부산 철거비용, 원상복구, 폐업지원금과 업종별 폐업철거를 실제 의사결정에 도움이 되도록 정리한 올바른철거 가이드입니다."
+  description: "부산 철거비용, 원상복구, 폐업지원금과 업종별 폐업철거를 실제 의사결정에 도움이 되도록 정리한 올바른철거 가이드입니다.",
+  alternates: { canonical: "/guide" }
+};
+
+const guideSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "부산 철거·폐업 가이드",
+  itemListElement: guides.map((guide, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: guide.title,
+    url: `https://busanall.vercel.app/guide/${guide.slug}`
+  }))
 };
 
 export default function GuidePage() {
@@ -11,6 +24,7 @@ export default function GuidePage() {
 
   return (
     <main className="page-shell">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(guideSchema) }} />
       <header className="list-hero">
         <div className="eyebrow-chip">DEMOLITION GUIDE</div>
         <h1>철거 전에 알아두면 좋은<br/><span className="gradient-text">비용·원상복구·폐업 정보</span></h1>

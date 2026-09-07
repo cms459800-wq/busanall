@@ -1,4 +1,8 @@
-export const metadata = { title: "부산 철거 시공사례" };
+export const metadata = {
+  title: "부산 철거 시공사례",
+  description: "부산 철거 시공사례를 지역, 업종, 작업범위와 실제 전·중·후 사진 기준으로 기록하는 페이지입니다.",
+  alternates: { canonical: "/projects" }
+};
 
 export default function Page() {
   return (

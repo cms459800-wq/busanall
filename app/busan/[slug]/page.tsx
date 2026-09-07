@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const region = regions[slug as RegionSlug];
   if (!region) return {};
   return {
-    title: `${region.primary}·원상복구 | 올바른철거`,
+    title: `${region.primary}·원상복구`,
     description: region.summary,
     alternates: { canonical: `/busan/${slug}` }
   };
@@ -87,7 +87,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         <div className="cta-row"><a className="btn btn-primary" href="/support">폐업지원 안내</a><a className="btn btn-glass" href="/guide/closure-demolition-support-2026">신청 전 체크사항</a></div>
       </section>
 
-      <section className="section"><div className="section-heading"><div><span className="section-kicker">GUIDE LINKS</span><h2>함께 보면 좋은 철거 가이드</h2></div></div><div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적서 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출</a></div></section>
+      <section className="section"><div className="section-heading"><div><span className="section-kicker">GUIDE LINKS</span><h2>함께 보면 좋은 철거 가이드</h2></div></div><div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적서 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div></section>
 
       <section className="final-cta"><div><span className="section-kicker">LOCAL ESTIMATE</span><h2>{region.name} 철거,<br/>현장 조건부터 확인하세요</h2><p>업종, 평수, 층수, 반출동선과 원상복구 범위를 함께 정리하면 견적 비교가 쉬워집니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>
     </main>

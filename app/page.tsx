@@ -106,8 +106,14 @@ export default function Home() {
           <div><span className="section-kicker">CORE SERVICES</span><h2>자주 찾는 철거 유형부터<br/>바로 확인하세요</h2></div>
           <p>업종에 따라 주방·덕트·파티션·전기·배관·간판 등 철거 범위가 달라집니다. 해당 업종의 체크사항을 먼저 확인하세요.</p>
         </div>
-        <div className="link-cloud" aria-label="주요 철거서비스 바로가기">
-          {coreServices.map(([slug, label]) => <a href={`/service/${slug}`} key={slug}>{label}<span>↗</span></a>)}
+        <div className="service-grid" aria-label="주요 철거서비스 바로가기">
+          {coreServices.map(([slug, label], i) => (
+            <a className="service-card" href={`/service/${slug}`} key={slug}>
+              <div className="service-card-top"><span className="service-card-icon">{String(i + 1).padStart(2, "0")}</span><span className="service-card-arrow">↗</span></div>
+              <strong>{label}</strong>
+              <span>업종별 철거 범위와 원상복구 체크사항 보기</span>
+            </a>
+          ))}
         </div>
       </section>
 
@@ -116,10 +122,11 @@ export default function Home() {
           <div><span className="section-kicker">BUSAN 16 DISTRICTS</span><h2>부산 지역별 철거 정보</h2></div>
           <p>같은 업종이라도 건물 층수, 골목 진입, 엘리베이터, 관리규정과 폐기물 상차 위치에 따라 작업 방식이 달라질 수 있습니다.</p>
         </div>
-        <div className="region-link-grid">
-          {Object.entries(regions).map(([slug, region]) => (
-            <a href={`/busan/${slug}`} key={slug}>
-              <strong>{region.name}</strong>
+        <div className="service-grid">
+          {Object.entries(regions).map(([slug, region], i) => (
+            <a className="service-card" href={`/busan/${slug}`} key={slug}>
+              <div className="service-card-top"><span className="service-card-icon">{String(i + 1).padStart(2, "0")}</span><span className="service-card-arrow">↗</span></div>
+              <strong>{region.name} 철거</strong>
               <span>{region.neighborhoods.slice(0, 3).join(" · ")}</span>
             </a>
           ))}

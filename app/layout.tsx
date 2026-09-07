@@ -10,6 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko">
       <body>
+        <div className="site-topbar">부산 16개 구·군 · 업종별 철거 · 원상복구 · 폐업지원 안내</div>
         <header className="site-header">
           <a className="brand" href="/" aria-label="올바른철거 홈">
             <span className="brand-mark">✓</span>
@@ -30,10 +31,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <strong>올바른철거</strong>
             <p>부산 철거 · 원상복구 · 폐업지원 안내</p>
           </div>
-          <div style={{display:"flex", gap:"18px", flexWrap:"wrap"}}>
+          <div className="footer-links">
             <a href="/service">철거서비스</a>
             <a href="/busan">부산지역</a>
             <a href="/guide">철거가이드</a>
+            <a href="/support">폐업지원금</a>
             <a href="/estimate">현장견적 문의</a>
           </div>
         </footer>

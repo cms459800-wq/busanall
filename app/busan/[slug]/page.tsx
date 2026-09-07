@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { regions, type RegionSlug } from "@/data/regions";
-import { services } from "@/data/services";
+import { services, type ServiceSlug } from "@/data/services";
 
 export function generateStaticParams() {
   return Object.keys(regions).map((slug) => ({ slug }));
@@ -50,7 +50,11 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
 
       <section className="section reveal">
         <div className="section-heading"><div><span className="section-kicker">RELATED SERVICES</span><h2>{region.name}에서 많이 확인할 서비스</h2></div></div>
-        <div className="service-grid">{region.services.map((serviceSlug) => { const item = services[serviceSlug]; return <a className="service-card" href={`/service/${serviceSlug}`} key={serviceSlug}><div className="service-card-top"><span className="service-card-icon">▦</span><span className="service-card-arrow">↗</span></div><strong>{item.primary}</strong><span>{item.summary}</span></a>; })}</div>
+        <div className="service-grid">{region.services.map((serviceSlug) => {
+          const item = services[serviceSlug as ServiceSlug];
+          if (!item) return null;
+          return <a className="service-card" href={`/service/${serviceSlug}`} key={serviceSlug}><div className="service-card-top"><span className="service-card-icon">▦</span><span className="service-card-arrow">↗</span></div><strong>{item.primary}</strong><span>{item.summary}</span></a>;
+        })}</div>
       </section>
 
       <section className="support-box section reveal">
@@ -62,7 +66,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
 
       <section className="section reveal">
         <div className="section-heading"><div><span className="section-kicker">INTERNAL LINKS</span><h2>함께 보면 좋은 철거 가이드</h2></div></div>
-        <div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적서 체크리스트 ↗</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인 ↗</a><a className="btn btn-glass" href="/guide/closure-demolition-support-2026">폐업철거 지원금 ↗</a></div>
+        <div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적서 체크리스트 ↗</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인 ↗</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출 가이드 ↗</a><a className="btn btn-glass" href="/guide/closure-demolition-support-2026">폐업철거 지원금 ↗</a></div>
       </section>
 
       <section className="final-cta reveal"><div><span className="section-kicker">FIELD ESTIMATE</span><h2>{region.name} 철거,<br/>현장 조건부터 확인하세요</h2><p>지역과 업종, 층수, 반출동선, 설비와 원상복구 범위를 함께 확인해 견적을 구체화합니다.</p></div><a className="btn btn-light" href="/estimate"><span className="btn-icon">✦</span>무료 현장견적</a></section>

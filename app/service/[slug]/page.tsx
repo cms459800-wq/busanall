@@ -80,16 +80,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       </header>
 
       <section className="split">
-        <article className="info-card">
-          <span className="section-kicker">FIELD CHECK</span>
-          <h2>현장에서 먼저 확인할 것</h2>
-          <p>철거 범위, 설비 수량, 폐기물 반출 동선, 건물 관리규정과 임대차 원상복구 조건을 함께 확인해야 견적이 구체화됩니다.</p>
-        </article>
-        <article className="info-card">
-          <span className="section-kicker">WHY IT VARIES</span>
-          <h2>같은 평수여도 비용은 달라집니다</h2>
-          <p>천장·벽체·바닥 재질, 주방·냉난방·전기 설비, 층수와 엘리베이터, 차량 접근성에 따라 작업량과 폐기물량이 달라질 수 있습니다.</p>
-        </article>
+        <article className="info-card"><span className="section-kicker">FIELD CHECK</span><h2>현장에서 먼저 확인할 것</h2><p>철거 범위, 설비 수량, 폐기물 반출 동선, 건물 관리규정과 임대차 원상복구 조건을 함께 확인해야 견적이 구체화됩니다.</p></article>
+        <article className="info-card"><span className="section-kicker">WHY IT VARIES</span><h2>같은 평수여도 비용은 달라집니다</h2><p>천장·벽체·바닥 재질, 주방·냉난방·전기 설비, 층수와 엘리베이터, 차량 접근성에 따라 작업량과 폐기물량이 달라질 수 있습니다.</p></article>
       </section>
 
       <section className="section">
@@ -117,6 +109,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       </section>
 
       <section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>{item.primary} 자주 묻는 질문</h2></div></div>{faqItems.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
+
+      <section className="section soft-section">
+        <div className="section-heading"><div><span className="section-kicker">RELATED INFO</span><h2>지역·견적·원상복구 정보도 같이 확인하세요</h2></div><p>업종 정보와 지역 현장조건을 함께 보면 실제 철거 범위를 더 구체적으로 정리할 수 있습니다.</p></div>
+        <div className="cta-row"><a className="btn btn-glass" href="/busan">부산 16개 구·군</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출 가이드</a></div>
+      </section>
 
       <section className="final-cta"><div><span className="section-kicker">NEXT STEP</span><h2>철거 범위가 애매하다면<br/>현장 조건부터 정리하세요</h2><p>지역·업종·평수·철거범위와 사진이 있으면 상담이 더 구체적입니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>
     </main>

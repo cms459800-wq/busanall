@@ -4,6 +4,7 @@ import { regions } from "@/data/regions";
 import { getServiceDetail } from "@/data/serviceDetails";
 import { getExtraServiceDetail } from "@/data/serviceDetailsExtra";
 import { getMoreServiceDetail } from "@/data/serviceDetailsMore";
+import { getServiceIntent } from "@/data/serviceIntent";
 
 const support = {
   rate: "전용면적 3.3㎡당 20만원 한도",
@@ -34,6 +35,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const item = services[serviceSlug];
   if (!item) notFound();
   const detail = getServiceDetail(serviceSlug) ?? getExtraServiceDetail(serviceSlug) ?? getMoreServiceDetail(serviceSlug);
+  const intent = getServiceIntent(serviceSlug);
 
   const relatedRegions = Object.entries(regions)
     .filter(([, region]) => (region.services as readonly string[]).includes(slug))
@@ -98,6 +100,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <div className="section-heading"><div><span className="section-kicker">CORE POINTS</span><h2>{item.name} 핵심 체크사항</h2></div><p>업종별로 실제 현장에서 차이가 나는 항목을 먼저 확인하세요.</p></div>
         <div className="feature-grid">{item.unique.map((text, i) => <article className="feature-card" key={text}><div className="feature-no">0{i+1}</div><p>{text}</p></article>)}</div>
       </section>
+
+      {intent && <section className="section soft-section">
+        <div className="section-heading"><div><span className="section-kicker">SEARCH INTENT</span><h2>이 페이지에서 다루는 철거 범위</h2></div><p>{intent.focus}</p></div>
+        <div className="scenario-grid">{intent.differsFrom.map((entry) => <a className="scenario-card" href={`/service/${entry.slug}`} key={entry.slug}><span>비슷한 서비스 비교</span><h3>{entry.title}</h3><p>{entry.text}</p></a>)}</div>
+      </section>}
 
       {detail && <>
         <section className="section soft-section">

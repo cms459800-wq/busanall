@@ -1,8 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: { default: "올바른철거", template: "%s | 올바른철거" },
-  description: "부산 지역 철거·원상복구 전문 정보와 현장 견적 안내"
+  metadataBase: new URL("https://busanall.vercel.app"),
+  title: { default: "올바른철거 | 부산 철거·원상복구", template: "%s | 올바른철거" },
+  description: "부산 16개 구·군의 철거·원상복구, 업종별 철거서비스, 폐업지원금과 현장 가이드를 제공하는 올바른철거입니다."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a className="brand" href="/"><span className="brand-mark">✓</span><span>올바른철거</span></a>
           <nav>
             <a href="/service">철거서비스</a>
+            <a href="/busan">부산지역</a>
             <a href="/guide">철거가이드</a>
             <a href="/support">폐업지원금</a>
             <a href="/projects">시공사례</a>
@@ -22,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <footer className="site-footer">
           <div><strong>올바른철거</strong><p>부산 철거 · 원상복구 · 폐업지원 안내</p></div>
-          <div style={{display:"flex", gap:"16px", flexWrap:"wrap"}}><a href="/guide">철거가이드</a><a href="/estimate">현장견적 문의 →</a></div>
+          <div style={{display:"flex", gap:"16px", flexWrap:"wrap"}}><a href="/busan">부산지역</a><a href="/guide">철거가이드</a><a href="/estimate">현장견적 문의 →</a></div>
         </footer>
       </body>
     </html>

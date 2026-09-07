@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { regions, type RegionSlug } from "@/data/regions";
 import { services, type ServiceSlug } from "@/data/services";
+import { guides } from "@/data/guides";
 import { getRegionDetail } from "@/data/regionDetails";
 
 const baseUrl = "https://busanall.vercel.app";
@@ -30,6 +31,16 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
   const validServices = region.services
     .map((serviceSlug) => ({ serviceSlug, item: services[serviceSlug as ServiceSlug] }))
     .filter((entry) => Boolean(entry.item));
+
+  const relatedGuides = guides
+    .map((guide) => ({
+      guide,
+      score: guide.relatedServices.filter((serviceSlug) => (region.services as readonly string[]).includes(serviceSlug)).length
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 4)
+    .map(({ guide }) => guide);
 
   const structuredData = [
     {
@@ -135,7 +146,11 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         <div className="cta-row"><a className="btn btn-primary" href="/support">폐업지원 안내</a><a className="btn btn-glass" href="/guide/closure-demolition-support-2026">신청 전 체크사항</a></div>
       </section>
 
-      <section className="section"><div className="section-heading"><div><span className="section-kicker">GUIDE LINKS</span><h2>함께 보면 좋은 철거 가이드</h2></div></div><div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적서 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div></section>
+      {relatedGuides.length > 0 && <section className="section soft-section">
+        <div className="section-heading"><div><span className="section-kicker">LOCAL GUIDE MATCH</span><h2>{region.name} 업종과 연결되는 철거 가이드</h2></div><p>{region.name}에서 자주 확인하는 업종과 겹치는 가이드를 우선 연결했습니다.</p></div>
+        <div className="service-grid">{relatedGuides.map((guide) => <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="service-card-icon">G</span><span className="service-card-arrow">↗</span></div><strong>{guide.title}</strong><span>{guide.description}</span></a>)}</div>
+        <div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적서 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div>
+      </section>}
 
       <section className="final-cta"><div><span className="section-kicker">LOCAL ESTIMATE</span><h2>{region.name} 철거,<br/>현장 조건부터 확인하세요</h2><p>업종, 평수, 층수, 반출동선과 원상복구 범위를 함께 정리하면 견적 비교가 쉬워집니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>
     </main>

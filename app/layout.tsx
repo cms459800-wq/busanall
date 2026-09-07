@@ -13,6 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a className="brand" href="/"><span className="brand-mark">✓</span><span>올바른철거</span></a>
           <nav>
             <a href="/service">철거서비스</a>
+            <a href="/guide">철거가이드</a>
             <a href="/support">폐업지원금</a>
             <a href="/projects">시공사례</a>
           </nav>
@@ -21,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <footer className="site-footer">
           <div><strong>올바른철거</strong><p>부산 철거 · 원상복구 · 폐업지원 안내</p></div>
-          <a href="/estimate">현장견적 문의 →</a>
+          <div style={{display:"flex", gap:"16px", flexWrap:"wrap"}}><a href="/guide">철거가이드</a><a href="/estimate">현장견적 문의 →</a></div>
         </footer>
       </body>
     </html>

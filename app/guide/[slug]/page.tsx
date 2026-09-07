@@ -10,11 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const guide = guideBySlug(slug);
   if (!guide) return {};
-  return {
-    title: `${guide.title} | 올바른철거`,
-    description: guide.description,
-    keywords: guide.keywords
-  };
+  return { title: `${guide.title} | 올바른철거`, description: guide.description, keywords: guide.keywords };
 }
 
 export default async function GuideDetail({ params }: { params: Promise<{ slug: string }> }) {
@@ -24,62 +20,38 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
 
   return (
     <main className="page-shell">
-      <nav className="breadcrumb" aria-label="breadcrumb">
-        <a href="/">홈</a><span>›</span><a href="/guide">철거가이드</a><span>›</span><strong>{guide.category}</strong>
-      </nav>
+      <nav className="breadcrumb" aria-label="breadcrumb"><a href="/">홈</a><span>›</span><a href="/guide">철거가이드</a><span>›</span><strong>{guide.category}</strong></nav>
 
-      <header className="hero reveal" style={{minHeight:"500px"}}>
-        <div className="hero-copy">
-          <div className="eyebrow-chip"><span>●</span> {guide.category}</div>
-          <h1 style={{fontSize:"clamp(2.35rem,5vw,4.7rem)"}}>{guide.title}</h1>
-          <p className="hero-lead">{guide.description}</p>
-          <div className="cta-row">
-            <a className="btn btn-primary" href="/estimate"><span className="btn-icon">↗</span>무료 현장견적</a>
-            <a className="btn btn-glass" href="/support"><span className="btn-icon">₩</span>지원금 확인</a>
-          </div>
-        </div>
-        <aside className="hero-panel">
-          <div className="hero-card">
-            <div className="hero-card-icon">✓</div>
-            <strong>읽기 전 체크</strong>
-            <p>현장마다 계약조건과 철거범위가 다릅니다. 이 글은 판단 기준을 제공하며 실제 공사범위는 현장 확인이 필요합니다.</p>
-          </div>
-        </aside>
+      <header className="list-hero">
+        <div className="eyebrow-chip">● {guide.category}</div>
+        <h1>{guide.title}</h1>
+        <p>{guide.description}</p>
+        <div className="cta-row"><a className="btn btn-primary" href="/estimate">무료 현장견적</a><a className="btn btn-glass" href="/support">폐업지원금 확인</a></div>
       </header>
 
-      <section className="section reveal">
-        <div className="section-heading"><div><span className="section-kicker">VISUAL GUIDE</span><h2>내용 이해를 돕는 이미지</h2></div><p>현장사진·체크리스트·절차 도식 등 이 글만의 이미지를 2~4장 배치할 자리입니다.</p></div>
-        <div className="image-grid">
-          {[1,2,3,4].map((n) => <figure className="image-slot" key={n}><div className="placeholder"><div className="placeholder-icon">◫</div><strong>가이드 이미지 {n}</strong><span>/public/images/guides/{guide.slug}/{String(n).padStart(2,"0")}.webp</span></div></figure>)}
-        </div>
+      <section className="split">
+        <article className="info-card"><span className="section-kicker">HOW TO USE</span><h2>이 글에서 확인할 내용</h2><p>철거·폐업 과정에서 먼저 결정해야 할 항목을 순서대로 확인할 수 있도록 핵심 기준을 나눠 정리했습니다.</p></article>
+        <article className="info-card"><span className="section-kicker">FIELD NOTE</span><h2>현장마다 조건은 다릅니다</h2><p>계약조건, 설비, 마감재와 반출환경에 따라 실제 공사 범위와 비용은 달라질 수 있으므로 최종 판단 전 현장 확인이 필요합니다.</p></article>
       </section>
 
-      <section className="section reveal">
-        <div className="feature-grid">
-          {guide.sections.map((section, i) => (
-            <article className="feature-card" key={section.title} style={{minHeight:"260px"}}>
-              <div className="feature-no">0{i+1}</div>
-              <div className="feature-icon">{["⌁","◇","↗","✓"][i % 4]}</div>
-              <h2 style={{fontSize:"1.25rem"}}>{section.title}</h2>
-              <p>{section.body}</p>
-            </article>
-          ))}
-        </div>
+      <section className="section">
+        <div className="section-heading"><div><span className="section-kicker">KEY GUIDE</span><h2>핵심 내용</h2></div><p>긴 글보다 먼저 판단 기준을 빠르게 확인할 수 있도록 4개 항목으로 정리했습니다.</p></div>
+        <div className="feature-grid">{guide.sections.map((section, i) => <article className="feature-card" key={section.title}><div className="feature-no">0{i+1}</div><h2>{section.title}</h2><p>{section.body}</p></article>)}</div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading"><div><span className="section-kicker">VISUAL GUIDE</span><h2>가이드 이미지 영역</h2></div><p>현장사진, 체크리스트, 절차 도식 등 글 이해를 돕는 이미지를 추가할 자리입니다.</p></div>
+        <div className="image-grid">{[1,2,3,4].map((n) => <figure className="image-slot" key={n}><div className="placeholder"><strong>가이드 이미지 {n}</strong><span>/public/images/guides/{guide.slug}/{String(n).padStart(2,"0")}.webp</span></div></figure>)}</div>
       </section>
 
       <ClosureSupport serviceName={guide.category} />
 
-      <section className="section reveal">
-        <div className="section-heading"><div><span className="section-kicker">RELATED SERVICE</span><h2>관련 철거 서비스</h2></div></div>
-        <div className="cta-row">
-          {guide.relatedServices.map((slug) => <a className="btn btn-glass" href={`/service/${slug}`} key={slug}>서비스 자세히 보기 <span>↗</span></a>)}
-        </div>
+      <section className="section">
+        <div className="section-heading"><div><span className="section-kicker">RELATED SERVICE</span><h2>관련 철거 서비스</h2></div><p>가이드 내용을 실제 업종별 철거 범위와 연결해서 확인하세요.</p></div>
+        <div className="cta-row">{guide.relatedServices.map((serviceSlug) => <a className="btn btn-glass" href={`/service/${serviceSlug}`} key={serviceSlug}>서비스 자세히 보기</a>)}</div>
       </section>
 
-      <section className="final-cta reveal">
-        <div><span className="section-kicker">FIELD CHECK</span><h2>내 현장에 적용되는 범위는<br/>현장에서 확인하세요</h2><p>임대차 조건과 설비, 폐기물 반출조건을 함께 확인해야 실제 철거범위와 견적을 구체화할 수 있습니다.</p></div>
-        <a className="btn btn-light" href="/estimate"><span className="btn-icon">✦</span>무료 현장견적</a>
-      </section>
+      <section className="final-cta"><div><span className="section-kicker">FIELD CHECK</span><h2>내 현장에 적용되는 범위는<br/>현장에서 확인하세요</h2><p>임대차 조건과 설비, 폐기물 반출조건을 함께 확인해야 실제 철거범위와 견적을 구체화할 수 있습니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>
     </main>
   );
 }

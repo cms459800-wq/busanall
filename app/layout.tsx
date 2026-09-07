@@ -6,6 +6,14 @@ export const metadata = {
   description: "부산 16개 구·군의 철거·원상복구, 업종별 철거서비스, 폐업지원금과 현장 가이드를 제공하는 올바른철거입니다."
 };
 
+const navItems = [
+  ["/service", "철거서비스"],
+  ["/busan", "부산지역"],
+  ["/guide", "철거가이드"],
+  ["/support", "폐업지원금"],
+  ["/projects", "시공사례"]
+] as const;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
@@ -17,14 +25,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <span>올바른철거</span>
           </a>
           <nav aria-label="주요 메뉴">
-            <a href="/service">철거서비스</a>
-            <a href="/busan">부산지역</a>
-            <a href="/guide">철거가이드</a>
-            <a href="/support">폐업지원금</a>
-            <a href="/projects">시공사례</a>
+            {navItems.map(([href, label]) => <a href={href} key={href}>{label}</a>)}
           </nav>
           <a className="header-cta" href="/estimate">무료견적</a>
         </header>
+        <nav className="mobile-nav" aria-label="모바일 주요 메뉴">
+          <div className="mobile-nav-inner">
+            {navItems.map(([href, label]) => <a href={href} key={href}>{label}</a>)}
+          </div>
+        </nav>
         {children}
         <footer className="site-footer">
           <div>

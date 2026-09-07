@@ -7,6 +7,8 @@ const support = {
   url: "https://www.sbiz24.kr/"
 };
 
+const baseUrl = "https://busanall.vercel.app";
+
 export function generateStaticParams() {
   return Object.keys(services).map((slug) => ({ slug }));
 }
@@ -15,7 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const item = services[slug as ServiceSlug];
   if (!item) return {};
-  return { title: `${item.primary}·원상복구`, description: item.summary };
+  return {
+    title: `${item.primary}·원상복구`,
+    description: item.summary,
+    alternates: { canonical: `/service/${slug}` }
+  };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
@@ -23,8 +29,47 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const item = services[slug as ServiceSlug];
   if (!item) notFound();
 
+  const faqItems = [
+    { q: "철거비는 무엇으로 달라지나요?", a: "면적뿐 아니라 설비, 마감재, 폐기물량, 반출조건, 작업시간과 원상복구 범위가 함께 영향을 줍니다." },
+    { q: "사진만으로 견적이 가능한가요?", a: "간단한 범위는 사진으로 1차 확인할 수 있지만 설비·배관·반출조건이 복잡한 현장은 방문 확인이 더 정확합니다." },
+    { q: "폐업지원금은 누구나 최대 한도를 받나요?", a: "아닙니다. 실제 지급액은 신청자격과 인정비용 등 최신 공고 기준에 따라 달라집니다." }
+  ];
+
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "홈", item: baseUrl },
+        { "@type": "ListItem", position: 2, name: "철거서비스", item: `${baseUrl}/service` },
+        { "@type": "ListItem", position: 3, name: item.name, item: `${baseUrl}/service/${slug}` }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: item.primary,
+      description: item.summary,
+      serviceType: item.primary,
+      areaServed: { "@type": "AdministrativeArea", name: "부산광역시" },
+      provider: { "@type": "Organization", name: "올바른철거", url: baseUrl },
+      url: `${baseUrl}/service/${slug}`
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a }
+      }))
+    }
+  ];
+
   return (
     <main className="page-shell">
+      {structuredData.map((data, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />)}
+
       <nav className="breadcrumb" aria-label="breadcrumb"><a href="/">홈</a><span>›</span><a href="/service">철거서비스</a><span>›</span><strong>{item.name}</strong></nav>
 
       <header className="list-hero">
@@ -71,7 +116,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <div className="cta-row"><a className="btn btn-primary" href="/support">지원 안내 보기</a><a className="btn btn-glass" href={support.url} target="_blank" rel="noreferrer">소상공인24 확인</a></div>
       </section>
 
-      <section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>{item.primary} 자주 묻는 질문</h2></div></div><details><summary>철거비는 무엇으로 달라지나요?</summary><p>면적뿐 아니라 설비, 마감재, 폐기물량, 반출조건, 작업시간과 원상복구 범위가 함께 영향을 줍니다.</p></details><details><summary>사진만으로 견적이 가능한가요?</summary><p>간단한 범위는 사진으로 1차 확인할 수 있지만 설비·배관·반출조건이 복잡한 현장은 방문 확인이 더 정확합니다.</p></details><details><summary>폐업지원금은 누구나 최대 한도를 받나요?</summary><p>아닙니다. 실제 지급액은 신청자격과 인정비용 등 최신 공고 기준에 따라 달라집니다.</p></details></section>
+      <section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>{item.primary} 자주 묻는 질문</h2></div></div>{faqItems.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
 
       <section className="final-cta"><div><span className="section-kicker">NEXT STEP</span><h2>철거 범위가 애매하다면<br/>현장 조건부터 정리하세요</h2><p>지역·업종·평수·철거범위와 사진이 있으면 상담이 더 구체적입니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>
     </main>

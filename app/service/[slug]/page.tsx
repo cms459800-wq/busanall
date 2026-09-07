@@ -28,6 +28,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <main className="page-shell">
+      <nav className="breadcrumb" aria-label="breadcrumb"><a href="/">홈</a><span>›</span><a href="/service">철거서비스</a><span>›</span><strong>{item.name}</strong></nav>
+
       <header className="hero">
         <div>
           <div className="eyebrow-chip">● 부산 업종별 철거 가이드</div>
@@ -102,6 +104,16 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         </div>
         <p>실제 지원 여부와 지급액은 신청자격, 인정면적, 증빙 가능한 철거·원상복구 비용, 폐업일 및 최신 공고 기준에 따라 달라질 수 있습니다. 예산 소진 시 조기 종료될 수 있으므로 공사 전 공식 공고를 확인하세요.</p>
         <a className="btn btn-primary" href={support.url} target="_blank" rel="noreferrer">↗ 소상공인24 최신 공고 확인</a>
+      </section>
+
+      <section className="section reveal">
+        <div className="section-heading"><div><span className="section-kicker">NEXT STEP</span><h2>지역과 비용까지 함께 확인하세요</h2></div><p>업종만 같아도 건물과 지역 조건에 따라 작업 방식이 달라질 수 있습니다.</p></div>
+        <div className="cta-row">
+          <a className="btn btn-glass" href="/busan">부산 16개 구·군 철거정보 ↗</a>
+          <a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크리스트 ↗</a>
+          <a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인 ↗</a>
+          <a className="btn btn-glass" href="/guide/closure-demolition-support-2026">폐업지원 확인 ↗</a>
+        </div>
       </section>
 
       <section className="section faq">

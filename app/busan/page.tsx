@@ -2,12 +2,26 @@ import { regions } from "@/data/regions";
 
 export const metadata = {
   title: "부산 16개 구·군 철거 지역안내",
-  description: "해운대구·부산진구·동래구·수영구 등 부산 16개 구·군의 철거·원상복구 현장 특성과 업종별 정보를 확인하세요."
+  description: "해운대구·부산진구·동래구·수영구 등 부산 16개 구·군의 철거·원상복구 현장 특성과 업종별 정보를 확인하세요.",
+  alternates: { canonical: "/busan" }
+};
+
+const regionSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "부산 16개 구·군 철거 지역안내",
+  itemListElement: Object.entries(regions).map(([slug, region], i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: region.primary,
+    url: `https://busanall.vercel.app/busan/${slug}`
+  }))
 };
 
 export default function BusanHub() {
   return (
     <main className="page-shell">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(regionSchema) }} />
       <header className="list-hero">
         <div className="eyebrow-chip">BUSAN AREA GUIDE</div>
         <h1>부산 16개 구·군<br/><span className="gradient-text">현장 조건까지 지역별로</span></h1>

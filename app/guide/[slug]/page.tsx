@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import { guides, guideBySlug } from "@/data/guides";
+import { services, type ServiceSlug } from "@/data/services";
+import { regions } from "@/data/regions";
 import ClosureSupport from "@/components/ClosureSupport";
 
 const baseUrl = "https://busanall.vercel.app";
@@ -24,6 +26,14 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const guide = guideBySlug(slug);
   if (!guide) notFound();
+
+  const validServices = guide.relatedServices
+    .map((serviceSlug) => ({ serviceSlug, item: services[serviceSlug as ServiceSlug] }))
+    .filter((entry) => Boolean(entry.item));
+
+  const relatedRegions = Object.entries(regions)
+    .filter(([, region]) => region.services.some((serviceSlug) => guide.relatedServices.includes(serviceSlug as never)))
+    .slice(0, 6);
 
   const structuredData = [
     {
@@ -77,14 +87,15 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
 
       <ClosureSupport serviceName={guide.category} />
 
-      <section className="section">
-        <div className="section-heading"><div><span className="section-kicker">RELATED SERVICE</span><h2>관련 철거 서비스</h2></div><p>가이드 내용을 실제 업종별 철거 범위와 연결해서 확인하세요.</p></div>
-        <div className="cta-row">{guide.relatedServices.map((serviceSlug) => <a className="btn btn-glass" href={`/service/${serviceSlug}`} key={serviceSlug}>서비스 자세히 보기</a>)}</div>
-      </section>
+      {validServices.length > 0 && <section className="section">
+        <div className="section-heading"><div><span className="section-kicker">RELATED SERVICE</span><h2>가이드와 연결되는 업종별 철거</h2></div><p>일반적인 체크사항을 실제 업종의 설비·원상복구 조건과 연결해서 확인하세요.</p></div>
+        <div className="service-grid">{validServices.map(({ serviceSlug, item }) => <a className="service-card" href={`/service/${serviceSlug}`} key={serviceSlug}><div className="service-card-top"><span className="service-card-icon">{item.name.slice(0, 1)}</span><span className="service-card-arrow">↗</span></div><strong>{item.name}</strong><span>{item.summary}</span></a>)}</div>
+      </section>}
 
       <section className="section soft-section">
-        <div className="section-heading"><div><span className="section-kicker">LOCAL GUIDE</span><h2>부산 지역별 현장 조건도 확인하세요</h2></div><p>같은 업종이라도 층수, 골목 진입, 주차, 엘리베이터와 관리규정에 따라 작업 방식이 달라질 수 있습니다.</p></div>
-        <div className="cta-row"><a className="btn btn-glass" href="/busan">부산 16개 구·군 보기</a><a className="btn btn-glass" href="/service">전체 철거서비스 보기</a><a className="btn btn-glass" href="/guide">전체 가이드 보기</a></div>
+        <div className="section-heading"><div><span className="section-kicker">LOCAL GUIDE</span><h2>부산 지역별 현장 조건도 함께 확인하세요</h2></div><p>같은 업종이라도 층수, 골목 진입, 주차, 엘리베이터와 관리규정에 따라 작업 방식이 달라질 수 있습니다.</p></div>
+        {relatedRegions.length > 0 && <div className="service-grid">{relatedRegions.map(([regionSlug, region]) => <a className="service-card" href={`/busan/${regionSlug}`} key={regionSlug}><div className="service-card-top"><span className="service-card-icon">{region.name.slice(0, 1)}</span><span className="service-card-arrow">↗</span></div><strong>{region.name} 철거</strong><span>{region.neighborhoods.slice(0, 3).join(" · ")} 등 지역별 반출·건물 조건 확인</span></a>)}</div>}
+        <div className="cta-row"><a className="btn btn-glass" href="/busan">부산 16개 구·군 전체 보기</a><a className="btn btn-glass" href="/service">전체 철거서비스 보기</a><a className="btn btn-glass" href="/guide">전체 가이드 보기</a></div>
       </section>
 
       <section className="final-cta"><div><span className="section-kicker">FIELD CHECK</span><h2>내 현장에 적용되는 범위는<br/>현장에서 확인하세요</h2><p>임대차 조건과 설비, 폐기물 반출조건을 함께 확인해야 실제 철거범위와 견적을 구체화할 수 있습니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>

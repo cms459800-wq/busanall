@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { services, type ServiceSlug } from "@/data/services";
+import { regions } from "@/data/regions";
 
 const support = {
   rate: "전용면적 3.3㎡당 20만원 한도",
@@ -28,6 +29,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const { slug } = await params;
   const item = services[slug as ServiceSlug];
   if (!item) notFound();
+
+  const relatedRegions = Object.entries(regions)
+    .filter(([, region]) => (region.services as readonly string[]).includes(slug))
+    .slice(0, 8);
 
   const faqItems = [
     { q: "철거비는 무엇으로 달라지나요?", a: "면적뿐 아니라 설비, 마감재, 폐기물량, 반출조건, 작업시간과 원상복구 범위가 함께 영향을 줍니다." },
@@ -89,6 +94,24 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <div className="feature-grid">{item.unique.map((text, i) => <article className="feature-card" key={text}><div className="feature-no">0{i+1}</div><p>{text}</p></article>)}</div>
       </section>
 
+      {relatedRegions.length > 0 && (
+        <section className="section soft-section">
+          <div className="section-heading">
+            <div><span className="section-kicker">LOCAL MATCH</span><h2>{item.name}과 함께 보는 부산 지역정보</h2></div>
+            <p>같은 업종도 지역별 건물 유형, 차량 접근, 엘리베이터와 폐기물 반출 조건에 따라 작업 방식이 달라질 수 있습니다.</p>
+          </div>
+          <div className="region-link-grid">
+            {relatedRegions.map(([regionSlug, region]) => (
+              <a href={`/busan/${regionSlug}`} key={regionSlug}>
+                <strong>{region.name} {item.name}</strong>
+                <span>{region.neighborhoods.slice(0, 3).join(" · ")} 현장 조건 보기</span>
+              </a>
+            ))}
+          </div>
+          <div className="cta-row"><a className="btn btn-glass" href="/busan">부산 16개 구·군 전체 보기</a></div>
+        </section>
+      )}
+
       <section className="section">
         <div className="section-heading"><div><span className="section-kicker">FIELD IMAGES</span><h2>현장 사진 영역</h2></div><p>실제 시공 사진이 확보되면 전·중·후 과정이 보이도록 교체합니다.</p></div>
         <div className="image-grid">{[1,2,3,4].map((n) => <figure className="image-slot" key={n}><div className="placeholder"><div><strong>현장 이미지 {n}</strong><span>/public/images/services/{slug}/0{n}.webp</span></div></div><figcaption>{item.primary} 현장 이미지 {n}</figcaption></figure>)}</div>
@@ -111,8 +134,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>{item.primary} 자주 묻는 질문</h2></div></div>{faqItems.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
 
       <section className="section soft-section">
-        <div className="section-heading"><div><span className="section-kicker">RELATED INFO</span><h2>지역·견적·원상복구 정보도 같이 확인하세요</h2></div><p>업종 정보와 지역 현장조건을 함께 보면 실제 철거 범위를 더 구체적으로 정리할 수 있습니다.</p></div>
-        <div className="cta-row"><a className="btn btn-glass" href="/busan">부산 16개 구·군</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출 가이드</a></div>
+        <div className="section-heading"><div><span className="section-kicker">RELATED INFO</span><h2>견적·원상복구 정보도 같이 확인하세요</h2></div><p>업종 정보와 현장조건을 함께 보면 실제 철거 범위를 더 구체적으로 정리할 수 있습니다.</p></div>
+        <div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출 가이드</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div>
       </section>
 
       <section className="final-cta"><div><span className="section-kicker">NEXT STEP</span><h2>철거 범위가 애매하다면<br/>현장 조건부터 정리하세요</h2><p>지역·업종·평수·철거범위와 사진이 있으면 상담이 더 구체적입니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>

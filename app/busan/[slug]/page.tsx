@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { regions, type RegionSlug } from "@/data/regions";
 import { services, type ServiceSlug } from "@/data/services";
+import { getRegionDetail } from "@/data/regionDetails";
 
 const baseUrl = "https://busanall.vercel.app";
 
@@ -21,8 +22,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function RegionPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const region = regions[slug as RegionSlug];
+  const regionSlug = slug as RegionSlug;
+  const region = regions[regionSlug];
   if (!region) notFound();
+  const detail = getRegionDetail(regionSlug);
 
   const validServices = region.services
     .map((serviceSlug) => ({ serviceSlug, item: services[serviceSlug as ServiceSlug] }))
@@ -47,6 +50,15 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
       areaServed: { "@type": "AdministrativeArea", name: `부산광역시 ${region.name}` },
       provider: { "@type": "Organization", name: "올바른철거", url: baseUrl },
       url: `${baseUrl}/busan/${slug}`
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: detail.faq.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a }
+      }))
     }
   ];
 
@@ -65,8 +77,8 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
       </header>
 
       <section className="split">
-        <article className="info-card"><span className="section-kicker">ACCESS</span><h2>반출 동선과 차량 접근</h2><p>골목 폭, 주차 위치, 엘리베이터 사용 가능 여부와 폐기물 상차 위치에 따라 작업 방식과 인력이 달라질 수 있습니다.</p></article>
-        <article className="info-card"><span className="section-kicker">BUILDING RULE</span><h2>건물 관리규정 확인</h2><p>작업 가능 시간, 공용부 보양, 엘리베이터 사용조건과 소음·분진 관리 기준을 공사 전에 확인하는 것이 좋습니다.</p></article>
+        <article className="info-card"><span className="section-kicker">LOCAL FOCUS</span><h2>{region.name}에서 먼저 볼 기준</h2><p>{detail.focus}</p></article>
+        <article className="info-card"><span className="section-kicker">BUILDING RULE</span><h2>건물 규정과 반출조건 확인</h2><p>작업 가능 시간, 공용부 보양, 승강기 사용조건, 차량 진입과 폐기물 상차 위치는 같은 지역 안에서도 현장마다 달라질 수 있습니다.</p></article>
       </section>
 
       <section className="section">
@@ -75,13 +87,21 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
       </section>
 
       <section className="section soft-section">
+        <div className="section-heading"><div><span className="section-kicker">FIELD CHECKLIST</span><h2>{region.name} 현장에서 확인할 항목</h2></div><p>견적 전 사진과 현장 확인에서 이 항목을 먼저 보면 반출·보양·설비 조건을 구체적으로 정리하기 쉽습니다.</p></div>
+        <div className="detail-list-grid">{detail.fieldChecks.map((text, i) => <article className="detail-list-card" key={text}><b>0{i+1}</b><span>{text}</span></article>)}</div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading"><div><span className="section-kicker">LOCAL SCENARIOS</span><h2>{region.name}에서 이런 현장이라면?</h2></div><p>지역별 건물과 도로 조건이 철거 방식에 어떤 영향을 줄 수 있는지 상황별로 정리했습니다.</p></div>
+        <div className="scenario-grid">{detail.scenarios.map((entry) => <article className="scenario-card" key={entry.title}><span>현장 변수</span><h3>{entry.title}</h3><p>{entry.text}</p></article>)}</div>
+      </section>
+
+      <section className="section soft-section">
         <div className="section-heading">
           <div><span className="section-kicker">NEIGHBORHOOD CHECK</span><h2>{region.neighborhoods.slice(0, 3).join(" · ")} 등 현장별 확인사항</h2></div>
           <p>같은 {region.name} 안에서도 건물 연식, 도로 폭, 주차와 승강기 조건은 현장마다 다릅니다. 동네명만으로 비용을 정하기보다 실제 반출 조건을 함께 확인하세요.</p>
         </div>
-        <div className="link-cloud" aria-label={`${region.name} 주요 동네`}>
-          {region.neighborhoods.map((name) => <span className="info-chip" key={name}>{name} 현장</span>)}
-        </div>
+        <div className="link-cloud" aria-label={`${region.name} 주요 동네`}>{region.neighborhoods.map((name) => <span className="info-chip" key={name}>{name} 현장</span>)}</div>
       </section>
 
       <section className="section">
@@ -95,6 +115,13 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         ))}</div>
         <div className="cta-row"><a className="btn btn-glass" href="/service">전체 업종별 철거서비스 보기</a></div>
       </section>
+
+      <section className="section split">
+        <article className="info-card"><span className="section-kicker">PHOTO ESTIMATE</span><h2>{region.name} 견적 전에 찍어둘 사진</h2><ol>{detail.photoChecklist.map((text) => <li key={text}>{text}</li>)}</ol><p>실내 전체뿐 아니라 출입구에서 폐기물 상차 위치까지 이어지는 동선을 함께 찍어두면 1차 확인에 도움이 됩니다.</p></article>
+        <article className="info-card"><span className="section-kicker">COMPARE ESTIMATES</span><h2>지역명보다 범위를 비교하세요</h2><p>같은 {region.name} 안에서도 층수, 설비, 마감재, 승강기, 골목과 상차 위치에 따라 작업량이 달라질 수 있습니다.</p><ul><li>철거·존치 항목이 같은지</li><li>폐기물 반출과 운반이 포함됐는지</li><li>공용부 보양이 포함됐는지</li><li>원상복구 마감 수준이 같은지</li></ul></article>
+      </section>
+
+      <section className="section faq"><div className="section-heading"><div><span className="section-kicker">LOCAL FAQ</span><h2>{region.name} 철거 자주 묻는 질문</h2></div><p>해당 지역 페이지에서 다룬 현장조건과 직접 연결되는 질문만 정리했습니다.</p></div>{detail.faq.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
 
       <section className="section">
         <div className="section-heading"><div><span className="section-kicker">FIELD IMAGES</span><h2>{region.name} 현장 사진 영역</h2></div><p>실제 시공이 생기면 지역별 전·중·후 사진을 채워 현장성을 높입니다.</p></div>

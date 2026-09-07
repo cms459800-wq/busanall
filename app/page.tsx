@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "올바른철거 | 부산 철거·원상복구",
+  description: "부산 16개 구·군의 업종별 철거, 원상복구, 폐업지원금, 철거 견적과 현장 가이드를 한 곳에서 확인하세요.",
+  alternates: { canonical: "/" }
+};
+
 const highlights = [
   { label:"SERVICE", title:"업종별 철거", text:"식당·카페·편의점·사무실·공장 등 업종별 철거 포인트를 확인하세요.", href:"/service" },
   { label:"LOCAL", title:"부산 16개 구·군", text:"해운대구부터 기장군까지 지역별 현장 조건과 접근성을 정리했습니다.", href:"/busan" },
@@ -18,9 +24,19 @@ const quickLinks = [
   { title:"부산 지역 찾기", text:"16개 구·군", href:"/busan" }
 ];
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "올바른철거",
+  url: "https://busanall.vercel.app/",
+  inLanguage: "ko-KR",
+  description: "부산 철거·원상복구·폐업지원 정보와 현장 가이드를 제공하는 올바른철거"
+};
+
 export default function Home() {
   return (
     <main className="page-shell">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       <section className="home-hero">
         <div className="home-hero-main">
           <div className="eyebrow-chip">● BUSAN DEMOLITION GUIDE</div>

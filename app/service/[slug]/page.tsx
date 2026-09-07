@@ -5,6 +5,7 @@ import { getServiceDetail } from "@/data/serviceDetails";
 import { getExtraServiceDetail } from "@/data/serviceDetailsExtra";
 import { getMoreServiceDetail } from "@/data/serviceDetailsMore";
 import { getServiceIntent } from "@/data/serviceIntent";
+import { getServiceSeo } from "@/data/serviceSeo";
 
 const support = {
   rate: "전용면적 3.3㎡당 20만원 한도",
@@ -20,12 +21,20 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = services[slug as ServiceSlug];
+  const serviceSlug = slug as ServiceSlug;
+  const item = services[serviceSlug];
   if (!item) return {};
+  const seo = getServiceSeo(serviceSlug);
   return {
-    title: `${item.primary}·원상복구`,
-    description: item.summary,
-    alternates: { canonical: `/service/${slug}` }
+    title: seo?.title ?? `${item.primary}·원상복구`,
+    description: seo?.description ?? item.summary,
+    alternates: { canonical: `/service/${slug}` },
+    openGraph: {
+      title: seo?.title ?? `${item.primary}·원상복구`,
+      description: seo?.description ?? item.summary,
+      url: `/service/${slug}`,
+      type: "article"
+    }
   };
 }
 

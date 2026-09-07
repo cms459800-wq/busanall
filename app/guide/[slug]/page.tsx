@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { guides, guideBySlug } from "@/data/guides";
 import ClosureSupport from "@/components/ClosureSupport";
 
+const baseUrl = "https://busanall.vercel.app";
+
 export function generateStaticParams() {
   return guides.map((guide) => ({ slug: guide.slug }));
 }
@@ -10,7 +12,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const guide = guideBySlug(slug);
   if (!guide) return {};
-  return { title: `${guide.title} | 올바른철거`, description: guide.description, keywords: guide.keywords };
+  return {
+    title: `${guide.title} | 올바른철거`,
+    description: guide.description,
+    keywords: guide.keywords,
+    alternates: { canonical: `/guide/${slug}` }
+  };
 }
 
 export default async function GuideDetail({ params }: { params: Promise<{ slug: string }> }) {
@@ -18,8 +25,32 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
   const guide = guideBySlug(slug);
   if (!guide) notFound();
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "홈", item: baseUrl },
+        { "@type": "ListItem", position: 2, name: "철거가이드", item: `${baseUrl}/guide` },
+        { "@type": "ListItem", position: 3, name: guide.title, item: `${baseUrl}/guide/${slug}` }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: guide.title,
+      description: guide.description,
+      mainEntityOfPage: `${baseUrl}/guide/${slug}`,
+      author: { "@type": "Organization", name: "올바른철거", url: baseUrl },
+      publisher: { "@type": "Organization", name: "올바른철거", url: baseUrl },
+      about: guide.keywords
+    }
+  ];
+
   return (
     <main className="page-shell">
+      {structuredData.map((data, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />)}
+
       <nav className="breadcrumb" aria-label="breadcrumb"><a href="/">홈</a><span>›</span><a href="/guide">철거가이드</a><span>›</span><strong>{guide.category}</strong></nav>
 
       <header className="list-hero">

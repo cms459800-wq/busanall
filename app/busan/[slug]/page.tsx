@@ -3,6 +3,7 @@ import { regions, type RegionSlug } from "@/data/regions";
 import { services, type ServiceSlug } from "@/data/services";
 import { guides } from "@/data/guides";
 import { getRegionDetail } from "@/data/regionDetails";
+import { getRegionSeo } from "@/data/regionSeo";
 
 const baseUrl = "https://busanall.vercel.app";
 
@@ -12,12 +13,15 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const region = regions[slug as RegionSlug];
+  const regionSlug = slug as RegionSlug;
+  const region = regions[regionSlug];
   if (!region) return {};
+  const seo = getRegionSeo(regionSlug);
   return {
-    title: `${region.primary}·원상복구`,
-    description: region.summary,
-    alternates: { canonical: `/busan/${slug}` }
+    title: seo.title,
+    description: seo.description,
+    alternates: { canonical: `/busan/${slug}` },
+    openGraph: { title: seo.title, description: seo.description, url: `/busan/${slug}`, type: "website" }
   };
 }
 

@@ -5,6 +5,7 @@ import { getServiceDetail } from "@/data/serviceDetails";
 import { getExtraServiceDetail } from "@/data/serviceDetailsExtra";
 import { getMoreServiceDetail } from "@/data/serviceDetailsMore";
 import { getServiceIntent } from "@/data/serviceIntent";
+import { getExtraServiceIntent } from "@/data/serviceIntentExtra";
 import { getServiceSeo } from "@/data/serviceSeo";
 
 const support = {
@@ -44,7 +45,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const item = services[serviceSlug];
   if (!item) notFound();
   const detail = getServiceDetail(serviceSlug) ?? getExtraServiceDetail(serviceSlug) ?? getMoreServiceDetail(serviceSlug);
-  const intent = getServiceIntent(serviceSlug);
+  const intent = getServiceIntent(serviceSlug) ?? getExtraServiceIntent(serviceSlug);
 
   const relatedRegions = Object.entries(regions)
     .filter(([, region]) => (region.services as readonly string[]).includes(slug))

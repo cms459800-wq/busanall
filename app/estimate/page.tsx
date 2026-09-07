@@ -1,6 +1,7 @@
 export const metadata = {
   title: "무료 현장견적 요청",
-  description: "부산 철거·원상복구 현장견적을 준비할 때 필요한 정보를 안내합니다."
+  description: "부산 철거·원상복구 현장견적을 준비할 때 필요한 현장 위치, 업종, 면적, 철거범위와 사진 정보를 안내합니다.",
+  alternates: { canonical: "/estimate" }
 };
 
 const prepare = [

@@ -2,8 +2,11 @@ import type { MetadataRoute } from "next";
 import { services } from "@/data/services";
 import { regions } from "@/data/regions";
 import { guides } from "@/data/guides";
+import { validateContentReferences } from "@/data/validateReferences";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  validateContentReferences();
+
   const base = "https://busanall.vercel.app";
   const staticRoutes = ["", "/service", "/busan", "/guide", "/support", "/projects", "/estimate"];
   return [

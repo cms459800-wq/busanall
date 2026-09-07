@@ -8,31 +8,39 @@ export const metadata = {
 export default function BusanHub() {
   return (
     <main className="page-shell">
-      <header className="list-hero reveal">
-        <div className="eyebrow-chip"><span>●</span> BUSAN AREA GUIDE</div>
-        <h1>부산 16개 구·군<br/><span className="gradient-text">철거 지역안내</span></h1>
-        <p>지역 이름만 바꾸는 페이지가 아니라 상권·건물·반출동선·업종 특성을 반영해 실제 현장 판단에 도움이 되는 내용을 제공합니다.</p>
+      <header className="list-hero">
+        <div className="eyebrow-chip">BUSAN AREA GUIDE</div>
+        <h1>부산 16개 구·군<br/><span className="gradient-text">현장 조건까지 지역별로</span></h1>
+        <p>지역 이름만 바꾸는 페이지가 아니라 상권, 건물 유형, 차량 접근성, 폐기물 반출과 주요 업종을 기준으로 현장 판단에 필요한 정보를 정리했습니다.</p>
       </header>
 
-      <section className="section reveal">
+      <section className="section">
         <div className="section-heading">
           <div><span className="section-kicker">16 DISTRICTS</span><h2>지역별 철거 정보</h2></div>
-          <p>각 지역 페이지에서 주요 동네, 현장 특성, 추천 서비스와 폐업지원 정보를 함께 확인할 수 있습니다.</p>
+          <p>주요 동네와 현장 특성, 많이 확인하는 업종별 서비스, 폐업지원 안내까지 한 페이지에서 확인할 수 있습니다.</p>
         </div>
         <div className="service-grid">
           {Object.entries(regions).map(([slug, region], i) => (
             <a className="service-card" href={`/busan/${slug}`} key={slug}>
-              <div className="service-card-top"><span className="service-card-icon">{["⌂","◇","▦","↗"][i%4]}</span><span className="service-card-arrow">↗</span></div>
+              <div className="service-card-top"><span className="service-card-icon">{String(i + 1).padStart(2, "0")}</span><span className="service-card-arrow">↗</span></div>
               <strong>{region.primary}</strong>
-              <span>{region.summary}</span>
+              <span>{region.neighborhoods.join(" · ")}</span>
+              <span style={{marginTop:"8px"}}>{region.summary}</span>
             </a>
           ))}
         </div>
       </section>
 
-      <section className="final-cta reveal">
-        <div><span className="section-kicker">LOCAL ESTIMATE</span><h2>지역별 현장 조건까지<br/>같이 확인하세요</h2><p>같은 평수라도 층수, 엘리베이터, 골목 진입, 폐기물 반출조건에 따라 작업방식이 달라질 수 있습니다.</p></div>
-        <a className="btn btn-light" href="/estimate"><span className="btn-icon">✦</span>무료 현장견적</a>
+      <section className="support-box home-section">
+        <span className="section-kicker">LOCAL CHECK</span>
+        <h2>같은 업종이라도 지역과 건물 조건에 따라<br/>작업 방식은 달라질 수 있습니다.</h2>
+        <p>고층 상가의 화물승강기 사용, 골목 차량 진입, 관리실 작업시간, 인접 점포 영업 여부처럼 실제 현장에서 비용과 일정에 영향을 주는 조건을 먼저 확인하는 것이 좋습니다.</p>
+        <div className="cta-row"><a className="btn btn-primary" href="/guide/demolition-estimate-checklist">견적 체크리스트</a><a className="btn btn-glass" href="/service">업종별 서비스</a></div>
+      </section>
+
+      <section className="final-cta">
+        <div><span className="section-kicker">LOCAL ESTIMATE</span><h2>부산 현장,<br/>지역 조건까지 같이 확인하세요.</h2><p>업종과 면적뿐 아니라 층수, 엘리베이터, 골목 진입, 폐기물 상차 위치와 원상복구 범위를 함께 확인합니다.</p></div>
+        <a className="btn btn-light" href="/estimate">무료 현장견적</a>
       </section>
     </main>
   );

@@ -2,12 +2,26 @@ import { services } from "@/data/services";
 
 export const metadata = {
   title: "부산 업종별 철거 서비스",
-  description: "상가·식당·카페·편의점·노래방·사무실·공장 등 부산 업종별 철거와 원상복구 정보를 확인하세요."
+  description: "상가·식당·카페·편의점·노래방·사무실·공장 등 부산 업종별 철거와 원상복구 정보를 확인하세요.",
+  alternates: { canonical: "/service" }
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "부산 업종별 철거 서비스",
+  itemListElement: Object.entries(services).map(([slug, item], i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: item.primary,
+    url: `https://busanall.vercel.app/service/${slug}`
+  }))
 };
 
 export default function Page() {
   return (
     <main className="page-shell">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <header className="list-hero">
         <div className="eyebrow-chip">SERVICE DIRECTORY</div>
         <h1>업종에 따라 달라지는<br/><span className="gradient-text">철거 범위와 원상복구</span></h1>

@@ -35,6 +35,19 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
     .filter(([, region]) => region.services.some((serviceSlug) => guide.relatedServices.includes(serviceSlug as never)))
     .slice(0, 6);
 
+  const relatedGuides = guides
+    .filter((candidate) => candidate.slug !== guide.slug)
+    .map((candidate) => ({
+      candidate,
+      serviceScore: candidate.relatedServices.filter((serviceSlug) => guide.relatedServices.includes(serviceSlug)).length,
+      categoryScore: candidate.category === guide.category ? 1 : 0,
+      keywordScore: candidate.keywords.filter((keyword) => guide.keywords.includes(keyword)).length
+    }))
+    .filter(({ serviceScore, categoryScore, keywordScore }) => serviceScore > 0 || categoryScore > 0 || keywordScore > 0)
+    .sort((a, b) => (b.serviceScore * 3 + b.categoryScore * 2 + b.keywordScore) - (a.serviceScore * 3 + a.categoryScore * 2 + a.keywordScore))
+    .slice(0, 4)
+    .map(({ candidate }) => candidate);
+
   const structuredData = [
     {
       "@context": "https://schema.org",
@@ -90,6 +103,11 @@ export default async function GuideDetail({ params }: { params: Promise<{ slug: 
       {validServices.length > 0 && <section className="section">
         <div className="section-heading"><div><span className="section-kicker">RELATED SERVICE</span><h2>가이드와 연결되는 업종별 철거</h2></div><p>일반적인 체크사항을 실제 업종의 설비·원상복구 조건과 연결해서 확인하세요.</p></div>
         <div className="service-grid">{validServices.map(({ serviceSlug, item }) => <a className="service-card" href={`/service/${serviceSlug}`} key={serviceSlug}><div className="service-card-top"><span className="service-card-icon">{item.name.slice(0, 1)}</span><span className="service-card-arrow">↗</span></div><strong>{item.name}</strong><span>{item.summary}</span></a>)}</div>
+      </section>}
+
+      {relatedGuides.length > 0 && <section className="section">
+        <div className="section-heading"><div><span className="section-kicker">NEXT READING</span><h2>이어서 확인할 철거 가이드</h2></div><p>현재 글과 업종·주제가 실제로 겹치는 글만 연결해 견적, 원상복구, 폐기물과 폐업 준비를 순서대로 확인할 수 있게 했습니다.</p></div>
+        <div className="service-grid">{relatedGuides.map((related) => <a className="service-card" href={`/guide/${related.slug}`} key={related.slug}><div className="service-card-top"><span className="service-card-icon">G</span><span className="service-card-arrow">↗</span></div><strong>{related.title}</strong><span>{related.description}</span></a>)}</div>
       </section>}
 
       <section className="section soft-section">

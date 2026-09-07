@@ -88,7 +88,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         <h1>{region.primary}<br/><span className="gradient-text">현장 조건 가이드</span></h1>
         <p>{region.summary}</p>
         <div className="hero-points">{region.neighborhoods.map((n) => <span key={n}>{n}</span>)}</div>
-        <div className="cta-row"><a className="btn btn-primary" href="/estimate">무료 현장견적</a><a className="btn btn-glass" href="/support">폐업지원금 확인</a></div>
+        <div className="cta-row"><a className="btn btn-primary" href="/estimate">무료 현장견적 · 준비정보 6가지</a><a className="btn btn-glass" href="/support">폐업지원금 확인</a></div>
       </header>
 
       <section className="split">
@@ -136,6 +136,11 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         <article className="info-card"><span className="section-kicker">COMPARE ESTIMATES</span><h2>지역명보다 범위를 비교하세요</h2><p>같은 {region.name} 안에서도 층수, 설비, 마감재, 승강기, 골목과 상차 위치에 따라 작업량이 달라질 수 있습니다.</p><ul><li>철거·존치 항목이 같은지</li><li>폐기물 반출과 운반이 포함됐는지</li><li>공용부 보양이 포함됐는지</li><li>원상복구 마감 수준이 같은지</li></ul></article>
       </section>
 
+      <section className="section soft-section">
+        <div className="section-heading"><div><span className="section-kicker">READY FOR ESTIMATE</span><h2>{region.name} 현장이라면 이 6가지를 준비하세요</h2></div><p>위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 현장사진을 정리하면 1차 상담에서 현장조건을 더 빠르게 확인할 수 있습니다.</p></div>
+        <div className="cta-row"><a className="btn btn-primary" href="/estimate">견적 준비정보 6가지 확인</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div>
+      </section>
+
       <section className="section faq"><div className="section-heading"><div><span className="section-kicker">LOCAL FAQ</span><h2>{region.name} 철거 자주 묻는 질문</h2></div><p>해당 지역 페이지에서 다룬 현장조건과 직접 연결되는 질문만 정리했습니다.</p></div>{detail.faq.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
 
       <section className="section">
@@ -156,7 +161,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         <div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적서 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div>
       </section>}
 
-      <section className="final-cta"><div><span className="section-kicker">LOCAL ESTIMATE</span><h2>{region.name} 철거,<br/>현장 조건부터 확인하세요</h2><p>업종, 평수, 층수, 반출동선과 원상복구 범위를 함께 정리하면 견적 비교가 쉬워집니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>
+      <section className="final-cta"><div><span className="section-kicker">LOCAL ESTIMATE</span><h2>{region.name} 철거,<br/>현장 조건부터 확인하세요</h2><p>위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 현장사진을 준비하면 상담에서 반출조건과 원상복구 범위를 더 빠르게 확인할 수 있습니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적 · 준비정보 6가지</a></section>
     </main>
   );
 }

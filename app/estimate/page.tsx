@@ -23,7 +23,7 @@ export default function Page() {
       <section className="section">
         <div className="section-heading">
           <div><span className="section-kicker">ESTIMATE CHECK</span><h2>견적 상담 전 준비할 4가지</h2></div>
-          <p>전화번호나 카카오톡 채널이 확정되기 전까지는 잘못된 연락처를 노출하지 않고, 상담에 필요한 정보부터 안내합니다.</p>
+          <p>아래 정보를 미리 정리해 두면 철거 범위, 반출 조건과 원상복구 항목을 빠르게 확인하는 데 도움이 됩니다.</p>
         </div>
         <div className="feature-grid">
           {prepare.map((item, i) => (

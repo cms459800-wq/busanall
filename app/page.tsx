@@ -1,5 +1,7 @@
+import { regions } from "@/data/regions";
+
 export const metadata = {
-  title: "올바른철거 | 부산 철거·원상복구",
+  title: "부산 철거·원상복구",
   description: "부산 16개 구·군의 업종별 철거, 원상복구, 폐업지원금, 철거 견적과 현장 가이드를 한 곳에서 확인하세요.",
   alternates: { canonical: "/" }
 };
@@ -23,6 +25,17 @@ const quickLinks = [
   { title:"폐업지원 안내", text:"2026 지원 기준", href:"/support" },
   { title:"부산 지역 찾기", text:"16개 구·군", href:"/busan" }
 ];
+
+const coreServices = [
+  ["commercial-store", "상가철거"],
+  ["restaurant", "식당철거"],
+  ["cafe", "카페철거"],
+  ["office", "사무실철거"],
+  ["academy", "학원철거"],
+  ["hospital", "병원철거"],
+  ["factory", "공장철거"],
+  ["interior", "내부철거"]
+] as const;
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -83,6 +96,31 @@ export default function Home() {
               <small>{item.label}</small>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-head">
+          <div><span className="section-kicker">CORE SERVICES</span><h2>자주 찾는 철거 유형부터<br/>바로 확인하세요</h2></div>
+          <p>업종에 따라 주방·덕트·파티션·전기·배관·간판 등 철거 범위가 달라집니다. 해당 업종의 체크사항을 먼저 확인하세요.</p>
+        </div>
+        <div className="link-cloud" aria-label="주요 철거서비스 바로가기">
+          {coreServices.map(([slug, label]) => <a href={`/service/${slug}`} key={slug}>{label}<span>↗</span></a>)}
+        </div>
+      </section>
+
+      <section className="home-section soft-section">
+        <div className="home-section-head">
+          <div><span className="section-kicker">BUSAN 16 DISTRICTS</span><h2>부산 지역별 철거 정보</h2></div>
+          <p>같은 업종이라도 건물 층수, 골목 진입, 엘리베이터, 관리규정과 폐기물 상차 위치에 따라 작업 방식이 달라질 수 있습니다.</p>
+        </div>
+        <div className="region-link-grid">
+          {Object.entries(regions).map(([slug, region]) => (
+            <a href={`/busan/${slug}`} key={slug}>
+              <strong>{region.name}</strong>
+              <span>{region.neighborhoods.slice(0, 3).join(" · ")}</span>
             </a>
           ))}
         </div>

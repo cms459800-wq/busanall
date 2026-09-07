@@ -20,10 +20,10 @@ const process = [
 ];
 
 const quickLinks = [
+  { title:"무료 현장견적", text:"준비정보 6가지", href:"/estimate" },
   { title:"철거 견적 체크", text:"추가비용 전 확인", href:"/guide/demolition-estimate-checklist" },
   { title:"원상복구 범위", text:"계약서 기준 확인", href:"/guide/restoration-scope-checklist" },
-  { title:"폐업지원 안내", text:"2026 지원 기준", href:"/support" },
-  { title:"부산 지역 찾기", text:"16개 구·군", href:"/busan" }
+  { title:"폐업지원 안내", text:"2026 지원 기준", href:"/support" }
 ];
 
 const coreServices = [
@@ -141,6 +141,7 @@ export default function Home() {
         <div className="process-grid">
           {process.map((item) => <article className="process-step" key={item.no}><b>{item.no}</b><strong>{item.title}</strong><p>{item.text}</p></article>)}
         </div>
+        <div className="cta-row"><a className="btn btn-primary" href="/estimate">견적 준비정보 6가지 확인</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div>
       </section>
 
       <section className="support-box home-section">
@@ -155,7 +156,7 @@ export default function Home() {
       </section>
 
       <section className="final-cta">
-        <div><span className="section-kicker">FIELD CHECK</span><h2>내 현장은 얼마일까?<br/>범위부터 같이 확인하세요.</h2><p>사진으로 1차 확인하거나 현장을 방문해 철거범위, 반출조건, 원상복구 항목을 함께 정리할 수 있습니다.</p></div>
+        <div><span className="section-kicker">FIELD CHECK</span><h2>내 현장은 얼마일까?<br/>범위부터 같이 확인하세요.</h2><p>업종·면적·층수·엘리베이터·철거범위·일정과 현장사진을 준비하면 실제 상담에서 확인해야 할 범위를 더 빠르게 정리할 수 있습니다.</p></div>
         <a className="btn btn-light" href="/estimate">무료 현장견적 요청</a>
       </section>
     </main>

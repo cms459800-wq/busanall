@@ -4,6 +4,7 @@ import { guides } from "@/data/allGuides";
 import { guideDetails } from "@/data/guideDetails";
 import { guideDetailsExtra } from "@/data/guideDetailsExtra";
 import { guideDetailsGrowth } from "@/data/guideDetailsGrowth";
+import { guideSearchIntents } from "@/data/guideSearchIntent";
 import { serviceIntents } from "@/data/serviceIntent";
 import { serviceIntentExtra } from "@/data/serviceIntentExtra";
 
@@ -44,6 +45,20 @@ export function validateContentReferences() {
 
   for (const guideSlug of guideSlugs) {
     if (!detailOwners.has(guideSlug)) errors.push(`guide detail -> missing detail content: ${guideSlug}`);
+  }
+
+  const primaryQueryOwners = new Map<string, string>();
+  for (const [guideSlug, searchIntent] of Object.entries(guideSearchIntents)) {
+    if (!guideSlugs.has(guideSlug)) errors.push(`guideSearchIntents -> invalid guide key: ${guideSlug}`);
+    const normalizedPrimaryQuery = searchIntent.primaryQuery.trim().toLowerCase();
+    const previousOwner = primaryQueryOwners.get(normalizedPrimaryQuery);
+    if (previousOwner) errors.push(`guide search intent -> duplicate primary query "${searchIntent.primaryQuery}": ${previousOwner}, ${guideSlug}`);
+    else primaryQueryOwners.set(normalizedPrimaryQuery, guideSlug);
+    if (!searchIntent.goal.trim()) errors.push(`guideSearchIntents.${guideSlug} -> empty search goal`);
+  }
+
+  for (const guideSlug of guideSlugs) {
+    if (!guideSearchIntents[guideSlug]) errors.push(`guide search intent -> missing definition: ${guideSlug}`);
   }
 
   const intentMaps = [["serviceIntents", serviceIntents], ["serviceIntentExtra", serviceIntentExtra]] as const;

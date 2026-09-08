@@ -1,8 +1,9 @@
 import { services } from "@/data/services";
 import { regions } from "@/data/regions";
-import { guides } from "@/data/guides";
+import { guides } from "@/data/allGuides";
 import { guideDetails } from "@/data/guideDetails";
 import { guideDetailsExtra } from "@/data/guideDetailsExtra";
+import { guideDetailsGrowth } from "@/data/guideDetailsGrowth";
 import { serviceIntents } from "@/data/serviceIntent";
 import { serviceIntentExtra } from "@/data/serviceIntentExtra";
 
@@ -13,90 +14,58 @@ export function validateContentReferences() {
 
   for (const [regionSlug, region] of Object.entries(regions)) {
     for (const serviceSlug of region.services as readonly string[]) {
-      if (!serviceSlugs.has(serviceSlug)) {
-        errors.push(`regions.${regionSlug}.services -> invalid service slug: ${serviceSlug}`);
-      }
+      if (!serviceSlugs.has(serviceSlug)) errors.push(`regions.${regionSlug}.services -> invalid service slug: ${serviceSlug}`);
     }
   }
 
   for (const guide of guides) {
-    if (guideSlugs.has(guide.slug)) {
-      errors.push(`guides -> duplicate guide slug: ${guide.slug}`);
-    }
+    if (guideSlugs.has(guide.slug)) errors.push(`guides -> duplicate guide slug: ${guide.slug}`);
     guideSlugs.add(guide.slug);
-
     for (const serviceSlug of guide.relatedServices) {
-      if (!serviceSlugs.has(serviceSlug)) {
-        errors.push(`guides.${guide.slug}.relatedServices -> invalid service slug: ${serviceSlug}`);
-      }
+      if (!serviceSlugs.has(serviceSlug)) errors.push(`guides.${guide.slug}.relatedServices -> invalid service slug: ${serviceSlug}`);
     }
   }
 
   const detailMaps = [
     ["guideDetails", guideDetails],
-    ["guideDetailsExtra", guideDetailsExtra]
+    ["guideDetailsExtra", guideDetailsExtra],
+    ["guideDetailsGrowth", guideDetailsGrowth]
   ] as const;
   const detailOwners = new Map<string, string>();
 
   for (const [mapName, detailMap] of detailMaps) {
     for (const guideSlug of Object.keys(detailMap)) {
-      if (!guideSlugs.has(guideSlug)) {
-        errors.push(`${mapName} -> invalid guide key: ${guideSlug}`);
-      }
-
+      if (!guideSlugs.has(guideSlug)) errors.push(`${mapName} -> invalid guide key: ${guideSlug}`);
       const previousOwner = detailOwners.get(guideSlug);
-      if (previousOwner) {
-        errors.push(`guide detail -> duplicate definition for ${guideSlug}: ${previousOwner}, ${mapName}`);
-      } else {
-        detailOwners.set(guideSlug, mapName);
-      }
+      if (previousOwner) errors.push(`guide detail -> duplicate definition for ${guideSlug}: ${previousOwner}, ${mapName}`);
+      else detailOwners.set(guideSlug, mapName);
     }
   }
 
   for (const guideSlug of guideSlugs) {
-    if (!detailOwners.has(guideSlug)) {
-      errors.push(`guide detail -> missing detail content: ${guideSlug}`);
-    }
+    if (!detailOwners.has(guideSlug)) errors.push(`guide detail -> missing detail content: ${guideSlug}`);
   }
 
-  const intentMaps = [
-    ["serviceIntents", serviceIntents],
-    ["serviceIntentExtra", serviceIntentExtra]
-  ] as const;
+  const intentMaps = [["serviceIntents", serviceIntents], ["serviceIntentExtra", serviceIntentExtra]] as const;
   const intentOwners = new Map<string, string>();
 
   for (const [mapName, intentMap] of intentMaps) {
     for (const [serviceSlug, intent] of Object.entries(intentMap)) {
-      if (!serviceSlugs.has(serviceSlug)) {
-        errors.push(`${mapName} -> invalid service key: ${serviceSlug}`);
-      }
-
+      if (!serviceSlugs.has(serviceSlug)) errors.push(`${mapName} -> invalid service key: ${serviceSlug}`);
       const previousOwner = intentOwners.get(serviceSlug);
-      if (previousOwner) {
-        errors.push(`service intent -> duplicate definition for ${serviceSlug}: ${previousOwner}, ${mapName}`);
-      } else {
-        intentOwners.set(serviceSlug, mapName);
-      }
-
+      if (previousOwner) errors.push(`service intent -> duplicate definition for ${serviceSlug}: ${previousOwner}, ${mapName}`);
+      else intentOwners.set(serviceSlug, mapName);
       if (!intent) continue;
       for (const comparison of intent.differsFrom) {
-        if (!serviceSlugs.has(comparison.slug)) {
-          errors.push(`${mapName}.${serviceSlug}.differsFrom -> invalid service slug: ${comparison.slug}`);
-        }
-        if (comparison.slug === serviceSlug) {
-          errors.push(`${mapName}.${serviceSlug}.differsFrom -> self reference: ${comparison.slug}`);
-        }
+        if (!serviceSlugs.has(comparison.slug)) errors.push(`${mapName}.${serviceSlug}.differsFrom -> invalid service slug: ${comparison.slug}`);
+        if (comparison.slug === serviceSlug) errors.push(`${mapName}.${serviceSlug}.differsFrom -> self reference: ${comparison.slug}`);
       }
     }
   }
 
   for (const serviceSlug of serviceSlugs) {
-    if (!intentOwners.has(serviceSlug)) {
-      errors.push(`service intent -> missing search-intent definition: ${serviceSlug}`);
-    }
+    if (!intentOwners.has(serviceSlug)) errors.push(`service intent -> missing search-intent definition: ${serviceSlug}`);
   }
 
-  if (errors.length > 0) {
-    throw new Error(`Invalid internal content references:\n${errors.join("\n")}`);
-  }
+  if (errors.length > 0) throw new Error(`Invalid internal content references:\n${errors.join("\n")}`);
 }

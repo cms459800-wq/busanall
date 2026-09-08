@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   validateContentReferences();
 
   const base = "https://busanall.vercel.app";
-  const staticRoutes = ["", "/service", "/busan", "/guide", "/support", "/projects", "/estimate"];
+  const staticRoutes = ["", "/service", "/busan", "/guide", "/support", "/estimate"];
   return [
     ...staticRoutes.map((path) => ({ url: `${base}${path}`, changeFrequency: "weekly" as const, priority: path === "" ? 1 : 0.8 })),
     ...Object.keys(services).map((slug) => ({ url: `${base}/service/${slug}`, changeFrequency: "monthly" as const, priority: 0.8 })),

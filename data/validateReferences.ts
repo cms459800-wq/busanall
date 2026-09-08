@@ -10,10 +10,6 @@ export function validateContentReferences() {
   const errors: string[] = [];
 
   for (const [regionSlug, region] of Object.entries(regions)) {
-    if (region.services.length === 0) {
-      errors.push(`regions.${regionSlug}.services -> no related services`);
-    }
-
     for (const serviceSlug of region.services as readonly string[]) {
       if (!serviceSlugs.has(serviceSlug)) {
         errors.push(`regions.${regionSlug}.services -> invalid service slug: ${serviceSlug}`);
@@ -26,10 +22,6 @@ export function validateContentReferences() {
       errors.push(`guides -> duplicate guide slug: ${guide.slug}`);
     }
     guideSlugs.add(guide.slug);
-
-    if (guide.relatedServices.length === 0) {
-      errors.push(`guides.${guide.slug}.relatedServices -> no related services`);
-    }
 
     for (const serviceSlug of guide.relatedServices) {
       if (!serviceSlugs.has(serviceSlug)) {

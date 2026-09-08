@@ -1,5 +1,7 @@
 import { regions } from "@/data/regions";
 
+const inquiryUrl = "https://maxpool.olbarun.kr/";
+
 export const metadata = {
   title: "부산 16개 구·군 철거 지역안내",
   description: "해운대구·부산진구·동래구·수영구 등 부산 16개 구·군의 철거·원상복구 현장 특성과 업종별 정보를 확인하세요.",
@@ -26,6 +28,7 @@ export default function BusanHub() {
         <div className="eyebrow-chip">BUSAN AREA GUIDE</div>
         <h1>부산 16개 구·군<br/><span className="gradient-text">현장 조건까지 지역별로</span></h1>
         <p>지역 이름만 바꾸는 페이지가 아니라 상권, 건물 유형, 차량 접근성, 폐기물 반출과 주요 업종을 기준으로 현장 판단에 필요한 정보를 정리했습니다.</p>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
       </header>
 
       <section className="section">
@@ -54,7 +57,7 @@ export default function BusanHub() {
 
       <section className="final-cta">
         <div><span className="section-kicker">LOCAL ESTIMATE</span><h2>부산 현장,<br/>지역 조건까지 같이 확인하세요.</h2><p>업종과 면적뿐 아니라 층수, 엘리베이터, 골목 진입, 폐기물 상차 위치와 원상복구 범위를 함께 확인합니다.</p></div>
-        <a className="btn btn-light" href="/estimate">무료 현장견적</a>
+        <a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a>
       </section>
     </main>
   );

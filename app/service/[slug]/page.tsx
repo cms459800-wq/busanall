@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { services, type ServiceSlug } from "@/data/services";
 import { regions } from "@/data/regions";
-import { guides } from "@/data/guides";
+import { guides } from "@/data/allGuides";
 import { getServiceDetail } from "@/data/serviceDetails";
 import { getExtraServiceDetail } from "@/data/serviceDetailsExtra";
 import { getMoreServiceDetail } from "@/data/serviceDetailsMore";
@@ -9,201 +9,24 @@ import { getServiceIntent } from "@/data/serviceIntent";
 import { getExtraServiceIntent } from "@/data/serviceIntentExtra";
 import { getServiceSeo } from "@/data/serviceSeo";
 
-const support = {
-  rate: "전용면적 3.3㎡당 20만원 한도",
-  max: "최대 600만원",
-  url: "https://www.sbiz24.kr/"
-};
-
-const baseUrl = "https://busanall.vercel.app";
-const inquiryUrl = "https://maxpool.olbarun.kr/";
-
+const support = { rate: "전용면적 3.3㎡당 20만원 한도", max: "최대 600만원", url: "https://www.sbiz24.kr/" };
+const baseUrl = "https://busanall.vercel.app"; const inquiryUrl = "https://maxpool.olbarun.kr/";
 const fallbackGuideSlugs: Partial<Record<ServiceSlug, string[]>> = {
-  "kids-cafe": ["restoration-scope-checklist", "demolition-estimate-checklist", "demolition-waste-guide"],
-  "beauty-shop": ["beauty-salon-demolition-guide", "restoration-scope-checklist", "demolition-estimate-checklist"],
-  dental: ["hospital-demolition-guide", "restoration-scope-checklist", "demolition-estimate-checklist"],
-  pharmacy: ["hospital-demolition-guide", "restoration-scope-checklist", "demolition-estimate-checklist"],
-  "retail-store": ["restoration-scope-checklist", "demolition-estimate-checklist", "closure-demolition-support-2026"],
-  "unmanned-store": ["convenience-store-closing-demolition", "restoration-scope-checklist", "demolition-estimate-checklist"],
-  mart: ["convenience-store-closing-demolition", "restoration-scope-checklist", "demolition-waste-guide"],
-  lodging: ["restoration-scope-checklist", "demolition-estimate-checklist", "demolition-waste-guide"],
-  bathhouse: ["restoration-scope-checklist", "demolition-estimate-checklist", "partial-demolition-guide"],
-  laundry: ["restoration-scope-checklist", "demolition-estimate-checklist", "partial-demolition-guide"],
-  pub: ["restaurant-closing-demolition", "closure-demolition-support-2026", "demolition-estimate-checklist"],
-  bakery: ["cafe-closing-demolition", "restaurant-closing-demolition", "closure-demolition-support-2026"],
-  "pet-shop": ["restoration-scope-checklist", "demolition-estimate-checklist", "closure-demolition-support-2026"]
-};
-
-export function generateStaticParams() {
-  return Object.keys(services).map((slug) => ({ slug }));
-}
-
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const serviceSlug = slug as ServiceSlug;
-  const item = services[serviceSlug];
-  if (!item) return {};
-  const seo = getServiceSeo(serviceSlug);
-  return {
-    title: seo?.title ?? `${item.primary}·원상복구`,
-    description: seo?.description ?? item.summary,
-    alternates: { canonical: `/service/${slug}` },
-    openGraph: {
-      title: seo?.title ?? `${item.primary}·원상복구`,
-      description: seo?.description ?? item.summary,
-      url: `/service/${slug}`,
-      type: "article"
-    }
-  };
-}
-
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const serviceSlug = slug as ServiceSlug;
-  const item = services[serviceSlug];
-  if (!item) notFound();
-  const detail = getServiceDetail(serviceSlug) ?? getExtraServiceDetail(serviceSlug) ?? getMoreServiceDetail(serviceSlug);
-  const intent = getServiceIntent(serviceSlug) ?? getExtraServiceIntent(serviceSlug);
-
-  const relatedRegions = Object.entries(regions)
-    .filter(([, region]) => (region.services as readonly string[]).includes(slug))
-    .slice(0, 8);
-
-  const directGuides = guides
-    .filter((guide) => guide.relatedServices.includes(slug))
-    .sort((a, b) => Number(b.category === "업종별 가이드") - Number(a.category === "업종별 가이드"));
-  const fallbackSlugs = fallbackGuideSlugs[serviceSlug] ?? ["restoration-scope-checklist", "demolition-estimate-checklist", "demolition-waste-guide"];
-  const fallbackGuides = fallbackSlugs
-    .map((guideSlug) => guides.find((guide) => guide.slug === guideSlug))
-    .filter((guide): guide is (typeof guides)[number] => Boolean(guide));
-  const relatedGuides = [...directGuides, ...fallbackGuides]
-    .filter((guide, index, list) => list.findIndex((entry) => entry.slug === guide.slug) === index)
-    .slice(0, 4);
-
-  const defaultFaq = [
-    { q: "철거비는 무엇으로 달라지나요?", a: "면적뿐 아니라 설비, 마감재, 폐기물량, 반출조건, 작업시간과 원상복구 범위가 함께 영향을 줍니다." },
-    { q: "사진만으로 견적이 가능한가요?", a: "간단한 범위는 사진으로 1차 확인할 수 있지만 설비·배관·반출조건이 복잡한 현장은 방문 확인이 더 정확합니다." },
-    { q: "폐업지원금은 누구나 최대 한도를 받나요?", a: "아닙니다. 실제 지급액은 신청자격과 인정비용 등 최신 공고 기준에 따라 달라집니다." }
-  ];
-  const faqItems = detail?.faq ?? defaultFaq;
-
-  const structuredData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "홈", item: baseUrl },
-        { "@type": "ListItem", position: 2, name: "철거서비스", item: `${baseUrl}/service` },
-        { "@type": "ListItem", position: 3, name: item.name, item: `${baseUrl}/service/${slug}` }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: item.primary,
-      description: item.summary,
-      serviceType: item.primary,
-      areaServed: { "@type": "AdministrativeArea", name: "부산광역시" },
-      provider: { "@type": "Organization", name: "올바른철거", url: baseUrl },
-      url: `${baseUrl}/service/${slug}`
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqItems.map((faq) => ({
-        "@type": "Question",
-        name: faq.q,
-        acceptedAnswer: { "@type": "Answer", text: faq.a }
-      }))
-    }
-  ];
-
-  return (
-    <main className="page-shell">
-      {structuredData.map((data, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />)}
-      <nav className="breadcrumb" aria-label="breadcrumb"><a href="/">홈</a><span>›</span><a href="/service">철거서비스</a><span>›</span><strong>{item.name}</strong></nav>
-
-      <header className="list-hero">
-        <div className="eyebrow-chip">● 부산 업종별 철거</div>
-        <h1>{item.primary}<br/><span className="gradient-text">철거·원상복구 가이드</span></h1>
-        <p>{item.summary}</p>
-        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
-      </header>
-
-      <section className="split">
-        <article className="info-card"><span className="section-kicker">FIELD CHECK</span><h2>현장에서 먼저 확인할 것</h2><p>철거 범위, 설비 수량, 폐기물 반출 동선, 건물 관리규정과 임대차 원상복구 조건을 함께 확인해야 견적이 구체화됩니다.</p></article>
-        <article className="info-card"><span className="section-kicker">WHY IT VARIES</span><h2>같은 평수여도 비용은 달라집니다</h2><p>천장·벽체·바닥 재질, 설비 종류, 층수와 엘리베이터, 차량 접근성에 따라 작업량과 폐기물량이 달라질 수 있습니다.</p></article>
-      </section>
-
-      <section className="section">
-        <div className="section-heading"><div><span className="section-kicker">CORE POINTS</span><h2>{item.name} 핵심 체크사항</h2></div><p>업종별로 실제 현장에서 차이가 나는 항목을 먼저 확인하세요.</p></div>
-        <div className="feature-grid">{item.unique.map((text, i) => <article className="feature-card" key={text}><div className="feature-no">0{i+1}</div><p>{text}</p></article>)}</div>
-      </section>
-
-      {intent && <section className="section soft-section">
-        <div className="section-heading"><div><span className="section-kicker">SEARCH INTENT</span><h2>이 페이지에서 다루는 철거 범위</h2></div><p>{intent.focus}</p></div>
-        <div className="scenario-grid">{intent.differsFrom.map((entry) => <a className="scenario-card" href={`/service/${entry.slug}`} key={entry.slug}><span>비슷한 서비스 비교</span><h3>{entry.title}</h3><p>{entry.text}</p></a>)}</div>
-      </section>}
-
-      {detail && <>
-        <section className="section soft-section">
-          <div className="section-heading"><div><span className="section-kicker">WHAT TO REMOVE</span><h2>{item.name}, 실제로 무엇을 철거할까?</h2></div><p>업종의 핵심 시설을 기준으로 철거·보존·이전 품목을 먼저 나누면 범위를 정하기 쉬워집니다.</p></div>
-          <div className="detail-list-grid">{detail.targets.map((text, i) => <article className="detail-list-card" key={text}><b>0{i+1}</b><span>{text}</span></article>)}</div>
-        </section>
-
-        <section className="section split">
-          <article className="info-card"><span className="section-kicker">COST DRIVERS</span><h2>{item.name} 견적이 달라지는 상황</h2><ul>{detail.costDrivers.map((text) => <li key={text}>{text}</li>)}</ul></article>
-          <article className="info-card"><span className="section-kicker">SAVE FIRST</span><h2>철거 전에 따로 빼둘 것</h2><ul>{detail.salvage.map((text) => <li key={text}>{text}</li>)}</ul></article>
-        </section>
-
-        <section className="section">
-          <div className="section-heading"><div><span className="section-kicker">IF THIS HAPPENS</span><h2>{item.name}에서 자주 생기는 현장 변수</h2></div><p>평수만으로는 알기 어려운 상황을 미리 확인하면 견적 범위와 작업 순서를 더 구체적으로 잡을 수 있습니다.</p></div>
-          <div className="scenario-grid">{detail.scenario.map((entry) => <article className="scenario-card" key={entry.title}><span>현장 변수</span><h3>{entry.title}</h3><p>{entry.text}</p></article>)}</div>
-        </section>
-
-        <section className="section split">
-          <article className="info-card"><span className="section-kicker">RESTORATION</span><h2>원상복구에서 확인할 부분</h2><ul>{detail.restoration.map((text) => <li key={text}>{text}</li>)}</ul></article>
-          <article className="info-card"><span className="section-kicker">PHOTO ESTIMATE</span><h2>견적 전에 찍어두면 좋은 사진</h2><ol>{detail.photoChecklist.map((text) => <li key={text}>{text}</li>)}</ol><p>사진은 현장 전체 → 주요 설비 → 반출 동선 순서로 찍으면 1차 범위를 파악하기 쉽습니다.</p></article>
-        </section>
-      </>}
-
-      {relatedRegions.length > 0 && (
-        <section className="section soft-section">
-          <div className="section-heading"><div><span className="section-kicker">LOCAL MATCH</span><h2>{item.name}과 함께 보는 부산 지역정보</h2></div><p>같은 업종도 지역별 건물 유형, 차량 접근, 엘리베이터와 폐기물 반출 조건에 따라 작업 방식이 달라질 수 있습니다.</p></div>
-          <div className="region-link-grid">{relatedRegions.map(([regionSlug, region]) => <a href={`/busan/${regionSlug}`} key={regionSlug}><strong>{region.name} {item.name}</strong><span>{region.neighborhoods.slice(0, 3).join(" · ")} 현장 조건 보기</span></a>)}</div>
-          <div className="cta-row"><a className="btn btn-glass" href="/busan">부산 16개 구·군 전체 보기</a></div>
-        </section>
-      )}
-
-      <section className="section">
-        <div className="section-heading"><div><span className="section-kicker">FIELD IMAGES</span><h2>현장 사진 영역</h2></div><p>실제 시공 사진이 확보되면 전·중·후 과정이 보이도록 교체합니다.</p></div>
-        <div className="image-grid">{[1,2,3,4].map((n) => <figure className="image-slot" key={n}><div className="placeholder"><div><strong>현장 이미지 {n}</strong><span>/public/images/services/{slug}/0{n}.webp</span></div></div><figcaption>{item.primary} 현장 이미지 {n}</figcaption></figure>)}</div>
-      </section>
-
-      {!detail && <section className="section split">
-        <article className="info-card"><h2>견적에 영향을 주는 항목</h2><ul><li>전용면적과 실제 철거 범위</li><li>천장·벽체·바닥·설비 재질과 수량</li><li>엘리베이터·계단·골목 등 반출 조건</li><li>야간·주말 작업과 건물 관리규정</li><li>원상복구 마감 수준과 추가 설비 철거</li></ul></article>
-        <article className="info-card"><h2>권장 진행 순서</h2><ol><li>임대차 원상복구 조건 확인</li><li>철거·보존 품목 구분</li><li>현장 및 반출 동선 확인</li><li>작업범위 기준 견적 비교</li><li>철거·분리배출·폐기물 반출</li><li>원상복구 범위와 현장 정리 확인</li></ol></article>
-      </section>}
-
-      <section className="section soft-section">
-        <div className="section-heading"><div><span className="section-kicker">READY FOR ESTIMATE</span><h2>{item.name} 견적 전에 이 6가지를 준비하세요</h2></div><p>현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 현장사진을 정리하면 1차 상담에서 필요한 조건을 더 빠르게 확인할 수 있습니다.</p></div>
-        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료견적 문의하기</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div>
-      </section>
-
-      <section className="support-box section">
-        <span className="section-kicker">2026 CLOSURE SUPPORT</span><h2>폐업 예정이라면 공사 전에 지원제도도 확인하세요</h2><p>희망리턴패키지 점포철거비 지원은 신청자격과 인정비용, 증빙 기준이 있습니다.</p>
-        <div className="support-stats"><div><span>지원 기준</span><strong>{support.rate}</strong></div><div><span>최대 한도</span><strong>{support.max}</strong></div></div>
-        <p>실제 지원 여부와 지급액은 신청자격, 인정면적, 증빙 가능한 비용, 폐업일 및 최신 공고 기준에 따라 달라질 수 있으며 예산 소진 시 조기 종료될 수 있습니다.</p>
-        <div className="cta-row"><a className="btn btn-primary" href="/support">지원 안내 보기</a><a className="btn btn-glass" href={support.url} target="_blank" rel="noreferrer">소상공인24 확인</a></div>
-      </section>
-
-      <section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>{item.primary} 자주 묻는 질문</h2></div></div>{faqItems.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
-
-      {relatedGuides.length > 0 && <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED GUIDE</span><h2>{item.name}과 함께 보면 좋은 철거 가이드</h2></div><p>현재 업종과 직접 연결된 가이드를 우선하고, 전용 가이드가 부족한 업종은 원상복구·견적·폐업 등 실제로 함께 확인할 주제를 보완해 연결했습니다.</p></div><div className="service-grid">{relatedGuides.map((guide) => <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="service-card-icon">G</span><span className="service-card-arrow">↗</span></div><small className="section-kicker">{guide.category}</small><strong style={{marginTop:"8px"}}>{guide.title}</strong><span>{guide.description}</span></a>)}</div><div className="cta-row"><a className="btn btn-glass" href="/guide">전체 철거가이드 보기</a></div></section>}
-
-      <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED INFO</span><h2>견적·원상복구 정보도 같이 확인하세요</h2></div><p>업종 정보와 현장조건을 함께 보면 실제 철거 범위를 더 구체적으로 정리할 수 있습니다.</p></div><div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출 가이드</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div></section>
-
-      <section className="final-cta"><div><span className="section-kicker">NEXT STEP</span><h2>{item.primary}, 현장 조건부터 정리하세요</h2><p>현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 사진을 준비하면 견적 상담이 더 구체적입니다.</p></div><a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a></section>
-    </main>
-  );
-}
+  "kids-cafe":["restoration-scope-checklist","demolition-estimate-checklist","demolition-waste-guide"],"beauty-shop":["beauty-salon-demolition-guide","restoration-scope-checklist","demolition-estimate-checklist"],dental:["hospital-demolition-guide","restoration-scope-checklist","demolition-estimate-checklist"],pharmacy:["hospital-demolition-guide","restoration-scope-checklist","demolition-estimate-checklist"],"retail-store":["busan-store-closure-demolition-guide","landlord-restoration-dispute-checklist","demolition-cost-per-pyeong-guide"],"unmanned-store":["convenience-store-closing-demolition","restoration-scope-checklist","demolition-estimate-checklist"],mart:["convenience-store-closing-demolition","restoration-scope-checklist","demolition-waste-guide"],lodging:["restoration-scope-checklist","demolition-estimate-checklist","demolition-waste-guide"],bathhouse:["restoration-scope-checklist","demolition-estimate-checklist","partial-demolition-guide"],laundry:["restoration-scope-checklist","demolition-estimate-checklist","partial-demolition-guide"],pub:["restaurant-closing-demolition","closure-demolition-support-2026","demolition-estimate-checklist"],bakery:["cafe-closing-demolition","restaurant-closing-demolition","closure-demolition-support-2026"],"pet-shop":["restoration-scope-checklist","demolition-estimate-checklist","closure-demolition-support-2026"]};
+export function generateStaticParams(){return Object.keys(services).map((slug)=>({slug}));}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const{slug}=await params;const serviceSlug=slug as ServiceSlug;const item=services[serviceSlug];if(!item)return{};const seo=getServiceSeo(serviceSlug);return{title:seo?.title??`${item.primary}·원상복구`,description:seo?.description??item.summary,alternates:{canonical:`/service/${slug}`},openGraph:{title:seo?.title??`${item.primary}·원상복구`,description:seo?.description??item.summary,url:`/service/${slug}`,type:"article"}};}
+export default async function Page({params}:{params:Promise<{slug:string}>}){const{slug}=await params;const serviceSlug=slug as ServiceSlug;const item=services[serviceSlug];if(!item)notFound();const detail=getServiceDetail(serviceSlug)??getExtraServiceDetail(serviceSlug)??getMoreServiceDetail(serviceSlug);const intent=getServiceIntent(serviceSlug)??getExtraServiceIntent(serviceSlug);const relatedRegions=Object.entries(regions).filter(([,region])=>(region.services as readonly string[]).includes(slug)).slice(0,8);const directGuides=guides.filter((guide)=>guide.relatedServices.includes(slug)).sort((a,b)=>Number(b.category==="업종별 가이드")-Number(a.category==="업종별 가이드"));const fallbackSlugs=fallbackGuideSlugs[serviceSlug]??["demolition-cost-per-pyeong-guide","building-management-demolition-notice","restoration-scope-checklist","demolition-estimate-checklist"];const fallbackGuides=fallbackSlugs.map((guideSlug)=>guides.find((guide)=>guide.slug===guideSlug)).filter((guide):guide is (typeof guides)[number]=>Boolean(guide));const relatedGuides=[...directGuides,...fallbackGuides].filter((guide,index,list)=>list.findIndex((entry)=>entry.slug===guide.slug)===index).slice(0,5);const defaultFaq=[{q:"철거비는 무엇으로 달라지나요?",a:"면적뿐 아니라 설비, 마감재, 폐기물량, 반출조건, 작업시간과 원상복구 범위가 함께 영향을 줍니다."},{q:"사진만으로 견적이 가능한가요?",a:"간단한 범위는 사진으로 1차 확인할 수 있지만 설비·배관·반출조건이 복잡한 현장은 방문 확인이 더 정확합니다."},{q:"폐업지원금은 누구나 최대 한도를 받나요?",a:"아닙니다. 실제 지급액은 신청자격과 인정비용 등 최신 공고 기준에 따라 달라집니다."}];const faqItems=detail?.faq??defaultFaq;const structuredData=[{"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"홈",item:baseUrl},{"@type":"ListItem",position:2,name:"철거서비스",item:`${baseUrl}/service`},{"@type":"ListItem",position:3,name:item.name,item:`${baseUrl}/service/${slug}`}]},{"@context":"https://schema.org","@type":"Service",name:item.primary,description:item.summary,serviceType:item.primary,areaServed:{"@type":"AdministrativeArea",name:"부산광역시"},provider:{"@type":"Organization",name:"올바른철거",url:baseUrl},url:`${baseUrl}/service/${slug}`},{"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqItems.map((faq)=>({"@type":"Question",name:faq.q,acceptedAnswer:{"@type":"Answer",text:faq.a}}))}];return <main className="page-shell">
+{structuredData.map((data,index)=><script key={index} type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(data)}}/>)}<nav className="breadcrumb" aria-label="breadcrumb"><a href="/">홈</a><span>›</span><a href="/service">철거서비스</a><span>›</span><strong>{item.name}</strong></nav>
+<header className="list-hero"><div className="eyebrow-chip">● 부산 업종별 철거</div><h1>{item.primary}<br/><span className="gradient-text">철거·원상복구 가이드</span></h1><p>{item.summary}</p><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div></header>
+<section className="split"><article className="info-card"><span className="section-kicker">FIELD CHECK</span><h2>현장에서 먼저 확인할 것</h2><p>철거 범위, 설비 수량, 폐기물 반출 동선, 건물 관리규정과 임대차 원상복구 조건을 함께 확인해야 견적이 구체화됩니다.</p></article><article className="info-card"><span className="section-kicker">WHY IT VARIES</span><h2>같은 평수여도 비용은 달라집니다</h2><p>천장·벽체·바닥 재질, 설비 종류, 층수와 엘리베이터, 차량 접근성에 따라 작업량과 폐기물량이 달라질 수 있습니다.</p></article></section>
+<section className="section"><div className="section-heading"><div><span className="section-kicker">CORE POINTS</span><h2>{item.name} 핵심 체크사항</h2></div><p>업종별로 실제 현장에서 차이가 나는 항목을 먼저 확인하세요.</p></div><div className="feature-grid">{item.unique.map((text,i)=><article className="feature-card" key={text}><div className="feature-no">0{i+1}</div><p>{text}</p></article>)}</div></section>
+{intent&&<section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">SEARCH INTENT</span><h2>이 페이지에서 다루는 철거 범위</h2></div><p>{intent.focus}</p></div><div className="scenario-grid">{intent.differsFrom.map((entry)=><a className="scenario-card" href={`/service/${entry.slug}`} key={entry.slug}><span>비슷한 서비스 비교</span><h3>{entry.title}</h3><p>{entry.text}</p></a>)}</div></section>}
+{detail&&<><section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">WHAT TO REMOVE</span><h2>{item.name}, 실제로 무엇을 철거할까?</h2></div><p>업종의 핵심 시설을 기준으로 철거·보존·이전 품목을 먼저 나누면 범위를 정하기 쉬워집니다.</p></div><div className="detail-list-grid">{detail.targets.map((text,i)=><article className="detail-list-card" key={text}><b>0{i+1}</b><span>{text}</span></article>)}</div></section><section className="section split"><article className="info-card"><span className="section-kicker">COST DRIVERS</span><h2>{item.name} 견적이 달라지는 상황</h2><ul>{detail.costDrivers.map((text)=><li key={text}>{text}</li>)}</ul></article><article className="info-card"><span className="section-kicker">SAVE FIRST</span><h2>철거 전에 따로 빼둘 것</h2><ul>{detail.salvage.map((text)=><li key={text}>{text}</li>)}</ul></article></section><section className="section"><div className="section-heading"><div><span className="section-kicker">IF THIS HAPPENS</span><h2>{item.name}에서 자주 생기는 현장 변수</h2></div><p>평수만으로는 알기 어려운 상황을 미리 확인하면 견적 범위와 작업 순서를 더 구체적으로 잡을 수 있습니다.</p></div><div className="scenario-grid">{detail.scenario.map((entry)=><article className="scenario-card" key={entry.title}><span>현장 변수</span><h3>{entry.title}</h3><p>{entry.text}</p></article>)}</div></section><section className="section split"><article className="info-card"><span className="section-kicker">RESTORATION</span><h2>원상복구에서 확인할 부분</h2><ul>{detail.restoration.map((text)=><li key={text}>{text}</li>)}</ul></article><article className="info-card"><span className="section-kicker">PHOTO ESTIMATE</span><h2>견적 전에 찍어두면 좋은 사진</h2><ol>{detail.photoChecklist.map((text)=><li key={text}>{text}</li>)}</ol><p>사진은 현장 전체 → 주요 설비 → 반출 동선 순서로 찍으면 1차 범위를 파악하기 쉽습니다.</p></article></section></>}
+{relatedRegions.length>0&&<section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">LOCAL MATCH</span><h2>{item.name}과 함께 보는 부산 지역정보</h2></div><p>같은 업종도 지역별 건물 유형, 차량 접근, 엘리베이터와 폐기물 반출 조건에 따라 작업 방식이 달라질 수 있습니다.</p></div><div className="region-link-grid">{relatedRegions.map(([regionSlug,region])=><a href={`/busan/${regionSlug}`} key={regionSlug}><strong>{region.name} {item.name}</strong><span>{region.neighborhoods.slice(0,3).join(" · ")} 현장 조건 보기</span></a>)}</div><div className="cta-row"><a className="btn btn-glass" href="/busan">부산 16개 구·군 전체 보기</a></div></section>}
+<section className="section"><div className="section-heading"><div><span className="section-kicker">FIELD IMAGES</span><h2>현장 사진 영역</h2></div><p>실제 시공 사진이 확보되면 전·중·후 과정이 보이도록 교체합니다.</p></div><div className="image-grid">{[1,2,3,4].map((n)=><figure className="image-slot" key={n}><div className="placeholder"><div><strong>현장 이미지 {n}</strong><span>/public/images/services/{slug}/0{n}.webp</span></div></div><figcaption>{item.primary} 현장 이미지 {n}</figcaption></figure>)}</div></section>
+<section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">READY FOR ESTIMATE</span><h2>{item.name} 견적 전에 이 6가지를 준비하세요</h2></div><p>현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 현장사진을 정리하면 1차 상담에서 필요한 조건을 더 빠르게 확인할 수 있습니다.</p></div><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료견적 문의하기</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div></section>
+<section className="support-box section"><span className="section-kicker">2026 CLOSURE SUPPORT</span><h2>폐업 예정이라면 공사 전에 지원제도도 확인하세요</h2><p>희망리턴패키지 점포철거비 지원은 신청자격과 인정비용, 증빙 기준이 있습니다.</p><div className="support-stats"><div><span>지원 기준</span><strong>{support.rate}</strong></div><div><span>최대 한도</span><strong>{support.max}</strong></div></div><p>실제 지원 여부와 지급액은 신청자격, 인정면적, 증빙 가능한 비용, 폐업일 및 최신 공고 기준에 따라 달라질 수 있으며 예산 소진 시 조기 종료될 수 있습니다.</p><div className="cta-row"><a className="btn btn-primary" href="/support">지원 안내 보기</a><a className="btn btn-glass" href={support.url} target="_blank" rel="noreferrer">소상공인24 확인</a></div></section>
+<section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>{item.primary} 자주 묻는 질문</h2></div></div>{faqItems.map((faq)=><details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
+{relatedGuides.length>0&&<section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED GUIDE</span><h2>{item.name}과 함께 보면 좋은 철거 가이드</h2></div><p>업종 전용 가이드와 함께 철거비용, 원상복구, 관리실 신고, 설비 차단처럼 실제 준비 단계에서 필요한 주제를 연결했습니다.</p></div><div className="service-grid">{relatedGuides.map((guide)=><a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="service-card-icon">G</span><span className="service-card-arrow">↗</span></div><small className="section-kicker">{guide.category}</small><strong style={{marginTop:"8px"}}>{guide.title}</strong><span>{guide.description}</span></a>)}</div><div className="cta-row"><a className="btn btn-glass" href="/guide">전체 철거가이드 보기</a></div></section>}
+<section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED INFO</span><h2>견적·원상복구 정보도 같이 확인하세요</h2></div><p>업종 정보와 현장조건을 함께 보면 실제 철거 범위를 더 구체적으로 정리할 수 있습니다.</p></div><div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-cost-per-pyeong-guide">철거 평당비용 해석</a><a className="btn btn-glass" href="/guide/landlord-restoration-dispute-checklist">원상복구 분쟁 체크</a><a className="btn btn-glass" href="/guide/building-management-demolition-notice">관리실 공사신고</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div></section>
+<section className="final-cta"><div><span className="section-kicker">NEXT STEP</span><h2>{item.primary}, 현장 조건부터 정리하세요</h2><p>현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 사진을 준비하면 견적 상담이 더 구체적입니다.</p></div><a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a></section></main>;}

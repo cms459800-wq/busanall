@@ -66,7 +66,7 @@ export const guideDetails: Record<string, GuideDetail> = {
     ],
     questions: ["커피머신 급배수는 어디까지 제거하나요?", "카운터 철거 후 바닥 색 차이도 복구하나요?", "석재 상판은 별도 폐기물로 보나요?", "테라스 데크도 철거 대상인가요?", "리스 장비 회수와 철거 일정은 어떻게 맞추나요?"]
   },
-  "office-restoration-guide": {
+  "office-demolition-checklist": {
     checklist: ["유리·경량 파티션의 존치 여부", "OA바닥과 바닥박스 원상복구 범위", "서버·통신랙 이전 일정", "천장 전기·통신 배선 제거 범위", "출입통제·CCTV·사인물의 소유 구분", "빌딩 화물승강기와 작업시간 규정"],
     mistakes: [
       { title: "IT 장비와 일반 집기를 같이 반출하기", text: "서버와 네트워크 장비는 전원·통신 차단 순서를 정하고 일반 철거보다 먼저 안전하게 이전해야 합니다." },
@@ -81,7 +81,7 @@ export const guideDetails: Record<string, GuideDetail> = {
     ],
     questions: ["OA바닥은 기존 시설인가요?", "유리파티션을 재사용할 수 있나요?", "서버실은 언제까지 운영해야 하나요?", "화물승강기 사용시간 제한이 있나요?", "천장 통신선까지 모두 철거해야 하나요?"]
   },
-  "factory-demolition-guide": {
+  "factory-demolition-estimate-guide": {
     checklist: ["생산기계의 이전·매각·폐기 구분", "기계 고정 앵커와 콘크리트 기초", "전기·가스·급배수·덕트 설비라인", "철골·랙·부속 구조물의 소유 구분", "대형차·지게차·양중장비 진입 조건", "폐기물 임시 적치와 상차 위치"],
     mistakes: [
       { title: "기계 철거와 건물 철거의 담당을 섞기", text: "전문 이전이 필요한 생산기계와 건축·설비 철거의 작업 주체를 먼저 나눠야 공정 충돌을 줄일 수 있습니다." },

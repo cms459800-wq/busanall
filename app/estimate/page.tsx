@@ -1,7 +1,13 @@
 export const metadata = {
-  title: "무료 현장견적 요청",
-  description: "부산 철거·원상복구 현장견적을 준비할 때 필요한 업종, 면적, 층수, 엘리베이터, 철거범위, 일정과 현장사진 정보를 안내합니다.",
-  alternates: { canonical: "/estimate" }
+  title: "부산 철거 견적 준비정보 6가지",
+  description: "부산 철거·원상복구 견적을 문의하기 전에 현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 일정과 현장사진 6가지를 준비하는 방법을 안내합니다.",
+  alternates: { canonical: "/estimate" },
+  openGraph: {
+    title: "부산 철거 견적 준비정보 6가지",
+    description: "현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 일정과 사진을 정리해 철거견적 상담을 준비하는 방법을 확인하세요.",
+    url: "/estimate",
+    type: "website"
+  }
 };
 
 const inquiryUrl = "https://maxpool.olbarun.kr/";

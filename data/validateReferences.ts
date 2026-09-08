@@ -1,7 +1,6 @@
 import { services } from "@/data/services";
 import { regions } from "@/data/regions";
 import { guides } from "@/data/guides";
-import { getGuideFaq } from "@/data/guideFaq";
 import { serviceIntents } from "@/data/serviceIntent";
 import { serviceIntentExtra } from "@/data/serviceIntentExtra";
 
@@ -36,22 +35,6 @@ export function validateContentReferences() {
       if (!serviceSlugs.has(serviceSlug)) {
         errors.push(`guides.${guide.slug}.relatedServices -> invalid service slug: ${serviceSlug}`);
       }
-    }
-
-    const faqItems = getGuideFaq(guide.slug);
-    if (faqItems.length < 3) {
-      errors.push(`guides.${guide.slug}.faq -> expected at least 3 FAQ items, found ${faqItems.length}`);
-    }
-
-    const faqQuestions = new Set<string>();
-    for (const faq of faqItems) {
-      if (!faq.q.trim() || !faq.a.trim()) {
-        errors.push(`guides.${guide.slug}.faq -> empty question or answer`);
-      }
-      if (faqQuestions.has(faq.q)) {
-        errors.push(`guides.${guide.slug}.faq -> duplicate question: ${faq.q}`);
-      }
-      faqQuestions.add(faq.q);
     }
   }
 

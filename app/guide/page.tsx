@@ -1,4 +1,5 @@
 import { guides } from "@/data/allGuides";
+import { getGuideSearchIntent } from "@/data/guideSearchIntent";
 
 const inquiryUrl = "https://maxpool.olbarun.kr/";
 
@@ -20,7 +21,17 @@ const guideSchema = {
   }))
 };
 
+const featuredSlugs = [
+  "closure-demolition-support-2026",
+  "busan-store-closure-demolition-guide",
+  "demolition-estimate-checklist",
+  "demolition-cost-per-pyeong-guide",
+  "landlord-restoration-dispute-checklist",
+  "building-management-demolition-notice"
+] as const;
+
 const categoryDescriptions: Record<string, string> = {
+  "폐업지원": "점포철거비 지원 대상과 신청·증빙 순서를 공사 전에 확인합니다.",
   "폐업준비": "상가 폐업 일정, 계약, 집기 회수, 철거와 인도까지 실제 폐업 준비 순서를 확인합니다.",
   "철거비용": "평당 숫자보다 철거범위, 폐기물, 반출조건과 추가비용 조건을 비교하는 방법을 확인합니다.",
   "원상복구": "계약서와 입점 당시 상태를 기준으로 임대인과 철거·존치·마감 범위를 정하는 방법을 확인합니다.",
@@ -32,11 +43,13 @@ const categoryDescriptions: Record<string, string> = {
 };
 
 export default function GuidePage() {
-  const featured = guides.slice(0, 3);
-  const rest = guides.slice(3);
-  const categories = Array.from(new Set(rest.map((guide) => guide.category))).map((category) => ({
+  const featured = featuredSlugs
+    .map((slug) => guides.find((guide) => guide.slug === slug))
+    .filter((guide): guide is NonNullable<typeof guide> => Boolean(guide));
+
+  const categories = Array.from(new Set(guides.map((guide) => guide.category))).map((category) => ({
     category,
-    items: rest.filter((guide) => guide.category === category)
+    items: guides.filter((guide) => guide.category === category)
   }));
 
   return (
@@ -46,23 +59,29 @@ export default function GuidePage() {
         <div className="eyebrow-chip">DEMOLITION GUIDE</div>
         <h1>철거 전에 알아두면 좋은<br/><span className="gradient-text">비용·원상복구·폐업 정보</span></h1>
         <p>광고성 문구보다 실제 폐업과 철거 과정에서 먼저 확인해야 할 내용을 중심으로 정리합니다. 지원제도는 공사 전 최신 공식 공고를 함께 확인하세요.</p>
-        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a><a className="btn btn-glass" href="/support">2026 폐업지원 확인</a></div>
       </header>
 
       <section className="section">
-        <div className="section-heading"><div><span className="section-kicker">START HERE</span><h2>먼저 보면 좋은 핵심 가이드</h2></div><p>견적 비교, 원상복구 범위, 폐업지원처럼 대부분의 현장에서 공통으로 먼저 확인하면 좋은 내용입니다.</p></div>
-        <div className="home-grid">{featured.map((guide) => <a className="home-link-card" href={`/guide/${guide.slug}`} key={guide.slug}><span className="arrow">↗</span><small>{guide.category}</small><h3>{guide.title}</h3><p>{guide.description}</p></a>)}</div>
+        <div className="section-heading"><div><span className="section-kicker">START HERE</span><h2>철거 준비 순서대로 먼저 볼 가이드</h2></div><p>폐업지원 확인부터 폐업 준비, 견적 비교, 비용 해석, 원상복구 합의와 관리실 신고까지 실제 의사결정 순서에 가까운 핵심 글을 먼저 배치했습니다.</p></div>
+        <div className="home-grid">{featured.map((guide) => {
+          const searchIntent = getGuideSearchIntent(guide.slug);
+          return <a className="home-link-card" href={`/guide/${guide.slug}`} key={guide.slug}><span className="arrow">↗</span><small>{searchIntent?.intent ?? guide.category}</small><h3>{guide.title}</h3><p>{guide.description}</p>{searchIntent&&<span className="section-kicker" style={{marginTop:"10px"}}>{searchIntent.primaryQuery}</span>}</a>;
+        })}</div>
       </section>
 
       <section className="section soft-section">
-        <div className="section-heading"><div><span className="section-kicker">FIND BY INTENT</span><h2>찾는 목적에 따라 가이드를 선택하세요</h2></div><p>업종, 비용, 원상복구, 폐업준비, 산업시설, 주거와 철거기초처럼 검색 목적을 나눠 필요한 글로 바로 이동할 수 있도록 정리했습니다.</p></div>
+        <div className="section-heading"><div><span className="section-kicker">FIND BY INTENT</span><h2>찾는 목적에 따라 가이드를 선택하세요</h2></div><p>지원제도, 폐업준비, 비용, 원상복구, 업종, 산업시설, 주거와 철거기초처럼 목적을 나눠 필요한 글로 바로 이동할 수 있도록 정리했습니다.</p></div>
         <div className="cta-row">{categories.map(({ category }) => <a className="btn btn-glass" href={`#guide-${category}`} key={category}>{category}</a>)}</div>
       </section>
 
       {categories.map(({ category, items }) => (
         <section className="section" id={`guide-${category}`} key={category}>
           <div className="section-heading"><div><span className="section-kicker">TOPIC GUIDE</span><h2>{category}</h2></div><p>{categoryDescriptions[category] ?? "철거와 원상복구 과정에서 해당 상황에 필요한 현장 체크사항을 확인하세요."}</p></div>
-          <div className="service-grid">{items.map((guide) => <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="service-card-icon">✓</span><span className="service-card-arrow">↗</span></div><small className="section-kicker">{guide.category}</small><strong style={{marginTop:"8px"}}>{guide.title}</strong><span>{guide.description}</span></a>)}</div>
+          <div className="service-grid">{items.map((guide) => {
+            const searchIntent = getGuideSearchIntent(guide.slug);
+            return <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="service-card-icon">✓</span><span className="service-card-arrow">↗</span></div><small className="section-kicker">{searchIntent?.intent ?? guide.category}</small><strong style={{marginTop:"8px"}}>{guide.title}</strong><span>{guide.description}</span>{searchIntent&&<span className="section-kicker" style={{marginTop:"8px"}}>{searchIntent.primaryQuery}</span>}</a>;
+          })}</div>
         </section>
       ))}
 

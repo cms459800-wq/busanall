@@ -4,6 +4,8 @@ export const metadata = {
   alternates: { canonical: "/estimate" }
 };
 
+const inquiryUrl = "https://maxpool.olbarun.kr/";
+
 const prepare = [
   { title:"현장 위치", text:"부산 어느 지역인지와 건물명 또는 도로명, 층수를 정리해 주세요." },
   { title:"업종과 면적", text:"식당·카페·사무실 등 현재 업종과 대략적인 전용면적을 알려주세요." },
@@ -17,7 +19,7 @@ const flow = [
   { label:"01", title:"범위 정리", text:"철거할 것과 남길 것을 먼저 구분합니다." },
   { label:"02", title:"현장조건 확인", text:"층수, 승강기, 차량 접근과 작업시간을 확인합니다." },
   { label:"03", title:"사진 준비", text:"전경과 주요 설비, 반출동선을 순서대로 촬영합니다." },
-  { label:"04", title:"견적 비교", text:"총액보다 포함 범위와 추가 가능 항목을 함께 비교합니다." }
+  { label:"04", title:"문의 접수", text:"준비한 현장정보를 문의 페이지에서 전달합니다." }
 ];
 
 export default function Page() {
@@ -27,7 +29,7 @@ export default function Page() {
         <div className="eyebrow-chip">FREE FIELD ESTIMATE</div>
         <h1>무료 현장견적,<br/><span className="gradient-text">6가지만 준비하면 빨라집니다</span></h1>
         <p>주소와 평수만으로는 실제 철거범위를 판단하기 어렵습니다. 업종, 층수와 반출조건, 철거·보존 항목, 일정과 사진까지 함께 정리하면 상담 단계에서 빠르게 범위를 좁힐 수 있습니다.</p>
-        <div className="cta-row"><a className="btn btn-primary" href="#estimate-check">견적 준비사항 보기</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 체크리스트</a></div>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료견적 문의하기</a><a className="btn btn-glass" href="#estimate-check">준비사항 먼저 보기</a></div>
       </header>
 
       <section className="section soft-section" id="estimate-check">
@@ -45,6 +47,7 @@ export default function Page() {
             </article>
           ))}
         </div>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>준비한 정보로 견적 문의하기</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 체크리스트</a></div>
       </section>
 
       <section className="section">
@@ -57,22 +60,14 @@ export default function Page() {
           <span className="section-kicker">PHOTO CHECK</span>
           <h2>사진으로 먼저 확인하기 좋은 항목</h2>
           <ul>
-            <li>매장 전체가 보이는 전경</li>
-            <li>천장·벽체·바닥 마감 상태</li>
-            <li>주방·덕트·냉난방·전기 등 주요 설비</li>
-            <li>철거하지 않고 남길 시설과 집기</li>
-            <li>출입구·계단·엘리베이터와 차량 접근 위치</li>
+            <li>매장 전체가 보이는 전경</li><li>천장·벽체·바닥 마감 상태</li><li>주방·덕트·냉난방·전기 등 주요 설비</li><li>철거하지 않고 남길 시설과 집기</li><li>출입구·계단·엘리베이터와 차량 접근 위치</li>
           </ul>
         </article>
         <article className="info-card">
           <span className="section-kicker">VISIT CHECK</span>
           <h2>현장 방문이 더 정확한 경우</h2>
           <ul>
-            <li>노래방·병원·공장처럼 설비가 복잡한 현장</li>
-            <li>원상복구 범위가 임대인과 아직 정리되지 않은 현장</li>
-            <li>고층·골목·주차 제한 등 반출조건이 까다로운 현장</li>
-            <li>부분철거로 남길 시설과 철거할 시설이 섞여 있는 현장</li>
-            <li>덕트·배관·전기처럼 벽·천장 안쪽 범위를 확인해야 하는 현장</li>
+            <li>노래방·병원·공장처럼 설비가 복잡한 현장</li><li>원상복구 범위가 임대인과 아직 정리되지 않은 현장</li><li>고층·골목·주차 제한 등 반출조건이 까다로운 현장</li><li>부분철거로 남길 시설과 철거할 시설이 섞여 있는 현장</li><li>덕트·배관·전기처럼 벽·천장 안쪽 범위를 확인해야 하는 현장</li>
           </ul>
         </article>
       </section>
@@ -91,7 +86,7 @@ export default function Page() {
         <div className="cta-row"><a className="btn btn-primary" href="/support">2026 폐업지원 안내</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a></div>
       </section>
 
-      <section className="final-cta"><div><span className="section-kicker">READY TO QUOTE</span><h2>현장정보를 정리했다면<br/>견적 준비는 거의 끝났습니다.</h2><p>업종·면적·층수·승강기·철거범위·일정과 사진을 한 번에 준비해 두면 실제 상담 연결 시 필요한 정보를 빠르게 전달할 수 있습니다.</p></div><a className="btn btn-light" href="/service">업종별 철거범위 확인</a></section>
+      <section className="final-cta"><div><span className="section-kicker">READY TO QUOTE</span><h2>현장정보를 정리했다면<br/>바로 견적을 문의하세요.</h2><p>업종·면적·층수·승강기·철거범위·일정과 사진을 준비해 문의 페이지에서 전달해 주세요.</p></div><a className="btn btn-light" href={inquiryUrl}>무료견적 문의하기</a></section>
     </main>
   );
 }

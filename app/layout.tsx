@@ -1,6 +1,7 @@
 import "./globals.css";
 
 const baseUrl = "https://busanall.vercel.app";
+const inquiryUrl = "https://maxpool.olbarun.kr/";
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -35,6 +36,15 @@ const organizationSchema = {
   "@type": "Organization",
   name: "올바른철거",
   url: baseUrl,
+  telephone: "010-6648-4886",
+  email: "c0810@naver.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "까치고개로 47 (괴정동)",
+    addressLocality: "사하구",
+    addressRegion: "부산광역시",
+    addressCountry: "KR"
+  },
   areaServed: { "@type": "AdministrativeArea", name: "부산광역시" },
   knowsAbout: ["철거", "원상복구", "상가철거", "폐업철거", "점포철거"]
 };
@@ -53,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <nav aria-label="주요 메뉴">
             {navItems.map(([href, label]) => <a href={href} key={href}>{label}</a>)}
           </nav>
-          <a className="header-cta" href="/estimate">무료견적</a>
+          <a className="header-cta" href={inquiryUrl}>무료견적</a>
         </header>
         <nav className="mobile-nav" aria-label="모바일 주요 메뉴">
           <div className="mobile-nav-inner">
@@ -65,13 +75,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div>
             <strong>올바른철거</strong>
             <p>부산 철거 · 원상복구 · 폐업지원 안내</p>
+            <p>Tel. <a href="tel:01066484886">010-6648-4886</a> · Fax. 0508-956-6109 · <a href="mailto:c0810@naver.com">c0810@naver.com</a></p>
+            <p>부산광역시 사하구 까치고개로 47 (괴정동) · 상호: 까치 하우스 · 사업자등록번호: 458-21-02084</p>
+            <p>업무 제휴 문의 <a href="mailto:c0810@naver.com">c0810@naver.com</a></p>
           </div>
           <div className="footer-links">
             <a href="/service">철거서비스</a>
             <a href="/busan">부산지역</a>
             <a href="/guide">철거가이드</a>
             <a href="/support">폐업지원금</a>
-            <a href="/estimate">현장견적 문의</a>
+            <a href={inquiryUrl}>현장견적 문의</a>
           </div>
         </footer>
       </body>

@@ -1,3 +1,5 @@
+const inquiryUrl = "https://maxpool.olbarun.kr/";
+
 export const metadata = {
   title: "부산 철거 시공사례",
   description: "부산 철거 시공사례를 지역, 업종, 작업범위와 실제 전·중·후 사진 기준으로 기록하는 페이지입니다.",
@@ -11,6 +13,7 @@ export default function Page() {
         <div className="eyebrow-chip">● PROJECTS</div>
         <h1>부산 철거<br/><span className="gradient-text">시공사례</span></h1>
         <p>실제 작업 현장이 확보되는 대로 지역, 업종, 작업범위와 전·중·후 사진을 함께 기록합니다. 임의의 사례나 수치는 사용하지 않습니다.</p>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
       </header>
 
       <section className="split">
@@ -23,7 +26,7 @@ export default function Page() {
         <div className="image-grid">{[1,2,3,4].map((n) => <figure className="image-slot" key={n}><div className="placeholder"><strong>실제 현장 사례 {n}</strong><span>사진과 작업정보 확보 후 공개</span></div></figure>)}</div>
       </section>
 
-      <section className="final-cta"><div><span className="section-kicker">FIELD ESTIMATE</span><h2>사례보다 내 현장 조건이 더 중요합니다</h2><p>업종, 면적, 철거범위와 사진을 정리하면 비슷한 사례가 없어도 상담 기준을 잡을 수 있습니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적</a></section>
+      <section className="final-cta"><div><span className="section-kicker">FIELD ESTIMATE</span><h2>사례보다 내 현장 조건이 더 중요합니다</h2><p>업종, 면적, 철거범위와 사진을 정리하면 비슷한 사례가 없어도 상담 기준을 잡을 수 있습니다.</p></div><a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a></section>
     </main>
   );
 }

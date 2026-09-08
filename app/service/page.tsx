@@ -5,7 +5,14 @@ const inquiryUrl = "https://maxpool.olbarun.kr/";
 export const metadata = {
   title: "부산 업종별 철거 서비스",
   description: "상가·식당·카페·편의점·노래방·사무실·공장 등 부산 업종별 철거와 원상복구 정보를 확인하세요.",
-  alternates: { canonical: "/service" }
+  keywords: ["부산 철거", "부산 철거업체", "부산 상가철거", "부산 원상복구", "업종별 철거"],
+  alternates: { canonical: "/service" },
+  openGraph: {
+    title: "부산 업종별 철거 서비스",
+    description: "상가·식당·카페·사무실·공장 등 업종별 철거범위와 원상복구 기준을 확인하세요.",
+    url: "/service",
+    type: "website"
+  }
 };
 
 const serviceSchema = {

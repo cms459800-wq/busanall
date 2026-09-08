@@ -1,5 +1,7 @@
 import { guides } from "@/data/guides";
 
+const inquiryUrl = "https://maxpool.olbarun.kr/";
+
 export const metadata = {
   title: "부산 철거·폐업 가이드",
   description: "부산 철거비용, 원상복구, 폐업지원금과 업종별 폐업철거를 실제 의사결정에 도움이 되도록 정리한 올바른철거 가이드입니다.",
@@ -41,6 +43,7 @@ export default function GuidePage() {
         <div className="eyebrow-chip">DEMOLITION GUIDE</div>
         <h1>철거 전에 알아두면 좋은<br/><span className="gradient-text">비용·원상복구·폐업 정보</span></h1>
         <p>광고성 문구보다 실제 폐업과 철거 과정에서 먼저 확인해야 할 내용을 중심으로 정리합니다. 지원제도는 공사 전 최신 공식 공고를 함께 확인하세요.</p>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
       </header>
 
       <section className="section">
@@ -91,7 +94,7 @@ export default function GuidePage() {
 
       <section className="final-cta">
         <div><span className="section-kicker">FIELD CHECK</span><h2>가이드로 범위를 확인한 뒤<br/>내 현장 조건을 비교해보세요.</h2><p>같은 업종이라도 설비, 마감, 층수, 반출조건과 임대차 원상복구 범위에 따라 실제 작업 내용은 달라질 수 있습니다.</p></div>
-        <a className="btn btn-light" href="/estimate">무료 현장견적</a>
+        <a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a>
       </section>
     </main>
   );

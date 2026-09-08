@@ -1,5 +1,7 @@
 import { regions } from "@/data/regions";
 
+const inquiryUrl = "https://maxpool.olbarun.kr/";
+
 export const metadata = {
   title: "부산 철거·원상복구",
   description: "부산 16개 구·군의 업종별 철거, 원상복구, 폐업지원금, 철거 견적과 현장 가이드를 한 곳에서 확인하세요.",
@@ -20,8 +22,8 @@ const process = [
 ];
 
 const quickLinks = [
-  { title:"무료 현장견적", text:"준비정보 6가지", href:"/estimate" },
-  { title:"철거 견적 체크", text:"추가비용 전 확인", href:"/guide/demolition-estimate-checklist" },
+  { title:"무료 현장견적", text:"바로 문의하기", href: inquiryUrl },
+  { title:"견적 준비정보", text:"6가지 확인", href:"/estimate" },
   { title:"원상복구 범위", text:"계약서 기준 확인", href:"/guide/restoration-scope-checklist" },
   { title:"폐업지원 안내", text:"2026 지원 기준", href:"/support" }
 ];
@@ -65,14 +67,14 @@ export default function Home() {
           <h1>부산철거,<br/><span className="gradient-text">견적보다 먼저 기준부터</span></h1>
           <p>올바른철거는 철거 전 꼭 확인해야 할 정보부터 제공합니다. 업종별 작업 범위, 원상복구, 폐업지원금, 부산 지역별 현장 조건을 한 곳에서 확인하세요.</p>
           <div className="cta-row">
-            <a className="btn btn-primary" href="/estimate">무료 현장견적</a>
-            <a className="btn btn-glass" href="/service">업종별 서비스</a>
+            <a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a>
+            <a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a>
           </div>
           <div className="home-stat-row">
             <div className="home-stat"><strong>부산 16개 구·군</strong><span>지역별 현장 가이드</span></div>
             <div className="home-stat"><strong>업종별 철거</strong><span>설비·원상복구 포인트</span></div>
             <div className="home-stat"><strong>폐업지원 안내</strong><span>공사 전 확인 기준</span></div>
-            <div className="home-stat"><strong>무료 현장견적</strong><span>현장 조건 기반 상담</span></div>
+            <div className="home-stat"><strong>무료 현장견적</strong><span>실제 문의 페이지 연결</span></div>
           </div>
         </div>
 
@@ -167,7 +169,7 @@ export default function Home() {
         <div className="process-grid">
           {process.map((item) => <article className="process-step" key={item.no}><b>{item.no}</b><strong>{item.title}</strong><p>{item.text}</p></article>)}
         </div>
-        <div className="cta-row"><a className="btn btn-primary" href="/estimate">견적 준비정보 6가지 확인</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료견적 바로 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div>
       </section>
 
       <section className="support-box home-section">
@@ -183,7 +185,7 @@ export default function Home() {
 
       <section className="final-cta">
         <div><span className="section-kicker">FIELD CHECK</span><h2>내 현장은 얼마일까?<br/>범위부터 같이 확인하세요.</h2><p>업종·면적·층수·엘리베이터·철거범위·일정과 현장사진을 준비하면 실제 상담에서 확인해야 할 범위를 더 빠르게 정리할 수 있습니다.</p></div>
-        <a className="btn btn-light" href="/estimate">무료 현장견적 요청</a>
+        <a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a>
       </section>
     </main>
   );

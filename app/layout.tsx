@@ -72,8 +72,17 @@ const organizationSchema = {
 
 const mobileActionCss = `
 .mobile-action-bar{display:none}
+.site-header{min-height:74px}
+.brand{display:flex;align-items:center;height:62px;overflow:hidden}
+.brand-logo{display:block;width:auto;height:60px;max-width:210px;object-fit:contain;object-position:left center}
+.footer-brand{display:inline-flex;align-items:center;text-decoration:none}
+.footer-logo{display:block;width:auto;height:88px;max-width:290px;object-fit:contain;object-position:left center}
 @media(max-width:760px){
   body{padding-bottom:72px}
+  .site-header{min-height:62px}
+  .brand{height:50px}
+  .brand-logo{height:48px;max-width:165px}
+  .footer-logo{height:72px;max-width:235px}
   .mobile-action-bar{position:fixed;left:0;right:0;bottom:0;z-index:80;display:grid;grid-template-columns:.88fr 1.12fr;gap:8px;padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid #e5e9f1;box-shadow:0 -8px 24px rgba(17,24,39,.08);backdrop-filter:blur(14px)}
   .mobile-action-bar a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:11px;text-decoration:none;font-size:13.5px;font-weight:800;letter-spacing:-.02em}
   .mobile-action-call{border:1px solid #dce2eb;background:#fff;color:#253047}

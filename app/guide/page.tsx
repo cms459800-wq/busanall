@@ -18,9 +18,21 @@ const guideSchema = {
   }))
 };
 
+const categoryDescriptions: Record<string, string> = {
+  "업종별 가이드": "식당·카페·사무실·학원·병원·미용실 등 업종마다 다른 설비와 원상복구 포인트를 확인합니다.",
+  "산업시설 가이드": "공장·창고처럼 장비, 전기, 배관, 바닥기초와 대형차량 동선이 중요한 현장을 다룹니다.",
+  "주거 철거 가이드": "아파트 등 주거시설의 관리규정, 공용부 보양, 소음시간과 부분철거 범위를 확인합니다.",
+  "철거 범위 가이드": "전체철거와 부분철거를 구분하고 남길 시설과 철거할 시설의 경계를 정하는 기준을 확인합니다.",
+  "철거기초": "폐기물 분리, 반출동선, 현장정리처럼 업종과 관계없이 공통으로 필요한 철거 기본정보를 확인합니다."
+};
+
 export default function GuidePage() {
   const featured = guides.slice(0, 3);
   const rest = guides.slice(3);
+  const categories = Array.from(new Set(rest.map((guide) => guide.category))).map((category) => ({
+    category,
+    items: rest.filter((guide) => guide.category === category)
+  }));
 
   return (
     <main className="page-shell">
@@ -48,22 +60,34 @@ export default function GuidePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section soft-section">
         <div className="section-heading">
-          <div><span className="section-kicker">ALL GUIDES</span><h2>업종별·상황별 철거 가이드</h2></div>
-          <p>식당, 카페, 사무실, 공장, 주택 등 현장 유형별로 체크해야 할 설비와 작업 범위를 확인하세요.</p>
+          <div><span className="section-kicker">FIND BY INTENT</span><h2>찾는 목적에 따라 가이드를 선택하세요</h2></div>
+          <p>업종, 산업시설, 주거, 부분철거, 폐기물처럼 검색 목적을 나눠 필요한 글로 바로 이동할 수 있도록 정리했습니다.</p>
         </div>
-        <div className="service-grid">
-          {rest.map((guide) => (
-            <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}>
-              <div className="service-card-top"><span className="service-card-icon">✓</span><span className="service-card-arrow">↗</span></div>
-              <small className="section-kicker">{guide.category}</small>
-              <strong style={{marginTop:"8px"}}>{guide.title}</strong>
-              <span>{guide.description}</span>
-            </a>
-          ))}
+        <div className="cta-row">
+          {categories.map(({ category }) => <a className="btn btn-glass" href={`#guide-${category}`} key={category}>{category}</a>)}
         </div>
       </section>
+
+      {categories.map(({ category, items }) => (
+        <section className="section" id={`guide-${category}`} key={category}>
+          <div className="section-heading">
+            <div><span className="section-kicker">TOPIC GUIDE</span><h2>{category}</h2></div>
+            <p>{categoryDescriptions[category] ?? "철거와 원상복구 과정에서 해당 상황에 필요한 현장 체크사항을 확인하세요."}</p>
+          </div>
+          <div className="service-grid">
+            {items.map((guide) => (
+              <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}>
+                <div className="service-card-top"><span className="service-card-icon">✓</span><span className="service-card-arrow">↗</span></div>
+                <small className="section-kicker">{guide.category}</small>
+                <strong style={{marginTop:"8px"}}>{guide.title}</strong>
+                <span>{guide.description}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <section className="final-cta">
         <div><span className="section-kicker">FIELD CHECK</span><h2>가이드로 범위를 확인한 뒤<br/>내 현장 조건을 비교해보세요.</h2><p>같은 업종이라도 설비, 마감, 층수, 반출조건과 임대차 원상복구 범위에 따라 실제 작업 내용은 달라질 수 있습니다.</p></div>

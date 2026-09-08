@@ -16,6 +16,7 @@ const support = {
 };
 
 const baseUrl = "https://busanall.vercel.app";
+const inquiryUrl = "https://maxpool.olbarun.kr/";
 
 const fallbackGuideSlugs: Partial<Record<ServiceSlug, string[]>> = {
   "kids-cafe": ["restoration-scope-checklist", "demolition-estimate-checklist", "demolition-waste-guide"],
@@ -126,7 +127,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <div className="eyebrow-chip">● 부산 업종별 철거</div>
         <h1>{item.primary}<br/><span className="gradient-text">철거·원상복구 가이드</span></h1>
         <p>{item.summary}</p>
-        <div className="cta-row"><a className="btn btn-primary" href="/estimate">무료 현장견적 · 준비정보 6가지</a><a className="btn btn-glass" href="/support">폐업지원금 확인</a></div>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
       </header>
 
       <section className="split">
@@ -186,7 +187,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       <section className="section soft-section">
         <div className="section-heading"><div><span className="section-kicker">READY FOR ESTIMATE</span><h2>{item.name} 견적 전에 이 6가지를 준비하세요</h2></div><p>현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 현장사진을 정리하면 1차 상담에서 필요한 조건을 더 빠르게 확인할 수 있습니다.</p></div>
-        <div className="cta-row"><a className="btn btn-primary" href="/estimate">견적 준비정보 6가지 확인</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료견적 문의하기</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div>
       </section>
 
       <section className="support-box section">
@@ -202,7 +203,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED INFO</span><h2>견적·원상복구 정보도 같이 확인하세요</h2></div><p>업종 정보와 현장조건을 함께 보면 실제 철거 범위를 더 구체적으로 정리할 수 있습니다.</p></div><div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출 가이드</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div></section>
 
-      <section className="final-cta"><div><span className="section-kicker">NEXT STEP</span><h2>{item.primary}, 현장 조건부터 정리하세요</h2><p>현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 사진을 준비하면 견적 상담이 더 구체적입니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적 · 준비정보 6가지</a></section>
+      <section className="final-cta"><div><span className="section-kicker">NEXT STEP</span><h2>{item.primary}, 현장 조건부터 정리하세요</h2><p>현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 사진을 준비하면 견적 상담이 더 구체적입니다.</p></div><a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a></section>
     </main>
   );
 }

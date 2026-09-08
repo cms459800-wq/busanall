@@ -49,12 +49,25 @@ const organizationSchema = {
   knowsAbout: ["철거", "원상복구", "상가철거", "폐업철거", "점포철거"]
 };
 
+const mobileActionCss = `
+.mobile-action-bar{display:none}
+@media(max-width:760px){
+  body{padding-bottom:72px}
+  .mobile-action-bar{position:fixed;left:0;right:0;bottom:0;z-index:80;display:grid;grid-template-columns:.88fr 1.12fr;gap:8px;padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid #e5e9f1;box-shadow:0 -8px 24px rgba(17,24,39,.08);backdrop-filter:blur(14px)}
+  .mobile-action-bar a{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:11px;text-decoration:none;font-size:13.5px;font-weight:800;letter-spacing:-.02em}
+  .mobile-action-call{border:1px solid #dce2eb;background:#fff;color:#253047}
+  .mobile-action-estimate{border:1px solid #315cff;background:#315cff;color:#fff;box-shadow:0 5px 12px rgba(49,92,255,.18)}
+  .site-footer{padding-bottom:30px}
+}
+`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-        <div className="site-topbar">부산 16개 구·군 · 업종별 철거 · 원상복구 · 폐업지원 안내</div>
+        <style dangerouslySetInnerHTML={{ __html: mobileActionCss }} />
+        <div className="site-topbar">부산 16개 구·군 · 업종별 철거 · 원상복구 · 상담 010-6648-4886</div>
         <header className="site-header">
           <a className="brand" href="/" aria-label="올바른철거 홈">
             <span className="brand-mark">✓</span>
@@ -84,9 +97,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="/busan">부산지역</a>
             <a href="/guide">철거가이드</a>
             <a href="/support">폐업지원금</a>
+            <a href="/projects">시공사례</a>
+            <a href="/estimate">견적 준비정보</a>
             <a href={inquiryUrl}>현장견적 문의</a>
           </div>
         </footer>
+        <div className="mobile-action-bar" aria-label="빠른 상담">
+          <a className="mobile-action-call" href="tel:01066484886" aria-label="010-6648-4886 전화상담">전화상담</a>
+          <a className="mobile-action-estimate" href={inquiryUrl}>무료견적 문의</a>
+        </div>
       </body>
     </html>
   );

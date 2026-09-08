@@ -43,6 +43,7 @@ const organizationSchema = {
   name: "올바른철거",
   legalName: "까치 하우스",
   url: baseUrl,
+  logo: `${baseUrl}/images/brand/logo.png`,
   telephone: "010-6648-4886",
   email: "c0810@naver.com",
   identifier: {
@@ -90,8 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="site-topbar">부산 16개 구·군 · 업종별 철거 · 원상복구 · 상담 010-6648-4886</div>
         <header className="site-header">
           <a className="brand" href="/" aria-label="올바른철거 홈">
-            <span className="brand-mark">✓</span>
-            <span>올바른철거</span>
+            <img className="brand-logo" src="/images/brand/logo.png" alt="올바른철거" />
           </a>
           <nav aria-label="주요 메뉴">
             {navItems.map(([href, label]) => <a href={href} key={href}>{label}</a>)}
@@ -106,7 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <footer className="site-footer">
           <div>
-            <strong>올바른철거</strong>
+            <a className="footer-brand" href="/" aria-label="올바른철거 홈"><img className="footer-logo" src="/images/brand/logo.png" alt="올바른철거" /></a>
             <p>부산 철거 · 원상복구 · 폐업지원 안내</p>
             <p>Tel. <a href="tel:01066484886">010-6648-4886</a> · Fax. 0508-956-6109 · <a href="mailto:c0810@naver.com">c0810@naver.com</a></p>
             <p>부산광역시 사하구 까치고개로 47 (괴정동) · 상호: 까치 하우스 · 사업자등록번호: 458-21-02084</p>

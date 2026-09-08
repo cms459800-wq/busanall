@@ -1,6 +1,8 @@
 import { services } from "@/data/services";
 import { regions } from "@/data/regions";
 import { guides } from "@/data/guides";
+import { guideDetails } from "@/data/guideDetails";
+import { guideDetailsExtra } from "@/data/guideDetailsExtra";
 import { serviceIntents } from "@/data/serviceIntent";
 import { serviceIntentExtra } from "@/data/serviceIntentExtra";
 
@@ -27,6 +29,25 @@ export function validateContentReferences() {
       if (!serviceSlugs.has(serviceSlug)) {
         errors.push(`guides.${guide.slug}.relatedServices -> invalid service slug: ${serviceSlug}`);
       }
+    }
+  }
+
+  const detailMaps = [
+    ["guideDetails", guideDetails],
+    ["guideDetailsExtra", guideDetailsExtra]
+  ] as const;
+
+  for (const [mapName, detailMap] of detailMaps) {
+    for (const guideSlug of Object.keys(detailMap)) {
+      if (!guideSlugs.has(guideSlug)) {
+        errors.push(`${mapName} -> invalid guide key: ${guideSlug}`);
+      }
+    }
+  }
+
+  for (const guideSlug of guideSlugs) {
+    if (!guideDetails[guideSlug] && !guideDetailsExtra[guideSlug]) {
+      errors.push(`guide detail -> missing detail content: ${guideSlug}`);
     }
   }
 

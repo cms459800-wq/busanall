@@ -1,9 +1,16 @@
 const inquiryUrl = "https://maxpool.olbarun.kr/";
 
 export const metadata = {
-  title: "2026 폐업지원금·점포철거비 지원",
-  description: "2026 희망리턴패키지 원스톱폐업지원의 점포철거비 지원 기준과 공사 전 확인사항을 정리합니다.",
-  alternates: { canonical: "/support" }
+  title: "2026 부산 폐업지원금·점포철거비 지원",
+  description: "2026 부산 소상공인 폐업철거를 준비할 때 확인할 희망리턴패키지 점포철거비 지원 기준, 신청자격·증빙·원상복구 준비 순서를 정리합니다.",
+  keywords: ["2026 폐업지원금", "부산 폐업지원금", "부산 점포철거비 지원", "희망리턴패키지 철거비", "폐업철거 지원금"],
+  alternates: { canonical: "/support" },
+  openGraph: {
+    title: "2026 부산 폐업지원금·점포철거비 지원",
+    description: "부산 소상공인 폐업철거 전 확인할 점포철거비 지원 기준과 신청·증빙·원상복구 준비 순서를 안내합니다.",
+    url: "/support",
+    type: "article"
+  }
 };
 
 const checks = [

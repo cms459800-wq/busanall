@@ -37,6 +37,15 @@ const coreServices = [
   ["interior", "내부철거"]
 ] as const;
 
+const priorityGuides = [
+  { slug:"demolition-estimate-checklist", category:"철거비용", title:"부산 철거 견적서 체크리스트", text:"평당 단가보다 폐기물·반출·보양·설비·원상복구 포함 범위를 먼저 비교하세요." },
+  { slug:"restoration-scope-checklist", category:"원상복구", title:"상가 원상복구 범위 체크리스트", text:"임대차계약서, 입점 당시 상태, 임대인 요구사항을 기준으로 철거 범위를 정리합니다." },
+  { slug:"closure-demolition-support-2026", category:"폐업지원", title:"2026 폐업철거 지원금 확인 순서", text:"지원자격, 신청시점, 증빙자료와 실제 철거 일정의 선후관계를 확인합니다." },
+  { slug:"restaurant-closing-demolition", category:"업종별", title:"식당 폐업철거 준비 가이드", text:"주방설비, 가스, 급배수, 덕트와 그리스트랩까지 음식점 특유의 철거 범위를 확인합니다." },
+  { slug:"cafe-closing-demolition", category:"업종별", title:"카페 폐업철거 준비 가이드", text:"커피장비, 바 카운터, 급배수, 전기증설과 외부 사인물의 원상복구 범위를 확인합니다." },
+  { slug:"demolition-waste-guide", category:"철거기초", title:"철거 폐기물 분리·반출 가이드", text:"재사용품과 폐기물을 구분하고 승강기·계단·골목·차량 상차 동선을 미리 확인합니다." }
+] as const;
+
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -118,6 +127,23 @@ export default function Home() {
       </section>
 
       <section className="home-section soft-section">
+        <div className="home-section-head">
+          <div><span className="section-kicker">PRIORITY GUIDES</span><h2>철거 전 많이 확인하는<br/>핵심 가이드</h2></div>
+          <p>견적 비교, 원상복구, 폐업지원과 업종별 폐점 준비처럼 실제 상담 전 먼저 확인하면 좋은 내용을 직접 연결했습니다.</p>
+        </div>
+        <div className="service-grid" aria-label="핵심 철거가이드 바로가기">
+          {priorityGuides.map((guide) => (
+            <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}>
+              <div className="service-card-top"><span className="section-kicker">{guide.category}</span><span className="service-card-arrow">↗</span></div>
+              <strong>{guide.title}</strong>
+              <span>{guide.text}</span>
+            </a>
+          ))}
+        </div>
+        <div className="cta-row"><a className="btn btn-glass" href="/guide">전체 철거가이드 보기</a></div>
+      </section>
+
+      <section className="home-section">
         <div className="home-section-head">
           <div><span className="section-kicker">BUSAN 16 DISTRICTS</span><h2>부산 지역별 철거 정보</h2></div>
           <p>같은 업종이라도 건물 층수, 골목 진입, 엘리베이터, 관리규정과 폐기물 상차 위치에 따라 작업 방식이 달라질 수 있습니다.</p>

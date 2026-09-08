@@ -5,7 +5,14 @@ const inquiryUrl = "https://maxpool.olbarun.kr/";
 export const metadata = {
   title: "부산 16개 구·군 철거 지역안내",
   description: "해운대구·부산진구·동래구·수영구 등 부산 16개 구·군의 철거·원상복구 현장 특성과 업종별 정보를 확인하세요.",
-  alternates: { canonical: "/busan" }
+  keywords: ["부산 철거", "부산 철거업체", "부산 원상복구", "부산 상가철거", "부산 지역별 철거"],
+  alternates: { canonical: "/busan" },
+  openGraph: {
+    title: "부산 16개 구·군 철거 지역안내",
+    description: "부산 16개 구·군의 상권·건물·반출조건과 업종별 철거 정보를 지역별로 확인하세요.",
+    url: "/busan",
+    type: "website"
+  }
 };
 
 const regionSchema = {

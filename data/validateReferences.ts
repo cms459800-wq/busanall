@@ -36,17 +36,25 @@ export function validateContentReferences() {
     ["guideDetails", guideDetails],
     ["guideDetailsExtra", guideDetailsExtra]
   ] as const;
+  const detailOwners = new Map<string, string>();
 
   for (const [mapName, detailMap] of detailMaps) {
     for (const guideSlug of Object.keys(detailMap)) {
       if (!guideSlugs.has(guideSlug)) {
         errors.push(`${mapName} -> invalid guide key: ${guideSlug}`);
       }
+
+      const previousOwner = detailOwners.get(guideSlug);
+      if (previousOwner) {
+        errors.push(`guide detail -> duplicate definition for ${guideSlug}: ${previousOwner}, ${mapName}`);
+      } else {
+        detailOwners.set(guideSlug, mapName);
+      }
     }
   }
 
   for (const guideSlug of guideSlugs) {
-    if (!guideDetails[guideSlug] && !guideDetailsExtra[guideSlug]) {
+    if (!detailOwners.has(guideSlug)) {
       errors.push(`guide detail -> missing detail content: ${guideSlug}`);
     }
   }

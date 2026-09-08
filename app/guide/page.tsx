@@ -6,7 +6,14 @@ const inquiryUrl = "https://maxpool.olbarun.kr/";
 export const metadata = {
   title: "부산 철거·폐업 가이드",
   description: "부산 철거비용, 원상복구, 폐업지원금과 업종별 폐업철거를 실제 의사결정에 도움이 되도록 정리한 올바른철거 가이드입니다.",
-  alternates: { canonical: "/guide" }
+  keywords: ["부산 철거비용", "부산 폐업철거", "상가 원상복구", "부산 폐업지원금", "철거 견적"],
+  alternates: { canonical: "/guide" },
+  openGraph: {
+    title: "부산 철거·폐업 가이드",
+    description: "철거비용·원상복구·폐업지원·업종별 철거를 실제 준비 순서에 맞춰 확인하세요.",
+    url: "/guide",
+    type: "website"
+  }
 };
 
 const guideSchema = {

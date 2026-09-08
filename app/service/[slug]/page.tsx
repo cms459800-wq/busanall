@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { services, type ServiceSlug } from "@/data/services";
 import { regions } from "@/data/regions";
+import { guides } from "@/data/guides";
 import { getServiceDetail } from "@/data/serviceDetails";
 import { getExtraServiceDetail } from "@/data/serviceDetailsExtra";
 import { getMoreServiceDetail } from "@/data/serviceDetailsMore";
@@ -50,6 +51,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const relatedRegions = Object.entries(regions)
     .filter(([, region]) => (region.services as readonly string[]).includes(slug))
     .slice(0, 8);
+
+  const relatedGuides = guides
+    .filter((guide) => guide.relatedServices.includes(slug))
+    .sort((a, b) => {
+      const aSpecific = a.category === "업종별 가이드" ? 1 : 0;
+      const bSpecific = b.category === "업종별 가이드" ? 1 : 0;
+      return bSpecific - aSpecific;
+    })
+    .slice(0, 4);
 
   const defaultFaq = [
     { q: "철거비는 무엇으로 달라지나요?", a: "면적뿐 아니라 설비, 마감재, 폐기물량, 반출조건, 작업시간과 원상복구 범위가 함께 영향을 줍니다." },
@@ -169,6 +179,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       </section>
 
       <section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>{item.primary} 자주 묻는 질문</h2></div></div>{faqItems.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
+
+      {relatedGuides.length > 0 && <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED GUIDE</span><h2>{item.name}과 직접 연결되는 철거 가이드</h2></div><p>현재 업종을 관련 서비스로 지정한 가이드를 우선 연결했습니다. 업종별 체크사항과 비용·원상복구 기준을 함께 확인하세요.</p></div><div className="service-grid">{relatedGuides.map((guide) => <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="service-card-icon">G</span><span className="service-card-arrow">↗</span></div><small className="section-kicker">{guide.category}</small><strong style={{marginTop:"8px"}}>{guide.title}</strong><span>{guide.description}</span></a>)}</div><div className="cta-row"><a className="btn btn-glass" href="/guide">전체 철거가이드 보기</a></div></section>}
 
       <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED INFO</span><h2>견적·원상복구 정보도 같이 확인하세요</h2></div><p>업종 정보와 현장조건을 함께 보면 실제 철거 범위를 더 구체적으로 정리할 수 있습니다.</p></div><div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출 가이드</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div></section>
 

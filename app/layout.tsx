@@ -35,15 +35,29 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "올바른철거",
+  legalName: "까치 하우스",
   url: baseUrl,
   telephone: "010-6648-4886",
   email: "c0810@naver.com",
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "사업자등록번호",
+    value: "458-21-02084"
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "까치고개로 47 (괴정동)",
     addressLocality: "사하구",
     addressRegion: "부산광역시",
     addressCountry: "KR"
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: "010-6648-4886",
+    email: "c0810@naver.com",
+    areaServed: "KR",
+    availableLanguage: "Korean"
   },
   areaServed: { "@type": "AdministrativeArea", name: "부산광역시" },
   knowsAbout: ["철거", "원상복구", "상가철거", "폐업철거", "점포철거"]

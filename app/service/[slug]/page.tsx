@@ -17,6 +17,22 @@ const support = {
 
 const baseUrl = "https://busanall.vercel.app";
 
+const fallbackGuideSlugs: Partial<Record<ServiceSlug, string[]>> = {
+  "kids-cafe": ["restoration-scope-checklist", "demolition-estimate-checklist", "demolition-waste-guide"],
+  "beauty-shop": ["beauty-salon-demolition-guide", "restoration-scope-checklist", "demolition-estimate-checklist"],
+  dental: ["hospital-demolition-guide", "restoration-scope-checklist", "demolition-estimate-checklist"],
+  pharmacy: ["hospital-demolition-guide", "restoration-scope-checklist", "demolition-estimate-checklist"],
+  "retail-store": ["restoration-scope-checklist", "demolition-estimate-checklist", "closure-demolition-support-2026"],
+  "unmanned-store": ["convenience-store-closing-demolition", "restoration-scope-checklist", "demolition-estimate-checklist"],
+  mart: ["convenience-store-closing-demolition", "restoration-scope-checklist", "demolition-waste-guide"],
+  lodging: ["restoration-scope-checklist", "demolition-estimate-checklist", "demolition-waste-guide"],
+  bathhouse: ["restoration-scope-checklist", "demolition-estimate-checklist", "partial-demolition-guide"],
+  laundry: ["restoration-scope-checklist", "demolition-estimate-checklist", "partial-demolition-guide"],
+  pub: ["restaurant-closing-demolition", "closure-demolition-support-2026", "demolition-estimate-checklist"],
+  bakery: ["cafe-closing-demolition", "restaurant-closing-demolition", "closure-demolition-support-2026"],
+  "pet-shop": ["restoration-scope-checklist", "demolition-estimate-checklist", "closure-demolition-support-2026"]
+};
+
 export function generateStaticParams() {
   return Object.keys(services).map((slug) => ({ slug }));
 }
@@ -52,13 +68,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     .filter(([, region]) => (region.services as readonly string[]).includes(slug))
     .slice(0, 8);
 
-  const relatedGuides = guides
+  const directGuides = guides
     .filter((guide) => guide.relatedServices.includes(slug))
-    .sort((a, b) => {
-      const aSpecific = a.category === "업종별 가이드" ? 1 : 0;
-      const bSpecific = b.category === "업종별 가이드" ? 1 : 0;
-      return bSpecific - aSpecific;
-    })
+    .sort((a, b) => Number(b.category === "업종별 가이드") - Number(a.category === "업종별 가이드"));
+  const fallbackSlugs = fallbackGuideSlugs[serviceSlug] ?? ["restoration-scope-checklist", "demolition-estimate-checklist", "demolition-waste-guide"];
+  const fallbackGuides = fallbackSlugs
+    .map((guideSlug) => guides.find((guide) => guide.slug === guideSlug))
+    .filter((guide): guide is (typeof guides)[number] => Boolean(guide));
+  const relatedGuides = [...directGuides, ...fallbackGuides]
+    .filter((guide, index, list) => list.findIndex((entry) => entry.slug === guide.slug) === index)
     .slice(0, 4);
 
   const defaultFaq = [
@@ -180,7 +198,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
       <section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>{item.primary} 자주 묻는 질문</h2></div></div>{faqItems.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
 
-      {relatedGuides.length > 0 && <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED GUIDE</span><h2>{item.name}과 직접 연결되는 철거 가이드</h2></div><p>현재 업종을 관련 서비스로 지정한 가이드를 우선 연결했습니다. 업종별 체크사항과 비용·원상복구 기준을 함께 확인하세요.</p></div><div className="service-grid">{relatedGuides.map((guide) => <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="service-card-icon">G</span><span className="service-card-arrow">↗</span></div><small className="section-kicker">{guide.category}</small><strong style={{marginTop:"8px"}}>{guide.title}</strong><span>{guide.description}</span></a>)}</div><div className="cta-row"><a className="btn btn-glass" href="/guide">전체 철거가이드 보기</a></div></section>}
+      {relatedGuides.length > 0 && <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED GUIDE</span><h2>{item.name}과 함께 보면 좋은 철거 가이드</h2></div><p>현재 업종과 직접 연결된 가이드를 우선하고, 전용 가이드가 부족한 업종은 원상복구·견적·폐업 등 실제로 함께 확인할 주제를 보완해 연결했습니다.</p></div><div className="service-grid">{relatedGuides.map((guide) => <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="service-card-icon">G</span><span className="service-card-arrow">↗</span></div><small className="section-kicker">{guide.category}</small><strong style={{marginTop:"8px"}}>{guide.title}</strong><span>{guide.description}</span></a>)}</div><div className="cta-row"><a className="btn btn-glass" href="/guide">전체 철거가이드 보기</a></div></section>}
 
       <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">RELATED INFO</span><h2>견적·원상복구 정보도 같이 확인하세요</h2></div><p>업종 정보와 현장조건을 함께 보면 실제 철거 범위를 더 구체적으로 정리할 수 있습니다.</p></div><div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a><a className="btn btn-glass" href="/guide/demolition-waste-guide">폐기물 반출 가이드</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div></section>
 

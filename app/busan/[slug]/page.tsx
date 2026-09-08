@@ -6,6 +6,7 @@ import { getRegionDetail } from "@/data/regionDetails";
 import { getRegionSeo } from "@/data/regionSeo";
 
 const baseUrl = "https://busanall.vercel.app";
+const inquiryUrl = "https://maxpool.olbarun.kr/";
 
 export function generateStaticParams() {
   return Object.keys(regions).map((slug) => ({ slug }));
@@ -88,7 +89,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         <h1>{region.primary}<br/><span className="gradient-text">현장 조건 가이드</span></h1>
         <p>{region.summary}</p>
         <div className="hero-points">{region.neighborhoods.map((n) => <span key={n}>{n}</span>)}</div>
-        <div className="cta-row"><a className="btn btn-primary" href="/estimate">무료 현장견적 · 준비정보 6가지</a><a className="btn btn-glass" href="/support">폐업지원금 확인</a></div>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a><a className="btn btn-glass" href="/support">폐업지원금 확인</a></div>
       </header>
 
       <section className="split">
@@ -138,7 +139,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
 
       <section className="section soft-section">
         <div className="section-heading"><div><span className="section-kicker">READY FOR ESTIMATE</span><h2>{region.name} 현장이라면 이 6가지를 준비하세요</h2></div><p>위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 현장사진을 정리하면 1차 상담에서 현장조건을 더 빠르게 확인할 수 있습니다.</p></div>
-        <div className="cta-row"><a className="btn btn-primary" href="/estimate">견적 준비정보 6가지 확인</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료견적 문의하기</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지 확인</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div>
       </section>
 
       <section className="section faq"><div className="section-heading"><div><span className="section-kicker">LOCAL FAQ</span><h2>{region.name} 철거 자주 묻는 질문</h2></div><p>해당 지역 페이지에서 다룬 현장조건과 직접 연결되는 질문만 정리했습니다.</p></div>{detail.faq.map((faq) => <details key={faq.q}><summary>{faq.q}</summary><p>{faq.a}</p></details>)}</section>
@@ -161,7 +162,7 @@ export default async function RegionPage({ params }: { params: Promise<{ slug: s
         <div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적서 체크리스트</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위</a><a className="btn btn-glass" href="/guide">전체 철거가이드</a></div>
       </section>}
 
-      <section className="final-cta"><div><span className="section-kicker">LOCAL ESTIMATE</span><h2>{region.name} 철거,<br/>현장 조건부터 확인하세요</h2><p>위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 현장사진을 준비하면 상담에서 반출조건과 원상복구 범위를 더 빠르게 확인할 수 있습니다.</p></div><a className="btn btn-light" href="/estimate">무료 현장견적 · 준비정보 6가지</a></section>
+      <section className="final-cta"><div><span className="section-kicker">LOCAL ESTIMATE</span><h2>{region.name} 철거,<br/>현장 조건부터 확인하세요</h2><p>위치, 업종·면적, 층수·엘리베이터, 철거범위, 희망일정과 현장사진을 준비하면 상담에서 반출조건과 원상복구 범위를 더 빠르게 확인할 수 있습니다.</p></div><div className="cta-row"><a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">준비정보 6가지</a></div></section>
     </main>
   );
 }

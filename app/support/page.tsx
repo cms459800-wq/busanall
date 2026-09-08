@@ -1,3 +1,5 @@
+const inquiryUrl = "https://maxpool.olbarun.kr/";
+
 export const metadata = {
   title: "2026 폐업지원금·점포철거비 지원",
   description: "2026 희망리턴패키지 원스톱폐업지원의 점포철거비 지원 기준과 공사 전 확인사항을 정리합니다.",
@@ -18,6 +20,7 @@ export default function Page() {
         <div className="eyebrow-chip">2026 CLOSURE SUPPORT</div>
         <h1>폐업을 준비한다면<br/><span className="gradient-text">철거 전에 지원부터 확인</span></h1>
         <p>희망리턴패키지 점포철거비 지원은 신청자격과 인정범위, 증빙 조건이 있습니다. 최대 한도만 보기보다 공사 전에 최신 공고와 준비 순서를 먼저 확인하세요.</p>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
       </header>
 
       <section className="support-box">
@@ -63,6 +66,11 @@ export default function Page() {
           <p>지원 한도는 실제 공사비를 의미하지 않습니다. 현장 비용은 업종, 설비, 폐기물량, 층수, 차량 접근성, 작업시간과 원상복구 범위에 따라 달라질 수 있습니다.</p>
           <div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위</a></div>
         </article>
+      </section>
+
+      <section className="section soft-section">
+        <div className="section-heading"><div><span className="section-kicker">AFTER CHECK</span><h2>지원 기준을 확인했다면 현장정보도 함께 준비하세요</h2></div><p>지원제도 확인과 실제 철거견적은 별개입니다. 현장 위치, 업종·면적, 층수, 철거범위, 일정과 사진을 정리한 뒤 문의하면 상담이 더 구체적입니다.</p></div>
+        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
       </section>
 
       <section className="final-cta">

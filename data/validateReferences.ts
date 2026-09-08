@@ -1,6 +1,7 @@
 import { services } from "@/data/services";
 import { regions } from "@/data/regions";
 import { guides } from "@/data/guides";
+import { getGuideFaq } from "@/data/guideFaq";
 import { serviceIntents } from "@/data/serviceIntent";
 import { serviceIntentExtra } from "@/data/serviceIntentExtra";
 
@@ -10,6 +11,10 @@ export function validateContentReferences() {
   const errors: string[] = [];
 
   for (const [regionSlug, region] of Object.entries(regions)) {
+    if (region.services.length === 0) {
+      errors.push(`regions.${regionSlug}.services -> no related services`);
+    }
+
     for (const serviceSlug of region.services as readonly string[]) {
       if (!serviceSlugs.has(serviceSlug)) {
         errors.push(`regions.${regionSlug}.services -> invalid service slug: ${serviceSlug}`);
@@ -23,10 +28,30 @@ export function validateContentReferences() {
     }
     guideSlugs.add(guide.slug);
 
+    if (guide.relatedServices.length === 0) {
+      errors.push(`guides.${guide.slug}.relatedServices -> no related services`);
+    }
+
     for (const serviceSlug of guide.relatedServices) {
       if (!serviceSlugs.has(serviceSlug)) {
         errors.push(`guides.${guide.slug}.relatedServices -> invalid service slug: ${serviceSlug}`);
       }
+    }
+
+    const faqItems = getGuideFaq(guide.slug);
+    if (faqItems.length < 3) {
+      errors.push(`guides.${guide.slug}.faq -> expected at least 3 FAQ items, found ${faqItems.length}`);
+    }
+
+    const faqQuestions = new Set<string>();
+    for (const faq of faqItems) {
+      if (!faq.q.trim() || !faq.a.trim()) {
+        errors.push(`guides.${guide.slug}.faq -> empty question or answer`);
+      }
+      if (faqQuestions.has(faq.q)) {
+        errors.push(`guides.${guide.slug}.faq -> duplicate question: ${faq.q}`);
+      }
+      faqQuestions.add(faq.q);
     }
   }
 

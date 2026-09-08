@@ -1,6 +1,18 @@
 import { regions } from "@/data/regions";
 const inquiryUrl="https://maxpool.olbarun.kr/";
-export const metadata={title:"부산 철거·원상복구",description:"부산 16개 구·군의 업종별 철거, 원상복구, 폐업지원금, 철거 견적과 현장 가이드를 한 곳에서 확인하세요.",alternates:{canonical:"/"}};
+export const metadata={
+  title:"부산 철거업체·원상복구·폐업철거",
+  description:"부산 철거업체를 찾을 때 확인해야 할 업종별 철거범위, 상가 원상복구, 폐업철거·점포철거비 지원, 부산 16개 구·군 현장조건과 무료 현장견적 정보를 확인하세요.",
+  keywords:["부산 철거업체","부산 철거","부산 상가철거","부산 원상복구","부산 폐업철거","부산 철거견적"],
+  alternates:{canonical:"/"},
+  openGraph:{
+    type:"website",
+    locale:"ko_KR",
+    url:"/",
+    title:"부산 철거업체·원상복구·폐업철거 | 올바른철거",
+    description:"부산 16개 구·군의 업종별 철거범위, 원상복구, 폐업철거·지원제도와 현장견적 준비정보를 확인하세요."
+  }
+};
 const highlights=[{label:"SERVICE",title:"업종별 철거",text:"식당·카페·편의점·사무실·공장 등 업종별 철거 포인트를 확인하세요.",href:"/service"},{label:"LOCAL",title:"부산 16개 구·군",text:"해운대구부터 기장군까지 지역별 현장 조건과 접근성을 정리했습니다.",href:"/busan"},{label:"GUIDE",title:"철거·폐업 가이드",text:"견적서, 원상복구, 폐업지원금, 업종별 체크사항을 한 곳에서 확인하세요.",href:"/guide"}];
 const process=[{no:"01",title:"현장 조건 확인",text:"업종, 면적, 층수, 엘리베이터와 폐기물 반출 동선을 확인합니다."},{no:"02",title:"철거 범위 구분",text:"철거할 시설과 남길 시설, 임대인 원상복구 요구사항을 구분합니다."},{no:"03",title:"비용·지원 검토",text:"견적 항목과 추가비용 조건, 폐업지원 대상 여부를 함께 확인합니다."},{no:"04",title:"일정·작업 진행",text:"관리규정과 영업시간을 반영해 보양, 철거, 반출, 정리 순서로 진행합니다."}];
 const quickLinks=[{title:"무료 현장견적",text:"바로 문의하기",href:inquiryUrl},{title:"철거 평당비용",text:"비용 구조 확인",href:"/guide/demolition-cost-per-pyeong-guide"},{title:"원상복구 분쟁",text:"범위 합의 체크",href:"/guide/landlord-restoration-dispute-checklist"},{title:"폐업지원 안내",text:"2026 지원 기준",href:"/support"}];

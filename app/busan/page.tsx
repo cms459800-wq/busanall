@@ -27,9 +27,42 @@ const regionSchema = {
   }))
 };
 
+const iconPaths: Record<string, React.ReactNode> = {
+  "jung-gu": <><path d="M4 21V10l8-5 8 5v11"/><path d="M9 21v-7h6v7"/><path d="M3 21h18"/></>,
+  "seo-gu": <><path d="M3 20h18"/><path d="M5 20V9h5v11M14 20V4h5v16"/><path d="M7 12h1M7 15h1M16 8h1M16 11h1M16 14h1"/></>,
+  "dong-gu": <><path d="M3 18c3-3 5-3 8 0s5 3 10 0"/><path d="M4 14h16"/><path d="M6 14l2-6h8l2 6"/><path d="M12 8V4"/></>,
+  "yeongdo-gu": <><path d="M3 18c3-2 5-2 8 0s5 2 10 0"/><path d="M5 14c2-5 4-7 7-7s5 2 7 7"/><path d="M5 14h14"/></>,
+  "busanjin-gu": <><path d="M4 21V6h7v15M13 21V3h7v18"/><path d="M7 9h1M7 12h1M7 15h1M16 7h1M16 10h1M16 13h1M16 16h1"/></>,
+  "dongnae-gu": <><path d="M4 20h16"/><path d="M6 20v-8h12v8"/><path d="M5 12l7-7 7 7"/><path d="M10 20v-4h4v4"/></>,
+  "nam-gu": <><path d="M3 18c3-3 5-3 8 0s5 3 10 0"/><path d="M5 14V8M19 14V8"/><path d="M5 10c4-4 10-4 14 0"/></>,
+  "buk-gu": <><path d="M3 20h18"/><path d="M5 20V9l5-3v14M10 20V5l5-2v17M15 20v-9l4-2v11"/></>,
+  "haeundae-gu": <><path d="M3 18c3-2 5-2 8 0s5 2 10 0"/><circle cx="17" cy="6" r="3"/><path d="M4 13c3-3 6-4 9-3"/></>,
+  "saha-gu": <><path d="M3 20h18"/><path d="M5 20V9h6v11M13 20v-6h6v6"/><path d="M7 12h2M15 17h2"/></>,
+  "geumjeong-gu": <><path d="M3 20l6-10 3 5 3-9 6 14"/><path d="M8 20h8"/></>,
+  "gangseo-gu": <><path d="M3 18c3-2 5-2 8 0s5 2 10 0"/><path d="M5 14h14l-2-5H7z"/><path d="M9 9V5h6v4"/></>,
+  "yeonje-gu": <><path d="M4 20V7h6v13M14 20V4h6v16"/><path d="M3 20h18"/><path d="M6 10h2M6 13h2M16 7h2M16 10h2M16 13h2"/></>,
+  "suyeong-gu": <><path d="M3 18c3-2 5-2 8 0s5 2 10 0"/><path d="M5 13h14"/><path d="M7 13V7M17 13V7"/><path d="M7 9c3-3 7-3 10 0"/></>,
+  "sasang-gu": <><path d="M3 20h18"/><path d="M5 20v-9l5 3v-5l5 3V7h4v13"/><path d="M7 17h2M12 17h2M16 15h1"/></>,
+  "gijang-gun": <><path d="M3 20l6-9 3 4 3-8 6 13"/><path d="M4 20h16"/><path d="M16 7l2-3 2 3"/></>
+};
+
+function RegionIcon({ slug }: { slug: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      {iconPaths[slug] ?? <><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11z"/><circle cx="12" cy="10" r="2"/></>}
+    </svg>
+  );
+}
+
 export default function BusanHub() {
   return (
     <main className="page-shell">
+      <style>{`
+        .region-card-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#eef2ff,#f7f9ff);color:#315cff;border:1px solid #e2e8ff;transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease}
+        .region-card-icon svg{width:25px;height:25px}
+        .service-card:hover .region-card-icon{transform:translateY(-2px) scale(1.04);background:#315cff;color:#fff;box-shadow:0 8px 18px rgba(49,92,255,.18)}
+        .region-card-label{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;font-weight:800;color:#315cff;background:#f2f5ff;border:1px solid #e4e9ff;border-radius:999px;padding:5px 9px;width:max-content;max-width:100%}
+      `}</style>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(regionSchema) }} />
       <header className="list-hero">
         <div className="eyebrow-chip">BUSAN AREA GUIDE</div>
@@ -44,11 +77,12 @@ export default function BusanHub() {
           <p>주요 동네와 현장 특성, 많이 확인하는 업종별 서비스, 폐업지원 안내까지 한 페이지에서 확인할 수 있습니다.</p>
         </div>
         <div className="service-grid">
-          {Object.entries(regions).map(([slug, region], i) => (
+          {Object.entries(regions).map(([slug, region]) => (
             <a className="service-card" href={`/busan/${slug}`} key={slug}>
-              <div className="service-card-top"><span className="service-card-icon">{String(i + 1).padStart(2, "0")}</span><span className="service-card-arrow">↗</span></div>
+              <div className="service-card-top"><span className="region-card-icon"><RegionIcon slug={slug}/></span><span className="service-card-arrow">↗</span></div>
               <strong>{region.primary}</strong>
               <span>{region.neighborhoods.join(" · ")}</span>
+              <span className="region-card-label">지역 현장조건 확인</span>
               <span style={{marginTop:"8px"}}>{region.summary}</span>
             </a>
           ))}

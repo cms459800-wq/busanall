@@ -5,7 +5,7 @@ import { services, type ServiceSlug } from "@/data/services";
 import { regions } from "@/data/regions";
 import ClosureSupport from "@/components/ClosureSupport";
 
-const baseUrl="https://busanall.vercel.app";const inquiryUrl="https://maxpool.olbarun.kr/";
+const baseUrl="https://www.parcelout.kr";const inquiryUrl="https://maxpool.olbarun.kr/";
 const growthGuideFlow:Record<string,string[]>={"busan-store-closure-demolition-guide":["landlord-restoration-dispute-checklist","demolition-cost-per-pyeong-guide","building-management-demolition-notice","utility-shutoff-before-demolition"],"demolition-cost-per-pyeong-guide":["busan-store-closure-demolition-guide","landlord-restoration-dispute-checklist","building-management-demolition-notice","utility-shutoff-before-demolition"],"landlord-restoration-dispute-checklist":["busan-store-closure-demolition-guide","demolition-cost-per-pyeong-guide","building-management-demolition-notice","utility-shutoff-before-demolition"],"building-management-demolition-notice":["utility-shutoff-before-demolition","demolition-cost-per-pyeong-guide","landlord-restoration-dispute-checklist","busan-store-closure-demolition-guide"],"utility-shutoff-before-demolition":["building-management-demolition-notice","landlord-restoration-dispute-checklist","demolition-cost-per-pyeong-guide","busan-store-closure-demolition-guide"]};
 const flowLabels:Record<string,string>={"busan-store-closure-demolition-guide":"폐업 준비","demolition-cost-per-pyeong-guide":"비용 비교","landlord-restoration-dispute-checklist":"원상복구 합의","building-management-demolition-notice":"관리실 신고","utility-shutoff-before-demolition":"설비 차단"};
 const tones=["blue","orange","green","purple","cyan","rose","amber","indigo"];

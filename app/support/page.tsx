@@ -1,89 +1,24 @@
 const inquiryUrl = "https://maxpool.olbarun.kr/";
-
-export const metadata = {
-  title: "2026 부산 폐업지원금·점포철거비 지원",
-  description: "2026 부산 소상공인 폐업철거를 준비할 때 확인할 희망리턴패키지 점포철거비 지원 기준, 신청자격·증빙·원상복구 준비 순서를 정리합니다.",
-  keywords: ["2026 폐업지원금", "부산 폐업지원금", "부산 점포철거비 지원", "희망리턴패키지 철거비", "폐업철거 지원금"],
-  alternates: { canonical: "/support" },
-  openGraph: {
-    title: "2026 부산 폐업지원금·점포철거비 지원",
-    description: "부산 소상공인 폐업철거 전 확인할 점포철거비 지원 기준과 신청·증빙·원상복구 준비 순서를 안내합니다.",
-    url: "/support",
-    type: "article"
-  }
-};
-
-const checks = [
-  "폐업(예정) 소상공인 중 최신 공고 요건을 충족하는지",
-  "사업 운영기간과 유상 임차 사업장 요건에 해당하는지",
-  "임대차계약서와 철거·원상복구 비용 증빙이 가능한지",
-  "지원 제외 업종·자가건물·기타 제외요건에 해당하지 않는지"
-];
-
-export default function Page() {
-  return (
-    <main className="page-shell">
-      <header className="list-hero">
-        <div className="eyebrow-chip">2026 CLOSURE SUPPORT</div>
-        <h1>폐업을 준비한다면<br/><span className="gradient-text">철거 전에 지원부터 확인</span></h1>
-        <p>희망리턴패키지 점포철거비 지원은 신청자격과 인정범위, 증빙 조건이 있습니다. 최대 한도만 보기보다 공사 전에 최신 공고와 준비 순서를 먼저 확인하세요.</p>
-        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
-      </header>
-
-      <section className="support-box">
-        <span className="section-kicker">SUPPORT SUMMARY</span>
-        <h2>점포 철거·원상복구 비용 지원</h2>
-        <div className="support-stats">
-          <div><span>지원 기준</span><strong>전용면적 3.3㎡당 20만원 한도</strong></div>
-          <div><span>최대 한도</span><strong>최대 600만원</strong></div>
-        </div>
-        <p>실제 지원 여부와 지급액은 신청자격, 인정면적, 증빙 가능한 철거·원상복구 비용, 폐업일 및 최신 공고 기준에 따라 달라질 수 있습니다. 예산 소진 시 조기 종료될 수 있습니다.</p>
-      </section>
-
-      <section className="section">
-        <div className="section-heading">
-          <div><span className="section-kicker">BEFORE DEMOLITION</span><h2>공사 전에 확인할 4가지</h2></div>
-          <p>지원 대상 여부와 필요한 증빙을 공사 뒤에 확인하면 인정되지 않는 항목이 생길 수 있으므로 순서를 먼저 확인하는 것이 좋습니다.</p>
-        </div>
-        <div className="feature-grid">
-          {checks.map((text, i) => (
-            <article className="feature-card" key={text}>
-              <div className="feature-no">0{i + 1}</div>
-              <div className="feature-icon">✓</div>
-              <h2>{["신청자격", "사업장 요건", "계약·증빙", "제외요건"][i]}</h2>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="split section">
-        <article className="info-card">
-          <h2>권장 확인 순서</h2>
-          <ol>
-            <li>소상공인24 최신 공고 확인</li>
-            <li>신청자격과 지원 제외요건 검토</li>
-            <li>임대차계약서와 원상복구 범위 확인</li>
-            <li>현장견적과 철거범위 정리</li>
-            <li>신청·증빙 요건 확인 후 일정 확정</li>
-          </ol>
-        </article>
-        <article className="info-card">
-          <h2>지원금과 실제 철거비는 다릅니다</h2>
-          <p>지원 한도는 실제 공사비를 의미하지 않습니다. 현장 비용은 업종, 설비, 폐기물량, 층수, 차량 접근성, 작업시간과 원상복구 범위에 따라 달라질 수 있습니다.</p>
-          <div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위</a></div>
-        </article>
-      </section>
-
-      <section className="section soft-section">
-        <div className="section-heading"><div><span className="section-kicker">AFTER CHECK</span><h2>지원 기준을 확인했다면 현장정보도 함께 준비하세요</h2></div><p>지원제도 확인과 실제 철거견적은 별개입니다. 현장 위치, 업종·면적, 층수, 철거범위, 일정과 사진을 정리한 뒤 문의하면 상담이 더 구체적입니다.</p></div>
-        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div>
-      </section>
-
-      <section className="final-cta">
-        <div><span className="section-kicker">OFFICIAL NOTICE</span><h2>지원제도는 계약·철거 전에<br/>공식 공고를 다시 확인하세요.</h2><p>정책과 예산 상황에 따라 조건과 접수기간이 달라질 수 있습니다.</p></div>
-        <a className="btn btn-light" href="https://www.sbiz24.kr/" target="_blank" rel="noreferrer">소상공인24 확인</a>
-      </section>
-    </main>
-  );
-}
+export const metadata = {title:"2026 부산 폐업지원금·점포철거비 지원",description:"2026 부산 소상공인 폐업철거를 준비할 때 확인할 희망리턴패키지 점포철거비 지원 기준, 신청자격·증빙·원상복구 준비 순서를 정리합니다.",keywords:["2026 폐업지원금","부산 폐업지원금","부산 점포철거비 지원","희망리턴패키지 철거비","폐업철거 지원금"],alternates:{canonical:"/support"},openGraph:{title:"2026 부산 폐업지원금·점포철거비 지원",description:"부산 소상공인 폐업철거 전 확인할 점포철거비 지원 기준과 신청·증빙·원상복구 준비 순서를 안내합니다.",url:"/support",type:"article"}};
+const checks=[
+ {key:"eligibility",tone:"green",title:"신청자격",text:"폐업(예정) 소상공인 중 최신 공고 요건을 충족하는지"},
+ {key:"store",tone:"blue",title:"사업장 요건",text:"사업 운영기간과 유상 임차 사업장 요건에 해당하는지"},
+ {key:"document",tone:"purple",title:"계약·증빙",text:"임대차계약서와 철거·원상복구 비용 증빙이 가능한지"},
+ {key:"exclude",tone:"orange",title:"제외요건",text:"지원 제외 업종·자가건물·기타 제외요건에 해당하지 않는지"}
+] as const;
+function SupportIcon({type}:{type:string}){const p={viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.8,strokeLinecap:"round" as const,strokeLinejoin:"round" as const,"aria-hidden":true};if(type==="eligibility")return <svg {...p}><circle cx="12" cy="8" r="4"/><path d="M5 21c.7-4 3.1-6 7-6 2.1 0 3.8.6 5 1.7"/><path d="M16 20l2 2 4-5"/></svg>;if(type==="store")return <svg {...p}><path d="M4 10h16l-1-5H5z"/><path d="M6 10v10h12V10M9 20v-6h6v6"/></svg>;if(type==="document")return <svg {...p}><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h4M9 12h6M9 16h6"/><path d="M8 8h3"/></svg>;if(type==="exclude")return <svg {...p}><path d="M12 3l9 17H3z"/><path d="M12 9v5M12 17h.01"/></svg>;if(type==="notice")return <svg {...p}><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>;return <svg {...p}><path d="M5 12l4 4L19 6"/></svg>}
+export default function Page(){return <main className="page-shell">
+<style>{`
+.support-tone-green{--s-bg:#edf9f2;--s-border:#d2efde;--s-color:#18794e}.support-tone-blue{--s-bg:#eef4ff;--s-border:#d8e5ff;--s-color:#2458d8}.support-tone-purple{--s-bg:#f5f0ff;--s-border:#e4d8ff;--s-color:#7048c8}.support-tone-orange{--s-bg:#fff4e8;--s-border:#f7ddbd;--s-color:#a9570a}
+.support-check-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--s-bg);border:1px solid var(--s-border);color:var(--s-color);margin-bottom:15px;transition:.2s ease}.support-check-icon svg{width:27px;height:27px}.feature-card:hover .support-check-icon{transform:translateY(-2px) scale(1.04);background:var(--s-color);color:#fff;box-shadow:0 8px 18px rgba(17,24,39,.1)}.support-step{display:inline-flex;padding:5px 9px;border-radius:999px;background:var(--s-bg);border:1px solid var(--s-border);color:var(--s-color);font-size:11px;font-weight:850;margin-bottom:10px}
+.support-order{counter-reset:support-order;list-style:none!important;padding:0!important;margin:18px 0 0!important;display:grid;gap:10px}.support-order li{counter-increment:support-order;position:relative;padding:12px 12px 12px 48px;border:1px solid #e9ecf2;border-radius:12px;background:#fff}.support-order li:before{content:counter(support-order);position:absolute;left:12px;top:50%;transform:translateY(-50%);width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#eef4ff;color:#2458d8;font-size:11px;font-weight:850}
+.official-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);margin-bottom:14px}.official-icon svg{width:24px;height:24px}
+@media(max-width:760px){.support-check-icon{width:47px;height:47px}.support-check-icon svg{width:24px;height:24px}}
+`}</style>
+<header className="list-hero"><div className="eyebrow-chip">2026 CLOSURE SUPPORT</div><h1>폐업을 준비한다면<br/><span className="gradient-text">철거 전에 지원부터 확인</span></h1><p>희망리턴패키지 점포철거비 지원은 신청자격과 인정범위, 증빙 조건이 있습니다. 최대 한도만 보기보다 공사 전에 최신 공고와 준비 순서를 먼저 확인하세요.</p><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div></header>
+<section className="support-box"><span className="section-kicker">SUPPORT SUMMARY</span><h2>점포 철거·원상복구 비용 지원</h2><div className="support-stats"><div><span>지원 기준</span><strong>전용면적 3.3㎡당 20만원 한도</strong></div><div><span>최대 한도</span><strong>최대 600만원</strong></div></div><p>실제 지원 여부와 지급액은 신청자격, 인정면적, 증빙 가능한 철거·원상복구 비용, 폐업일 및 최신 공고 기준에 따라 달라질 수 있습니다. 예산 소진 시 조기 종료될 수 있습니다.</p></section>
+<section className="section"><div className="section-heading"><div><span className="section-kicker">BEFORE DEMOLITION</span><h2>공사 전에 확인할 4가지</h2></div><p>지원 대상 여부와 필요한 증빙을 공사 뒤에 확인하면 인정되지 않는 항목이 생길 수 있으므로 순서를 먼저 확인하는 것이 좋습니다.</p></div><div className="feature-grid">{checks.map((item,i)=><article className={`feature-card support-tone-${item.tone}`} key={item.title}><span className="support-step">CHECK {i+1}</span><div className="support-check-icon"><SupportIcon type={item.key}/></div><h2>{item.title}</h2><p>{item.text}</p></article>)}</div></section>
+<section className="split section"><article className="info-card"><span className="section-kicker">APPLICATION FLOW</span><h2>권장 확인 순서</h2><ol className="support-order"><li>소상공인24 최신 공고 확인</li><li>신청자격과 지원 제외요건 검토</li><li>임대차계약서와 원상복구 범위 확인</li><li>현장견적과 철거범위 정리</li><li>신청·증빙 요건 확인 후 일정 확정</li></ol></article><article className="info-card"><span className="section-kicker">COST CHECK</span><h2>지원금과 실제 철거비는 다릅니다</h2><p>지원 한도는 실제 공사비를 의미하지 않습니다. 현장 비용은 업종, 설비, 폐기물량, 층수, 차량 접근성, 작업시간과 원상복구 범위에 따라 달라질 수 있습니다.</p><div className="cta-row"><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">철거 견적 체크</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위</a></div></article></section>
+<section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">AFTER CHECK</span><h2>지원 기준을 확인했다면 현장정보도 함께 준비하세요</h2></div><p>지원제도 확인과 실제 철거견적은 별개입니다. 현장 위치, 업종·면적, 층수, 철거범위, 일정과 사진을 정리한 뒤 문의하면 상담이 더 구체적입니다.</p></div><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div></section>
+<section className="final-cta"><div><span className="official-icon"><SupportIcon type="notice"/></span><span className="section-kicker">OFFICIAL NOTICE</span><h2>지원제도는 계약·철거 전에<br/>공식 공고를 다시 확인하세요.</h2><p>정책과 예산 상황에 따라 조건과 접수기간이 달라질 수 있습니다.</p></div><a className="btn btn-light" href="https://www.sbiz24.kr/" target="_blank" rel="noreferrer">소상공인24 확인</a></section>
+</main>}

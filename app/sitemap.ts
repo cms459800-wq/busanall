@@ -7,7 +7,7 @@ import { validateContentReferences } from "@/data/validateReferences";
 export default function sitemap(): MetadataRoute.Sitemap {
   validateContentReferences();
 
-  const base = "https://busanall.vercel.app";
+  const base = "https://www.parcelout.kr";
   const staticRoutes = ["", "/service", "/busan", "/guide", "/support", "/estimate"];
   return [
     ...staticRoutes.map((path) => ({ url: `${base}${path}`, changeFrequency: "weekly" as const, priority: path === "" ? 1 : 0.8 })),

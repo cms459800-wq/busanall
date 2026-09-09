@@ -5,7 +5,7 @@ import { guides } from "@/data/allGuides";
 import { getRegionDetail } from "@/data/regionDetails";
 import { getRegionSeo } from "@/data/regionSeo";
 
-const baseUrl="https://busanall.vercel.app"; const inquiryUrl="https://maxpool.olbarun.kr/";
+const baseUrl="https://www.parcelout.kr"; const inquiryUrl="https://maxpool.olbarun.kr/";
 const universalGuideSlugs=["demolition-cost-per-pyeong-guide","landlord-restoration-dispute-checklist","building-management-demolition-notice","utility-shutoff-before-demolition"] as const;
 const serviceTone: Record<string,string>={"commercial-store":"blue",restaurant:"orange",cafe:"amber",office:"cyan",academy:"indigo",hospital:"green",factory:"slate",interior:"rose",lodging:"purple",pharmacy:"green",dental:"sky",mart:"orange",warehouse:"slate",house:"green",apartment:"indigo",partial:"rose"};
 function CardIcon({type}:{type:string}){const p={viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.8,strokeLinecap:"round" as const,strokeLinejoin:"round" as const,"aria-hidden":true};

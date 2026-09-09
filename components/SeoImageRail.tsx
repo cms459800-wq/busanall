@@ -3,29 +3,120 @@
 import { usePathname } from "next/navigation";
 
 const regionNames: Record<string,string> = {haeundae:"해운대구",busanjin:"부산진구",dongnae:"동래구",suyeong:"수영구",nam:"남구",geumjeong:"금정구",yeonje:"연제구",saha:"사하구",sasang:"사상구",gangseo:"강서구",buk:"북구",seo:"서구",jung:"중구",dong:"동구",yeongdo:"영도구",gijang:"기장군"};
-const serviceNames: Record<string,string> = {"commercial-store":"상가철거",restaurant:"식당철거",cafe:"카페철거",office:"사무실철거",interior:"인테리어철거",partial:"부분철거",factory:"공장철거",warehouse:"창고철거",academy:"학원철거",hospital:"병원철거","beauty-salon":"미용실철거",house:"주택철거",apartment:"아파트철거",lodging:"숙박시설철거",pub:"주점철거","retail-store":"소매점철거"};
+const serviceNames: Record<string,string> = {"commercial-store":"상가철거",restaurant:"식당철거",cafe:"카페철거",office:"사무실철거",interior:"인테리어철거",partial:"부분철거",factory:"공장철거",warehouse:"창고철거",academy:"학원철거",hospital:"병원철거","beauty-salon":"미용실철거",house:"주택철거",apartment:"아파트철거",lodging:"숙박시설철거",pub:"주점철거","retail-store":"소매점철거",pharmacy:"약국철거",dental:"치과철거",mart:"마트철거","study-cafe":"스터디카페철거"};
+
 const regionServices: Record<string,string[]> = {
-  haeundae:["commercial-store","office","restaurant","cafe","interior"], busanjin:["commercial-store","office","restaurant","cafe","interior"], dongnae:["commercial-store","academy","hospital","office","interior"], suyeong:["commercial-store","restaurant","cafe","pub","interior"], nam:["commercial-store","office","restaurant","house","interior"], geumjeong:["commercial-store","restaurant","cafe","factory","interior"], yeonje:["commercial-store","office","academy","hospital","interior"], saha:["commercial-store","restaurant","pub","factory","academy"], sasang:["factory","warehouse","commercial-store","office","interior"], gangseo:["factory","warehouse","commercial-store","restaurant","interior"], buk:["commercial-store","restaurant","academy","beauty-salon","interior"], seo:["commercial-store","hospital","restaurant","house","interior"], jung:["commercial-store","retail-store","restaurant","cafe","interior"], dong:["commercial-store","lodging","restaurant","office","interior"], yeongdo:["commercial-store","house","warehouse","restaurant","interior"], gijang:["commercial-store","factory","warehouse","house","restaurant"]
+  haeundae:["commercial-store","office","restaurant","cafe","interior"],
+  busanjin:["commercial-store","office","restaurant","cafe","interior"],
+  dongnae:["commercial-store","academy","hospital","office","interior"],
+  suyeong:["commercial-store","restaurant","cafe","pub","interior"],
+  nam:["commercial-store","office","restaurant","house","interior"],
+  geumjeong:["restaurant","cafe","factory","commercial-store","interior"],
+  yeonje:["office","academy","hospital","commercial-store","interior"],
+  saha:["restaurant","pub","factory","academy","commercial-store"],
+  sasang:["factory","warehouse","commercial-store","office","interior"],
+  gangseo:["factory","warehouse","commercial-store","restaurant","interior"],
+  buk:["commercial-store","restaurant","academy","beauty-salon","interior"],
+  seo:["hospital","commercial-store","restaurant","house","interior"],
+  jung:["retail-store","restaurant","commercial-store","cafe","interior"],
+  dong:["lodging","restaurant","commercial-store","office","interior"],
+  yeongdo:["house","warehouse","commercial-store","restaurant","interior"],
+  gijang:["factory","warehouse","house","commercial-store","restaurant"]
 };
-const serviceRegions=["busanjin","haeundae","dongnae","suyeong","saha"];
+
+const serviceRegionMap: Record<string,string[]> = {
+  "commercial-store":["busanjin","haeundae","dongnae","suyeong","jung"],
+  office:["haeundae","yeonje","nam","dong","sasang"],
+  restaurant:["busanjin","suyeong","saha","jung","geumjeong"],
+  cafe:["busanjin","haeundae","suyeong","geumjeong","jung"],
+  interior:["haeundae","busanjin","nam","dongnae","gangseo"],
+  partial:["busanjin","haeundae","dongnae","nam","buk"],
+  factory:["sasang","gangseo","saha","geumjeong","gijang"],
+  warehouse:["sasang","gangseo","gijang","yeongdo","saha"],
+  academy:["dongnae","yeonje","saha","buk","geumjeong"],
+  hospital:["dongnae","yeonje","seo","haeundae","nam"],
+  "beauty-salon":["busanjin","buk","haeundae","suyeong","dongnae"],
+  house:["nam","seo","yeongdo","gijang","saha"],
+  apartment:["haeundae","dongnae","nam","buk","gangseo"],
+  lodging:["dong","haeundae","jung","suyeong","gijang"],
+  pub:["suyeong","saha","busanjin","jung","geumjeong"],
+  "retail-store":["jung","busanjin","haeundae","dong","suyeong"],
+  pharmacy:["dongnae","yeonje","seo","haeundae","nam"],
+  dental:["dongnae","yeonje","haeundae","busanjin","nam"],
+  mart:["buk","saha","gangseo","gijang","sasang"],
+  "study-cafe":["dongnae","yeonje","busanjin","buk","geumjeong"]
+};
+
 const homeServices=["commercial-store","office","restaurant","interior","partial"];
+const hubRegions=["busanjin","haeundae","dongnae","suyeong","sasang"];
+const guideServices: Record<string,string[]> = {
+  "restaurant-closing-demolition":["restaurant","cafe","pub","commercial-store","interior"],
+  "cafe-closing-demolition":["cafe","restaurant","commercial-store","interior","partial"],
+  "office-demolition-checklist":["office","commercial-store","interior","partial","academy"],
+  "academy-demolition-guide":["academy","study-cafe","office","commercial-store","interior"],
+  "hospital-demolition-guide":["hospital","dental","pharmacy","commercial-store","interior"],
+  "factory-demolition-estimate-guide":["factory","warehouse","commercial-store","interior","partial"],
+  "warehouse-demolition-guide":["warehouse","factory","commercial-store","partial","interior"],
+  "apartment-interior-demolition-guide":["apartment","house","interior","partial","commercial-store"],
+  "partial-demolition-guide":["partial","interior","commercial-store","office","apartment"],
+  "busan-store-closure-demolition-guide":["commercial-store","restaurant","cafe","office","beauty-salon"]
+};
 
 type Card={region:string;service:string;href:string};
 function imageUrl(region:string,service:string){return `/seo-card/${encodeURIComponent(region)}/${encodeURIComponent(service)}`;}
+function serviceCards(region:string, slugs:string[]){return slugs.slice(0,5).map(service=>({region,service:serviceNames[service]??service,href:`/service/${service}`}));}
+function regionalCards(serviceSlug:string, regionSlugs:string[]){const service=serviceNames[serviceSlug]??serviceSlug;return regionSlugs.slice(0,5).map(regionSlug=>({region:regionNames[regionSlug],service,href:`/busan/${regionSlug}`}));}
 
 export default function SeoImageRail(){
   const pathname=usePathname();
-  let cards:Card[]=[]; let heading="부산광역시 철거 서비스 한눈에 보기"; let intro="현장 유형별 철거·원상복구 정보를 이미지와 함께 확인하세요.";
-  if(pathname==="/") cards=homeServices.map(service=>({region:"부산광역시",service:serviceNames[service]??service,href:`/service/${service}`}));
-  else if(pathname.startsWith("/busan/")){
-    const slug=pathname.split("/")[2]; const region=regionNames[slug]; if(!region)return null;
-    heading=`${region} 철거 서비스 한눈에 보기`; intro=`${region}에서 자주 확인하는 철거 유형을 서비스별로 비교해 보세요.`;
-    cards=(regionServices[slug]??homeServices).map(service=>({region,service:serviceNames[service]??service,href:`/service/${service}`}));
+  let cards:Card[]=[];
+  let heading="부산광역시 철거 서비스 한눈에 보기";
+  let intro="현장 유형별 철거·원상복구 정보를 이미지와 함께 확인하세요.";
+
+  if(pathname==="/"){
+    cards=serviceCards("부산광역시",homeServices);
+  } else if(pathname==="/service"){
+    heading="부산 철거 서비스 대표 유형";
+    intro="상가·사무실·식당·인테리어·부분철거 등 주요 서비스 페이지를 이미지로 빠르게 비교하세요.";
+    cards=serviceCards("부산광역시",homeServices);
+  } else if(pathname==="/busan"){
+    heading="부산 주요 지역별 상가철거 보기";
+    intro="지역마다 건물·상권·반출 조건이 달라 대표 지역의 상가철거 안내를 먼저 확인할 수 있습니다.";
+    cards=regionalCards("commercial-store",hubRegions);
+  } else if(pathname.startsWith("/busan/")){
+    const slug=pathname.split("/")[2];
+    const region=regionNames[slug];
+    if(!region)return null;
+    heading=`${region} 철거 서비스 한눈에 보기`;
+    intro=`${region}의 현장 특성과 실제 수요를 고려해 관련 철거 유형을 서비스별로 연결했습니다.`;
+    cards=serviceCards(region,regionServices[slug]??homeServices);
   } else if(pathname.startsWith("/service/")){
-    const slug=pathname.split("/")[2]; const service=serviceNames[slug]; if(!service)return null;
-    heading=`부산 지역별 ${service} 한눈에 보기`; intro=`${service}를 부산 주요 지역의 현장 조건과 함께 확인하세요.`;
-    cards=serviceRegions.map(regionSlug=>({region:regionNames[regionSlug],service,href:`/busan/${regionSlug}`}));
+    const slug=pathname.split("/")[2];
+    const service=serviceNames[slug];
+    if(!service)return null;
+    heading=`부산 지역별 ${service} 한눈에 보기`;
+    intro=`${service}는 지역마다 건물 형태와 반출 조건이 달라 관련성이 높은 부산 지역을 중심으로 확인할 수 있습니다.`;
+    cards=regionalCards(slug,serviceRegionMap[slug]??["busanjin","haeundae","dongnae","suyeong","saha"]);
+  } else if(pathname==="/guide"){
+    heading="철거가이드와 함께 보는 대표 서비스";
+    intro="가이드에서 확인한 기준을 실제 철거 유형과 연결해 비교할 수 있습니다.";
+    cards=serviceCards("부산광역시",["commercial-store","restaurant","office","interior","partial"]);
+  } else if(pathname.startsWith("/guide/")){
+    const slug=pathname.split("/")[2];
+    const selected=guideServices[slug]??["commercial-store","restaurant","office","interior","partial"];
+    heading="이 가이드와 함께 확인할 철거 서비스";
+    intro="현재 가이드 주제와 연결되는 실제 철거 유형을 이미지로 확인하세요.";
+    cards=serviceCards("부산광역시",selected);
+  } else if(pathname==="/support"){
+    heading="폐업지원과 함께 확인할 점포 철거 유형";
+    intro="폐업 예정 점포에서 자주 확인하는 업종별 철거·원상복구 페이지를 연결했습니다.";
+    cards=serviceCards("부산광역시",["commercial-store","restaurant","cafe","beauty-salon","academy"]);
+  } else if(pathname==="/estimate"){
+    heading="견적 준비 후 확인할 대표 철거 유형";
+    intro="현장정보를 정리했다면 실제 업종별 철거 범위와 견적 변수를 함께 확인하세요.";
+    cards=serviceCards("부산광역시",["commercial-store","office","restaurant","interior","partial"]);
   } else return null;
+
   return <section className="seo-image-section" aria-labelledby="seo-image-heading"><div className="seo-image-wrap"><div className="seo-image-head"><div><span>IMAGE SERVICE LINKS</span><h2 id="seo-image-heading">{heading}</h2></div><p>{intro}</p></div><div className="seo-image-rail">{cards.map(card=><a className="seo-image-card" href={card.href} key={`${card.region}-${card.service}`}><img src={imageUrl(card.region,card.service)} alt={`${card.region} ${card.service} 안내`} width="360" height="430" loading="lazy"/><strong>{card.region} {card.service}</strong></a>)}</div></div><style jsx>{`
 .seo-image-section{padding:26px 20px 8px;background:#fff}.seo-image-wrap{max-width:1220px;margin:0 auto}.seo-image-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:16px}.seo-image-head span{font-size:11px;font-weight:850;letter-spacing:.12em;color:#a9570a}.seo-image-head h2{margin:5px 0 0;font-size:clamp(20px,2.2vw,28px);letter-spacing:-.035em;color:#161b26}.seo-image-head p{max-width:520px;margin:0;color:#667085;font-size:14px}.seo-image-rail{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.seo-image-card{display:block;overflow:hidden;border:1px solid #e9ecf2;border-radius:18px;background:#fff;text-decoration:none;color:#202536;box-shadow:0 6px 18px rgba(17,24,39,.045);transition:.2s ease}.seo-image-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(17,24,39,.09)}.seo-image-card img{display:block;width:100%;height:auto;aspect-ratio:360/430;object-fit:cover;background:#fff5dc}.seo-image-card strong{display:block;padding:13px 12px 15px;font-size:14px;line-height:1.4;letter-spacing:-.025em}@media(max-width:760px){.seo-image-section{padding:20px 14px 4px}.seo-image-head{display:block}.seo-image-head p{margin-top:7px}.seo-image-rail{display:flex;overflow-x:auto;gap:10px;padding:2px 1px 10px;scroll-snap-type:x mandatory}.seo-image-card{min-width:164px;scroll-snap-align:start;border-radius:15px}.seo-image-card strong{font-size:13px;padding:11px}}
 `}</style></section>;

@@ -2,97 +2,37 @@ export const metadata = {
   title: "부산 철거 견적 준비정보 6가지",
   description: "부산 철거·원상복구 견적을 문의하기 전에 현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 일정과 현장사진 6가지를 준비하는 방법을 안내합니다.",
   alternates: { canonical: "/estimate" },
-  openGraph: {
-    title: "부산 철거 견적 준비정보 6가지",
-    description: "현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 일정과 사진을 정리해 철거견적 상담을 준비하는 방법을 확인하세요.",
-    url: "/estimate",
-    type: "website"
-  }
+  openGraph: { title: "부산 철거 견적 준비정보 6가지", description: "현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 일정과 사진을 정리해 철거견적 상담을 준비하는 방법을 확인하세요.", url: "/estimate", type: "website" }
 };
-
 const inquiryUrl = "https://maxpool.olbarun.kr/";
-
 const prepare = [
-  { title:"현장 위치", text:"부산 어느 지역인지와 건물명 또는 도로명, 층수를 정리해 주세요." },
-  { title:"업종과 면적", text:"식당·카페·사무실 등 현재 업종과 대략적인 전용면적을 알려주세요." },
-  { title:"층수·엘리베이터", text:"작업층과 승강기 유무, 계단 폭, 차량이 가까이 접근할 수 있는지 확인해 주세요." },
-  { title:"철거 범위", text:"천장·벽체·바닥·주방·간판·설비 중 철거할 항목과 남길 항목을 나눠 주세요." },
-  { title:"희망 일정", text:"폐업일, 임대차 종료일 또는 공사를 마쳐야 하는 날짜가 있다면 함께 정리해 주세요." },
-  { title:"현장 사진", text:"전체 공간, 주요 설비, 출입구와 반출동선 사진이 있으면 1차 범위를 파악하기 쉽습니다." }
-];
-
+  { key:"location",tone:"blue",title:"현장 위치", text:"부산 어느 지역인지와 건물명 또는 도로명, 층수를 정리해 주세요." },
+  { key:"area",tone:"orange",title:"업종과 면적", text:"식당·카페·사무실 등 현재 업종과 대략적인 전용면적을 알려주세요." },
+  { key:"access",tone:"purple",title:"층수·엘리베이터", text:"작업층과 승강기 유무, 계단 폭, 차량이 가까이 접근할 수 있는지 확인해 주세요." },
+  { key:"scope",tone:"rose",title:"철거 범위", text:"천장·벽체·바닥·주방·간판·설비 중 철거할 항목과 남길 항목을 나눠 주세요." },
+  { key:"schedule",tone:"green",title:"희망 일정", text:"폐업일, 임대차 종료일 또는 공사를 마쳐야 하는 날짜가 있다면 함께 정리해 주세요." },
+  { key:"photo",tone:"cyan",title:"현장 사진", text:"전체 공간, 주요 설비, 출입구와 반출동선 사진이 있으면 1차 범위를 파악하기 쉽습니다." }
+] as const;
 const flow = [
-  { label:"01", title:"범위 정리", text:"철거할 것과 남길 것을 먼저 구분합니다." },
-  { label:"02", title:"현장조건 확인", text:"층수, 승강기, 차량 접근과 작업시간을 확인합니다." },
-  { label:"03", title:"사진 준비", text:"전경과 주요 설비, 반출동선을 순서대로 촬영합니다." },
-  { label:"04", title:"문의 접수", text:"준비한 현장정보를 문의 페이지에서 전달합니다." }
-];
-
-export default function Page() {
-  return (
-    <main className="page-shell">
-      <header className="list-hero">
-        <div className="eyebrow-chip">FREE FIELD ESTIMATE</div>
-        <h1>무료 현장견적,<br/><span className="gradient-text">6가지만 준비하면 빨라집니다</span></h1>
-        <p>주소와 평수만으로는 실제 철거범위를 판단하기 어렵습니다. 업종, 층수와 반출조건, 철거·보존 항목, 일정과 사진까지 함께 정리하면 상담 단계에서 빠르게 범위를 좁힐 수 있습니다.</p>
-        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료견적 문의하기</a><a className="btn btn-glass" href="#estimate-check">준비사항 먼저 보기</a></div>
-      </header>
-
-      <section className="section soft-section" id="estimate-check">
-        <div className="section-heading">
-          <div><span className="section-kicker">ESTIMATE CHECK</span><h2>견적 상담 전 준비할 6가지</h2></div>
-          <p>정확한 숫자를 몰라도 괜찮습니다. 확인 가능한 내용부터 준비하면 현장 방문이 필요한지와 먼저 볼 항목을 빠르게 판단할 수 있습니다.</p>
-        </div>
-        <div className="feature-grid">
-          {prepare.map((item, i) => (
-            <article className="feature-card" key={item.title}>
-              <div className="feature-no">{String(i + 1).padStart(2,"0")}</div>
-              <div className="feature-icon">✓</div>
-              <h2>{item.title}</h2>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-        <div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>준비한 정보로 견적 문의하기</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 체크리스트</a></div>
-      </section>
-
-      <section className="section">
-        <div className="section-heading"><div><span className="section-kicker">QUICK FLOW</span><h2>견적은 이 순서로 준비하세요</h2></div><p>현장정보를 한 번에 완벽하게 준비하기보다, 범위와 반출조건부터 순서대로 정리하는 편이 효율적입니다.</p></div>
-        <div className="process-grid">{flow.map((step)=><article className="process-step" key={step.label}><b>{step.label}</b><strong>{step.title}</strong><p>{step.text}</p></article>)}</div>
-      </section>
-
-      <section className="split section">
-        <article className="info-card">
-          <span className="section-kicker">PHOTO CHECK</span>
-          <h2>사진으로 먼저 확인하기 좋은 항목</h2>
-          <ul>
-            <li>매장 전체가 보이는 전경</li><li>천장·벽체·바닥 마감 상태</li><li>주방·덕트·냉난방·전기 등 주요 설비</li><li>철거하지 않고 남길 시설과 집기</li><li>출입구·계단·엘리베이터와 차량 접근 위치</li>
-          </ul>
-        </article>
-        <article className="info-card">
-          <span className="section-kicker">VISIT CHECK</span>
-          <h2>현장 방문이 더 정확한 경우</h2>
-          <ul>
-            <li>노래방·병원·공장처럼 설비가 복잡한 현장</li><li>원상복구 범위가 임대인과 아직 정리되지 않은 현장</li><li>고층·골목·주차 제한 등 반출조건이 까다로운 현장</li><li>부분철거로 남길 시설과 철거할 시설이 섞여 있는 현장</li><li>덕트·배관·전기처럼 벽·천장 안쪽 범위를 확인해야 하는 현장</li>
-          </ul>
-        </article>
-      </section>
-
-      <section className="section soft-section">
-        <div className="section-heading"><div><span className="section-kicker">SCOPE FIRST</span><h2>총액보다 먼저 비교할 항목</h2></div><p>견적 금액이 비슷해도 포함된 작업범위가 다르면 공사 후 추가비용이나 재작업 가능성이 달라질 수 있습니다.</p></div>
-        <div className="detail-list-grid">
-          {["천장·벽·바닥 철거범위","설비·덕트·배관 차단범위","폐기물 운반·처리 포함 여부","공용부·승강기 보양","간판·외부시설 철거 여부","원상복구 마감 수준","야간·주말 작업 조건","추가 작업 발생 기준"].map((text,i)=><article className="detail-list-card" key={text}><b>{String(i+1).padStart(2,"0")}</b><span>{text}</span></article>)}
-        </div>
-      </section>
-
-      <section className="support-box home-section">
-        <span className="section-kicker">BEFORE CONTACT</span>
-        <h2>폐업 예정이라면 지원 대상 여부도<br/>공사 전에 함께 확인하세요.</h2>
-        <p>점포철거비 지원을 검토하는 경우 신청자격, 인정비용, 증빙과 공사 순서를 최신 공식 공고 기준으로 먼저 확인하는 것이 좋습니다. 지원 여부와 실제 지급액은 자격과 인정비용 등 기준에 따라 달라질 수 있습니다.</p>
-        <div className="cta-row"><a className="btn btn-primary" href="/support">2026 폐업지원 안내</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a></div>
-      </section>
-
-      <section className="final-cta"><div><span className="section-kicker">READY TO QUOTE</span><h2>현장정보를 정리했다면<br/>바로 견적을 문의하세요.</h2><p>업종·면적·층수·승강기·철거범위·일정과 사진을 준비해 문의 페이지에서 전달해 주세요.</p></div><a className="btn btn-light" href={inquiryUrl}>무료견적 문의하기</a></section>
-    </main>
-  );
-}
+  { key:"scope",tone:"rose",title:"범위 정리", text:"철거할 것과 남길 것을 먼저 구분합니다." },
+  { key:"access",tone:"purple",title:"현장조건 확인", text:"층수, 승강기, 차량 접근과 작업시간을 확인합니다." },
+  { key:"photo",tone:"cyan",title:"사진 준비", text:"전경과 주요 설비, 반출동선을 순서대로 촬영합니다." },
+  { key:"contact",tone:"blue",title:"문의 접수", text:"준비한 현장정보를 문의 페이지에서 전달합니다." }
+] as const;
+function EstimateIcon({type}:{type:string}){const p={viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.8,strokeLinecap:"round" as const,strokeLinejoin:"round" as const,"aria-hidden":true};if(type==="location")return <svg {...p}><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11z"/><circle cx="12" cy="10" r="2"/></svg>;if(type==="area")return <svg {...p}><path d="M4 20V8h7v12M13 20V4h7v16"/><path d="M7 11h1M7 14h1M16 8h1M16 11h1M16 14h1"/></svg>;if(type==="access")return <svg {...p}><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8l3-3 3 3M9 16l3 3 3-3M12 5v14"/></svg>;if(type==="scope")return <svg {...p}><path d="M4 5h16v14H4zM12 5v14"/><path d="M8 9l-2 2 2 2M16 9l2 2-2 2"/></svg>;if(type==="schedule")return <svg {...p}><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/><path d="M9 15l2 2 4-4"/></svg>;if(type==="photo")return <svg {...p}><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6l1-2h6l1 2"/><circle cx="12" cy="13" r="3"/></svg>;if(type==="contact")return <svg {...p}><path d="M4 5h16v14H4z"/><path d="M4 7l8 6 8-6"/></svg>;return <svg {...p}><path d="M5 12l4 4L19 6"/></svg>}
+export default function Page(){return <main className="page-shell">
+<style>{`
+.estimate-tone-blue{--e-bg:#eef4ff;--e-border:#d8e5ff;--e-color:#2458d8}.estimate-tone-orange{--e-bg:#fff4e8;--e-border:#f7ddbd;--e-color:#a9570a}.estimate-tone-purple{--e-bg:#f5f0ff;--e-border:#e4d8ff;--e-color:#7048c8}.estimate-tone-rose{--e-bg:#fff0f3;--e-border:#f5d6df;--e-color:#b4234d}.estimate-tone-green{--e-bg:#edf9f2;--e-border:#d2efde;--e-color:#18794e}.estimate-tone-cyan{--e-bg:#ecf9fb;--e-border:#cfedf1;--e-color:#087b8c}
+.estimate-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--e-bg);border:1px solid var(--e-border);color:var(--e-color);margin-bottom:16px;transition:.2s ease}.estimate-icon svg{width:27px;height:27px}.feature-card:hover .estimate-icon{transform:translateY(-2px) scale(1.04);background:var(--e-color);color:#fff;box-shadow:0 8px 18px rgba(17,24,39,.1)}
+.estimate-index{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:24px;padding:0 8px;border-radius:999px;background:var(--e-bg);border:1px solid var(--e-border);color:var(--e-color);font-size:11px;font-weight:850;margin-bottom:10px}.estimate-flow-icon{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:var(--e-bg);border:1px solid var(--e-border);color:var(--e-color);margin-bottom:12px}.estimate-flow-icon svg{width:22px;height:22px}
+.scope-list-card{position:relative;padding-left:58px}.scope-list-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#eef4ff;color:#2458d8;font-size:12px;font-weight:850}
+@media(max-width:760px){.estimate-icon{width:47px;height:47px}.estimate-icon svg{width:24px;height:24px}}
+`}</style>
+<header className="list-hero"><div className="eyebrow-chip">FREE FIELD ESTIMATE</div><h1>무료 현장견적,<br/><span className="gradient-text">6가지만 준비하면 빨라집니다</span></h1><p>주소와 평수만으로는 실제 철거범위를 판단하기 어렵습니다. 업종, 층수와 반출조건, 철거·보존 항목, 일정과 사진까지 함께 정리하면 상담 단계에서 빠르게 범위를 좁힐 수 있습니다.</p><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료견적 문의하기</a><a className="btn btn-glass" href="#estimate-check">준비사항 먼저 보기</a></div></header>
+<section className="section soft-section" id="estimate-check"><div className="section-heading"><div><span className="section-kicker">ESTIMATE CHECK</span><h2>견적 상담 전 준비할 6가지</h2></div><p>정확한 숫자를 몰라도 괜찮습니다. 확인 가능한 내용부터 준비하면 현장 방문이 필요한지와 먼저 볼 항목을 빠르게 판단할 수 있습니다.</p></div><div className="feature-grid">{prepare.map((item,i)=><article className={`feature-card estimate-tone-${item.tone}`} key={item.title}><span className="estimate-index">STEP {i+1}</span><div className="estimate-icon"><EstimateIcon type={item.key}/></div><h2>{item.title}</h2><p>{item.text}</p></article>)}</div><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>준비한 정보로 견적 문의하기</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 체크리스트</a></div></section>
+<section className="section"><div className="section-heading"><div><span className="section-kicker">QUICK FLOW</span><h2>견적은 이 순서로 준비하세요</h2></div><p>현장정보를 한 번에 완벽하게 준비하기보다, 범위와 반출조건부터 순서대로 정리하는 편이 효율적입니다.</p></div><div className="process-grid">{flow.map((step,i)=><article className={`process-step estimate-tone-${step.tone}`} key={step.title}><span className="estimate-index">0{i+1}</span><span className="estimate-flow-icon"><EstimateIcon type={step.key}/></span><strong>{step.title}</strong><p>{step.text}</p></article>)}</div></section>
+<section className="split section"><article className="info-card"><span className="section-kicker">PHOTO CHECK</span><h2>사진으로 먼저 확인하기 좋은 항목</h2><ul><li>매장 전체가 보이는 전경</li><li>천장·벽체·바닥 마감 상태</li><li>주방·덕트·냉난방·전기 등 주요 설비</li><li>철거하지 않고 남길 시설과 집기</li><li>출입구·계단·엘리베이터와 차량 접근 위치</li></ul></article><article className="info-card"><span className="section-kicker">VISIT CHECK</span><h2>현장 방문이 더 정확한 경우</h2><ul><li>노래방·병원·공장처럼 설비가 복잡한 현장</li><li>원상복구 범위가 임대인과 아직 정리되지 않은 현장</li><li>고층·골목·주차 제한 등 반출조건이 까다로운 현장</li><li>부분철거로 남길 시설과 철거할 시설이 섞여 있는 현장</li><li>덕트·배관·전기처럼 벽·천장 안쪽 범위를 확인해야 하는 현장</li></ul></article></section>
+<section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">SCOPE FIRST</span><h2>총액보다 먼저 비교할 항목</h2></div><p>견적 금액이 비슷해도 포함된 작업범위가 다르면 공사 후 추가비용이나 재작업 가능성이 달라질 수 있습니다.</p></div><div className="detail-list-grid">{["천장·벽·바닥 철거범위","설비·덕트·배관 차단범위","폐기물 운반·처리 포함 여부","공용부·승강기 보양","간판·외부시설 철거 여부","원상복구 마감 수준","야간·주말 작업 조건","추가 작업 발생 기준"].map((text,i)=><article className="detail-list-card scope-list-card" key={text}><b className="scope-list-icon">{String(i+1).padStart(2,"0")}</b><span>{text}</span></article>)}</div></section>
+<section className="support-box home-section"><span className="section-kicker">BEFORE CONTACT</span><h2>폐업 예정이라면 지원 대상 여부도<br/>공사 전에 함께 확인하세요.</h2><p>점포철거비 지원을 검토하는 경우 신청자격, 인정비용, 증빙과 공사 순서를 최신 공식 공고 기준으로 먼저 확인하는 것이 좋습니다. 지원 여부와 실제 지급액은 자격과 인정비용 등 기준에 따라 달라질 수 있습니다.</p><div className="cta-row"><a className="btn btn-primary" href="/support">2026 폐업지원 안내</a><a className="btn btn-glass" href="/guide/restoration-scope-checklist">원상복구 범위 확인</a></div></section>
+<section className="final-cta"><div><span className="section-kicker">READY TO QUOTE</span><h2>현장정보를 정리했다면<br/>바로 견적을 문의하세요.</h2><p>업종·면적·층수·승강기·철거범위·일정과 사진을 준비해 문의 페이지에서 전달해 주세요.</p></div><a className="btn btn-light" href={inquiryUrl}>무료견적 문의하기</a></section>
+</main>}

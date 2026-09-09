@@ -49,6 +49,19 @@ const categoryDescriptions: Record<string, string> = {
   "철거기초": "가스·전기·수도, 관리실 공사신고, 폐기물과 반출동선처럼 공통으로 필요한 철거 기본정보를 확인합니다."
 };
 
+function GuideIcon({ category }: { category: string }) {
+  const common = { width: 25, height: 25, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
+  if (category === "폐업지원") return <svg {...common}><path d="M7 3h10v4H7z"/><path d="M5 7h14v14H5z"/><path d="M9 12h6M9 16h4"/></svg>;
+  if (category === "폐업준비") return <svg {...common}><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/><path d="M3 6h2M3 10h2M3 14h2"/></svg>;
+  if (category === "철거비용") return <svg {...common}><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M7 7h10M8 11h2M14 11h2M8 15h2M14 15h2M8 19h8"/></svg>;
+  if (category === "원상복구") return <svg {...common}><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/><path d="M7 11l2 2 4-4"/></svg>;
+  if (category === "업종별 가이드") return <svg {...common}><path d="M4 10h16l-1-5H5z"/><path d="M6 10v10h12V10"/><path d="M9 20v-6h6v6"/></svg>;
+  if (category === "산업시설 가이드") return <svg {...common}><path d="M3 20V10l6 3V8l6 3V5h5v15z"/><path d="M7 17h2M12 17h2M17 14h1"/></svg>;
+  if (category === "주거 철거 가이드") return <svg {...common}><path d="M3 21h18"/><path d="M5 21V7h6v14M13 21V3h6v18"/><path d="M7 10h2M7 14h2M15 7h2M15 11h2M15 15h2"/></svg>;
+  if (category === "철거 범위 가이드") return <svg {...common}><path d="M4 5h16v14H4z"/><path d="M12 5v14"/><path d="M8 9l-2 2 2 2M16 9l2 2-2 2"/></svg>;
+  return <svg {...common}><path d="M14 4l6 6-9 9H5v-6z"/><path d="M13 5l6 6"/><path d="M4 20h6"/></svg>;
+}
+
 export default function GuidePage() {
   const featured = featuredSlugs
     .map((slug) => guides.find((guide) => guide.slug === slug))
@@ -61,6 +74,12 @@ export default function GuidePage() {
 
   return (
     <main className="page-shell">
+      <style>{`
+        .guide-card-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#eef2ff,#f8f9ff);color:#315cff;border:1px solid #e2e7ff;transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease}
+        .service-card:hover .guide-card-icon{transform:translateY(-2px) scale(1.04);background:#315cff;color:#fff;box-shadow:0 8px 18px rgba(49,92,255,.18)}
+        .guide-feature-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;margin-bottom:14px;background:#f1f4ff;color:#315cff;border:1px solid #e3e8ff}
+        .guide-feature-icon svg{width:23px;height:23px}
+      `}</style>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(guideSchema) }} />
       <header className="list-hero">
         <div className="eyebrow-chip">DEMOLITION GUIDE</div>
@@ -73,7 +92,7 @@ export default function GuidePage() {
         <div className="section-heading"><div><span className="section-kicker">START HERE</span><h2>철거 준비 순서대로 먼저 볼 가이드</h2></div><p>폐업지원 확인부터 폐업 준비, 견적 비교, 비용 해석, 원상복구 합의와 관리실 신고까지 실제 의사결정 순서에 가까운 핵심 글을 먼저 배치했습니다.</p></div>
         <div className="home-grid">{featured.map((guide) => {
           const searchIntent = getGuideSearchIntent(guide.slug);
-          return <a className="home-link-card" href={`/guide/${guide.slug}`} key={guide.slug}><span className="arrow">↗</span><small>{searchIntent?.intent ?? guide.category}</small><h3>{guide.title}</h3><p>{guide.description}</p>{searchIntent&&<span className="section-kicker" style={{marginTop:"10px"}}>{searchIntent.primaryQuery}</span>}</a>;
+          return <a className="home-link-card" href={`/guide/${guide.slug}`} key={guide.slug}><span className="arrow">↗</span><span className="guide-feature-icon"><GuideIcon category={guide.category}/></span><small>{searchIntent?.intent ?? guide.category}</small><h3>{guide.title}</h3><p>{guide.description}</p>{searchIntent&&<span className="section-kicker" style={{marginTop:"10px"}}>{searchIntent.primaryQuery}</span>}</a>;
         })}</div>
       </section>
 
@@ -87,7 +106,7 @@ export default function GuidePage() {
           <div className="section-heading"><div><span className="section-kicker">TOPIC GUIDE</span><h2>{category}</h2></div><p>{categoryDescriptions[category] ?? "철거와 원상복구 과정에서 해당 상황에 필요한 현장 체크사항을 확인하세요."}</p></div>
           <div className="service-grid">{items.map((guide) => {
             const searchIntent = getGuideSearchIntent(guide.slug);
-            return <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="service-card-icon">✓</span><span className="service-card-arrow">↗</span></div><small className="section-kicker">{searchIntent?.intent ?? guide.category}</small><strong style={{marginTop:"8px"}}>{guide.title}</strong><span>{guide.description}</span>{searchIntent&&<span className="section-kicker" style={{marginTop:"8px"}}>{searchIntent.primaryQuery}</span>}</a>;
+            return <a className="service-card" href={`/guide/${guide.slug}`} key={guide.slug}><div className="service-card-top"><span className="guide-card-icon"><GuideIcon category={guide.category}/></span><span className="service-card-arrow">↗</span></div><small className="section-kicker">{searchIntent?.intent ?? guide.category}</small><strong style={{marginTop:"8px"}}>{guide.title}</strong><span>{guide.description}</span>{searchIntent&&<span className="section-kicker" style={{marginTop:"8px"}}>{searchIntent.primaryQuery}</span>}</a>;
           })}</div>
         </section>
       ))}

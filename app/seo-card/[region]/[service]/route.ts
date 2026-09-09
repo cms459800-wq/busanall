@@ -31,11 +31,13 @@ function iconFor(service:string){
 
 export async function GET(_:Request,{params}:{params:Promise<{region:string;service:string}>}){
   const {region,service}=await params;
-  const r=esc(decodeURIComponent(region));
-  const s=esc(decodeURIComponent(service));
-  const seed=hash(`${r}|${s}`);
+  const rawRegion=decodeURIComponent(region);
+  const rawService=decodeURIComponent(service);
+  const r=esc(rawRegion);
+  const s=esc(rawService);
+  const seed=hash(`${rawRegion}|${rawService}`);
   const palette=palettes[seed%palettes.length];
-  const iconColor=serviceAccent[s]??palette.icon;
+  const iconColor=serviceAccent[rawService]??palette.icon;
   const tilt=((seed%9)-4)*0.45;
   const haloX=118+(seed%29);
   const haloY=125+((seed>>3)%19);
@@ -43,7 +45,12 @@ export async function GET(_:Request,{params}:{params:Promise<{region:string;serv
   const topLineOpacity=(0.12+((seed%4)*0.025)).toFixed(3);
   const pillWidth=138+((seed%3)*8);
   const pillX=(360-pillWidth)/2;
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="360" height="430" viewBox="0 0 360 430">
+  const title=`${r} ${s}`;
+  const description=`${r} 지역의 ${s} 서비스 안내 이미지`;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="360" height="430" viewBox="0 0 360 430" role="img" aria-labelledby="seoTitle seoDesc">
+  <title id="seoTitle">${title}</title>
+  <desc id="seoDesc">${description}</desc>
+  <metadata>${title} | 올바른철거 | 부산 철거·원상복구</metadata>
   <defs>
     <linearGradient id="g" x1="${seed%2?0:1}" y1="0" x2="${seed%2?1:0}" y2="1"><stop stop-color="${palette.a}"/><stop offset="1" stop-color="${palette.b}"/></linearGradient>
     <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".23"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></linearGradient>
@@ -54,7 +61,7 @@ export async function GET(_:Request,{params}:{params:Promise<{region:string;serv
   <rect x="18" y="18" width="324" height="4" rx="2" fill="#fff" opacity="${topLineOpacity}"/>
   <circle cx="${haloX}" cy="${haloY}" r="73" fill="${palette.halo}" opacity="${glowOpacity}"/>
   <ellipse cx="278" cy="58" rx="92" ry="60" fill="url(#shine)" opacity=".55"/>
-  <g transform="rotate(${tilt} 130 132)" fill="none" stroke="${iconColor}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">${iconFor(s)}</g>
+  <g transform="rotate(${tilt} 130 132)" fill="none" stroke="${iconColor}" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">${iconFor(rawService)}</g>
   <text x="180" y="238" text-anchor="middle" font-family="Pretendard, Apple SD Gothic Neo, Noto Sans KR, Arial, sans-serif" font-size="40" font-weight="800" fill="#11151d">${s}</text>
   <rect x="${pillX}" y="260" width="${pillWidth}" height="36" rx="18" fill="${palette.pill}" opacity=".9"/>
   <text x="180" y="284" text-anchor="middle" font-family="Pretendard, Apple SD Gothic Neo, Noto Sans KR, Arial, sans-serif" font-size="15" font-weight="700" fill="${palette.pillText}">철거 안내</text>
@@ -62,5 +69,5 @@ export async function GET(_:Request,{params}:{params:Promise<{region:string;serv
   <text x="180" y="365" text-anchor="middle" font-family="Pretendard, Apple SD Gothic Neo, Noto Sans KR, Arial, sans-serif" font-size="24" font-weight="700" fill="#202536">${r}</text>
   <text x="180" y="400" text-anchor="middle" font-family="Pretendard, Apple SD Gothic Neo, Noto Sans KR, Arial, sans-serif" font-size="24" font-weight="700" fill="${iconColor}">${s}</text>
 </svg>`;
-  return new NextResponse(svg,{headers:{"Content-Type":"image/svg+xml; charset=utf-8","Cache-Control":"public, max-age=86400, s-maxage=604800","X-Robots-Tag":"index, follow"}});
+  return new NextResponse(svg,{headers:{"Content-Type":"image/svg+xml; charset=utf-8","Content-Language":"ko","Cache-Control":"public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400","X-Robots-Tag":"index, follow","Cross-Origin-Resource-Policy":"cross-origin"}});
 }

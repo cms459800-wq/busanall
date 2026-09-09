@@ -1,6 +1,6 @@
 import "./globals.css";
 
-const baseUrl = "https://busanall.vercel.app";
+const baseUrl = "https://www.parcelout.kr";
 const inquiryUrl = "https://maxpool.olbarun.kr/";
 const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 const naverSiteVerification = process.env.NAVER_SITE_VERIFICATION?.trim();
@@ -10,6 +10,7 @@ export const metadata = {
   applicationName: "올바른철거",
   title: { default: "올바른철거 | 부산 철거·원상복구", template: "%s | 올바른철거" },
   description: "부산 16개 구·군의 철거·원상복구, 업종별 철거서비스, 폐업지원금과 현장 가이드를 제공하는 올바른철거입니다.",
+  alternates: { canonical: "/" },
   verification: {
     ...(googleSiteVerification ? { google: googleSiteVerification } : {}),
     ...(naverSiteVerification ? { other: { "naver-site-verification": naverSiteVerification } } : {})

@@ -12,7 +12,7 @@ export const metadata = {
 
 const regionSchema = {
   "@context": "https://schema.org", "@type": "ItemList", name: "부산 16개 구·군 철거 지역안내",
-  itemListElement: Object.entries(regions).map(([slug, region], i) => ({ "@type": "ListItem", position: i + 1, name: region.primary, url: `https://busanall.vercel.app/busan/${slug}` }))
+  itemListElement: Object.entries(regions).map(([slug, region], i) => ({ "@type": "ListItem", position: i + 1, name: region.primary, url: `https://www.parcelout.kr/busan/${slug}` }))
 };
 
 const iconPaths: Record<string, React.ReactNode> = {

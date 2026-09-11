@@ -24,6 +24,18 @@
 .project-record-icon{background-image:linear-gradient(145deg,#fff,#eef4ff 52%,#fff2df)!important}
 .project-placeholder-badge{background-image:linear-gradient(145deg,#fff,#f2f5fa)!important}
 
+/* Keep every primary semantic icon visually centered inside its card.
+   This overrides older page-specific left alignment while leaving compact nav/action icons alone. */
+:is(.service-card,.feature-card,.home-link-card,.process-step,.region-card,.guide-card,.scenario-card,.detail-list-card,.detail-point-card,.detail-guide-card,.local-point-card,.estimate-card,.support-card,.project-card,.project-record-card) > :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.guide-card-icon,.guide-feature-icon,.detail-point-icon,.detail-target-icon,.detail-guide-icon,.region-detail-icon,.local-point-icon,.guide-icon,.gg-icon,.gg-mini,.support-check-icon,.estimate-icon,.estimate-flow-icon,.project-record-icon,.project-placeholder-badge),
+:is(.service-card,.feature-card,.home-link-card,.process-step,.region-card,.guide-card,.scenario-card,.detail-list-card,.detail-point-card,.detail-guide-card,.local-point-card,.estimate-card,.support-card,.project-card,.project-record-card) :is(.service-card-top,.guide-card-top,.card-icon-row,.icon-row) > :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.guide-card-icon,.guide-feature-icon,.detail-point-icon,.detail-target-icon,.detail-guide-icon,.region-detail-icon,.local-point-icon,.guide-icon,.gg-icon,.gg-mini,.support-check-icon,.estimate-icon,.estimate-flow-icon,.project-record-icon,.project-placeholder-badge){margin-left:auto!important;margin-right:auto!important;align-self:center!important;justify-self:center!important}
+
+/* Some page cards place the icon in a flex/grid header wrapper. Center that wrapper's icon without moving arrow controls. */
+:is(.service-card-top,.guide-card-top,.card-icon-row,.icon-row){position:relative}
+:is(.service-card-top,.guide-card-top,.card-icon-row,.icon-row) > :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.guide-card-icon,.guide-feature-icon,.detail-point-icon,.region-detail-icon,.local-point-icon,.guide-icon,.gg-icon,.support-check-icon,.estimate-icon,.estimate-flow-icon,.project-record-icon){margin-inline:auto!important}
+
 :is(.service-card,.feature-card,.scenario-card,.process-step):hover :is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon){transform:translateY(-3px) scale(1.06);box-shadow:0 13px 27px rgba(31,52,84,.15)}
 
-@media(max-width:760px){:is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon){box-shadow:0 6px 14px rgba(31,52,84,.09)}}
+@media(max-width:760px){
+  :is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon){box-shadow:0 6px 14px rgba(31,52,84,.09)}
+  :is(.service-card,.feature-card,.home-link-card,.process-step,.region-card,.guide-card,.scenario-card,.detail-list-card,.detail-point-card,.detail-guide-card,.local-point-card,.estimate-card,.support-card,.project-card,.project-record-card) > :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.guide-card-icon,.guide-feature-icon,.detail-point-icon,.detail-target-icon,.detail-guide-icon,.region-detail-icon,.local-point-icon,.guide-icon,.gg-icon,.gg-mini,.support-check-icon,.estimate-icon,.estimate-flow-icon,.project-record-icon,.project-placeholder-badge){margin-inline:auto!important}
+}

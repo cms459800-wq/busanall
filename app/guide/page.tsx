@@ -13,7 +13,7 @@ export const metadata = {
 
 const guideSchema = {
   "@context": "https://schema.org", "@type": "ItemList", name: "부산 철거·폐업 가이드",
-  itemListElement: guides.map((guide, i) => ({ "@type": "ListItem", position: i + 1, name: guide.title, url: `https://busanall.vercel.app/guide/${guide.slug}` }))
+  itemListElement: guides.map((guide, i) => ({ "@type": "ListItem", position: i + 1, name: guide.title, url: `https://www.parcelout.kr/guide/${guide.slug}` }))
 };
 
 const featuredSlugs = ["closure-demolition-support-2026","busan-store-closure-demolition-guide","demolition-estimate-checklist","demolition-cost-per-pyeong-guide","landlord-restoration-dispute-checklist","building-management-demolition-notice"] as const;

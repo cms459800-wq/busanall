@@ -23,7 +23,7 @@ const serviceSchema = {
     "@type": "ListItem",
     position: i + 1,
     name: item.primary,
-    url: `https://busanall.vercel.app/service/${slug}`
+    url: `https://www.parcelout.kr/service/${slug}`
   }))
 };
 

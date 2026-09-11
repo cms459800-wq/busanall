@@ -1,0 +1,29 @@
+/* Coverage for page-specific icon class names used by region, guide and project templates. */
+:is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon,.project-placeholder-badge){position:relative;isolation:isolate;overflow:hidden;border-width:1px!important;box-shadow:0 9px 20px rgba(31,52,84,.10),inset 0 1px 0 rgba(255,255,255,.9);transition:transform .2s ease,box-shadow .2s ease,border-radius .2s ease!important}
+:is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon){border-radius:17px!important}
+:is(.project-placeholder-badge){border-radius:12px!important}
+:is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon,.project-placeholder-badge)::before{content:"";position:absolute;z-index:-1;inset:-38% 38% 45% -30%;border-radius:50%;background:rgba(255,255,255,.74);transform:rotate(-18deg)}
+:is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon)::after{content:"";position:absolute;right:6px;bottom:6px;width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.16;box-shadow:-9px 3px 0 -2px currentColor}
+:is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon,.project-placeholder-badge) svg{position:relative;z-index:1;filter:drop-shadow(0 2px 2px rgba(31,52,84,.10));stroke-width:1.9}
+
+:is(.service-grid,.feature-grid,.scenario-grid,.process-grid) > :nth-child(4n+1) :is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon){border-radius:18px 18px 18px 7px!important}
+:is(.service-grid,.feature-grid,.scenario-grid,.process-grid) > :nth-child(4n+2) :is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon){border-radius:50% 50% 16px 50%!important}
+:is(.service-grid,.feature-grid,.scenario-grid,.process-grid) > :nth-child(4n+3) :is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon){border-radius:12px 20px 12px 20px!important}
+
+/* Region pages use map/architecture-like cool gradients. */
+:is([class*="tone-blue"],[class*="tone-cyan"],[class*="tone-sky"],[class*="tone-teal"]) :is(.region-detail-icon,.local-point-icon){background-image:linear-gradient(150deg,#fff 0%,#e5f6ff 100%)!important}
+:is([class*="tone-green"],[class*="tone-emerald"]) :is(.region-detail-icon,.local-point-icon){background-image:linear-gradient(150deg,#fff 0%,#dcf5e7 100%)!important}
+:is([class*="tone-orange"],[class*="tone-amber"]) :is(.region-detail-icon,.local-point-icon){background-image:linear-gradient(150deg,#fff 0%,#ffead0 100%)!important}
+:is([class*="tone-purple"],[class*="tone-indigo"],[class*="tone-violet"]) :is(.region-detail-icon,.local-point-icon){background-image:linear-gradient(150deg,#fff 0%,#e9e0ff 100%)!important}
+
+/* Guide pages use note/document-like warm highlights. */
+:is(.guide-card-icon,.guide-feature-icon,.guide-icon){background-image:linear-gradient(145deg,#fff 0%,#f3ecff 54%,#e8f0ff 100%)!important}
+:is(.guide-card-icon,.guide-feature-icon,.guide-icon)::before{inset:auto auto 7px 7px;width:14px;height:3px;border-radius:999px;background:currentColor;opacity:.13;transform:none}
+
+/* Project placeholders are deliberately visual but do not imply fake completed work. */
+.project-record-icon{background-image:linear-gradient(145deg,#fff,#eef4ff 52%,#fff2df)!important}
+.project-placeholder-badge{background-image:linear-gradient(145deg,#fff,#f2f5fa)!important}
+
+:is(.service-card,.feature-card,.scenario-card,.process-step):hover :is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon){transform:translateY(-3px) scale(1.06);box-shadow:0 13px 27px rgba(31,52,84,.15)}
+
+@media(max-width:760px){:is(.guide-card-icon,.guide-feature-icon,.region-detail-icon,.local-point-icon,.guide-icon,.project-record-icon){box-shadow:0 6px 14px rgba(31,52,84,.09)}}

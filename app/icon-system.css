@@ -1,0 +1,45 @@
+/* Rich icon treatment inspired by the uploaded reference site's visual hierarchy.
+   Keeps our own SVG artwork while adding varied color, depth and card-like presence. */
+:root{--icon-shadow:0 9px 20px rgba(31,52,84,.10);--icon-shadow-hover:0 13px 28px rgba(31,52,84,.16)}
+
+/* Shared icon tiles */
+:is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.detail-target-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon,.official-icon,.project-icon,.nav-icon,.partner-icon,.action-icon,.service-card-icon,.hero-card-icon){position:relative;isolation:isolate;overflow:hidden;box-shadow:var(--icon-shadow);border-width:1px!important}
+:is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.gg-icon,.estimate-icon,.support-check-icon,.project-icon){border-radius:17px!important}
+:is(.gg-mini,.detail-target-icon,.estimate-flow-icon,.nav-icon,.partner-icon,.action-icon,.service-card-icon){border-radius:12px!important}
+
+/* soft highlight + decorative dot makes line icons feel closer to illustrated app icons */
+:is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon,.project-icon,.nav-icon,.partner-icon)::before{content:"";position:absolute;z-index:-1;inset:-35% 36% 42% -28%;border-radius:50%;background:rgba(255,255,255,.72);transform:rotate(-18deg)}
+:is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.gg-icon,.estimate-icon,.support-check-icon,.project-icon)::after{content:"";position:absolute;right:6px;bottom:6px;width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.16;box-shadow:-9px 3px 0 -2px currentColor}
+:is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.detail-target-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon,.project-icon,.nav-icon,.partner-icon) svg{position:relative;z-index:1;filter:drop-shadow(0 2px 2px rgba(31,52,84,.10));stroke-width:1.9}
+
+/* varied silhouettes, similar to the reference where every product icon has its own visual identity */
+:is(.service-grid,.feature-grid,.home-grid,.process-grid) > :nth-child(4n+1) :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon,.project-icon){border-radius:18px 18px 18px 7px!important}
+:is(.service-grid,.feature-grid,.home-grid,.process-grid) > :nth-child(4n+2) :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon,.project-icon){border-radius:50% 50% 16px 50%!important}
+:is(.service-grid,.feature-grid,.home-grid,.process-grid) > :nth-child(4n+3) :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon,.project-icon){border-radius:12px 20px 12px 20px!important}
+
+/* make existing semantic tone backgrounds richer without forcing every icon to blue */
+:is([class*="tone-blue"],[class*="tone-sky"],[class*="tone-cyan"]) :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.detail-target-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon){background-image:linear-gradient(145deg,rgba(255,255,255,.92),rgba(219,236,255,.74))!important}
+:is([class*="tone-orange"],[class*="tone-amber"],[class*="tone-brown"]) :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.detail-target-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon){background-image:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,226,188,.72))!important}
+:is([class*="tone-green"],[class*="tone-emerald"],[class*="tone-teal"]) :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.detail-target-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon){background-image:linear-gradient(145deg,rgba(255,255,255,.92),rgba(205,242,222,.72))!important}
+:is([class*="tone-purple"],[class*="tone-violet"],[class*="tone-indigo"]) :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.detail-target-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon){background-image:linear-gradient(145deg,rgba(255,255,255,.92),rgba(226,215,255,.74))!important}
+:is([class*="tone-rose"],[class*="tone-pink"],[class*="tone-red"]) :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.detail-target-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon){background-image:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,213,224,.72))!important}
+
+/* card arrows become small action icons rather than plain glyphs */
+.service-card-arrow,.home-link-card .arrow{display:grid!important;place-items:center;width:34px;height:34px;border:1px solid #e4e9f1;border-radius:11px;background:linear-gradient(145deg,#fff,#f5f7fb);color:#7c8798!important;box-shadow:0 5px 12px rgba(31,52,84,.06);transition:.2s ease}
+:is(.service-card,.home-link-card):hover .service-card-arrow,:is(.service-card,.home-link-card):hover .arrow{transform:translate(2px,-2px) rotate(5deg);color:#315cff!important;border-color:#ccd8ff;box-shadow:0 8px 16px rgba(49,92,255,.12)}
+
+/* chips and numbered steps no longer read as sterile blue boxes */
+.detail-step,.estimate-index,.support-step,.gg-label,.region-card-label{box-shadow:inset 0 1px 0 rgba(255,255,255,.75);font-weight:850!important}
+.detail-list-card:nth-child(5n+1) b,.process-step:nth-child(5n+1)>b{background:#eef4ff;color:#2458d8}.detail-list-card:nth-child(5n+2) b,.process-step:nth-child(5n+2)>b{background:#fff4e8;color:#a9570a}.detail-list-card:nth-child(5n+3) b,.process-step:nth-child(5n+3)>b{background:#edf9f2;color:#18794e}.detail-list-card:nth-child(5n+4) b,.process-step:nth-child(5n+4)>b{background:#f5f0ff;color:#7048c8}.detail-list-card:nth-child(5n+5) b,.process-step:nth-child(5n+5)>b{background:#ecf9fb;color:#087b8c}
+
+/* footer quick navigation: stronger icon identity on desktop/mobile */
+.footer-quick-link{transition:transform .18s ease,background .18s ease,box-shadow .18s ease!important}.footer-quick-link:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(31,52,84,.07)}
+.footer-quick-link:nth-child(2n) .nav-icon{transform:rotate(2deg)}.footer-quick-link:nth-child(3n) .nav-icon{border-radius:50% 50% 12px 50%!important}
+
+/* hover keeps icon legible even where local page CSS switches to solid semantic color */
+:is(.service-card,.feature-card,.home-link-card,.process-step):hover :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.gg-icon,.gg-mini,.estimate-icon,.estimate-flow-icon,.support-check-icon,.project-icon){box-shadow:var(--icon-shadow-hover);background-image:none!important}
+
+@media(max-width:760px){
+ :is(.home-semantic-icon,.service-directory-icon,.region-card-icon,.detail-point-icon,.detail-guide-icon,.gg-icon,.estimate-icon,.support-check-icon,.project-icon){box-shadow:0 6px 14px rgba(31,52,84,.09)}
+ .service-card-arrow,.home-link-card .arrow{width:32px;height:32px;border-radius:10px}
+}

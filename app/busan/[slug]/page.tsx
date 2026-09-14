@@ -22,6 +22,13 @@ const dongnaeImages=[
   {src:"/images/busan/dongnae/dongnae-office-demolition.webp",alt:"동래구 사무실 철거"},
   {src:"/images/busan/dongnae/dongnae-interior-demolition.webp",alt:"동래구 인테리어 철거"}
 ];
+const namImages=[
+  {src:"/images/busan/nam/nam-store-demolition-corrected.webp",alt:"부산 남구 상가 철거"},
+  {src:"/images/busan/nam/nam-office-demolition.webp",alt:"부산 남구 사무실 철거"},
+  {src:"/images/busan/nam/nam-restaurant-demolition.webp",alt:"부산 남구 식당 철거"},
+  {src:"/images/busan/nam/nam-cafe-demolition.webp",alt:"부산 남구 카페 철거"},
+  {src:"/images/busan/nam/nam-interior-demolition.webp",alt:"부산 남구 인테리어 철거"}
+];
 function CardIcon({type}:{type:string}){const p={viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.8,strokeLinecap:"round" as const,strokeLinejoin:"round" as const,"aria-hidden":true};
 if(["restaurant","cafe"].includes(type))return <svg {...p}><path d="M6 4v7M3 4v4a3 3 0 0 0 6 0V4M6 11v9"/><path d="M16 4v16M16 4c3 1 4 4 4 7h-4"/></svg>;
 if(["hospital","pharmacy","dental"].includes(type))return <svg {...p}><path d="M9 3h6v6h6v6H9v-6H3V9h6z"/></svg>;
@@ -50,6 +57,7 @@ return <main className="page-shell"><style>{`
 <header className="list-hero"><div className="eyebrow-chip">● 부산 지역별 철거</div><h1>{region.primary}<br/><span className="gradient-text">현장 조건 가이드</span></h1><p>{region.summary}</p><div className="hero-points">{region.neighborhoods.map((n)=><span key={n}>{n}</span>)}</div><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a><a className="btn btn-glass" href="/support">폐업지원금 확인</a></div></header>
 {slug==="haeundae"&&<section className="section"><div className="section-heading"><div><span className="section-kicker">HAEUNDAE DEMOLITION</span><h2>해운대 철거 현장 이미지</h2></div><p>해운대 인테리어·카페·음식점·사무실 철거 유형을 이미지로 확인할 수 있습니다.</p></div><div className="haeundae-gallery">{haeundaeImages.map((image)=><figure key={image.src}><img src={image.src} alt={image.alt} loading="lazy"/><figcaption>{image.alt}</figcaption></figure>)}</div></section>}
 {slug==="dongnae"&&<section className="section"><div className="section-heading"><div><span className="section-kicker">DONGNAE DEMOLITION</span><h2>동래구 철거 서비스 이미지</h2></div><p>동래구 상가·학원·병원·사무실·인테리어 철거 유형을 이미지로 확인할 수 있습니다.</p></div><div className="haeundae-gallery">{dongnaeImages.map((image)=><figure key={image.src}><img src={image.src} alt={image.alt} loading="lazy"/><figcaption>{image.alt}</figcaption></figure>)}</div></section>}
+{slug==="nam"&&<section className="section"><div className="section-heading"><div><span className="section-kicker">NAM-GU DEMOLITION</span><h2>남구 철거 서비스 이미지</h2></div><p>남구 상가·사무실·식당·카페·인테리어 철거 유형을 이미지로 확인할 수 있습니다.</p></div><div className="haeundae-gallery">{namImages.map((image)=><figure key={image.src}><img src={image.src} alt={image.alt} loading="lazy"/><figcaption>{image.alt}</figcaption></figure>)}</div></section>}
 <section className="split"><article className="info-card"><span className="section-kicker">LOCAL FOCUS</span><h2>{region.name}에서 먼저 볼 기준</h2><p>{detail.focus}</p></article><article className="info-card"><span className="section-kicker">BUILDING RULE</span><h2>건물 규정과 반출조건 확인</h2><p>작업 가능 시간, 공용부 보양, 승강기 사용조건, 차량 진입과 폐기물 상차 위치는 같은 지역 안에서도 현장마다 달라질 수 있습니다.</p></article></section>
 <section className="section"><div className="section-heading"><div><span className="section-kicker">LOCAL POINTS</span><h2>{region.name} 철거에서 중요한 점</h2></div><p>지역명을 반복하기보다 실제 작업에 영향을 주는 현장 요소를 정리했습니다.</p></div><div className="feature-grid">{region.points.map((point,i)=><article className="feature-card" key={point}><div className="local-point-icon"><PointIcon index={i}/></div><p>{point}</p></article>)}</div></section>
 <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">FIELD CHECKLIST</span><h2>{region.name} 현장에서 확인할 항목</h2></div><p>견적 전 사진과 현장 확인에서 이 항목을 먼저 보면 반출·보양·설비 조건을 구체적으로 정리하기 쉽습니다.</p></div><div className="detail-list-grid">{detail.fieldChecks.map((text,i)=><article className="detail-list-card" key={text}><b className="local-check-number">{String(i+1).padStart(2,"0")}</b><span>{text}</span></article>)}</div></section>

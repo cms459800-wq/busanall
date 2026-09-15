@@ -1,0 +1,3 @@
+import PrivacyAgreementPage from "@/components/PrivacyAgreementPage";
+export const metadata={title:"개인정보의 마케팅 활용 동의",robots:{index:false,follow:true}};
+export default function Page(){return <PrivacyAgreementPage title="개인정보의 마케팅 활용 동의"><h2>1. 이용 목적</h2><p>올바른철거의 철거·원상복구 관련 서비스 안내, 상담 후속 안내 및 유용한 철거·폐업 정보를 전화 또는 문자로 안내하기 위해 이용합니다.</p><h2>2. 이용 항목</h2><p>이름, 전화번호, 지역, 업종 및 상담 신청 과정에서 제공한 정보 중 마케팅 안내에 필요한 최소한의 정보</p><h2>3. 보유 및 이용 기간</h2><p>마케팅 활용 동의 철회 시 또는 이용 목적 달성 시까지 보유·이용하며, 철회 요청이 있는 경우 관련 법령상 보관 의무가 없는 한 지체 없이 마케팅 활용을 중단합니다.</p><h2>4. 선택 동의 및 철회</h2><p>마케팅 활용 동의는 <b>선택 사항</b>입니다. 동의하지 않아도 무료 견적 상담 신청과 기본 상담 서비스 이용에는 제한이 없습니다. 동의 후에도 전화 010-6648-4886 또는 이메일 chlpjy@naver.com을 통해 철회를 요청할 수 있습니다.</p></PrivacyAgreementPage>}

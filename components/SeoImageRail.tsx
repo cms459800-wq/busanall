@@ -17,17 +17,27 @@ function RegionImageOverride(){
  useEffect(()=>{
   if(pathname!=="/busan/geumjeong")return;
   const apply=()=>{
-   const cards=Array.from(document.querySelectorAll<HTMLImageElement>(".seo-image-section .seo-image-card img"));
-   cards.slice(0,5).forEach((img,i)=>{
-    if(!geumjeongImages[i])return;
+   const section=document.querySelector(".seo-image-section");
+   if(!section)return;
+   const cards=Array.from(section.querySelectorAll<HTMLElement>(".seo-image-card"));
+   cards.slice(0,5).forEach((card,i)=>{
+    const img=card.querySelector<HTMLImageElement>("img");
+    if(!img||!geumjeongImages[i])return;
     img.src=geumjeongImages[i];
-    img.width=1536;
-    img.height=1024;
+    img.srcset="";
+    img.removeAttribute("srcset");
+    img.style.width="100%";
+    img.style.height="auto";
+    img.style.aspectRatio="3 / 2";
+    img.style.objectFit="cover";
+    img.style.display="block";
    });
   };
   apply();
-  const timer=window.setTimeout(apply,100);
-  return()=>window.clearTimeout(timer);
+  const observer=new MutationObserver(apply);
+  observer.observe(document.body,{childList:true,subtree:true});
+  const timer=window.setTimeout(apply,500);
+  return()=>{observer.disconnect();window.clearTimeout(timer)};
  },[pathname]);
  return null;
 }

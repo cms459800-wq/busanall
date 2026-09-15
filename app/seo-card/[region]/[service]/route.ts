@@ -3,6 +3,14 @@ import { NextResponse } from "next/server";
 function esc(value:string){return value.replace(/[&<>"']/g,(m)=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&apos;"}[m]||m));}
 function hash(value:string){let h=2166136261;for(let i=0;i<value.length;i++){h^=value.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
 
+const geumjeongImageMap:Record<string,string>={
+  "식당철거":"/images/busan/geumjeong/geumjeong-restaurant-demolition.webp",
+  "카페철거":"/images/busan/geumjeong/geumjeong-cafe-demolition.webp",
+  "공장철거":"/images/busan/geumjeong/geumjeong-factory-demolition.webp",
+  "상가철거":"/images/busan/geumjeong/geumjeong-commercial-store-demolition.webp",
+  "인테리어철거":"/images/busan/geumjeong/geumjeong-interior-demolition.webp"
+};
+
 const palettes=[
   {a:"#ffc44f",b:"#f39200",icon:"#171a20",halo:"#fff7df",pill:"#fff2cf",pillText:"#5d4215",line:"#db7b00"},
   {a:"#ffd05a",b:"#ee8b00",icon:"#20242b",halo:"#fff3d2",pill:"#fff0c2",pillText:"#65430d",line:"#cc7200"},
@@ -29,10 +37,15 @@ function iconFor(service:string){
   return `<path d="M86 112h84v68H86zM80 112l12-34h72l12 34M106 180v-34h28v34M96 78h64"/>`;
 }
 
-export async function GET(_:Request,{params}:{params:Promise<{region:string;service:string}>}){
+export async function GET(request:Request,{params}:{params:Promise<{region:string;service:string}>}){
   const {region,service}=await params;
   const rawRegion=decodeURIComponent(region);
   const rawService=decodeURIComponent(service);
+
+  if(rawRegion==="금정구"&&geumjeongImageMap[rawService]){
+    return NextResponse.redirect(new URL(geumjeongImageMap[rawService],request.url),307);
+  }
+
   const r=esc(rawRegion);
   const s=esc(rawService);
   const seed=hash(`${rawRegion}|${rawService}`);

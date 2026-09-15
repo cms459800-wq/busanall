@@ -1,0 +1,3 @@
+import PrivacyAgreementPage from "@/components/PrivacyAgreementPage";
+export const metadata={title:"개인정보의 수집 및 이용 동의",robots:{index:false,follow:true}};
+export default function Page(){return <PrivacyAgreementPage title="개인정보의 수집 및 이용 동의"><h2>1. 수집·이용 목적</h2><p>부산 철거·원상복구 무료 견적 상담 접수, 상담 대상 확인, 현장 상담 연락 및 상담 이력 관리에 이용합니다.</p><h2>2. 수집하는 개인정보 항목</h2><p><b>필수:</b> 이름, 전화번호, 철거 예정 지역(부산 구·군), 업종, 철거·폐업 준비 여부<br/><b>선택:</b> 마케팅 활용 동의 여부</p><h2>3. 보유 및 이용 기간</h2><p>상담 목적 달성 후 지체 없이 파기하는 것을 원칙으로 합니다. 다만 상담 이력 확인, 분쟁 대응 또는 관계 법령에 따른 보관 의무가 있는 경우 필요한 범위에서 해당 기간 동안 보관할 수 있습니다.</p><h2>4. 동의 거부 권리 및 불이익</h2><p>귀하는 개인정보 수집·이용 동의를 거부할 권리가 있습니다. 다만 필수정보 수집·이용에 동의하지 않을 경우 무료 견적 상담 신청 및 상담 진행이 제한됩니다.</p></PrivacyAgreementPage>}

@@ -25,6 +25,13 @@ const regionImageMap:Record<string,string[]>={
   "/images/busan/saha/saha-factory-demolition.webp",
   "/images/busan/saha/saha-academy-demolition-04.webp",
   "/images/busan/saha/saha-interior-demolition-05.webp"
+ ],
+ "/busan/sasang":[
+  "/images/busan/sasang/sasang-factory-demolition-01.webp",
+  "/images/busan/sasang/sasang-warehouse-demolition-02.webp",
+  "/images/busan/sasang/sasang-commercial-store-demolition-03.webp",
+  "/images/busan/sasang/sasang-office-demolition-04.webp",
+  "/images/busan/sasang/sasang-interior-demolition-05.webp"
  ]
 };
 

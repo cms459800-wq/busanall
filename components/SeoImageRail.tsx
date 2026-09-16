@@ -18,6 +18,13 @@ const regionImageMap:Record<string,string[]>={
   "/images/busan/yeonje/yeonje-hospital-demolition-03.webp",
   "/images/busan/yeonje/yeonje-commercial-store-demolition-04.webp",
   "/images/busan/yeonje/yeonje-interior-demolition-05.webp"
+ ],
+ "/busan/saha":[
+  "/images/busan/saha/saha-restaurant-demolition.webp",
+  "/images/busan/saha/saha-pub-demolition.webp",
+  "/images/busan/saha/saha-factory-demolition.webp",
+  "/images/busan/saha/saha-academy-demolition-04.webp",
+  "/images/busan/saha/saha-interior-demolition-05.webp"
  ]
 };
 

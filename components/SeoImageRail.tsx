@@ -60,6 +60,13 @@ const regionImageMap:Record<string,string[]>={
   "/images/busan/jung/jung-commercial-store-demolition-03.webp",
   "/images/busan/jung/jung-cafe-demolition-04.webp",
   "/images/busan/jung/jung-interior-demolition-05.webp"
+ ],
+ "/busan/dong":[
+  "/images/busan/dong/dong-lodging-demolition-01.webp",
+  "/images/busan/dong/dong-restaurant-demolition-02.webp",
+  "/images/busan/dong/dong-commercial-store-demolition-03.webp",
+  "/images/busan/dong/dong-cafe-demolition-04.webp",
+  "/images/busan/dong/dong-interior-demolition-05.webp"
  ]
 };
 

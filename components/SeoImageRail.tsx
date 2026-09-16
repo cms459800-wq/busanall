@@ -39,6 +39,13 @@ const regionImageMap:Record<string,string[]>={
   "/images/busan/gangseo/gangseo-commercial-store-demolition-03.webp",
   "/images/busan/gangseo/gangseo-office-demolition-04.webp",
   "/images/busan/gangseo/gangseo-interior-demolition-05.webp"
+ ],
+ "/busan/buk":[
+  "/images/busan/buk/buk-commercial-store-demolition-01.webp",
+  "/images/busan/buk/buk-warehouse-demolition-02.webp",
+  "/images/busan/buk/buk-commercial-store-demolition-03.webp",
+  "/images/busan/buk/buk-beauty-salon-demolition-04.webp",
+  "/images/busan/buk/buk-interior-demolition-05.webp"
  ]
 };
 

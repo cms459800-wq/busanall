@@ -46,6 +46,13 @@ const regionImageMap:Record<string,string[]>={
   "/images/busan/buk/buk-commercial-store-demolition-03.webp",
   "/images/busan/buk/buk-beauty-salon-demolition-04.webp",
   "/images/busan/buk/buk-interior-demolition-05.webp"
+ ],
+ "/busan/seo":[
+  "/images/busan/seo/seo-hospital-demolition-01.webp",
+  "/images/busan/seo/seo-commercial-store-demolition-02.webp",
+  "/images/busan/seo/seo-restaurant-demolition-03.webp",
+  "/images/busan/seo/seo-house-demolition-04.webp",
+  "/images/busan/seo/seo-interior-demolition-05.webp"
  ]
 };
 

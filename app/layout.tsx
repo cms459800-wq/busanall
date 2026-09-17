@@ -8,13 +8,13 @@ const googleSiteVerification=process.env.GOOGLE_SITE_VERIFICATION?.trim();
 const naverSiteVerification=process.env.NAVER_SITE_VERIFICATION?.trim();
 
 export const metadata={
- metadataBase:new URL(baseUrl),applicationName:"올바른철거",
- title:{default:"올바른철거 | 부산 철거·원상복구",template:"%s | 올바른철거"},
- description:"부산 16개 구·군의 철거·원상복구, 업종별 철거서비스, 폐업지원금과 현장 가이드를 제공하는 올바른철거입니다.",
+ metadataBase:new URL(baseUrl),applicationName:"올바른 철거",
+ title:{default:"올바른 철거 | 부산 철거·원상복구",template:"%s | 올바른 철거"},
+ description:"부산 16개 구·군의 철거·원상복구, 업종별 철거서비스, 폐업지원금과 현장 가이드를 제공하는 올바른 철거입니다.",
  alternates:{canonical:"/"},
  verification:{...(googleSiteVerification?{google:googleSiteVerification}:{}),...(naverSiteVerification?{other:{"naver-site-verification":naverSiteVerification}}:{})},
- openGraph:{type:"website",locale:"ko_KR",url:baseUrl,siteName:"올바른철거",title:"올바른철거 | 부산 철거·원상복구",description:"부산 16개 구·군의 철거·원상복구, 업종별 철거서비스, 폐업지원금과 현장 가이드를 제공합니다."},
- twitter:{card:"summary",title:"올바른철거 | 부산 철거·원상복구",description:"부산 철거·원상복구, 업종별 서비스와 지역별 현장 가이드를 확인하세요."}
+ openGraph:{type:"website",locale:"ko_KR",url:baseUrl,siteName:"올바른 철거",title:"올바른 철거 | 부산 철거·원상복구",description:"부산 16개 구·군의 철거·원상복구, 업종별 철거서비스, 폐업지원금과 현장 가이드를 제공합니다."},
+ twitter:{card:"summary",title:"올바른 철거 | 부산 철거·원상복구",description:"부산 철거·원상복구, 업종별 서비스와 지역별 현장 가이드를 확인하세요."}
 };
 
 const navItems=[
@@ -51,7 +51,7 @@ function Icon({type}:{type:string}){
  return <svg {...p}><circle cx="12" cy="12" r="9"/></svg>;
 }
 
-const organizationSchema={"@context":"https://schema.org","@type":"Organization",name:"올바른철거",legalName:"올바른",url:baseUrl,logo:`${baseUrl}/images/brand/logo.png`,telephone:"010-6648-4886",email:contactEmail,identifier:{"@type":"PropertyValue",propertyID:"사업자등록번호",value:"808-66-00808"},address:{"@type":"PostalAddress",streetAddress:"시랑로 132번길 17-4 504",addressLocality:"북구",addressRegion:"부산광역시",addressCountry:"KR"},contactPoint:{"@type":"ContactPoint",contactType:"customer service",telephone:"010-6648-4886",email:contactEmail,areaServed:"KR",availableLanguage:"Korean"},areaServed:{"@type":"AdministrativeArea",name:"부산광역시"},knowsAbout:["철거","원상복구","상가철거","폐업철거","점포철거"]};
+const organizationSchema={"@context":"https://schema.org","@type":"Organization",name:"올바른 철거",legalName:"올바른",url:baseUrl,logo:`${baseUrl}/images/brand/logo.png`,telephone:"010-6648-4886",email:contactEmail,identifier:{"@type":"PropertyValue",propertyID:"사업자등록번호",value:"808-66-00808"},address:{"@type":"PostalAddress",streetAddress:"시랑로 132번길 17-4 504",addressLocality:"북구",addressRegion:"부산광역시",addressCountry:"KR"},contactPoint:{"@type":"ContactPoint",contactType:"customer service",telephone:"010-6648-4886",email:contactEmail,areaServed:"KR",availableLanguage:"Korean"},areaServed:{"@type":"AdministrativeArea",name:"부산광역시"},knowsAbout:["철거","원상복구","상가철거","폐업철거","점포철거"]};
 
 const shellCss=`
 .mobile-action-bar{display:none}.site-header{min-height:74px}.brand{display:flex;align-items:center;height:62px;overflow:hidden}.brand-logo{display:block;width:auto;height:60px;max-width:210px;object-fit:contain;object-position:left center}.header-cta{display:inline-flex!important;align-items:center;gap:7px}.header-cta .action-icon{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.16);color:#fff}.header-cta .action-icon svg{width:14px;height:14px}
@@ -68,7 +68,7 @@ export default function RootLayout({children}:{children:React.ReactNode}){
   <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(organizationSchema)}}/>
   <style dangerouslySetInnerHTML={{__html:shellCss}}/>
   <div className="site-topbar">부산 16개 구·군 · 업종별 철거 · 원상복구 · 상담 010-6648-4886</div>
-  <header className="site-header"><a className="brand" href="/" aria-label="올바른철거 홈"><img className="brand-logo" src="/images/brand/logo.png" alt="올바른철거"/></a><nav aria-label="주요 메뉴">{navItems.map(([href,label])=><a href={href} key={href}>{label}</a>)}</nav><a className="header-cta" href={inquiryUrl}><span className="action-icon"><Icon type="estimate"/></span>무료견적</a></header>
+  <header className="site-header"><a className="brand" href="/" aria-label="올바른 철거 홈"><img className="brand-logo" src="/images/brand/logo.png" alt="올바른 철거"/></a><nav aria-label="주요 메뉴">{navItems.map(([href,label])=><a href={href} key={href}>{label}</a>)}</nav><a className="header-cta" href={inquiryUrl}><span className="action-icon"><Icon type="estimate"/></span>무료견적</a></header>
   <nav className="mobile-nav" aria-label="모바일 주요 메뉴"><div className="mobile-nav-inner">{navItems.map(([href,label,type,tone])=><a href={href} key={href}><span className={`nav-icon nav-tone-${tone}`}><Icon type={type}/></span>{label}</a>)}</div></nav>
   {children}<SeoImageRail/>
   <footer className="site-footer"><div className="footer-shell">
@@ -77,7 +77,7 @@ export default function RootLayout({children}:{children:React.ReactNode}){
     <div className="partner-grid">{partnerSites.map(site=><a className={`partner-card partner-tone-${site.tone}`} href={site.href} key={site.href}><div className="partner-card-top"><span className="partner-icon"><Icon type={site.icon}/></span><span><span className="partner-category">{site.category}</span><strong className="partner-name">{site.name}</strong></span></div><span className="partner-desc">{site.desc}</span></a>)}</div>
    </section>
    <nav className="footer-quick-nav" aria-label="푸터 주요 메뉴"><div className="footer-quick-grid">{navItems.map(([href,label,type,tone])=><a className="footer-quick-link" href={href} key={href}><span className={`nav-icon nav-tone-${tone}`}><Icon type={type}/></span><span>{label}</span></a>)}</div></nav>
-   <section className="footer-company" aria-label="사업자 정보"><a className="footer-brand" href="/" aria-label="올바른철거 홈"><img className="footer-logo" src="/images/brand/logo.png" alt="올바른철거"/></a><div className="footer-company-info"><p className="footer-company-title">부산 철거 · 원상복구 · 폐업지원 안내</p><div className="footer-contact-row"><span>Tel. <a href="tel:01066484886">010-6648-4886</a></span><span>Fax. 0508-956-6109</span><span><a href={`mailto:${contactEmail}`}>{contactEmail}</a></span></div><p className="footer-business-line">부산광역시 북구 시랑로 132번길 17-4 504</p><p className="footer-business-line"><strong>상호:</strong> 올바른 &nbsp;·&nbsp; <strong>업태:</strong> 건선업 &nbsp;·&nbsp; <strong>업종:</strong> 철거 &nbsp;·&nbsp; <strong>사업자등록번호:</strong> 808-66-00808</p><p className="footer-business-line"><strong>업무 제휴 문의</strong> &nbsp;<a href={`mailto:${contactEmail}`}>{contactEmail}</a></p></div></section>
+   <section className="footer-company" aria-label="사업자 정보"><a className="footer-brand" href="/" aria-label="올바른 철거 홈"><img className="footer-logo" src="/images/brand/logo.png" alt="올바른 철거"/></a><div className="footer-company-info"><p className="footer-company-title">부산 철거 · 원상복구 · 폐업지원 안내</p><div className="footer-contact-row"><span>Tel. <a href="tel:01066484886">010-6648-4886</a></span><span>Fax. 0508-956-6109</span><span><a href={`mailto:${contactEmail}`}>{contactEmail}</a></span></div><p className="footer-business-line">부산광역시 북구 시랑로 132번길 17-4 504</p><p className="footer-business-line"><strong>상호:</strong> 올바른 &nbsp;·&nbsp; <strong>업태:</strong> 건선업 &nbsp;·&nbsp; <strong>업종:</strong> 철거 &nbsp;·&nbsp; <strong>사업자등록번호:</strong> 808-66-00808</p><p className="footer-business-line"><strong>업무 제휴 문의</strong> &nbsp;<a href={`mailto:${contactEmail}`}>{contactEmail}</a></p></div></section>
    <div className="footer-bottom"><div className="footer-bottom-links"><a href="/estimate">견적 준비정보</a><a href={inquiryUrl}>현장견적 문의</a><a href="/company">회사정보</a><a href="/privacy">개인정보처리 안내</a></div><p className="footer-copy">© 2026 올바른. All rights reserved.</p></div>
   </div></footer>
   <div className="mobile-action-bar" aria-label="빠른 상담"><a className="mobile-action-call" href="tel:01066484886" aria-label="010-6648-4886 전화상담"><span className="action-icon"><Icon type="phone"/></span>전화상담</a><a className="mobile-action-estimate" href={inquiryUrl}><span className="action-icon"><Icon type="estimate"/></span>무료견적 문의</a></div>

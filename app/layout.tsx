@@ -5,7 +5,7 @@ const baseUrl="https://www.parcelout.kr";
 const inquiryUrl="https://maxpool.olbarun.kr/";
 const contactEmail="chlpjy@naver.com";
 const googleSiteVerification=process.env.GOOGLE_SITE_VERIFICATION?.trim();
-const naverSiteVerification=process.env.NAVER_SITE_VERIFICATION?.trim();
+const naverSiteVerification="9f7e4eb2e29aa0514431f1e7aa7f221e3886fb58";
 
 export const metadata={
  metadataBase:new URL(baseUrl),applicationName:"올바른 철거",

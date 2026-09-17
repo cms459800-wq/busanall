@@ -4,7 +4,6 @@
 export const indexableRegionSlugs = [
   "haeundae",
   "dongnae",
-  "nam",
   "geumjeong",
   "yeonje",
   "saha",
@@ -22,7 +21,7 @@ export function isIndexableRegion(slug: string) {
 
 // These pages already have regional image work, but still need correction
 // before they should be exposed to search-engine indexing.
-export const regionSlugsNeedingReview = ["gangseo", "buk", "dong"] as const;
+export const regionSlugsNeedingReview = ["nam", "gangseo", "buk", "dong"] as const;
 
 // These pages do not yet meet the regional-image/content completion standard.
 export const unfinishedRegionSlugs = ["busanjin", "yeongdo", "gijang"] as const;

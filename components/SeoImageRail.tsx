@@ -69,10 +69,10 @@ const regionImageMap:Record<string,string[]>={
   "/images/busan/dong/dong-interior-demolition-05.webp"
  ],
  "/busan/suyeong":[
-  "/images/busan/suyeong/suyeong-store-demolition.webp",
   "/images/busan/suyeong/suyeong-restaurant-demolition.webp",
   "/images/busan/suyeong/suyeong-cafe-demolition.webp",
   "/images/busan/suyeong/suyeong-pub-demolition.webp",
+  "/images/busan/suyeong/suyeong-store-demolition.webp",
   "/images/busan/suyeong/suyeong-interior-demolition.webp"
  ]
 };

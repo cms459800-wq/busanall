@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/data/services";
-import { regions } from "@/data/regions";
 import { guides } from "@/data/allGuides";
+import { indexableRegionSlugs } from "@/data/indexing";
 import { validateContentReferences } from "@/data/validateReferences";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: path === "" ? 1 : path === "/company" || path === "/privacy" ? 0.55 : 0.8
     })),
     ...Object.keys(services).map((slug) => ({ url: `${base}/service/${slug}`, changeFrequency: "monthly" as const, priority: 0.8 })),
-    ...Object.keys(regions).map((slug) => ({ url: `${base}/busan/${slug}`, changeFrequency: "monthly" as const, priority: 0.85 })),
+    ...indexableRegionSlugs.map((slug) => ({ url: `${base}/busan/${slug}`, changeFrequency: "monthly" as const, priority: 0.85 })),
     ...guides.map((guide) => ({ url: `${base}/guide/${guide.slug}`, changeFrequency: "monthly" as const, priority: 0.75 }))
   ];
 }

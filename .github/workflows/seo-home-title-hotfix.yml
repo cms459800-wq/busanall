@@ -32,3 +32,5 @@ jobs:
           git add app/page.tsx
           git commit -m "Use absolute homepage SEO title"
           git push
+
+# one-time trigger

@@ -4,7 +4,7 @@ import SeoImageRail from "@/components/SeoImageRail";
 const baseUrl="https://www.parcelout.kr";
 const inquiryUrl="https://maxpool.olbarun.kr/";
 const contactEmail="chlpjy@naver.com";
-const googleSiteVerification=process.env.GOOGLE_SITE_VERIFICATION?.trim();
+const googleSiteVerification="wJu7Tp9NbeSzLDyYT6aPD22nMtQqddWtFa0ovumGX3c";
 const naverSiteVerification="9f7e4eb2e29aa0514431f1e7aa7f221e3886fb58";
 
 export const metadata={

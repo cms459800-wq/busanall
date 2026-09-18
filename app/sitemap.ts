@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { indexableRegionSlugs } from "@/data/indexing";
 import { indexableServiceSlugs } from "@/data/serviceIndexing";
+import { indexableGuideSlugs } from "@/data/guideIndexing";
 import { validateContentReferences } from "@/data/validateReferences";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -22,6 +23,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}/service/${slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.8
+    })),
+    ...indexableGuideSlugs.map((slug) => ({
+      url: `${base}/guide/${slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.78
     })),
     ...indexableRegionSlugs.map((slug) => ({
       url: `${base}/busan/${slug}`,

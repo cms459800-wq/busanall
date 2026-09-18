@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { indexableRegionSlugs } from "@/data/indexing";
+import { regions } from "@/data/regions";
 
 const regionNames:Record<string,string>={haeundae:"해운대구",busanjin:"부산진구",dongnae:"동래구",suyeong:"수영구",nam:"남구",geumjeong:"금정구",yeonje:"연제구",saha:"사하구",sasang:"사상구",gangseo:"강서구",buk:"북구",seo:"서구",jung:"중구",dong:"동구",yeongdo:"영도구",gijang:"기장군"};
 const serviceNames:Record<string,string>={"commercial-store":"상가철거",restaurant:"식당철거",cafe:"카페철거",office:"사무실철거",interior:"인테리어철거",partial:"부분철거",factory:"공장철거",warehouse:"창고철거",academy:"학원철거",hospital:"병원철거","beauty-salon":"미용실철거",house:"주택철거",apartment:"아파트철거",lodging:"숙박시설철거",pub:"주점철거","retail-store":"소매점철거",pharmacy:"약국철거",dental:"치과철거",mart:"마트철거","study-cafe":"스터디카페철거"};
@@ -17,7 +18,7 @@ const guideServices:Record<string,string[]>={"restaurant-closing-demolition":["r
 type Card={region:string;service:string;href:string;image?:string};
 function imageUrl(region:string,service:string){return `/seo-card/${encodeURIComponent(region)}/${encodeURIComponent(service)}`}
 function serviceCards(region:string,slugs:string[]){return slugs.slice(0,5).map(service=>({region,service:serviceNames[service]??service,href:`/service/${service}`}))}
-function regionalCards(serviceSlug:string,regionSlugs:string[]){const service=serviceNames[serviceSlug]??serviceSlug;const allowed=new Set<string>(indexableRegionSlugs);const reviewed=regionSlugs.filter(regionSlug=>allowed.has(regionSlug));const fallback=indexableRegionSlugs.filter(regionSlug=>!reviewed.includes(regionSlug));return [...reviewed,...fallback].slice(0,5).map(regionSlug=>({region:regionNames[regionSlug],service,href:`/busan/${regionSlug}`}))}
+function regionalCards(serviceSlug:string,regionSlugs:string[]){const service=serviceNames[serviceSlug]??serviceSlug;const allowed=new Set<string>(indexableRegionSlugs);return regionSlugs.filter(regionSlug=>allowed.has(regionSlug)&&Object.prototype.hasOwnProperty.call(regions,regionSlug)&&regions[regionSlug as keyof typeof regions].services.some(regionService=>regionService===serviceSlug)).slice(0,5).map(regionSlug=>({region:regionNames[regionSlug],service,href:`/busan/${regionSlug}`}))}
 function hash(value:string){let h=0;for(let i=0;i<value.length;i++)h=(h*31+value.charCodeAt(i))>>>0;return h}
 function altText(theme:string,card:Card,index:number){const suffixes:Record<string,string[]>={home:["소상공인 철거 현장","사무공간 철거 현장","식당 철거 현장","인테리어 철거 현장","부분철거 전후 현장"],region:["상가 철거 전후 현장","상가 내부 철거 현장","상가 원상복구 현장","소상공인 점포 철거 현장","상가 철거 완료 현장"],service:["지역별 현장 안내","건물 조건 확인","반출 동선 안내","작업 범위 확인","지역 견적 체크"],guide:["가이드 연계 서비스","준비 기준 확인","철거 범위 참고","현장 체크 항목","관련 서비스 안내"],support:["폐업 철거 안내","원상복구 범위","지원 전 확인사항","점포 철거 준비","현장 견적 체크"],estimate:["견적 준비 안내","철거 범위 체크","현장 조건 확인","사진 견적 준비","원상복구 확인"]};const list=suffixes[theme]??suffixes.home;return `${card.region} ${card.service} ${list[index%list.length]}`}
 

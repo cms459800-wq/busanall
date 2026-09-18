@@ -27,6 +27,27 @@ export default function Page() {
 <section className="section"><div className="section-heading"><div><span className="section-kicker">PAYMENT EXAMPLE</span><h2>최대 600만원이 모두 지급되는 것은 아닙니다</h2></div><p>실제 지급액은 인정 면적에 따른 한도, 인정되는 공급가액, 폐업일별 최대 한도 등을 함께 적용해 결정됩니다.</p></div><div className="support-grid"><article className="info-card"><h3>예: 전용면적 10평</h3><p>면적 기준만 보면 10평 기준으로 계산하면 최대 200만원 범위입니다. 실제 인정비용이 이보다 적다면 인정된 비용 범위에서 심사됩니다.</p></article><article className="info-card"><h3>예: 전용면적 30평</h3><p>면적 기준은 600만원이지만 실제 인정 가능한 철거·원상복구 공급가액과 폐업일 기준 최대한도를 넘을 수 없습니다.</p></article></div></section>
 <section className="section soft-section"><div className="section-heading"><div><span className="section-kicker">DOCUMENT CHECK</span><h2>철거 전부터 남겨야 할 증빙</h2></div><p>지원 신청을 생각한다면 공사비뿐 아니라 계약서·결제·사진 증빙을 처음부터 맞추는 것이 중요합니다.</p></div><ul className="support-list">{documents.map(x=><li key={x}>{x}</li>)}</ul><p className="support-source">공고는 철거 이전과 이후 내·외부 사진을 요구하며, 공사내용 식별을 위해 가능하면 동일 위치·동일 각도 촬영을 권고합니다. 현금거래는 정산 증빙으로 인정되지 않는다고 안내합니다.</p></section>
 <section className="section"><div className="section-heading"><div><span className="section-kicker">APPLICATION FLOW</span><h2>철거 예정이라면 이 순서로 확인하세요</h2></div><p>지원 가능성을 확인하기 전에 공사를 먼저 끝내기보다 신청요건과 증빙방법을 먼저 확인하는 편이 안전합니다.</p></div><div className="support-flow"><div><b>01</b>소상공인24에서 최신 모집상태·공고 확인</div><div><b>02</b>소상공인·임차·운영기간·제외조건 확인</div><div><b>03</b>철거 전 사진과 임대차·원상복구 범위 정리</div><div><b>04</b>등록 철거업체 공사 후 세금계산서·이체·철거 전후 사진 등 정산자료 제출</div></div></section>
+<section className="section soft-section">
+  <div className="section-heading">
+    <div>
+      <span className="section-kicker">BUSAN 2026</span>
+      <h2>부산 폐업 소상공인은 재취업 지원도 함께 확인하세요</h2>
+    </div>
+    <p>점포철거비와 별도로 부산시의 폐업 소상공인 고용전환·재취업 관련 사업도 확인할 수 있습니다.</p>
+  </div>
+  <div className="support-grid">
+    <article className="support-card">
+      <h3>폐업 소상공인 취업지원</h3>
+      <p>부산시가 안내한 폐업 소상공인 고용전환 지원의 모집상태와 지원요건은 신청 시점의 공식 공고에서 확인하세요.</p>
+      <a className="support-blue" href={busanEmployment} target="_blank" rel="noreferrer">부산시 공식자료 보기 →</a>
+    </article>
+    <article className="support-card">
+      <h3>2026 부산 소상공인 지원사업</h3>
+      <p>폐업지원 외에도 현재 신청 가능한 부산시 소상공인 지원사업을 공식 안내 페이지에서 함께 확인하세요.</p>
+      <a className="support-blue" href={busan2026} target="_blank" rel="noreferrer">부산시 지원자료 보기 →</a>
+    </article>
+  </div>
+</section>
 <section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>2026 폐업지원 자주 묻는 질문</h2></div><p>점포철거비 신청 전에 많이 헷갈리는 조건을 공식 공고 기준으로 정리했습니다.</p></div>
 <details><summary>점포철거비는 누구나 600만원을 받을 수 있나요?</summary><p>아닙니다. 2025년 7월 11일 이후 폐업자의 최대 한도가 600만원이며, 전용면적 3.3㎡당 20만원 한도와 실제 인정되는 철거·원상복구 공급가액 등을 적용해 심사합니다.</p></details>
 <details><summary>폐업하기 전에 신청할 수 있나요?</summary><p>폐업예정 소상공인도 신청 대상이 될 수 있습니다. 다만 사업 운영기간, 유상 임차, 지원제외 업종 등 공고 요건을 충족해야 하고 정산 단계에서 필요한 폐업 관련 증빙을 제출해야 합니다.</p></details>

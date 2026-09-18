@@ -1,5 +1,6 @@
 import { guides } from "@/data/allGuides";
 import { getGuideSearchIntent } from "@/data/guideSearchIntent";
+import { isIndexableGuide } from "@/data/guideIndexing";
 
 const inquiryUrl = "https://maxpool.olbarun.kr/";
 
@@ -11,12 +12,14 @@ export const metadata = {
   openGraph: { title: "부산 철거·폐업 가이드", description: "철거비용·원상복구·폐업지원·업종별 철거를 실제 준비 순서에 맞춰 확인하세요.", url: "/guide", type: "website" }
 };
 
+const reviewedGuides = guides.filter((guide) => isIndexableGuide(guide.slug));
+
 const guideSchema = {
   "@context": "https://schema.org", "@type": "ItemList", name: "부산 철거·폐업 가이드",
-  itemListElement: guides.map((guide, i) => ({ "@type": "ListItem", position: i + 1, name: guide.title, url: `https://www.parcelout.kr/guide/${guide.slug}` }))
+  itemListElement: reviewedGuides.map((guide, i) => ({ "@type": "ListItem", position: i + 1, name: guide.title, url: `https://www.parcelout.kr/guide/${guide.slug}` }))
 };
 
-const featuredSlugs = ["closure-demolition-support-2026","busan-store-closure-demolition-guide","demolition-estimate-checklist","demolition-cost-per-pyeong-guide","landlord-restoration-dispute-checklist","building-management-demolition-notice"] as const;
+const featuredSlugs = ["demolition-estimate-checklist","restoration-scope-checklist","restaurant-closing-demolition","office-demolition-checklist","factory-demolition-estimate-guide","demolition-waste-guide"] as const;
 
 const categoryDescriptions: Record<string, string> = {
   "폐업지원": "점포철거비 지원 대상과 신청·증빙 순서를 공사 전에 확인합니다.",

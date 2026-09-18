@@ -5,6 +5,13 @@ import OriginalSeoImageRail from "./SeoImageRailOriginal";
 import HomeEstimateForm from "./HomeEstimateForm";
 
 const regionImageMap:Record<string,string[]>={
+ "/busan/dongnae":[
+  "/images/busan/dongnae/dongnae-commercial-store-demolition.webp",
+  "/images/busan/dongnae/dongnae-academy-demolition.webp",
+  "/images/busan/dongnae/dongnae-hospital-demolition.webp",
+  "/images/busan/dongnae/dongnae-office-demolition.webp",
+  "/images/busan/dongnae/dongnae-interior-demolition.webp"
+ ],
  "/busan/geumjeong":[
   "/images/busan/geumjeong/geumjeong-restaurant-demolition.webp",
   "/images/busan/geumjeong/geumjeong-cafe-demolition.webp",

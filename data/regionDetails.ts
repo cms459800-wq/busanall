@@ -5,8 +5,8 @@ export type RegionDetail = {
   fieldChecks: string[];
   scenarios: { title: string; text: string }[];
   photoChecklist: string[];
-  buildingRule: string;
-  neighborhoodNote: string;
+  buildingRule?: string;
+  neighborhoodNote?: string;
   faq: { q: string; a: string }[];
 };
 

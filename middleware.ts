@@ -1,12 +1,25 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { isIndexableService } from "@/data/serviceIndexing";
 
-// Service and guide detail pages still contain placeholder image sections.
-// Keep them crawlable for internal navigation, but out of search results until
-// their visual/content review is complete and they are restored to the sitemap.
-export function middleware(_request: NextRequest) {
+// Guide details remain noindex. Service details are noindex unless they have
+// passed the individual content-quality review in data/serviceIndexing.ts.
+export function middleware(request: NextRequest) {
   const response = NextResponse.next();
-  response.headers.set("X-Robots-Tag", "noindex, follow");
+  const { pathname } = request.nextUrl;
+
+  if (pathname.startsWith("/guide/")) {
+    response.headers.set("X-Robots-Tag", "noindex, follow");
+    return response;
+  }
+
+  if (pathname.startsWith("/service/")) {
+    const slug = pathname.split("/")[2] ?? "";
+    if (!isIndexableService(slug)) {
+      response.headers.set("X-Robots-Tag", "noindex, follow");
+    }
+  }
+
   return response;
 }
 

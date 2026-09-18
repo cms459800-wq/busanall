@@ -52,7 +52,7 @@ function GuideIcon({ category }: { category: string }) {
 
 export default function GuidePage(){
   const featured=featuredSlugs.map(slug=>guides.find(guide=>guide.slug===slug)).filter((guide):guide is NonNullable<typeof guide>=>Boolean(guide));
-  const categories=Array.from(new Set(guides.map(guide=>guide.category))).map(category=>({category,items:guides.filter(guide=>guide.category===category)}));
+  const categories=Array.from(new Set(reviewedGuides.map(guide=>guide.category))).map(category=>({category,items:reviewedGuides.filter(guide=>guide.category===category)}));
   return <main className="page-shell">
     <style>{`
       .guide-card-icon,.guide-feature-icon{display:grid;place-items:center;border:1px solid var(--icon-border);background:var(--icon-bg);color:var(--icon-color);transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease}

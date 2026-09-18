@@ -22,6 +22,20 @@ export const indexableServiceSlugs = [
   "commercial-store",
   "interior",
   "partial",
+  "franchise",
+  "karaoke",
+  "kids-cafe",
+  "beauty-shop",
+  "study-cafe",
+  "retail-store",
+  "unmanned-store",
+  "mart",
+  "lodging",
+  "bathhouse",
+  "laundry",
+  "pub",
+  "bakery",
+  "pet-shop",
 ] as const satisfies readonly ServiceSlug[];
 
 const indexableServiceSet = new Set<string>(indexableServiceSlugs);

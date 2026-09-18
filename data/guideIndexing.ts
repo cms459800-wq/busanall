@@ -9,6 +9,14 @@ export const indexableGuideSlugs = [
   "office-demolition-checklist",
   "factory-demolition-estimate-guide",
   "demolition-waste-guide",
+  "convenience-store-closing-demolition",
+  "karaoke-demolition-guide",
+  "academy-demolition-guide",
+  "hospital-demolition-guide",
+  "beauty-salon-demolition-guide",
+  "gym-demolition-guide",
+  "pc-room-demolition-guide",
+  "study-cafe-demolition-guide",
 ] as const;
 
 const indexableGuideSet = new Set<string>(indexableGuideSlugs);

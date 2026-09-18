@@ -17,6 +17,9 @@ export const indexableGuideSlugs = [
   "gym-demolition-guide",
   "pc-room-demolition-guide",
   "study-cafe-demolition-guide",
+  "warehouse-demolition-guide",
+  "apartment-interior-demolition-guide",
+  "partial-demolition-guide",
 ] as const;
 
 const indexableGuideSet = new Set<string>(indexableGuideSlugs);

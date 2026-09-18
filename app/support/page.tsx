@@ -54,22 +54,6 @@ export default function Page() {
     </article>
   </div>
 </section>
-<section className="section">
-  <div className="section-heading">
-    <div>
-      <span className="section-kicker">SUPPORT GUIDE</span>
-      <h2>희망리턴패키지 지원내용 한눈에 보기</h2>
-    </div>
-    <p>원스톱폐업지원, 취업지원, 재기사업화 지원의 주요 내용을 안내 이미지로 확인할 수 있습니다.</p>
-  </div>
-  <figure className="support-poster">
-    <img
-      src="/images/support/hope-return-package-2026.png"
-      alt="2026 희망리턴패키지 원스톱폐업지원 취업지원 재기사업화 지원 안내"
-      loading="lazy"
-    />
-  </figure>
-</section>
 <section className="section faq"><div className="section-heading"><div><span className="section-kicker">FAQ</span><h2>2026 폐업지원 자주 묻는 질문</h2></div><p>점포철거비 신청 전에 많이 헷갈리는 조건을 공식 공고 기준으로 정리했습니다.</p></div>
 <details><summary>점포철거비는 누구나 600만원을 받을 수 있나요?</summary><p>아닙니다. 2025년 7월 11일 이후 폐업자의 최대 한도가 600만원이며, 전용면적 3.3㎡당 20만원 한도와 실제 인정되는 철거·원상복구 공급가액 등을 적용해 심사합니다.</p></details>
 <details><summary>폐업하기 전에 신청할 수 있나요?</summary><p>폐업예정 소상공인도 신청 대상이 될 수 있습니다. 다만 사업 운영기간, 유상 임차, 지원제외 업종 등 공고 요건을 충족해야 하고 정산 단계에서 필요한 폐업 관련 증빙을 제출해야 합니다.</p></details>

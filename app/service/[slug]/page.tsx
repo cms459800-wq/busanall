@@ -24,6 +24,13 @@ const fieldPhotoSets: Partial<Record<ServiceSlug,{src:string;alt:string;caption:
 {src:"/images/field-upload/Uac70%20(9).jpg",alt:"사무공간 내부 철거 후 현장",caption:"천장·바닥 철거 후 공간"},
 {src:"/images/field-upload/Uac70%20(11).jpg",alt:"상업공간 내부 철거 정리 현장",caption:"내부 철거 후 정리 상태"},
 {src:"/images/field-upload/Uac70%20(12).jpg",alt:"사무실 철거 후 바닥 정리 현장",caption:"철거 완료 단계의 내부 공간"}
+],interior:[
+{src:"/images/field-upload/Uac70%20(4).jpg",alt:"인테리어 내부 철거 후 벽체와 바닥 현장",caption:"벽체 마감과 바닥 철거 후 상태"},
+{src:"/images/field-upload/Uac70%20(5).jpg",alt:"상업공간 인테리어 철거 후 내부",caption:"내부 마감 철거 후 빈 공간"},
+{src:"/images/field-upload/Uac70%20(6).jpg",alt:"인테리어 철거 중 노출된 벽체 구조",caption:"벽체 마감 철거와 구조 노출"},
+{src:"/images/field-upload/Uac70%20(7).jpg",alt:"내부 철거 후 바닥과 벽체 정리 현장",caption:"바닥·벽체 철거 후 정리"},
+{src:"/images/field-upload/Uac70%20(8).jpg",alt:"상업공간 내부 철거 완료 단계",caption:"내부 마감 제거 후 공간 확인"},
+{src:"/images/field-upload/Uac70%20(10).jpg",alt:"인테리어 철거 후 천장과 내부 공간",caption:"천장·내부 마감 철거 상태"}
 ]};
 const pointTones=["blue","orange","purple","green","cyan","rose"] as const;
 function DetailIcon({type}:{type:string}){const p={viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:1.8,strokeLinecap:"round" as const,strokeLinejoin:"round" as const,"aria-hidden":true};if(type==="check")return <svg {...p}><path d="M5 12l4 4L19 6"/><path d="M4 4h16v16H4z"/></svg>;if(type==="layers")return <svg {...p}><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/></svg>;if(type==="access")return <svg {...p}><path d="M4 18h16M6 18V8h12v10"/><path d="M9 12h6M12 9v6"/></svg>;if(type==="restore")return <svg {...p}><path d="M4 11l8-7 8 7v9H4z"/><path d="M8 16h8M12 12v8"/></svg>;if(type==="hammer")return <svg {...p}><path d="M14 5l5 5M16 3l5 5-3 3-5-5zM13 10L5 18a2 2 0 0 0 3 3l8-8"/></svg>;if(type==="cost")return <svg {...p}><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h3M13 11h3M8 15h3M13 15h3"/></svg>;if(type==="document")return <svg {...p}><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h4M9 12h6M9 16h6"/></svg>;if(type==="warning")return <svg {...p}><path d="M12 3l9 17H3z"/><path d="M12 9v5M12 17h.01"/></svg>;return <svg {...p}><circle cx="12" cy="12" r="8"/><path d="M9 12l2 2 4-4"/></svg>}

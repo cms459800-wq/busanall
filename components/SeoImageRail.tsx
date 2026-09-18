@@ -5,6 +5,41 @@ import OriginalSeoImageRail from "./SeoImageRailOriginal";
 import HomeEstimateForm from "./HomeEstimateForm";
 
 const regionImageMap:Record<string,string[]>={
+ "/busan/nam":[
+  "/images/busan/nam/nam-commercial-store-demolition.webp",
+  "/images/busan/nam/nam-office-demolition.webp",
+  "/images/busan/nam/nam-restaurant-demolition.webp",
+  "/images/busan/nam/nam-house-demolition.webp",
+  "/images/busan/nam/nam-interior-demolition.webp"
+ ],
+ "/busan/saha":[
+  "/images/busan/saha/saha-restaurant-demolition.webp",
+  "/images/busan/saha/saha-pub-demolition.webp",
+  "/images/busan/saha/saha-factory-demolition.webp",
+  "/images/busan/saha/saha-academy-demolition.webp",
+  "/images/busan/saha/saha-commercial-store-demolition.webp"
+ ],
+ "/busan/gangseo":[
+  "/images/busan/gangseo/gangseo-factory-demolition.webp",
+  "/images/busan/gangseo/gangseo-warehouse-demolition.webp",
+  "/images/busan/gangseo/gangseo-commercial-store-demolition.webp",
+  "/images/busan/gangseo/gangseo-restaurant-demolition.webp",
+  "/images/busan/gangseo/gangseo-interior-demolition.webp"
+ ],
+ "/busan/buk":[
+  "/images/busan/buk/buk-commercial-store-demolition.webp",
+  "/images/busan/buk/buk-restaurant-demolition.webp",
+  "/images/busan/buk/buk-academy-demolition.webp",
+  "/images/busan/buk/buk-beauty-salon-demolition.webp",
+  "/images/busan/buk/buk-interior-demolition.webp"
+ ],
+ "/busan/dong":[
+  "/images/busan/dong/dong-lodging-demolition.webp",
+  "/images/busan/dong/dong-restaurant-demolition.webp",
+  "/images/busan/dong/dong-commercial-store-demolition.webp",
+  "/images/busan/dong/dong-office-demolition.webp",
+  "/images/busan/dong/dong-interior-demolition.webp"
+ ],
  "/busan/dongnae":[
   "/images/busan/dongnae/dongnae-commercial-store-demolition.webp",
   "/images/busan/dongnae/dongnae-academy-demolition.webp",
@@ -26,33 +61,12 @@ const regionImageMap:Record<string,string[]>={
   "/images/busan/yeonje/yeonje-commercial-store-demolition-04.webp",
   "/images/busan/yeonje/yeonje-interior-demolition-05.webp"
  ],
- "/busan/saha":[
-  "/images/busan/saha/saha-restaurant-demolition.webp",
-  "/images/busan/saha/saha-pub-demolition.webp",
-  "/images/busan/saha/saha-factory-demolition.webp",
-  "/images/busan/saha/saha-academy-demolition-04.webp",
-  "/images/busan/saha/saha-interior-demolition-05.webp"
- ],
  "/busan/sasang":[
   "/images/busan/sasang/sasang-factory-demolition-01.webp",
   "/images/busan/sasang/sasang-warehouse-demolition-02.webp",
   "/images/busan/sasang/sasang-commercial-store-demolition-03.webp",
   "/images/busan/sasang/sasang-office-demolition-04.webp",
   "/images/busan/sasang/sasang-interior-demolition-05.webp"
- ],
- "/busan/gangseo":[
-  "/images/busan/gangseo/gangseo-factory-demolition-01.webp",
-  "/images/busan/gangseo/gangseo-warehouse-demolition-02.webp",
-  "/images/busan/gangseo/gangseo-commercial-store-demolition-03.webp",
-  "/images/busan/gangseo/gangseo-office-demolition-04.webp",
-  "/images/busan/gangseo/gangseo-interior-demolition-05.webp"
- ],
- "/busan/buk":[
-  "/images/busan/buk/buk-commercial-store-demolition-01.webp",
-  "/images/busan/buk/buk-warehouse-demolition-02.webp",
-  "/images/busan/buk/buk-commercial-store-demolition-03.webp",
-  "/images/busan/buk/buk-beauty-salon-demolition-04.webp",
-  "/images/busan/buk/buk-interior-demolition-05.webp"
  ],
  "/busan/seo":[
   "/images/busan/seo/seo-hospital-demolition-01.webp",
@@ -67,13 +81,6 @@ const regionImageMap:Record<string,string[]>={
   "/images/busan/jung/jung-commercial-store-demolition-03.webp",
   "/images/busan/jung/jung-cafe-demolition-04.webp",
   "/images/busan/jung/jung-interior-demolition-05.webp"
- ],
- "/busan/dong":[
-  "/images/busan/dong/dong-lodging-demolition-01.webp",
-  "/images/busan/dong/dong-restaurant-demolition-02.webp",
-  "/images/busan/dong/dong-commercial-store-demolition-03.webp",
-  "/images/busan/dong/dong-cafe-demolition-04.webp",
-  "/images/busan/dong/dong-interior-demolition-05.webp"
  ],
  "/busan/suyeong":[
   "/images/busan/suyeong/suyeong-store-demolition.webp",
@@ -96,7 +103,11 @@ function RegionImageOverride(){
    cards.slice(0,5).forEach((card,i)=>{
     const img=card.querySelector<HTMLImageElement>("img");
     if(!img||!images[i])return;
-    img.src=images[i];
+    const src=images[i];
+    const preload=new Image();
+    preload.onload=()=>{img.src=src;img.srcset="";img.removeAttribute("srcset");img.style.width="100%";img.style.height="auto";img.style.aspectRatio="3 / 2";img.style.objectFit="cover";img.style.display="block"};
+    preload.src=src;
+    return;
     img.srcset="";
     img.removeAttribute("srcset");
     img.style.width="100%";

@@ -9,8 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const base = "https://www.parcelout.kr";
   // Only pages that have passed the current completion/indexing review belong here.
-  // Service and guide detail pages are intentionally excluded while their visual
-  // sections and remaining SEO consistency checks are still unfinished.
+  // Reviewed service, guide and regional detail pages are included through their
+  // centralized indexing lists; unfinished pages stay out of the sitemap.
   const staticRoutes = ["", "/service", "/busan", "/guide", "/support", "/estimate", "/company", "/privacy"];
 
   return [

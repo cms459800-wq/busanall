@@ -5,6 +5,34 @@ import OriginalSeoImageRail from "./SeoImageRailOriginal";
 import HomeEstimateForm from "./HomeEstimateForm";
 
 const regionImageMap:Record<string,string[]>={
+ "/busan/haeundae":[
+  "/images/busan/haeundae/haeundae-commercial-store-demolition.webp",
+  "/images/busan/haeundae/haeundae-office-demolition.webp",
+  "/images/busan/haeundae/haeundae-restaurant-demolition.webp",
+  "/images/busan/haeundae/haeundae-cafe-demolition.webp",
+  "/images/busan/haeundae/haeundae-interior-demolition.webp"
+ ],
+ "/busan/busanjin":[
+  "/images/busan/busanjin/busanjin-commercial-store-demolition.webp",
+  "/images/busan/busanjin/busanjin-office-demolition.webp",
+  "/images/busan/busanjin/busanjin-restaurant-demolition.webp",
+  "/images/busan/busanjin/busanjin-cafe-demolition.webp",
+  "/images/busan/busanjin/busanjin-interior-demolition.webp"
+ ],
+ "/busan/yeongdo":[
+  "/images/busan/yeongdo/yeongdo-house-demolition.webp",
+  "/images/busan/yeongdo/yeongdo-warehouse-demolition.webp",
+  "/images/busan/yeongdo/yeongdo-commercial-store-demolition.webp",
+  "/images/busan/yeongdo/yeongdo-restaurant-demolition.webp",
+  "/images/busan/yeongdo/yeongdo-interior-demolition.webp"
+ ],
+ "/busan/gijang":[
+  "/images/busan/gijang/gijang-factory-demolition.webp",
+  "/images/busan/gijang/gijang-warehouse-demolition.webp",
+  "/images/busan/gijang/gijang-house-demolition.webp",
+  "/images/busan/gijang/gijang-commercial-store-demolition.webp",
+  "/images/busan/gijang/gijang-restaurant-demolition.webp"
+ ],
  "/busan/nam":[
   "/images/busan/nam/nam-commercial-store-demolition.webp",
   "/images/busan/nam/nam-office-demolition.webp",

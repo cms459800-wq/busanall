@@ -107,14 +107,6 @@ function RegionImageOverride(){
     const preload=new Image();
     preload.onload=()=>{img.src=src;img.srcset="";img.removeAttribute("srcset");img.style.width="100%";img.style.height="auto";img.style.aspectRatio="3 / 2";img.style.objectFit="cover";img.style.display="block"};
     preload.src=src;
-    return;
-    img.srcset="";
-    img.removeAttribute("srcset");
-    img.style.width="100%";
-    img.style.height="auto";
-    img.style.aspectRatio="3 / 2";
-    img.style.objectFit="cover";
-    img.style.display="block";
    });
   };
   apply();

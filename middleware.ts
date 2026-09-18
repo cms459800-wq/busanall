@@ -3,8 +3,9 @@ import type { NextRequest } from "next/server";
 import { isIndexableService } from "@/data/serviceIndexing";
 import { isIndexableGuide } from "@/data/guideIndexing";
 
-// Guide details remain noindex. Service details are noindex unless they have
-// passed the individual content-quality review in data/serviceIndexing.ts.
+// Service and guide detail pages are indexable only after their slugs pass the
+// centralized content-quality review lists. Unreviewed detail pages stay crawlable
+// but receive X-Robots-Tag: noindex, follow.
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
   const { pathname } = request.nextUrl;

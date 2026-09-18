@@ -9,13 +9,6 @@ import { isIndexableRegion } from "@/data/indexing";
 const baseUrl="https://www.parcelout.kr"; const inquiryUrl="https://maxpool.olbarun.kr/";
 const universalGuideSlugs=["demolition-cost-per-pyeong-guide","landlord-restoration-dispute-checklist","building-management-demolition-notice","utility-shutoff-before-demolition"] as const;
 const serviceTone: Record<string,string>={"commercial-store":"blue",restaurant:"orange",cafe:"amber",office:"cyan",academy:"indigo",hospital:"green",factory:"slate",interior:"rose",lodging:"purple",pharmacy:"green",dental:"sky",mart:"orange",warehouse:"slate",house:"green",apartment:"indigo",partial:"rose"};
-const haeundaeImages=[
-  {src:"/images/busan/haeundae/haeundae-interior-demolition.webp",alt:"해운대 인테리어 철거"},
-  {src:"/images/busan/haeundae/haeundae-cafe-demolition.webp",alt:"해운대 카페 철거"},
-  {src:"/images/busan/haeundae/haeundae-restaurant-demolition.webp",alt:"해운대 음식점 철거"},
-  {src:"/images/busan/haeundae/haeundae-office-demolition-final.webp",alt:"해운대 사무실 철거"},
-  {src:"/images/busan/haeundae/haeundae-office-demolition.webp",alt:"해운대 오피스 철거"}
-];
 const dongnaeImages=[
   {src:"/images/busan/dongnae/dongnae-commercial-store-demolition.webp",alt:"동래구 상가 철거"},
   {src:"/images/busan/dongnae/dongnae-academy-demolition.webp",alt:"동래구 학원 철거"},
@@ -49,7 +42,6 @@ return <main className="page-shell"><style>{`
 `}</style>{structuredData.map((data,index)=><script key={index} type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(data)}}/>)}
 <nav className="breadcrumb" aria-label="breadcrumb"><a href="/">홈</a><span>›</span><a href="/busan">부산지역</a><span>›</span><strong>{region.name}</strong></nav>
 <header className="list-hero"><div className="eyebrow-chip">● 부산 지역별 철거</div><h1>{region.primary}<br/><span className="gradient-text">현장 조건 가이드</span></h1><p>{region.summary}</p><div className="hero-points">{region.neighborhoods.map((n)=><span key={n}>{n}</span>)}</div><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a><a className="btn btn-glass" href="/support">폐업지원금 확인</a></div></header>
-{slug==="haeundae"&&<section className="section"><div className="section-heading"><div><span className="section-kicker">HAEUNDAE DEMOLITION</span><h2>해운대 철거 현장 이미지</h2></div><p>해운대 인테리어·카페·음식점·사무실 철거 유형을 이미지로 확인할 수 있습니다.</p></div><div className="haeundae-gallery">{haeundaeImages.map((image)=><figure key={image.src}><img src={image.src} alt={image.alt} loading="lazy"/><figcaption>{image.alt}</figcaption></figure>)}</div></section>}
 {slug==="dongnae"&&<section className="section"><div className="section-heading"><div><span className="section-kicker">DONGNAE DEMOLITION</span><h2>동래구 철거 서비스 이미지</h2></div><p>동래구 상가·학원·병원·사무실·인테리어 철거 유형을 이미지로 확인할 수 있습니다.</p></div><div className="haeundae-gallery">{dongnaeImages.map((image)=><figure key={image.src}><img src={image.src} alt={image.alt} loading="lazy"/><figcaption>{image.alt}</figcaption></figure>)}</div></section>}
 <section className="split"><article className="info-card"><span className="section-kicker">LOCAL FOCUS</span><h2>{region.name}에서 먼저 볼 기준</h2><p>{detail.focus}</p></article><article className="info-card"><span className="section-kicker">BUILDING RULE</span><h2>건물 규정과 반출조건 확인</h2><p>작업 가능 시간, 공용부 보양, 승강기 사용조건, 차량 진입과 폐기물 상차 위치는 같은 지역 안에서도 현장마다 달라질 수 있습니다.</p></article></section>
 <section className="section"><div className="section-heading"><div><span className="section-kicker">LOCAL POINTS</span><h2>{region.name} 철거에서 중요한 점</h2></div><p>지역명을 반복하기보다 실제 작업에 영향을 주는 현장 요소를 정리했습니다.</p></div><div className="feature-grid">{region.points.map((point,i)=><article className="feature-card" key={point}><div className="local-point-icon"><PointIcon index={i}/></div><p>{point}</p></article>)}</div></section>

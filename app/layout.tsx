@@ -1,7 +1,7 @@
 import "./globals.css";
 import SeoImageRail from "@/components/SeoImageRail";
 
-const baseUrl="https://www.parcelout.kr";
+const baseUrl="https://www.lastwar.co.kr";
 const inquiryUrl="https://maxpool.olbarun.kr/";
 const contactEmail="chlpjy@naver.com";
 const googleSiteVerification="wJu7Tp9NbeSzLDyYT6aPD22nMtQqddWtFa0ovumGX3c";

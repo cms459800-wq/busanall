@@ -7,7 +7,7 @@ import { validateContentReferences } from "@/data/validateReferences";
 export default function sitemap(): MetadataRoute.Sitemap {
   validateContentReferences();
 
-  const base = "https://www.parcelout.kr";
+  const base = "https://www.lastwar.co.kr";
   // Only pages that have passed the current completion/indexing review belong here.
   // Reviewed service, guide and regional detail pages are included through their
   // centralized indexing lists; unfinished pages stay out of the sitemap.

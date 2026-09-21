@@ -11,6 +11,7 @@ export const metadata={
  metadataBase:new URL(baseUrl),applicationName:"올바른 철거",
  title:{default:"올바른 철거 | 부산 철거·원상복구",template:"%s | 올바른 철거"},
  description:"부산 16개 구·군의 철거·원상복구, 업종별 철거서비스, 폐업지원금과 현장 가이드를 제공하는 올바른 철거입니다.",
+ icons:{icon:[{url:"/images/home/favicon.ico",type:"image/x-icon"}],apple:[{url:"/images/home/apple-icon.png",type:"image/png"}]},
  alternates:{canonical:"/"},
  verification:{...(googleSiteVerification?{google:googleSiteVerification}:{}),...(naverSiteVerification?{other:{"naver-site-verification":naverSiteVerification}}:{})},
  openGraph:{type:"website",locale:"ko_KR",url:baseUrl,siteName:"올바른 철거",title:"올바른 철거 | 부산 철거·원상복구",description:"부산 16개 구·군의 철거·원상복구, 업종별 철거서비스, 폐업지원금과 현장 가이드를 제공합니다."},

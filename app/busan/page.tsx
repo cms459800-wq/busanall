@@ -16,7 +16,7 @@ export const metadata = {
 
 const regionSchema = {
   "@context": "https://schema.org", "@type": "ItemList", name: "부산 지역별 철거 안내",
-  itemListElement: reviewedRegions.map(([slug, region], i) => ({ "@type": "ListItem", position: i + 1, name: region.primary, url: `https://www.parcelout.kr/busan/${slug}` }))
+  itemListElement: reviewedRegions.map(([slug, region], i) => ({ "@type": "ListItem", position: i + 1, name: region.primary, url: `https://www.lastwar.co.kr/busan/${slug}` }))
 };
 
 const iconPaths: Record<string, React.ReactNode> = {
@@ -50,7 +50,7 @@ export default function BusanHub() {
   return <main className="page-shell">
     <style>{`
       .region-tone-blue{--r-bg:#eef4ff;--r-border:#d8e5ff;--r-color:#2458d8}.region-tone-sky{--r-bg:#edf8ff;--r-border:#d2ecfb;--r-color:#0875a5}.region-tone-cyan{--r-bg:#ecf9fb;--r-border:#cfedf1;--r-color:#087b8c}.region-tone-teal{--r-bg:#edf9f7;--r-border:#d0ece7;--r-color:#0f766e}.region-tone-green{--r-bg:#eff9f1;--r-border:#d5ecd9;--r-color:#287a3e}.region-tone-emerald{--r-bg:#ecf9f3;--r-border:#ceebdc;--r-color:#147a55}.region-tone-orange{--r-bg:#fff4e8;--r-border:#f7ddbd;--r-color:#a9570a}.region-tone-amber{--r-bg:#fff8df;--r-border:#f2e3a8;--r-color:#8b6508}.region-tone-purple{--r-bg:#f5f0ff;--r-border:#e4d8ff;--r-color:#7048c8}.region-tone-violet{--r-bg:#f4f1ff;--r-border:#e1dbff;--r-color:#6350b5}.region-tone-indigo{--r-bg:#eef0ff;--r-border:#daddff;--r-color:#4c51bf}.region-tone-slate{--r-bg:#f1f4f7;--r-border:#dde3ea;--r-color:#475467}
-      .region-card-icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:var(--r-bg);color:var(--r-color);border:1px solid var(--r-border);transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease}.region-card-icon svg{width:26px;height:26px}
+      .service-grid{align-items:stretch}.service-card{height:auto;min-height:0;align-self:stretch}.service-card>span:not(.region-card-label):not(.service-card-arrow){display:block;overflow:visible;white-space:normal}.region-card-icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:var(--r-bg);color:var(--r-color);border:1px solid var(--r-border);transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease}.region-card-icon svg{width:26px;height:26px}
       .service-card:hover .region-card-icon{transform:translateY(-2px) scale(1.04);background:var(--r-color);color:#fff;box-shadow:0 8px 18px rgba(17,24,39,.10)}
       .region-card-label{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;font-weight:800;color:var(--r-color);background:var(--r-bg);border:1px solid var(--r-border);border-radius:999px;padding:5px 9px;width:max-content;max-width:100%}
       @media(max-width:760px){.region-card-icon{width:45px;height:45px}.region-card-icon svg{width:23px;height:23px}}

@@ -13,7 +13,7 @@ const exploreItems=[
 {title:"공장 철거",text:"공장·창고·산업시설",href:"/service/factory",image:"/images/home-icons/factory-demolition.png"},
 {title:"병원·의원 철거",text:"병원·의원·의료시설",href:"/service/hospital",image:"/images/home-icons/hospital-demolition.png"},
 {title:"견적 안내",text:"견적 준비정보 6가지",href:"/estimate",image:"/images/home-icons/estimate-guide.png"},
-{title:"원상복구·폐업지원",text:"마무리까지 한 번에",href:"/support",image:"/images/home-icons/restoration-closure-support.png"}
+{title:"원상복구·폐업지원",text:"마무리까지 한 번에",href:"/support",image:"/images/home-icons/restoration-demolition2.png"}
 ] as const;
 const highlights=[{label:"SERVICE",title:"업종별 철거",text:"식당·카페·편의점·사무실·공장 등 업종별 철거 포인트를 확인하세요.",href:"/service",icon:"hammer",tone:"blue"},{label:"LOCAL",title:"부산 16개 구·군",text:"해운대구부터 기장군까지 지역별 현장 조건과 접근성을 정리했습니다.",href:"/busan",icon:"pin",tone:"cyan"},{label:"GUIDE",title:"철거·폐업 가이드",text:"견적서, 원상복구, 폐업지원금, 업종별 체크사항을 한 곳에서 확인하세요.",href:"/guide",icon:"book",tone:"purple"}];
 const process=[{title:"현장 조건 확인",text:"업종, 면적, 층수, 엘리베이터와 폐기물 반출 동선을 확인합니다.",icon:"search",tone:"cyan"},{title:"철거 범위 구분",text:"철거할 시설과 남길 시설, 임대인 원상복구 요구사항을 구분합니다.",icon:"scope",tone:"orange"},{title:"비용·지원 검토",text:"견적 항목과 추가비용 조건, 폐업지원 대상 여부를 함께 확인합니다.",icon:"calc",tone:"green"},{title:"일정·작업 진행",text:"관리규정과 영업시간을 반영해 보양, 철거, 반출, 정리 순서로 진행합니다.",icon:"calendar",tone:"purple"}];

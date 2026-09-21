@@ -1,4 +1,5 @@
-import Image from "next/image";\nimport { regions } from "@/data/regions";
+import Image from "next/image";
+import { regions } from "@/data/regions";
 import { indexableRegionSlugs } from "@/data/indexing";
 const inquiryUrl="https://maxpool.olbarun.kr/";
 export const metadata={title:{absolute:"부산 철거업체 | 상가철거·원상복구 전문 올바른 철거"},description:"부산 철거업체를 찾고 계신가요? 올바른 철거에서 상가·식당·카페·사무실 철거부터 원상복구, 폐업철거까지 현장에 맞는 철거 방법과 무료 견적을 확인하세요.",keywords:["부산 철거업체","부산 철거","부산 상가철거","부산 원상복구","부산 폐업철거","부산 철거견적"],robots:{index:true,follow:true},alternates:{canonical:"/"},openGraph:{type:"website",locale:"ko_KR",url:"/",title:"부산 철거업체 | 상가철거·원상복구 전문 올바른 철거",description:"부산 철거업체를 찾고 계신가요? 상가·식당·카페·사무실 철거부터 원상복구와 폐업철거까지 현장에 맞는 정보를 확인하세요."}};

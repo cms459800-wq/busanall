@@ -7,9 +7,15 @@ import { getRegionSeo } from "@/data/regionSeo";
 import { isIndexableRegion } from "@/data/indexing";
 import { isIndexableGuide } from "@/data/guideIndexing";
 
-const baseUrl="https://www.parcelout.kr"; const inquiryUrl="https://maxpool.olbarun.kr/";
+const baseUrl="https://www.lastwar.co.kr"; const inquiryUrl="https://maxpool.olbarun.kr/";
 const universalGuideSlugs=["demolition-estimate-checklist","restoration-scope-checklist","demolition-waste-guide"] as const;
 const serviceTone: Record<string,string>={"commercial-store":"blue",restaurant:"orange",cafe:"amber",office:"cyan",academy:"indigo",hospital:"green",factory:"slate",interior:"rose",lodging:"purple",pharmacy:"green",dental:"sky",mart:"orange",warehouse:"slate",house:"green",apartment:"indigo",partial:"rose"};
+const haeundaeImages=[
+  {src:"/images/busan/haeundae/haeundae-office-demolition-final.webp",alt:"고층 사무실의 파티션과 천장 설비 철거 검토 이미지",caption:"센텀·우동 사무실: 승강기 예약과 전기·통신설비 구분"},
+  {src:"/images/busan/haeundae/haeundae-restaurant-demolition.webp",alt:"음식점 주방설비 철거 검토 이미지",caption:"중동 음식점: 후드·덕트와 급배수 연결구간 확인"},
+  {src:"/images/busan/haeundae/haeundae-cafe-demolition.webp",alt:"카페 내부 철거 검토 이미지",caption:"좌동 카페: 바닥·카운터·간판 원상복구 범위 확인"},
+  {src:"/images/busan/haeundae/haeundae-interior-demolition.webp",alt:"상가 내부 마감 철거 검토 이미지",caption:"재송동 상가: 공용부 보양과 폐기물 반출 동선 확인"}
+];
 const dongnaeImages=[
   {src:"/images/busan/dongnae/dongnae-commercial-store-demolition.webp",alt:"동래구 상가 철거"},
   {src:"/images/busan/dongnae/dongnae-academy-demolition.webp",alt:"동래구 학원 철거"},
@@ -43,6 +49,7 @@ return <main className="page-shell"><style>{`
 `}</style>{structuredData.map((data,index)=><script key={index} type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(data)}}/>)}
 <nav className="breadcrumb" aria-label="breadcrumb"><a href="/">홈</a><span>›</span><a href="/busan">부산지역</a><span>›</span><strong>{region.name}</strong></nav>
 <header className="list-hero"><div className="eyebrow-chip">● 부산 지역별 철거</div><h1>{region.primary}<br/><span className="gradient-text">현장 조건 가이드</span></h1><p>{region.summary}</p><div className="hero-points">{region.neighborhoods.map((n)=><span key={n}>{n}</span>)}</div><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a><a className="btn btn-glass" href="/support">폐업지원금 확인</a></div></header>
+{slug==="haeundae"&&<section className="section"><div className="section-heading"><div><span className="section-kicker">HAEUNDAE FIELD TYPES</span><h2>해운대구는 건물 유형별로 철거 범위를 나눠 확인하세요</h2></div><p>아래 이미지는 현장 유형을 이해하기 위한 참고 자료입니다. 실제 시공사례나 해당 동네에서 촬영한 현장사진을 뜻하지 않습니다.</p></div><div className="haeundae-gallery">{haeundaeImages.map((image)=><figure key={image.src}><img src={image.src} alt={image.alt} loading="lazy"/><figcaption>{image.caption}</figcaption></figure>)}</div><div className="detail-list-grid"><article className="detail-list-card"><b className="local-check-number">01</b><span>센텀·우동 업무시설: 관리실 작업승인, 화물승강기 사용시간과 전산배선 철거 주체를 먼저 구분합니다.</span></article><article className="detail-list-card"><b className="local-check-number">02</b><span>중동 음식점: 내부 후드와 외벽 덕트의 소유·복구 범위를 임대인과 확인합니다.</span></article><article className="detail-list-card"><b className="local-check-number">03</b><span>좌동·재송동 생활상가: 차량 정차 위치, 보행동선, 공용복도 보양 범위를 현장별로 확인합니다.</span></article></div></section>}
 {slug==="dongnae"&&<section className="section"><div className="section-heading"><div><span className="section-kicker">DONGNAE DEMOLITION</span><h2>동래구 철거 서비스 이미지</h2></div><p>동래구 상가·학원·병원·사무실·인테리어 철거 유형을 이미지로 확인할 수 있습니다.</p></div><div className="haeundae-gallery">{dongnaeImages.map((image)=><figure key={image.src}><img src={image.src} alt={image.alt} loading="lazy"/><figcaption>{image.alt}</figcaption></figure>)}</div></section>}
 <section className="split"><article className="info-card"><span className="section-kicker">LOCAL FOCUS</span><h2>{region.name}에서 먼저 볼 기준</h2><p>{detail.focus}</p></article><article className="info-card"><span className="section-kicker">BUILDING RULE</span><h2>건물 규정과 반출조건 확인</h2><p>{detail.buildingRule??"작업 가능 시간, 공용부 보양, 승강기 사용조건, 차량 진입과 폐기물 상차 위치는 현장마다 달라질 수 있습니다."}</p></article></section>
 <section className="section"><div className="section-heading"><div><span className="section-kicker">LOCAL POINTS</span><h2>{region.name} 철거에서 중요한 점</h2></div><p>지역명을 반복하기보다 실제 작업에 영향을 주는 현장 요소를 정리했습니다.</p></div><div className="feature-grid">{region.points.map((point,i)=><article className="feature-card" key={point}><div className="local-point-icon"><PointIcon index={i}/></div><p>{point}</p></article>)}</div></section>

@@ -1,5 +1,8 @@
 import { services } from "@/data/services";
 import { regions } from "@/data/regions";
+import { regionDetails } from "@/data/regionDetails";
+import { regionSeo } from "@/data/regionSeo";
+import { indexableRegionSlugs, regionSlugsNeedingReview, unfinishedRegionSlugs } from "@/data/indexing";
 import { guides } from "@/data/allGuides";
 import { guideDetails } from "@/data/guideDetails";
 import { guideDetailsExtra } from "@/data/guideDetailsExtra";
@@ -12,6 +15,34 @@ export function validateContentReferences() {
   const serviceSlugs = new Set(Object.keys(services));
   const guideSlugs = new Set<string>();
   const errors: string[] = [];
+
+  // Keep the public sitemap, regional metadata and review queues in sync.
+  const regionSlugs = new Set(Object.keys(regions));
+  const reviewGroups = [
+    ["indexable", indexableRegionSlugs],
+    ["needsReview", regionSlugsNeedingReview],
+    ["unfinished", unfinishedRegionSlugs]
+  ] as const;
+  const reviewOwners = new Map<string, string>();
+  for (const [group, slugs] of reviewGroups) {
+    for (const slug of slugs) {
+      if (!regionSlugs.has(slug)) errors.push(`region review group ${group} -> unknown slug: ${slug}`);
+      const previous = reviewOwners.get(slug);
+      if (previous) errors.push(`region review group -> duplicate slug ${slug}: ${previous}, ${group}`);
+      else reviewOwners.set(slug, group);
+    }
+  }
+  for (const slug of regionSlugs) {
+    const detail = regionDetails[slug as keyof typeof regionDetails];
+    const seo = regionSeo[slug as keyof typeof regionSeo];
+    if (!reviewOwners.has(slug)) errors.push(`region review group -> missing slug: ${slug}`);
+    if (!detail) errors.push(`region detail -> missing: ${slug}`);
+    else {
+      if (!detail.focus.trim() || detail.fieldChecks.length < 3 || detail.scenarios.length < 2 || detail.photoChecklist.length < 3 || detail.faq.length < 2) errors.push(`region detail -> incomplete: ${slug}`);
+      if (!detail.buildingRule?.trim() || !detail.neighborhoodNote?.trim()) errors.push(`region detail -> missing local building/neighborhood guidance: ${slug}`);
+    }
+    if (!seo || !seo.title.trim() || !seo.description.trim() || !seo.ogTitle.trim() || !seo.ogDescription.trim()) errors.push(`region SEO -> missing metadata: ${slug}`);
+  }
 
   for (const [regionSlug, region] of Object.entries(regions)) {
     for (const serviceSlug of region.services as readonly string[]) {

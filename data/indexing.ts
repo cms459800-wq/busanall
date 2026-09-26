@@ -14,6 +14,7 @@ export const indexableRegionSlugs = [
   "saha",
   "gangseo",
   "buk",
+  "dong",
 ] as const;
 
 const indexableRegionSet = new Set<string>(indexableRegionSlugs);
@@ -24,7 +25,7 @@ export function isIndexableRegion(slug: string) {
 
 // These pages already have regional image work, but still need correction
 // before they should be exposed to search-engine indexing.
-export const regionSlugsNeedingReview = ["dong"] as const;
+export const regionSlugsNeedingReview = [] as const;
 
 // These pages do not yet meet the regional-image/content completion standard.
 export const unfinishedRegionSlugs = ["busanjin", "yeongdo", "gijang"] as const;

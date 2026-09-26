@@ -4,6 +4,7 @@ import net from "node:net";
 export const runtime="nodejs";
 export const dynamic="force-dynamic";
 
+const BUSINESSES=new Set(["상가","식당","카페","사무실","학원","병원·의원","공장","창고","미용실","주점","주택","기타"]);
 const BUSAN_DISTRICTS=new Set(["강서구","금정구","기장군","남구","동구","동래구","부산진구","북구","사상구","사하구","서구","수영구","연제구","영도구","중구","해운대구"]);
 function clean(v:unknown,max=80){return String(v??"").replace(/[<>\r\n]/g," ").trim().slice(0,max)}
 function phone(v:unknown){return String(v??"").replace(/[^0-9]/g,"").slice(0,11)}
@@ -72,7 +73,7 @@ export async function POST(req:Request){
   const business=clean(body.business,30);
   const tel=phone(body.phone);
 
-  if(!name||!BUSAN_DISTRICTS.has(region)||tel.length<10||body.closureReady!=="yes"||body.privacy!=="yes"||body.thirdParty!=="yes"){
+  if(!name||!BUSAN_DISTRICTS.has(region)||!BUSINESSES.has(business)||tel.length<10||body.closureReady!=="yes"||body.privacy!=="yes"||body.thirdParty!=="yes"){
    return NextResponse.json({message:"필수 입력 및 동의 항목을 확인해 주세요."},{status:400});
   }
 

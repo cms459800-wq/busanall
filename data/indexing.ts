@@ -23,9 +23,10 @@ export function isIndexableRegion(slug: string) {
   return indexableRegionSet.has(slug);
 }
 
-// These pages already have regional image work, but still need correction
-// before they should be exposed to search-engine indexing.
-export const regionSlugsNeedingReview = [] as const;
+// These pages have distinct local guidance and metadata, but still need a final
+// visual/quality review before search-engine indexing. Do not mislabel reference
+// images as actual regional projects.
+export const regionSlugsNeedingReview = ["busanjin", "yeongdo", "gijang"] as const;
 
-// These pages do not yet meet the regional-image/content completion standard.
-export const unfinishedRegionSlugs = ["busanjin", "yeongdo", "gijang"] as const;
+// Pages without the minimum local content and metadata.
+export const unfinishedRegionSlugs = [] as const;

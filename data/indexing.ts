@@ -16,6 +16,7 @@ export const indexableRegionSlugs = [
   "buk",
   "dong",
   "busanjin",
+  "yeongdo",
 ] as const;
 
 const indexableRegionSet = new Set<string>(indexableRegionSlugs);
@@ -27,7 +28,7 @@ export function isIndexableRegion(slug: string) {
 // These pages have distinct local guidance and metadata, but still need a final
 // visual/quality review before search-engine indexing. Do not mislabel reference
 // images as actual regional projects.
-export const regionSlugsNeedingReview = ["yeongdo", "gijang"] as const;
+export const regionSlugsNeedingReview = ["gijang"] as const;
 
 // Pages without the minimum local content and metadata.
 export const unfinishedRegionSlugs = [] as const;

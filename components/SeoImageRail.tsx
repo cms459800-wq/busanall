@@ -34,11 +34,11 @@ const regionImageMap:Record<string,string[]>={
   "/images/busan/gijang/gijang-restaurant-demolition.webp"
  ],
  "/busan/nam":[
-  "/images/busan/nam/nam-commercial-store-demolition.webp",
-  "/images/busan/nam/nam-office-demolition.webp",
-  "/images/busan/nam/nam-restaurant-demolition.webp",
-  "/images/busan/nam/nam-house-demolition.webp",
-  "/images/busan/nam/nam-interior-demolition.webp"
+  "/images/busan/nam/busan-namgu-demolition.webp",
+  "/images/busan/nam/busan-namgu-restaurant-demolition.webp",
+  "/images/busan/nam/busan-namgu-cafe-demolition.webp",
+  "/images/busan/nam/busan-namgu-bar-demolition.webp",
+  "/images/busan/nam/busan-namgu-interior-demolition.webp"
  ],
  "/busan/saha":[
   "/images/busan/saha/saha-restaurant-demolition.webp",

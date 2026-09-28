@@ -18,10 +18,11 @@ const haeundaeImages=[
   {src:"/images/busan/haeundae/haeundae-interior-demolition.webp",alt:"상가 내부 마감 철거 검토 이미지",caption:"재송동 상가: 공용부 보양과 폐기물 반출 동선 확인"}
 ];
 const namImages=[
-  {src:"/images/busan/nam/nam-office-demolition.webp",alt:"사무실 내부 철거 유형 참고 이미지",caption:"문현동 업무시설: 파티션·전산배선과 공용부 보양"},
-  {src:"/images/busan/nam/nam-store-demolition-corrected.webp",alt:"상가 내부 철거 유형 참고 이미지",caption:"대연동 상가: 간판·바닥 마감의 원상복구 범위"},
-  {src:"/images/busan/nam/nam-restaurant-demolition.webp",alt:"음식점 철거 유형 참고 이미지",caption:"대연·용호 상권: 주방설비와 급배수 차단"},
-  {src:"/images/busan/nam/nam-interior-demolition.webp",alt:"내부 마감 철거 유형 참고 이미지",caption:"용당동 등 주거지 인접 현장: 반출동선과 작업시간"}
+  {src:"/images/busan/nam/busan-namgu-demolition.webp",alt:"부산 남구 상가 철거 안내 이미지",caption:"남구 상가 철거: 매장·사무실 내부 철거와 폐기물 처리"},
+  {src:"/images/busan/nam/busan-namgu-restaurant-demolition.webp",alt:"부산 남구 식당 철거 안내 이미지",caption:"남구 식당 철거: 주방·홀·급배수 설비 철거 범위 확인"},
+  {src:"/images/busan/nam/busan-namgu-cafe-demolition.webp",alt:"부산 남구 카페 철거 안내 이미지",caption:"남구 카페 철거: 카운터·바닥·내부 마감 철거"},
+  {src:"/images/busan/nam/busan-namgu-bar-demolition.webp",alt:"부산 남구 주점 철거 안내 이미지",caption:"남구 주점 철거: 바·주점 내부 시설과 폐기물 처리"},
+  {src:"/images/busan/nam/busan-namgu-interior-demolition.webp",alt:"부산 남구 인테리어 철거 안내 이미지",caption:"남구 인테리어 철거: 주거·상가·사무실 내부 마감 철거"}
 ];
 const sahaImages=[
   {src:"/images/busan/saha/saha-restaurant-demolition.webp",alt:"음식점 철거 유형 참고 이미지",caption:"하단동 음식점: 후드·덕트·급배수 철거 범위"},

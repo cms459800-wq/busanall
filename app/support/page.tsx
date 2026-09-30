@@ -1,4 +1,4 @@
-const inquiryUrl = "https://maxpool.olbarun.kr/";
+const inquiryUrl = "https://open.kakao.com/o/ssjJI0Pi";
 const officialNotice = "https://www.sbiz24.kr/";
 const hopeUrl = "https://hope.sbiz.or.kr/";
 const busan2026 = "https://www.busan.go.kr/nhot/1718623";

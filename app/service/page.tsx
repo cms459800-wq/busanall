@@ -1,6 +1,6 @@
 import { services } from "@/data/services";
 
-const inquiryUrl = "https://maxpool.olbarun.kr/";
+const inquiryUrl = "https://open.kakao.com/o/ssjJI0Pi";
 
 export const metadata = {
   title: "부산 업종별 철거 서비스",

@@ -8,7 +8,7 @@ import { getRegionSeo } from "@/data/regionSeo";
 import { isIndexableRegion } from "@/data/indexing";
 import { isIndexableGuide } from "@/data/guideIndexing";
 
-const baseUrl="https://www.lastwar.co.kr"; const inquiryUrl="https://maxpool.olbarun.kr/";
+const baseUrl="https://www.lastwar.co.kr"; const inquiryUrl="https://open.kakao.com/o/ssjJI0Pi";
 const universalGuideSlugs=["demolition-estimate-checklist","restoration-scope-checklist","demolition-waste-guide"] as const;
 const serviceTone: Record<string,string>={"commercial-store":"blue",restaurant:"orange",cafe:"amber",office:"cyan",academy:"indigo",hospital:"green",factory:"slate",interior:"rose",lodging:"purple",pharmacy:"green",dental:"sky",mart:"orange",warehouse:"slate",house:"green",apartment:"indigo",partial:"rose"};
 const haeundaeImages=[

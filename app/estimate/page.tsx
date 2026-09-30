@@ -4,7 +4,7 @@ export const metadata = {
   alternates: { canonical: "/estimate" },
   openGraph: { title: "부산 철거 견적 준비정보 6가지", description: "현장 위치, 업종·면적, 층수·엘리베이터, 철거범위, 일정과 사진을 정리해 철거견적 상담을 준비하는 방법을 확인하세요.", url: "/estimate", type: "website" }
 };
-const inquiryUrl = "https://maxpool.olbarun.kr/";
+const inquiryUrl = "https://open.kakao.com/o/ssjJI0Pi";
 const prepare = [
   { key:"location",tone:"blue",title:"현장 위치", text:"부산 어느 지역인지와 건물명 또는 도로명, 층수를 정리해 주세요." },
   { key:"area",tone:"orange",title:"업종과 면적", text:"식당·카페·사무실 등 현재 업종과 대략적인 전용면적을 알려주세요." },

@@ -2,7 +2,7 @@ import "./globals.css";
 import SeoImageRail from "@/components/SeoImageRail";
 
 const baseUrl="https://www.lastwar.co.kr";
-const inquiryUrl="https://maxpool.olbarun.kr/";
+const inquiryUrl="https://open.kakao.com/o/ssjJI0Pi";
 const contactEmail="chlpjy@naver.com";
 const googleSiteVerification="wJu7Tp9NbeSzLDyYT6aPD22nMtQqddWtFa0ovumGX3c";
 const naverSiteVerification="9f7e4eb2e29aa0514431f1e7aa7f221e3886fb58";
@@ -31,7 +31,7 @@ const partnerSites=[
  {category:"포장이사전문업체",name:"온리드 이사",href:"https://onled.kr/",tone:"green",icon:"home",desc:"합리적인 이사, 간편한 비교견적"},
  {category:"입주청소견적",name:"올바른 청소",href:"https://xn--6w2bt1cb4gipf6vj.kr/",tone:"purple",icon:"clean",desc:"새로운 시작, 깨끗한 공간"},
  {category:"태아 보험 비교분석",name:"올바른 보험",href:"https://www.adlines.co.kr/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98",tone:"rose",icon:"shield",desc:"가족을 위한 보험 비교 정보"},
- {category:"부산 철거 업체",name:"까치 하우스",href:"https://maxpool.olbarun.kr/",tone:"orange",icon:"helmet",desc:"부산 철거·원상복구 현장 상담"}
+ {category:"부산 철거 업체",name:"까치 하우스",href:"https://open.kakao.com/o/ssjJI0Pi",tone:"orange",icon:"helmet",desc:"부산 철거·원상복구 현장 상담"}
 ] as const;
 
 function Icon({type}:{type:string}){

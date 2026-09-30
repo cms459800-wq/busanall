@@ -9,7 +9,7 @@ import { guideDetailsExtra } from "@/data/guideDetailsExtra";
 import { getGuideFaq } from "@/data/guideFaq";
 import { isIndexableGuide } from "@/data/guideIndexing";
 import ClosureSupport from "@/components/ClosureSupport";
-const baseUrl="https://www.parcelout.kr";const inquiryUrl="https://maxpool.olbarun.kr/";
+const baseUrl="https://www.parcelout.kr";const inquiryUrl="https://open.kakao.com/o/ssjJI0Pi";
 export function generateStaticParams(){return coreGuides.map((guide)=>({slug:guide.slug}));}
 function buildGuideSocialMeta(slug:string,category:string,title:string,description:string){
   if(category.includes("지원"))return{ogTitle:`폐업 전 먼저 확인 | ${title}`,ogDescription:`지원 신청과 철거 순서를 함께 확인할 수 있도록 ${description}`,twitter:`폐업지원과 철거 준비를 한 번에 확인하세요.`};

@@ -2,7 +2,7 @@ import { guides } from "@/data/allGuides";
 import { getGuideSearchIntent } from "@/data/guideSearchIntent";
 import { isIndexableGuide } from "@/data/guideIndexing";
 
-const inquiryUrl = "https://maxpool.olbarun.kr/";
+const inquiryUrl = "https://open.kakao.com/o/ssjJI0Pi";
 
 export const metadata = {
   title: "부산 철거·폐업 가이드",

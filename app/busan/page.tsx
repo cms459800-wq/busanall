@@ -1,7 +1,7 @@
 import { regions } from "@/data/regions";
 import { indexableRegionSlugs } from "@/data/indexing";
 
-const inquiryUrl = "https://maxpool.olbarun.kr/";
+const inquiryUrl = "https://open.kakao.com/o/ssjJI0Pi";
 const indexableRegionSet = new Set<string>(indexableRegionSlugs);
 const reviewedRegions = Object.entries(regions).filter(([slug]) => indexableRegionSet.has(slug));
 

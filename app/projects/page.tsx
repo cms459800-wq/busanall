@@ -7,6 +7,11 @@ export const metadata = {
   robots: { index: false, follow: true }
 };
 
+
+const projectCases = [
+  ["해운대구","해운대 학원 원상복구","/images/work-status/해운대 학원 원상복구.webp"],["부산진구","부산진구 미용실 철거","/images/work-status/부산진구 미용실 철거.webp"],["덕천동","덕천동 돈까스집 철거","/images/work-status/덕천동 돈까스집.webp"],["구포동","구포동 중국집 원상복구","/images/work-status/구포동 중국집 원상복구.webp"],["동래구","동래구 횟집 원상복구","/images/work-status/동래구 횟집 원상복구.webp"],["대신동","대신동 키즈카페 철거","/images/work-status/대신동 키즈카페.webp"],["부암3동","부암3동 세탁소 철거","/images/work-status/부암3동 세탁소.webp"],["당감동","당감동 뷰티샵 폐기물처리","/images/work-status/당감동 뷰티샵폐기물처리.webp"],["개금동","개금동 노래방 원상복구","/images/work-status/개금동 노래방 원상복구.webp"],["가야동","가야동 철물점 원상복구","/images/work-status/가야동 철물점 원상복구.webp"],["서면","서면 음식점 철거","/images/work-status/서면 음식점 철거.webp"]
+] as const;
+
 const recordItems = [
   { key:"location", tone:"blue", title:"지역", text:"부산 구·군 및 현장 위치 범위" },
   { key:"store", tone:"orange", title:"업종·면적", text:"업종과 면적" },
@@ -31,8 +36,8 @@ export default function Page() {
       <style>{`
         .project-tone-blue{--p-bg:#eef4ff;--p-border:#d8e5ff;--p-color:#2458d8}.project-tone-orange{--p-bg:#fff4e8;--p-border:#f7ddbd;--p-color:#a9570a}.project-tone-rose{--p-bg:#fff0f3;--p-border:#f5d6df;--p-color:#b4234d}.project-tone-purple{--p-bg:#f5f0ff;--p-border:#e4d8ff;--p-color:#7048c8}.project-tone-green{--p-bg:#edf9f2;--p-border:#d2efde;--p-color:#18794e}
         .project-record-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.project-record{padding:16px;border:1px solid var(--p-border);background:var(--p-bg);border-radius:14px}.project-record-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#fff;color:var(--p-color);border:1px solid var(--p-border);margin-bottom:11px}.project-record-icon svg{width:22px;height:22px}.project-record strong{display:block;color:#202536;margin-bottom:4px}.project-record span{font-size:13px;line-height:1.55;color:#667085}
-        .project-placeholder{position:relative;overflow:hidden}.project-placeholder-badge{position:absolute;left:14px;top:14px;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.92);border:1px solid #e9ecf2;color:#315cff}.project-placeholder-badge svg{width:21px;height:21px}.project-placeholder:nth-child(2) .project-placeholder-badge{color:#a9570a}.project-placeholder:nth-child(3) .project-placeholder-badge{color:#18794e}.project-placeholder:nth-child(4) .project-placeholder-badge{color:#7048c8}
-        @media(max-width:900px){.project-record-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.project-record-grid{grid-template-columns:1fr}}
+        .project-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.project-case{overflow:hidden;margin:0;border:1px solid #e2e8f0;border-radius:18px;background:#fff;box-shadow:0 8px 24px rgba(15,35,65,.06)}.project-case-image{position:relative;aspect-ratio:4/3;overflow:hidden;background:#f3f6fa}.project-case-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}.project-case:hover .project-case-image img{transform:scale(1.025)}.project-case-body{padding:17px 18px 19px}.project-case-region{display:block;margin-bottom:5px;color:#315cff;font-size:11px;font-weight:850;letter-spacing:.06em}.project-case-title{display:block;color:#172033;font-size:16px;line-height:1.4}.project-placeholder{position:relative;overflow:hidden}.project-placeholder-badge{position:absolute;left:14px;top:14px;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.92);border:1px solid #e9ecf2;color:#315cff}.project-placeholder-badge svg{width:21px;height:21px}.project-placeholder:nth-child(2) .project-placeholder-badge{color:#a9570a}.project-placeholder:nth-child(3) .project-placeholder-badge{color:#18794e}.project-placeholder:nth-child(4) .project-placeholder-badge{color:#7048c8}
+        @media(max-width:900px){.project-record-grid{grid-template-columns:repeat(2,1fr)}.project-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.project-record-grid{grid-template-columns:1fr}.project-gallery{grid-template-columns:1fr}}
       `}</style>
       <header className="list-hero">
         <div className="eyebrow-chip">● PROJECTS</div>
@@ -52,8 +57,8 @@ export default function Page() {
       </section>
 
       <section className="section">
-        <div className="section-heading"><div><span className="section-kicker">COMING WITH REAL DATA</span><h2>실제 시공사례 준비 중</h2></div><p>실제 현장 정보가 생길 때마다 고유 URL로 추가해 서비스·지역·가이드 페이지와 연결합니다.</p></div>
-        <div className="image-grid">{[1,2,3,4].map((n) => <figure className="image-slot project-placeholder" key={n}><span className="project-placeholder-badge"><ProjectIcon type={n===1?"location":n===2?"store":n===3?"scope":"camera"}/></span><div className="placeholder"><strong>실제 현장 사례 {n}</strong><span>사진과 작업정보 확보 후 공개</span></div></figure>)}</div>
+        <div className="section-heading"><div><span className="section-kicker">DEMOLITION PROJECTS</span><h2>부산지역 철거 작업 현황</h2></div><p>업로드된 실제 철거 현장 이미지를 지역과 작업명 기준으로 확인할 수 있습니다.</p></div>
+        <div className="project-gallery">{projectCases.map(([region,title,image])=><figure className="project-case" key={image}><div className="project-case-image"><img src={image} alt={title} loading="lazy"/></div><figcaption className="project-case-body"><span className="project-case-region">{region}</span><strong className="project-case-title">{title}</strong></figcaption></figure>)}</div>
       </section>
 
       <section className="final-cta"><div><span className="section-kicker">FIELD ESTIMATE</span><h2>사례보다 내 현장 조건이 더 중요합니다</h2><p>업종, 면적, 철거범위와 사진을 정리하면 비슷한 사례가 없어도 상담 기준을 잡을 수 있습니다.</p></div><a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a></section>

@@ -77,7 +77,7 @@ function ServiceIcon({ slug }: { slug: string }) {
   return <svg viewBox="0 0 24 24" aria-hidden="true" {...common}>{drawing}</svg>;
 }
 
-const featuredOrder=["commercial-store","office","restaurant","cafe","beauty-salon","gym","academy","karaoke","pub","convenience-store","hospital","factory","apartment","house","franchise","pc-room","laundry","pet-shop","kids-cafe","lodging","warehouse","retail-store","interior","partial"];
+const featuredOrder=(["commercial-store","office","restaurant","cafe","beauty-salon","gym","academy","karaoke","pub","convenience-store","hospital","factory","apartment","house","franchise","pc-room","laundry","pet-shop","kids-cafe","lodging","warehouse","retail-store","interior","partial"] as const) satisfies readonly (keyof typeof services)[];
 const orderedServices=[...featuredOrder.filter(slug=>services[slug]).map(slug=>[slug,services[slug]] as const),...Object.entries(services).filter(([slug])=>!featuredOrder.includes(slug))];
 
 const servicePageCss = `

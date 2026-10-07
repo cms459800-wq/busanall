@@ -78,7 +78,8 @@ function ServiceIcon({ slug }: { slug: string }) {
 }
 
 const featuredOrder=(["commercial-store","office","restaurant","cafe","beauty-salon","gym","academy","karaoke","pub","convenience-store","hospital","factory","apartment","house","franchise","pc-room","laundry","pet-shop","kids-cafe","lodging","warehouse","retail-store","interior","partial"] as const) satisfies readonly (keyof typeof services)[];
-const featuredSet = new Set<string>(featuredOrder);\nconst orderedServices=[...featuredOrder.map(slug=>[slug,services[slug]] as const),...Object.entries(services).filter(([slug])=>!featuredSet.has(slug))];
+const featuredSet = new Set<string>(featuredOrder);
+const orderedServices=[...featuredOrder.map(slug=>[slug,services[slug]] as const),...Object.entries(services).filter(([slug])=>!featuredSet.has(slug))];
 
 const servicePageCss = `
 .service-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.service-directory-card{position:relative;overflow:hidden;min-height:156px;padding:20px 18px;border:1px solid #e6ebf2;border-radius:18px;background:#fff;box-shadow:0 7px 22px rgba(15,23,42,.045);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}

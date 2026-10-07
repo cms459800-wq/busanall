@@ -78,16 +78,18 @@ function ServiceIcon({ slug }: { slug: string }) {
 }
 
 const servicePageCss = `
-.service-directory-card{overflow:hidden;min-height:188px;padding:22px;background:linear-gradient(180deg,#fff 0%,#fcfdff 100%)}
-.service-directory-card .service-card-top{margin-bottom:18px}
-.service-directory-icon{display:grid;place-items:center;width:50px;height:50px;border-radius:15px;background:var(--icon-bg);color:var(--icon-color);border:1px solid var(--icon-border);transition:transform .18s ease,background .18s ease,color .18s ease,box-shadow .18s ease}
-.service-directory-icon svg{width:25px;height:25px}
-.service-directory-card:hover .service-directory-icon{transform:translateY(-2px) rotate(-2deg) scale(1.04);background:var(--icon-color);color:#fff;box-shadow:0 8px 18px rgba(17,24,39,.10)}
-.service-directory-card .service-card-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid #e4e8ef;border-radius:50%;background:#fff;color:#7c879b;transition:transform .18s ease,border-color .18s ease,color .18s ease}
-.service-directory-card:hover .service-card-arrow{transform:translate(2px,-2px);border-color:var(--icon-border);color:var(--icon-color)}
-.service-directory-card strong{font-size:16px}.service-directory-card>span{max-width:92%;font-size:13px;line-height:1.7}
+.service-directory-card{position:relative;overflow:hidden;min-height:194px;padding:24px;border:1px solid #e3e8ef;background:#fff;box-shadow:0 5px 18px rgba(15,23,42,.045);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.service-directory-card:before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--icon-color);opacity:.72}
+.service-directory-card:hover{transform:translateY(-4px);border-color:#cfd8e6;box-shadow:0 14px 32px rgba(15,23,42,.09)}
+.service-directory-card .service-card-top{margin-bottom:20px}
+.service-directory-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:14px;background:#f8fafc;color:var(--icon-color);border:1px solid #e2e8f0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.75),0 3px 10px rgba(15,23,42,.05);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.service-directory-icon svg{width:27px;height:27px;stroke-width:1.7}
+.service-directory-card:hover .service-directory-icon{transform:translateY(-2px);border-color:var(--icon-border);box-shadow:0 7px 16px rgba(15,23,42,.08)}
+.service-directory-card .service-card-arrow{display:grid;place-items:center;width:32px;height:32px;border:1px solid #e2e8f0;border-radius:9px;background:#f8fafc;color:#64748b;font-size:15px;transition:transform .18s ease,border-color .18s ease,color .18s ease,background .18s ease}
+.service-directory-card:hover .service-card-arrow{transform:translate(2px,-2px);border-color:#cbd5e1;color:#0f172a;background:#fff}
+.service-directory-card strong{font-size:17px;letter-spacing:-.025em;color:#172033}.service-directory-card>span{max-width:94%;font-size:13px;line-height:1.75;color:#64748b}
 .tone-blue{--icon-bg:#eef4ff;--icon-border:#d8e5ff;--icon-color:#2458d8}.tone-orange{--icon-bg:#fff4e8;--icon-border:#f8ddbc;--icon-color:#a9570a}.tone-brown{--icon-bg:#f8f1eb;--icon-border:#ead8ca;--icon-color:#8a4b2a}.tone-green{--icon-bg:#edf9f2;--icon-border:#d1eddd;--icon-color:#18794e}.tone-indigo{--icon-bg:#eef0ff;--icon-border:#dadcff;--icon-color:#4c51bf}.tone-purple{--icon-bg:#f5f0ff;--icon-border:#e5d9ff;--icon-color:#7048c8}.tone-pink{--icon-bg:#fff1f7;--icon-border:#f5d8e7;--icon-color:#b4236c}.tone-cyan{--icon-bg:#ecf9fb;--icon-border:#d0edf1;--icon-color:#087b8c}.tone-rose{--icon-bg:#fff0f3;--icon-border:#f7d7df;--icon-color:#b4234d}.tone-violet{--icon-bg:#f7f0ff;--icon-border:#e8d8fb;--icon-color:#7a3eb1}.tone-red{--icon-bg:#fff1f0;--icon-border:#f3d3d0;--icon-color:#b42318}.tone-teal{--icon-bg:#edf9f7;--icon-border:#d3ece7;--icon-color:#0f766e}.tone-sky{--icon-bg:#eef8ff;--icon-border:#d5eafb;--icon-color:#1373a9}.tone-emerald{--icon-bg:#ecf9f3;--icon-border:#cfeadd;--icon-color:#147d5a}.tone-slate{--icon-bg:#f1f4f7;--icon-border:#dde3ea;--icon-color:#475467}.tone-amber{--icon-bg:#fff8df;--icon-border:#f4e5a7;--icon-color:#946200}.tone-charcoal{--icon-bg:#f1f3f5;--icon-border:#d9dee4;--icon-color:#343a40}
-@media(max-width:760px){.service-directory-card{min-height:auto;padding:18px}.service-directory-icon{width:46px;height:46px}.service-directory-icon svg{width:23px;height:23px}}
+@media(max-width:760px){.service-directory-card{min-height:auto;padding:19px 18px}.service-directory-icon{width:48px;height:48px;border-radius:13px}.service-directory-icon svg{width:24px;height:24px}.service-directory-card strong{font-size:16px}}
 `;
 
 export default function Page(){

@@ -163,3 +163,14 @@ body:has(.home-redesign) .site-header .brand-logo-home{max-width:100%;object-fit
 .home-trust-counter strong{display:block;color:#45a2ff;font-size:clamp(21px,2.3vw,36px);font-weight:900;letter-spacing:-.055em;line-height:1.25;text-shadow:0 0 16px rgba(49,133,255,.4);font-variant-numeric:tabular-nums;white-space:nowrap}
 .home-trust-counter span{display:block;color:#d5dfec;font-size:12px;margin-top:7px;white-space:nowrap}
 @media(max-width:600px){.home-trust-counters{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}.home-trust-counter:nth-child(2){border-right:0}.home-trust-counter strong{font-size:30px}.home-trust-counter span{font-size:12px}}
+
+/* Compact region link grid matching the reference screenshot. */
+.home-redesign .home-region-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:20px}
+.home-redesign .home-region-card{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:6px;min-height:54px;padding:12px 14px;border:1px solid #e6edf6;border-radius:9px;background:#fff;box-shadow:0 5px 16px rgba(25,52,93,.055);transform:none}
+.home-redesign .home-region-card:hover{border-color:#95bbff;background:#f5f9ff;box-shadow:0 8px 19px rgba(25,75,150,.12);transform:translateY(-2px)}
+.home-redesign .home-region-compact-label{display:inline-flex;align-items:center;gap:7px;min-width:0}
+.home-redesign .home-region-compact-label svg{width:17px;height:17px;flex-shrink:0;color:#1475f9}
+.home-redesign .home-region-compact-label strong{font-size:13px;line-height:1.35;font-weight:800;color:#162238;white-space:nowrap}
+.home-redesign .home-region-compact-arrow{font-size:17px;font-weight:700;color:#2675ff;flex-shrink:0}
+@media(max-width:900px){.home-redesign .home-region-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:650px){.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.home-redesign .home-region-card{min-height:49px;padding:10px 9px}.home-redesign .home-region-compact-label strong{font-size:12px}.home-redesign .home-region-compact-label svg{width:15px;height:15px}}

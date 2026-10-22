@@ -1,0 +1,414 @@
+/* Main-page-only visual redesign. Existing copy, URLs, assets and shared pages are preserved. */
+body:has(.home-redesign) {background:#fff}
+.home-redesign.page-shell{max-width:none;padding:0 0 72px}
+.home-redesign .home-hero{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;min-height:570px;margin:0;padding:100px max(24px,calc((100vw - 1140px)/2));background:linear-gradient(90deg,rgba(4,10,19,.82),rgba(4,10,19,.55)),url('/images/work-status/서면 음식점 철거.webp') center/cover no-repeat;color:#fff}
+.home-redesign .home-hero-main{max-width:850px;text-align:center;background:transparent;border:0;box-shadow:none;padding:32px 0}
+.home-redesign .home-hero h1{color:#fff;font-size:clamp(38px,5.3vw,72px);line-height:1.16}
+.home-redesign .home-hero h1 .gradient-text{color:#4a9fff}
+.home-redesign .home-hero p{color:#e1e9f3;margin:0 auto;font-size:clamp(14px,1.5vw,18px)}
+.home-redesign .home-hero .cta-row{justify-content:center}
+.home-redesign .home-hero .eyebrow-chip{background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.2);color:#9bc6ff}
+.home-redesign .home-hero .home-stat-row{margin-top:35px}
+.home-redesign .home-hero .home-stat{background:rgba(9,19,31,.65);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px)}
+.home-redesign .home-hero .home-stat strong{color:#fff}
+.home-redesign .home-hero .home-stat span{color:#b8c6d6}
+.home-redesign .hero-panel{display:none}
+.home-redesign .home-section,.home-redesign .final-cta{width:min(1160px,calc(100% - 40px));margin:68px auto}
+.home-redesign .home-section h2{font-size:clamp(26px,3.2vw,39px)}
+.home-redesign .soft-section{padding:0;background:transparent;border:0}
+.home-redesign .explore-visual-grid{gap:15px}
+.home-redesign .explore-visual-card{padding:15px;border:1px solid #edf1f7;border-radius:18px;background:#fff;box-shadow:0 10px 30px rgba(16,35,64,.06)}
+.home-redesign .explore-image{border-radius:15px}
+.home-redesign .explore-visual-card h3{font-size:17px;margin:12px 0 3px}
+.home-redesign .guide-visual-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.home-redesign .guide-visual-card{padding:14px;border:1px solid #e9edf5;border-radius:17px;box-shadow:0 7px 25px rgba(16,35,64,.05)}
+.home-redesign .guide-visual-card .explore-image{width:100%;max-width:none;aspect-ratio:16/9}
+.home-redesign .home-region-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.home-redesign .home-region-card{padding:16px;border-radius:12px}
+.home-redesign .home-region-card strong{font-size:16px}
+.home-redesign .process-grid{gap:12px}
+.home-redesign .process-step{padding:23px;border-radius:17px}
+.home-redesign .final-cta{background:linear-gradient(110deg,#063eac,#1769ff);border-radius:18px;padding:38px}
+.home-redesign .home-projects{padding:64px max(20px,calc((100vw - 1160px)/2));background:#f7faff}
+.home-redesign .home-projects-inner{max-width:1160px;margin:auto}
+.home-redesign .home-projects h2{font-size:clamp(25px,3vw,36px);margin:5px 0 22px}
+.home-redesign .home-projects-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.home-redesign .home-project-card{overflow:hidden;background:white;border-radius:16px;border:1px solid #e7edf5;text-decoration:none;box-shadow:0 9px 28px rgba(20,40,70,.07)}
+.home-redesign .home-project-card img{display:block;width:100%;height:155px;object-fit:cover}
+.home-redesign .home-project-card-body{padding:16px}
+.home-redesign .home-project-card small{color:#2563eb;font-weight:800}
+.home-redesign .home-project-card strong{display:block;margin-top:5px;font-size:16px;color:#14253e}
+.home-redesign .home-projects-all{display:inline-block;margin-top:19px;color:#1769ff;font-weight:800;text-decoration:none}
+body:has(.home-redesign) .site-header{background:rgba(13,22,35,.96);border-bottom-color:rgba(255,255,255,.08)}
+body:has(.home-redesign) .site-header nav a{color:#e4e9f2}
+body:has(.home-redesign) .site-header nav a:hover{color:#73b5ff}
+body:has(.home-redesign) .site-topbar{background:#0d1623;color:#a9b7cb;border-color:#243147}
+@media(max-width:900px){.home-redesign .home-projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-redesign .home-region-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.home-redesign .home-hero{min-height:570px;padding:70px 18px}.home-redesign .home-hero h1{font-size:clamp(34px,9vw,52px)}.home-redesign .home-hero .home-stat-row{grid-template-columns:repeat(2,1fr)}.home-redesign .home-section,.home-redesign .final-cta{width:calc(100% - 28px);margin:48px auto}.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-redesign .guide-visual-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-redesign .home-projects{padding:46px 14px}.home-redesign .home-project-card img{height:125px}.home-redesign .home-project-card-body{padding:12px}.home-redesign .home-project-card strong{font-size:14px}.home-redesign .final-cta{padding:25px}body:has(.home-redesign) .mobile-nav{background:#101c2e!important;border-color:#243147!important}body:has(.home-redesign) .mobile-nav a{background:#18273c;color:#fff;border-color:#34445c}}
+@media(max-width:420px){.home-redesign .home-projects-grid{gap:9px}.home-redesign .home-project-card img{height:105px}.home-redesign .home-hero .home-stat{padding:10px}}
+
+/* Keep the original dark-colored logo legible against the redesigned dark header. */
+body:has(.home-redesign) .site-header .brand{
+  flex:0 0 auto;
+  height:auto;
+  min-height:58px;
+  padding:5px 13px;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 3px 14px rgba(0,0,0,.12);
+  overflow:visible;
+}
+body:has(.home-redesign) .site-header .brand-logo{
+  display:block;
+  width:auto;
+  height:52px;
+  max-width:190px;
+  object-fit:contain;
+  object-position:center;
+}
+@media(max-width:760px){
+  body:has(.home-redesign) .site-header .brand{min-height:46px;padding:4px 9px;border-radius:9px}
+  body:has(.home-redesign) .site-header .brand-logo{height:41px;max-width:142px}
+}
+
+/* Transparent header logo: no white plaque, preserve the existing footer logo. */
+body:has(.home-redesign) .site-header .brand{background:transparent;box-shadow:none;border:0;padding:0 8px 0 0;min-height:70px;overflow:visible}
+body:has(.home-redesign) .site-header .brand-logo{height:68px;max-width:235px;width:auto;object-fit:contain;object-position:left center}
+@media(max-width:760px){body:has(.home-redesign) .site-header .brand{min-height:58px;padding:0 4px 0 0}body:has(.home-redesign) .site-header .brand-logo{height:56px;max-width:178px}}
+
+/* Homepage-only logo selection; keep the original logo on all subpages. */
+.site-header .brand-logo-home{display:none}
+body:has(.home-redesign) .site-header .brand-logo-default{display:none}
+body:has(.home-redesign) .site-header .brand-logo-home{display:block}
+/* Restore the existing quick-check links rather than hiding functionality. */
+.home-redesign .home-hero{flex-wrap:wrap;gap:18px}
+.home-redesign .hero-panel{display:block;width:min(100%,760px);min-height:0}
+.home-redesign .hero-panel .hero-card{padding:18px 22px;background:rgba(7,17,31,.72);border:1px solid rgba(255,255,255,.2);box-shadow:none;backdrop-filter:blur(10px)}
+.home-redesign .hero-panel .hero-card-icon{display:none}
+.home-redesign .hero-panel .hero-card>strong{font-size:16px;color:#fff;margin:5px 0 10px}
+.home-redesign .hero-panel .quick-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.home-redesign .hero-panel .quick-card{padding:12px 9px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.home-redesign .hero-panel .quick-card b{color:#fff;font-size:12px}
+.home-redesign .hero-panel .quick-card span{color:#b5c6dc;font-size:10px}
+@media(max-width:760px){.home-redesign .hero-panel .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-redesign .hero-panel .hero-card{padding:14px}.home-redesign .home-hero{padding-top:56px;padding-bottom:48px}}
+
+/* After-hours inquiry banner replacing the four homepage stat cards. */
+.home-redesign .home-night-notice{display:flex;align-items:center;justify-content:center;gap:20px;width:min(100%,900px);margin:32px auto 0;padding:21px 26px;border:1px solid #4d9dff;border-radius:19px;background:rgba(5,18,37,.91);box-shadow:0 10px 28px rgba(0,0,0,.25);color:#fff;text-align:center}
+.home-redesign .home-night-notice p{margin:0;color:#fff;font-size:clamp(16px,2vw,23px);font-weight:800;line-height:1.5;letter-spacing:-.035em}
+.home-redesign .home-night-notice strong{color:#ffd12b;font-weight:900}
+.home-redesign .home-night-icon{font-size:44px;line-height:1;color:#dbeaff;flex:none}
+.home-redesign .home-night-chat{font-size:31px;line-height:1;flex:none}
+@media(max-width:760px){.home-redesign .home-night-notice{gap:9px;margin-top:22px;padding:15px 10px;border-radius:14px}.home-redesign .home-night-notice p{font-size:clamp(13px,3.4vw,17px);line-height:1.55}.home-redesign .home-night-icon{font-size:26px}.home-redesign .home-night-chat{font-size:20px}}
+
+.home-redesign .home-hero .home-night-notice{background-color:#071a32;border:2px solid #429aff;min-height:100px;padding:20px 24px;box-sizing:border-box;position:relative;z-index:2}
+.home-redesign .home-hero .home-night-notice p{color:#fff;font-weight:800;line-height:1.5}
+
+/* Final mobile layout polish: header, inquiry banner and estimate form. */
+body:has(.home-redesign) .site-header .brand{flex-shrink:0;max-width:48vw}
+body:has(.home-redesign) .site-header .brand-logo-home{max-width:100%;object-fit:contain}
+.home-redesign .home-night-notice{overflow:hidden}
+.home-redesign .home-night-notice p{overflow-wrap:break-word;word-break:keep-all}
+@media(max-width:760px){
+ body:has(.home-redesign) .site-header .brand{height:56px;min-height:0;max-width:46vw}
+ body:has(.home-redesign) .site-header .brand-logo-home{height:52px;max-width:100%}
+ .home-redesign .home-hero-main{width:100%;min-width:0;padding:12px 0}
+ .home-redesign .home-hero .cta-row{display:flex;flex-wrap:wrap;gap:10px}
+ .home-redesign .home-hero .cta-row .btn{max-width:100%;white-space:normal;text-align:center}
+ .home-redesign .home-night-notice{width:100%;gap:7px}
+ .home-redesign .home-night-icon{font-size:23px}
+ .home-redesign .home-night-chat{font-size:18px}
+ .home-redesign .home-projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body:has(.home-redesign) .estimate-lead{scroll-margin-top:120px}
+ body:has(.home-redesign) .estimate-form{max-width:100%;box-sizing:border-box}
+}
+@media(max-width:360px){
+ .home-redesign .home-night-notice{padding:12px 7px;gap:5px}
+ .home-redesign .home-night-notice p{font-size:12px}
+ .home-redesign .home-night-icon{font-size:19px}
+ .home-redesign .home-night-chat{font-size:16px}
+}
+
+/* Reference-inspired landing page refinements */
+.home-redesign .home-hero{min-height:650px;background-image:linear-gradient(90deg,rgba(3,9,17,.84),rgba(5,13,24,.58)),url('/images/work-status/서면 음식점 철거.webp');background-position:center}
+.home-redesign .home-hero-main{max-width:850px}
+.home-redesign .home-hero .eyebrow-chip{font-size:12px;letter-spacing:.18em}
+.home-redesign .home-hero h1{font-weight:900;letter-spacing:-.055em;text-shadow:0 3px 24px rgba(0,0,0,.25)}
+.home-trust-section{background:linear-gradient(115deg,#080e15,#171f2a);color:#fff;padding:66px 22px}
+.home-trust-inner{max-width:1140px;margin:auto;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:70px}
+.home-trust-intro .section-kicker{color:#4d9dff}
+.home-trust-intro h2{font-size:clamp(28px,3.5vw,45px);line-height:1.25;letter-spacing:-.05em;margin:14px 0}
+.home-trust-intro h2 span{color:#399bff}
+.home-trust-intro p{color:#c6d0dd;line-height:1.85;font-size:15px}
+.home-trust-intro>a{display:inline-block;margin-top:16px;color:#8cc4ff;font-weight:800;text-decoration:none}
+.home-trust-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+.home-trust-grid a{display:flex;flex-direction:column;align-items:flex-start;min-height:165px;padding:23px;border-radius:13px;background:#202933;color:#fff;text-decoration:none;transition:background .2s,transform .2s}
+.home-trust-grid a:hover{background:#2a3747;transform:translateY(-3px)}
+.home-trust-grid a>span{color:#e7f2ff;font-size:27px;margin-bottom:11px}
+.home-trust-grid strong{font-size:17px;letter-spacing:-.025em}
+.home-trust-grid p{color:#b4c0ce;font-size:12px;line-height:1.65;margin:8px 0 0}
+.home-redesign .home-projects{background:#f7faff}
+.home-redesign .home-project-card{box-shadow:0 10px 30px rgba(23,45,76,.1);transition:transform .2s,box-shadow .2s}
+.home-redesign .home-project-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(23,45,76,.16)}
+.home-redesign .explore-visual-card{text-align:center}
+.home-redesign .explore-visual-card .explore-image{border-radius:20px}
+.home-redesign .home-region-card{background:#fff;border-radius:12px;padding:17px}
+@media(max-width:900px){.home-trust-inner{grid-template-columns:1fr;gap:28px}.home-trust-section{padding:46px 20px}}
+@media(max-width:600px){.home-redesign .home-hero{min-height:550px}.home-trust-section{padding:38px 14px}.home-trust-grid{gap:8px}.home-trust-grid a{min-height:155px;padding:15px}.home-trust-grid strong{font-size:14px}.home-trust-grid p{font-size:11px}.home-trust-intro h2{font-size:29px}}
+
+/* Animated metrics beneath trust statement */
+.home-trust-counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:28px 0 22px}
+.home-trust-counter{min-width:0;text-align:center;padding:0 10px;border-right:1px solid rgba(171,200,239,.35)}
+.home-trust-counter:first-child{padding-left:0}
+.home-trust-counter:last-child{border-right:0;padding-right:0}
+.home-trust-counter strong{display:block;color:#45a2ff;font-size:clamp(21px,2.3vw,36px);font-weight:900;letter-spacing:-.055em;line-height:1.25;text-shadow:0 0 16px rgba(49,133,255,.4);font-variant-numeric:tabular-nums;white-space:nowrap}
+.home-trust-counter span{display:block;color:#d5dfec;font-size:12px;margin-top:7px;white-space:nowrap}
+@media(max-width:600px){.home-trust-counters{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}.home-trust-counter:nth-child(2){border-right:0}.home-trust-counter strong{font-size:30px}.home-trust-counter span{font-size:12px}}
+
+/* Compact region link grid matching the reference screenshot. */
+.home-redesign .home-region-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:20px}
+.home-redesign .home-region-card{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:6px;min-height:54px;padding:12px 14px;border:1px solid #e6edf6;border-radius:9px;background:#fff;box-shadow:0 5px 16px rgba(25,52,93,.055);transform:none}
+.home-redesign .home-region-card:hover{border-color:#95bbff;background:#f5f9ff;box-shadow:0 8px 19px rgba(25,75,150,.12);transform:translateY(-2px)}
+.home-redesign .home-region-compact-label{display:inline-flex;align-items:center;gap:7px;min-width:0}
+.home-redesign .home-region-compact-label svg{width:17px;height:17px;flex-shrink:0;color:#1475f9}
+.home-redesign .home-region-compact-label strong{font-size:13px;line-height:1.35;font-weight:800;color:#162238;white-space:nowrap}
+.home-redesign .home-region-compact-arrow{font-size:17px;font-weight:700;color:#2675ff;flex-shrink:0}
+@media(max-width:900px){.home-redesign .home-region-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:650px){.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.home-redesign .home-region-card{min-height:49px;padding:10px 9px}.home-redesign .home-region-compact-label strong{font-size:12px}.home-redesign .home-region-compact-label svg{width:15px;height:15px}}
+
+/* Fix oversized location icons caused by legacy region-card SVG styling. */
+.home-redesign .home-region-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:9px!important}
+.home-redesign .home-region-grid .home-region-card{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;min-height:48px!important;height:48px!important;padding:9px 12px!important;gap:8px!important;border-radius:8px!important;box-sizing:border-box!important}
+.home-redesign .home-region-grid .home-region-compact-label{display:inline-flex!important;flex-direction:row!important;align-items:center!important;gap:6px!important;min-width:0!important}
+.home-redesign .home-region-grid .home-region-compact-label svg{display:block!important;width:17px!important;height:17px!important;min-width:17px!important;min-height:17px!important;max-width:17px!important;max-height:17px!important;flex:0 0 17px!important;stroke:#1475f9!important;stroke-width:2!important}
+.home-redesign .home-region-grid .home-region-compact-label strong{font-size:12px!important;font-weight:800!important;line-height:1.25!important;margin:0!important;white-space:nowrap!important}
+.home-redesign .home-region-grid .home-region-compact-arrow{font-size:14px!important;line-height:1!important;margin:0!important}
+@media(max-width:900px){.home-redesign .home-region-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(max-width:650px){.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.home-redesign .home-region-grid .home-region-card{height:46px!important;min-height:46px!important;padding:8px!important}.home-redesign .home-region-grid .home-region-compact-label strong{font-size:11px!important}}
+
+/* Five-step process flow inspired by supplied reference. */
+.home-redesign .home-process-section{padding-top:55px;padding-bottom:55px}
+.home-redesign .home-process-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;margin:27px 0 28px}
+.home-redesign .home-process-flow-unit{position:relative;min-width:0}
+.home-redesign .home-process-flow-card{display:flex;align-items:center;gap:12px;min-height:115px;height:100%;padding:16px 12px;border-radius:16px;background:#fff;box-shadow:0 7px 25px rgba(23,50,90,.075);border:1px solid #edf1f8;box-sizing:border-box}
+.home-redesign .home-process-circle{display:grid;place-items:center;flex:0 0 55px;width:55px;height:55px;border-radius:50%;background:#1267f5;color:#fff}
+.home-redesign .home-process-circle svg{width:26px!important;height:26px!important;max-width:26px!important;max-height:26px!important;stroke:currentColor!important}
+.home-redesign .home-process-copy{min-width:0;display:flex;flex-direction:column;gap:4px}
+.home-redesign .home-process-copy small{color:#7787a0;font-weight:800;font-size:11px}
+.home-redesign .home-process-copy strong{color:#10223d;font-size:14px;line-height:1.35;font-weight:900;word-break:keep-all}
+.home-redesign .home-process-copy p{margin:0;color:#65768c;font-size:11px;line-height:1.55;word-break:keep-all}
+.home-redesign .home-process-next{position:absolute;right:-20px;top:50%;transform:translateY(-50%);color:#1475ff;font-size:21px;font-weight:900;z-index:2}
+.home-redesign .home-process-support{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:30px 34px;border-radius:17px;background:#e4efff}
+.home-redesign .home-process-support span{display:block;color:#1769e7;font-size:16px;font-weight:800}
+.home-redesign .home-process-support h3{color:#1461dd;font-size:clamp(20px,2.5vw,31px);line-height:1.3;margin:4px 0 8px;letter-spacing:-.04em}
+.home-redesign .home-process-support p{margin:0;color:#425572;font-size:13px;line-height:1.7}
+.home-redesign .home-process-support-actions{display:flex;flex-wrap:wrap;gap:10px;flex-shrink:0}
+.home-redesign .home-process-support-actions .btn{border-radius:10px;white-space:nowrap}
+.home-redesign .home-process-support-actions .btn-glass{background:#fff;color:#1461dd;border-color:#fff}
+@media(max-width:1100px){.home-redesign .home-process-flow{gap:13px}.home-redesign .home-process-flow-card{flex-direction:column;text-align:center;min-height:150px;padding:14px 8px}.home-redesign .home-process-next{right:-13px}.home-redesign .home-process-circle{flex-basis:48px;width:48px;height:48px}.home-redesign .home-process-support{flex-direction:column;align-items:flex-start}}
+@media(max-width:650px){.home-redesign .home-process-flow{grid-template-columns:1fr;gap:9px}.home-redesign .home-process-flow-card{flex-direction:row;text-align:left;min-height:76px;padding:12px 15px}.home-redesign .home-process-next{display:none}.home-redesign .home-process-circle{flex-basis:47px;width:47px;height:47px}.home-redesign .home-process-copy strong{font-size:15px}.home-redesign .home-process-support{padding:23px 18px;gap:18px}.home-redesign .home-process-support-actions{width:100%}.home-redesign .home-process-support-actions .btn{flex:1;text-align:center;font-size:12px;padding:11px 9px}}
+
+/* Final free-consultation banner: demolition photo with blue overlay. */
+.home-redesign .final-cta{position:relative;display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:190px;box-sizing:border-box;padding:35px 42px;border-radius:18px;overflow:hidden;color:#fff;background:linear-gradient(90deg,rgba(2,31,83,.96) 0%,rgba(5,53,139,.85) 47%,rgba(1,47,119,.9) 100%),url('/images/work-status/서면 음식점 철거.webp') center 55%/cover no-repeat!important;box-shadow:0 15px 30px rgba(2,36,94,.13)}
+.home-redesign .final-cta>div:first-child{min-width:0;flex:1}
+.home-redesign .final-cta .section-kicker{color:#60bbff!important;letter-spacing:.15em;font-weight:800}
+.home-redesign .final-cta h2{color:#fff!important;font-size:clamp(23px,2.7vw,36px);line-height:1.3;letter-spacing:-.04em;margin:10px 0}
+.home-redesign .final-cta h2 em{font-style:normal;color:#36b6ff}
+.home-redesign .final-cta p{color:#e5efff!important;line-height:1.7;font-size:13px;margin:0;max-width:700px}
+.home-redesign .final-cta .cta-row{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-shrink:0;margin:0}
+.home-redesign .final-cta .cta-row .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 19px;border-radius:10px;font-weight:850;text-align:center;white-space:nowrap;text-decoration:none}
+.home-redesign .final-cta .cta-row .btn-light{background:#fff!important;color:#0758da!important;border:1px solid #fff!important}
+.home-redesign .final-cta .cta-row .btn-primary{background:#0664fa!important;color:#fff!important;border:1px solid #0664fa!important}
+@media(max-width:900px){.home-redesign .final-cta{flex-direction:column;align-items:flex-start;padding:28px 25px}.home-redesign .final-cta .cta-row{justify-content:flex-start;flex-wrap:wrap}}
+@media(max-width:600px){.home-redesign .final-cta{padding:26px 18px;min-height:0}.home-redesign .final-cta h2{font-size:25px}.home-redesign .final-cta p{font-size:12px}.home-redesign .final-cta .cta-row{width:100%;gap:8px}.home-redesign .final-cta .cta-row .btn{flex:1;min-width:0;padding:11px 8px;font-size:12px}}
+#home-estimate-form{scroll-margin-top:115px}
+
+/* Approved dark-navy homepage reference: cohesive sections below the hero. */
+body:has(.home-redesign){background:#081b2b!important}
+.home-redesign.page-shell{background:#081b2b!important;padding-bottom:0!important}
+.home-redesign .home-section{color:#e8f2ff}
+.home-redesign .home-section .section-kicker{color:#51aaff!important;letter-spacing:.12em}
+.home-redesign .home-section h2,.home-redesign .home-section-head h2{color:#f6faff!important}
+.home-redesign .home-section h2 .gradient-text,.home-redesign .home-section-head h2 .gradient-text{color:#429bff!important;background:none!important;-webkit-text-fill-color:#429bff!important}
+.home-redesign .home-section-head p,.home-redesign .home-section>p{color:#b5c9df!important}
+.home-redesign .soft-section{background:transparent!important}
+.home-redesign .explore-visual-card,.home-redesign .guide-visual-card{background:#10283e!important;border:1px solid #2b4f72!important;border-radius:12px!important;padding:0!important;overflow:hidden;box-shadow:0 9px 24px rgba(0,0,0,.14)!important}
+.home-redesign .explore-visual-card:hover,.home-redesign .guide-visual-card:hover{background:#173751!important;border-color:#4488c6!important;transform:translateY(-3px)}
+.home-redesign .explore-visual-card .explore-image,.home-redesign .guide-visual-card .explore-image{width:100%!important;max-width:none!important;aspect-ratio:16/9!important;border-radius:0!important;border:0!important;margin:0!important;box-shadow:none!important}
+.home-redesign .explore-visual-card h3,.home-redesign .guide-visual-card h3{font-size:16px!important;color:#fff!important;margin:13px 15px 4px!important;line-height:1.4!important}
+.home-redesign .explore-visual-card .explore-visual-meta,.home-redesign .guide-visual-card .explore-visual-meta{padding:0 15px 15px!important;color:#b4c9df!important;font-size:12px!important}
+.home-redesign .explore-visual-card .explore-arrow,.home-redesign .guide-visual-card .explore-arrow{color:#54acff!important}
+.home-redesign .guide-visual-grid{gap:14px!important}
+.home-redesign .home-region-grid .home-region-card{background:#0d263c!important;border:1px solid #305373!important;box-shadow:none!important;color:#e9f4ff!important;border-radius:7px!important}
+.home-redesign .home-region-grid .home-region-card:hover{background:#173650!important;border-color:#5ba8f5!important}
+.home-redesign .home-region-grid .home-region-compact-label strong{color:#edf5ff!important}
+.home-redesign .home-region-grid .home-region-compact-label svg{stroke:#4eacff!important}
+.home-redesign .home-region-grid .home-region-compact-arrow{color:#55b2ff!important}
+.home-redesign .home-process-flow-card{background:#102a42!important;border:1px solid #2e5274!important;box-shadow:none!important}
+.home-redesign .home-process-copy strong{color:#f5faff!important}
+.home-redesign .home-process-copy small{color:#6cb8ff!important}
+.home-redesign .home-process-copy p{color:#a9c1d9!important}
+.home-redesign .home-process-next{color:#62b6ff!important}
+.home-redesign .home-process-support{background:linear-gradient(105deg,#073e91,#073065)!important;border:1px solid #1865c6!important}
+.home-redesign .home-process-support span{color:#8dc6ff!important}
+.home-redesign .home-process-support h3{color:#fff!important}
+.home-redesign .home-process-support p{color:#c5dcf7!important}
+.home-redesign .home-process-support-actions .btn-glass{background:#102e53!important;color:#fff!important;border:1px solid #5687bd!important}
+.home-redesign .closure-support{background:#0d2338!important;border:1px solid #315476!important;box-shadow:none!important}
+.home-redesign .closure-support:before{background:rgba(31,109,223,.12)!important}
+.home-redesign .closure-support-lead{color:#bfd0e3!important}
+.home-redesign .closure-support-card{background:#122e47!important;border:1px solid #315879!important;box-shadow:none!important}
+.home-redesign .closure-support-card small{color:#7dbbff!important}
+.home-redesign .closure-support-card strong{color:#fff!important}
+.home-redesign .closure-support-card p{color:#b9cee0!important}
+.home-redesign .closure-support-warning{background:#26291e!important;border:1px solid #9d8028!important;color:#f0d78d!important}
+.home-redesign .closure-support-warning strong{color:#ffdb73!important}
+.home-redesign .closure-support-step{background:#112a41!important;border:1px solid #315677!important}
+.home-redesign .closure-support-step b{color:#6eb5ff!important}
+.home-redesign .closure-support-step span{color:#c1d0e0!important}
+.home-redesign .home-section .btn-glass{background:#102940!important;border:1px solid #3b6083!important;color:#e8f5ff!important}
+.home-redesign .home-section .btn-glass:hover{background:#193e5e!important}
+.home-redesign .final-cta{border:1px solid #2c77cb!important}
+@media(max-width:760px){.home-redesign .home-section{margin-top:45px!important;margin-bottom:45px!important}.home-redesign .explore-visual-card h3,.home-redesign .guide-visual-card h3{font-size:14px!important;margin:10px 10px 4px!important}.home-redesign .explore-visual-card .explore-visual-meta,.home-redesign .guide-visual-card .explore-visual-meta{padding:0 10px 12px!important;font-size:11px!important}.home-redesign .closure-support{padding:20px 15px!important}}
+
+/* Fine alignment to approved navy mockup: tighter rhythm, uniform panels. */
+.home-redesign{--home-dark:#081b2b;--home-panel:#10273d;--home-border:#274967;--home-accent:#328dff}
+.home-redesign .home-section{width:min(1120px,calc(100% - 40px))!important;margin-top:48px!important;margin-bottom:48px!important}
+.home-redesign .home-section-head{margin-bottom:17px!important;gap:20px!important}
+.home-redesign .home-section-head h2{font-size:clamp(25px,2.5vw,33px)!important;line-height:1.28!important;letter-spacing:-.045em}
+.home-redesign .home-section-head p{max-width:420px!important;font-size:12px!important;line-height:1.75!important}
+.home-redesign .explore-visual-grid,.home-redesign .guide-visual-grid{margin-top:17px!important;gap:13px!important}
+.home-redesign .guide-visual-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.home-redesign .explore-visual-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.home-redesign .explore-visual-card,.home-redesign .guide-visual-card{border-radius:10px!important;background:var(--home-panel)!important;border-color:var(--home-border)!important;transition:transform .2s ease,border-color .2s ease}
+.home-redesign .explore-visual-card .explore-image,.home-redesign .guide-visual-card .explore-image{aspect-ratio:1.55!important}
+.home-redesign .home-region-grid{margin-top:16px!important;gap:8px!important}
+.home-redesign .home-region-grid .home-region-card{height:43px!important;min-height:43px!important;padding:8px 12px!important;background:#0e2940!important;border:1px solid #244c6b!important}
+.home-redesign .home-region-grid .home-region-compact-label svg{width:15px!important;height:15px!important;min-width:15px!important;min-height:15px!important;max-width:15px!important;max-height:15px!important;flex:0 0 15px!important}
+.home-redesign .home-process-flow{margin:17px 0 18px!important;gap:16px!important}
+.home-redesign .home-process-flow-card{min-height:96px!important;padding:12px!important;border-radius:11px!important}
+.home-redesign .home-process-circle{flex:0 0 44px!important;width:44px!important;height:44px!important}
+.home-redesign .home-process-copy strong{font-size:12px!important}
+.home-redesign .home-process-copy p{font-size:10px!important}
+.home-redesign .home-process-next{right:-14px!important;font-size:17px!important}
+.home-redesign .home-process-support{padding:23px 26px!important;border-radius:12px!important}
+.home-redesign .home-process-support h3{font-size:24px!important}
+.home-redesign .closure-support{border-radius:14px!important;padding:27px!important}
+.home-redesign .closure-support-grid{gap:11px!important;margin:18px 0!important}
+.home-redesign .closure-support-card{padding:17px!important;border-radius:11px!important}
+.home-redesign .closure-support-card strong{font-size:17px!important}
+.home-redesign .closure-support-warning{padding:13px 16px!important;border-radius:10px!important}
+.home-redesign .closure-support-steps{gap:10px!important;margin-top:13px!important}
+.home-redesign .closure-support-step{padding:13px!important;border-radius:9px!important}
+.home-redesign .final-cta{width:min(1120px,calc(100% - 40px))!important;margin:48px auto!important;min-height:155px!important;padding:25px 31px!important;border-radius:12px!important}
+.home-redesign .final-cta h2{font-size:clamp(23px,2.5vw,30px)!important}
+@media(max-width:900px){.home-redesign .explore-visual-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.home-redesign .home-process-flow-card{flex-direction:column!important;text-align:center!important;min-height:140px!important}.home-redesign .home-process-next{right:-12px!important}}
+@media(max-width:650px){.home-redesign .home-section{width:calc(100% - 28px)!important;margin-top:38px!important;margin-bottom:38px!important}.home-redesign .explore-visual-grid,.home-redesign .guide-visual-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.home-redesign .home-process-flow{grid-template-columns:1fr!important;gap:9px!important}.home-redesign .home-process-flow-card{flex-direction:row!important;text-align:left!important;min-height:70px!important}.home-redesign .home-process-next{display:none!important}.home-redesign .home-process-support{padding:20px 16px!important}.home-redesign .home-process-support h3{font-size:20px!important}.home-redesign .closure-support{padding:18px 13px!important}.home-redesign .final-cta{width:calc(100% - 28px)!important;padding:23px 17px!important}}
+
+/* Final mockup fidelity: consistent dark surfaces, compact image cards and typography. */
+.home-redesign.page-shell{background:#081b2b!important;color:#e9f4ff!important}
+.home-redesign .home-section .section-kicker{display:inline-block;font-size:10px!important;font-weight:900!important;letter-spacing:.16em!important;margin-bottom:8px!important}
+.home-redesign .home-section-head{align-items:end!important}
+.home-redesign .home-section-head h2{font-weight:900!important;text-wrap:balance}
+.home-redesign .home-section-head p{color:#9fb7d0!important}
+.home-redesign .guide-visual-card,.home-redesign .explore-visual-card{display:flex!important;flex-direction:column!important;min-height:0!important}
+.home-redesign .guide-visual-card .explore-image,.home-redesign .explore-visual-card .explore-image{aspect-ratio:1.7!important;overflow:hidden!important;background:#0d253b!important}
+.home-redesign .guide-visual-card .explore-image img,.home-redesign .explore-visual-card .explore-image img{object-fit:cover!important}
+.home-redesign .guide-visual-card h3,.home-redesign .explore-visual-card h3{font-weight:850!important;letter-spacing:-.025em!important}
+.home-redesign .guide-visual-card .explore-visual-meta,.home-redesign .explore-visual-card .explore-visual-meta{margin-top:auto!important;gap:9px!important;line-height:1.5!important}
+.home-redesign .guide-visual-card .explore-visual-meta span:first-child,.home-redesign .explore-visual-card .explore-visual-meta span:first-child{overflow-wrap:anywhere}
+.home-redesign .home-region-grid .home-region-card{box-shadow:0 2px 7px rgba(0,0,0,.09)!important}
+.home-redesign .home-region-grid .home-region-compact-label strong{font-weight:750!important;letter-spacing:-.03em!important}
+.home-redesign .home-process-section .home-process-flow-card{box-shadow:0 5px 18px rgba(0,0,0,.09)!important}
+.home-redesign .home-process-circle{background:linear-gradient(145deg,#247bff,#0051e0)!important;box-shadow:0 4px 12px rgba(0,99,255,.22)!important}
+.home-redesign .home-process-copy{gap:3px!important}
+.home-redesign .home-process-support{box-shadow:0 7px 22px rgba(0,40,105,.2)!important}
+.home-redesign .closure-support-head{align-items:center!important}
+.home-redesign .closure-support-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.home-redesign .closure-support-steps{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.home-redesign .closure-support-card,.home-redesign .closure-support-step{height:100%!important;box-sizing:border-box!important}
+.home-redesign .final-cta{background-position:center 58%!important;box-shadow:0 9px 26px rgba(0,36,92,.23)!important}
+@media(max-width:760px){.home-redesign .home-section-head{align-items:flex-start!important}.home-redesign .closure-support-grid,.home-redesign .closure-support-steps{grid-template-columns:1fr!important}.home-redesign .guide-visual-card .explore-image,.home-redesign .explore-visual-card .explore-image{aspect-ratio:1.35!important}}
+
+/* Hero service phrase: animated red underline and white ending. */
+.home-redesign .home-hero h1 .hero-red-underline{position:relative;display:inline;box-decoration-break:clone;-webkit-box-decoration-break:clone;color:#f7fbff!important;-webkit-text-fill-color:#f7fbff!important;background:linear-gradient(#f04444,#f04444) left calc(100% - 2px)/0 4px no-repeat;animation:hero-red-line-draw 1.15s .8s cubic-bezier(.2,.8,.2,1) forwards}
+.home-redesign .home-hero h1 .hero-white-ending{color:#fff!important;-webkit-text-fill-color:#fff!important}
+@keyframes hero-red-line-draw{from{background-size:0 4px}to{background-size:100% 4px}}
+@media(prefers-reduced-motion:reduce){.home-redesign .home-hero h1 .hero-red-underline{animation:none!important;background-size:100% 4px!important}}
+
+/* Final hero headline palette: white / blue with animated red underline / white. */
+.home-redesign .home-hero h1{color:#fff!important}
+.home-redesign .home-hero h1 .hero-red-underline{color:#4a9fff!important;-webkit-text-fill-color:#4a9fff!important}
+.home-redesign .home-hero h1 .hero-white-ending{color:#fff!important;-webkit-text-fill-color:#fff!important}
+
+/* Slightly larger hero phone and Kakao consultation buttons. */
+.home-redesign .home-hero .cta-row .btn{min-height:60px!important;padding:17px 28px!important;font-size:16px!important;font-weight:850!important;border-radius:12px!important;line-height:1.4!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.home-redesign .home-hero .cta-row{gap:14px!important}
+@media(max-width:650px){.home-redesign .home-hero .cta-row .btn{min-height:54px!important;padding:14px 18px!important;font-size:14px!important}.home-redesign .home-hero .cta-row{gap:10px!important}}
+
+/* Dark comparison section, matched to approved visual concept. */
+.home-redesign .home-compare{position:relative;isolation:isolate;padding:56px 20px 60px;background:#06192b url('/images/work-status/서면 음식점 철거.webp') center/cover no-repeat;color:#fff;overflow:hidden}
+.home-redesign .home-compare:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(2,17,32,.83),rgba(3,23,43,.96) 35%,rgba(3,23,43,.94) 67%,rgba(2,17,32,.77))}
+.home-redesign .home-compare-wrap{max-width:1120px;margin:0 auto}
+.home-redesign .home-compare-heading{text-align:center;margin-bottom:29px}
+.home-redesign .home-compare-eyebrow{display:inline-flex;align-items:center;border:1px solid #527390;border-radius:100px;padding:7px 16px;font-size:12px;color:#e3effb;background:rgba(3,23,44,.6);margin-bottom:15px}
+.home-redesign .home-compare-heading h2{color:#fff!important;font-size:clamp(29px,3.7vw,48px)!important;line-height:1.28!important;letter-spacing:-.055em!important;font-weight:900!important;margin:0 0 13px!important}
+.home-redesign .home-compare-heading h2 span{color:#20a6ff!important}
+.home-redesign .home-compare-heading p{color:#e1e9f3!important;font-size:15px!important;line-height:1.7!important;margin:0!important}
+.home-redesign .home-compare-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.06fr);gap:24px;align-items:stretch;position:relative;max-width:1050px;margin:auto}
+.home-redesign .home-compare-bad,.home-redesign .home-compare-good{min-width:0;border-radius:20px;padding:23px 22px 24px;box-sizing:border-box}
+.home-redesign .home-compare-bad{background:linear-gradient(135deg,rgba(48,66,84,.94),rgba(24,43,63,.94));border:1px solid rgba(186,207,229,.35);box-shadow:0 10px 25px rgba(0,0,0,.18)}
+.home-redesign .home-compare-bad-heading{display:flex;justify-content:center;align-items:center;gap:13px;min-height:56px;color:#fff;font-size:19px;font-weight:850}
+.home-redesign .home-compare-alert{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(#cdd8e4,#8196aa);color:#fff;font-size:24px;font-weight:900}
+.home-redesign .home-compare-list{display:flex;flex-direction:column;gap:9px;margin-top:16px}
+.home-redesign .home-compare-bad-row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:12px;align-items:center;min-height:52px;color:#e7f0fa;font-size:13px;line-height:1.5}
+.home-redesign .home-compare-bad-row b{display:grid;place-items:center;min-height:42px;padding:7px 8px;border-radius:8px;background:#405970;color:#fff;font-size:13px}
+.home-redesign .home-compare-bad-row span{border:1px solid rgba(177,200,222,.25);background:rgba(8,29,49,.24);border-radius:9px;padding:11px 12px}
+.home-redesign .home-compare-good{background:linear-gradient(145deg,#eff9ff,#cde7ff);border:2px solid #61b9ff;box-shadow:0 0 23px rgba(43,147,255,.35),0 10px 28px rgba(0,0,0,.18);color:#071c38}
+.home-redesign .home-compare-logo{height:60px;display:flex;align-items:center;justify-content:center}
+.home-redesign .home-compare-logo img{width:auto;height:auto;max-width:230px;max-height:60px;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(255,255,255,.4))}
+.home-redesign .home-compare-good-row{display:flex;align-items:center;gap:12px;min-height:52px;background:rgba(255,255,255,.9);border-radius:11px;padding:10px 13px;color:#14253c;font-size:13px;line-height:1.55}
+.home-redesign .home-compare-good-row b{color:#075bd6;font-weight:900}
+.home-redesign .home-compare-check{display:grid;place-items:center;flex:0 0 31px;width:31px;height:31px;border-radius:50%;background:#0c6bfa;color:#fff;font-size:19px;font-weight:900}
+.home-redesign .home-compare-vs{position:absolute;z-index:2;left:50%;top:53%;transform:translate(-50%,-50%);width:55px;height:55px;border:2px solid #cce8ff;border-radius:50%;display:grid;place-items:center;background:#096ef0;box-shadow:0 6px 18px #001d4e80;color:white;font-size:31px}
+.home-redesign .home-compare-actions{display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin-top:24px}
+.home-redesign .home-compare-button{display:inline-flex;justify-content:center;align-items:center;padding:12px 21px;min-height:45px;border-radius:10px;background:#1677f5;color:white!important;font-weight:800;font-size:13px;text-decoration:none;border:1px solid #4d9dff;transition:transform .2s,box-shadow .2s}
+.home-redesign .home-compare-button:hover{transform:translateY(-3px);box-shadow:0 9px 23px #005ee344}
+.home-redesign .home-compare-button-outline{background:#0a233c;border-color:#5b88b2}
+@media(max-width:760px){.home-redesign .home-compare{padding:42px 14px}.home-redesign .home-compare-columns{grid-template-columns:1fr;gap:15px}.home-redesign .home-compare-vs{left:50%;top:50%;width:40px;height:40px;font-size:25px;transform:translate(-50%,-50%) rotate(90deg)}.home-redesign .home-compare-bad,.home-redesign .home-compare-good{padding:17px 13px;border-radius:15px}.home-redesign .home-compare-bad-row{grid-template-columns:66px minmax(0,1fr);gap:7px;font-size:12px}.home-redesign .home-compare-bad-row b{font-size:12px}.home-redesign .home-compare-good-row{font-size:12px;padding:9px}.home-redesign .home-compare-heading p{font-size:13px!important}}
+@media(prefers-reduced-motion:reduce){.home-redesign .home-compare-button{transition:none!important}}
+
+/* Premium image-matched comparison: panoramic demolition backdrop, glass card and luminous solution card. */
+.home-redesign .home-compare{padding:56px 24px 65px!important;background-image:linear-gradient(90deg,rgba(2,18,35,.44),rgba(2,18,35,.87) 30%,rgba(2,18,35,.85) 72%,rgba(2,18,35,.38)),url('/images/work-status/서면 음식점 철거.webp')!important;background-position:center!important;background-size:cover!important;border-top:1px solid rgba(65,154,255,.25);border-bottom:1px solid rgba(65,154,255,.25)}
+.home-redesign .home-compare:before{background:linear-gradient(180deg,rgba(3,20,37,.18),rgba(2,16,30,.46))!important;pointer-events:none}
+.home-redesign .home-compare:after{content:"";position:absolute;right:3%;top:0;width:230px;height:180px;opacity:.22;pointer-events:none;background-image:radial-gradient(#35a6ff 1.2px,transparent 1.2px);background-size:16px 16px;mask-image:linear-gradient(to bottom,#000,transparent)}
+.home-redesign .home-compare-wrap{max-width:1160px!important}
+.home-redesign .home-compare-heading{margin-bottom:30px!important}
+.home-redesign .home-compare-heading h2{font-size:clamp(33px,4.1vw,55px)!important;line-height:1.2!important;text-shadow:0 4px 18px #00192d70}
+.home-redesign .home-compare-heading h2 span{color:#1c9cff!important}
+.home-redesign .home-compare-heading p{font-size:15px!important;color:#d7e6f4!important}
+.home-redesign .home-compare-columns{max-width:1100px!important;gap:26px!important}
+.home-redesign .home-compare-bad,.home-redesign .home-compare-good{border-radius:22px!important;padding:22px 24px 23px!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .3s ease,box-shadow .3s ease}
+.home-redesign .home-compare-bad:hover,.home-redesign .home-compare-good:hover{transform:translateY(-5px)}
+.home-redesign .home-compare-bad{background:linear-gradient(145deg,rgba(29,49,70,.91),rgba(16,35,54,.88))!important;border:1px solid rgba(181,211,239,.27)!important;box-shadow:inset 0 1px rgba(255,255,255,.12),0 18px 42px #0006!important}
+.home-redesign .home-compare-bad-heading{min-height:57px!important;font-size:20px!important;letter-spacing:-.035em}
+.home-redesign .home-compare-alert{background:#dbe8f5!important;color:#244b71!important;box-shadow:0 3px 13px #0003}
+.home-redesign .home-compare-list{gap:9px!important;margin-top:16px!important}
+.home-redesign .home-compare-bad-row{grid-template-columns:85px minmax(0,1fr)!important;gap:10px!important;min-height:54px!important;font-size:13px!important}
+.home-redesign .home-compare-bad-row b{background:rgba(98,124,148,.18)!important;border:1px solid rgba(187,213,236,.18);min-height:49px!important;border-radius:10px!important}
+.home-redesign .home-compare-bad-row span{background:rgba(8,27,47,.43)!important;border:1px solid rgba(155,192,223,.15)!important;min-height:49px;display:flex;align-items:center;padding:10px 14px!important}
+.home-redesign .home-compare-good{background:linear-gradient(135deg,#e8f6ff 0%,#d3eaff 60%,#e8f5ff 100%)!important;border:2px solid #7acbff!important;box-shadow:0 0 0 1px #55baff66,0 0 35px #168cff88,0 20px 50px #0006!important}
+.home-redesign .home-compare-logo{height:57px!important;gap:12px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.home-redesign .home-compare-logo img{width:68px!important;max-width:68px!important;height:53px!important;max-height:53px!important;object-fit:contain!important;filter:drop-shadow(0 1px 1px #2d5d8e30)}
+.home-redesign .home-compare-logo strong{font-size:clamp(23px,2.5vw,33px);font-weight:950;letter-spacing:-.055em;color:#0c2847;white-space:nowrap}
+.home-redesign .home-compare-good-row{min-height:54px!important;background:rgba(255,255,255,.89)!important;border:1px solid rgba(144,198,243,.34);box-shadow:0 2px 8px #2d6c9d10;border-radius:11px!important;font-size:13px!important;padding:10px 14px!important}
+.home-redesign .home-compare-good-row b{color:#0866e8!important}
+.home-redesign .home-compare-check{background:linear-gradient(145deg,#158dff,#0754dd)!important;box-shadow:0 3px 10px #0866e834}
+.home-redesign .home-compare-vs{top:53%!important;width:57px!important;height:57px!important;border:2px solid #c9eaff!important;background:linear-gradient(145deg,#1595ff,#0752d5)!important;box-shadow:0 0 24px #168fff99,0 6px 18px #001d4e80!important}
+.home-redesign .home-compare-actions{margin-top:26px!important}
+.home-redesign .home-compare-button{min-height:48px!important;padding:13px 23px!important;font-size:14px!important}
+@media(max-width:760px){.home-redesign .home-compare{padding:42px 14px 47px!important}.home-redesign .home-compare-columns{grid-template-columns:1fr!important;gap:20px!important}.home-redesign .home-compare-bad,.home-redesign .home-compare-good{padding:17px 13px!important;border-radius:16px!important}.home-redesign .home-compare-bad-row{grid-template-columns:69px minmax(0,1fr)!important;gap:7px!important;font-size:12px!important}.home-redesign .home-compare-bad-row b{font-size:12px!important}.home-redesign .home-compare-good-row{font-size:12px!important;padding:9px!important}.home-redesign .home-compare-vs{top:50%!important;width:43px!important;height:43px!important;font-size:24px!important;transform:translate(-50%,-50%) rotate(90deg)!important}.home-redesign .home-compare-logo img{width:55px!important;height:46px!important}.home-redesign .home-compare-logo strong{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.home-redesign .home-compare-bad,.home-redesign .home-compare-good{transition:none!important}}
+
+/* Approved final treatment: remove demolition photo and use the solid deep-navy reference background. */
+.home-redesign .home-compare{background:#071c2d!important;background-image:none!important;background-color:#071c2d!important}
+.home-redesign .home-compare::before,.home-redesign .home-compare::after{content:none!important;display:none!important;background:none!important}

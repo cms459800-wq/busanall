@@ -7,3 +7,124 @@
 .detail-list-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.detail-list-card{display:flex;align-items:flex-start;gap:11px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#fff}.detail-list-card b{display:grid;place-items:center;flex:0 0 28px;height:28px;border-radius:8px;background:var(--brand-soft);color:var(--brand);font-size:9.5px}.detail-list-card span{color:#3f4a5d;font-size:12.5px;line-height:1.6;font-weight:650}.scenario-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.scenario-card{padding:20px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,#fff 0%,#fafbff 100%);box-shadow:0 3px 12px rgba(17,24,39,.025)}.scenario-card>span{color:var(--brand);font-size:9.5px;font-weight:800;letter-spacing:.08em}.scenario-card h3{margin:13px 0 7px;color:var(--text-strong);font-size:16px;line-height:1.4;letter-spacing:-.035em}.scenario-card p{margin:0;color:var(--muted);font-size:12.8px;line-height:1.7}
 .process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.process-step{padding:18px}.process-step b{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:var(--brand-soft);color:var(--brand);font-size:10px}.process-step strong{display:block;margin:18px 0 5px;color:var(--text-strong);font-size:14.5px}.process-step p{margin:0}.image-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.image-slot{margin:0}.placeholder{aspect-ratio:16/10;display:grid;place-items:center;padding:22px;border:1px dashed #cfd6e3;border-radius:14px;background:var(--surface);color:#778196;text-align:center}.placeholder-icon{margin-bottom:5px;color:#8d99b0;font-size:22px}.placeholder span{display:block;margin-top:4px;color:#98a2b3;font-size:10.5px}.image-slot figcaption{padding:7px 2px 0;color:#8a94a6;font-size:10.5px}.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.info-card{padding:22px}.info-card h2{font-size:18px!important;margin-top:0!important}.info-card li{margin:7px 0;color:#536073;font-size:13px}.support-box{padding:30px;border:1px solid #dde4fa;border-radius:18px;background:linear-gradient(135deg,#f4f7ff 0%,#f8f9ff 55%,#f6f3ff 100%);box-shadow:0 5px 18px rgba(49,92,255,.04)}.support-box>p{max-width:840px;color:var(--muted);font-size:13px}.support-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}.support-stats>div{padding:17px;border:1px solid #e3e7f1;border-radius:12px;background:#fff}.support-stats span{display:block;color:#8993a7;font-size:10.5px}.support-stats strong{display:block;margin-top:3px;color:var(--text-strong);font-size:16px;letter-spacing:-.03em}.faq details{margin:8px 0;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:#fff}.faq summary{cursor:pointer;color:#2b3548;font-size:13.5px;font-weight:700}.faq details p{color:var(--muted);font-size:12.8px}.final-cta{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:64px;padding:31px 32px;border-radius:18px;background:var(--brand);color:#fff;box-shadow:0 12px 30px rgba(49,92,255,.18)}.final-cta h2{color:#fff;margin-top:4px}.final-cta p{max-width:700px;margin:8px 0 0;color:rgba(255,255,255,.8);font-size:13px}.final-cta .section-kicker{color:#dfe6ff!important}.site-footer{display:flex;justify-content:space-between;gap:30px;padding:30px max(20px,calc((100% - 1120px)/2));border-top:1px solid var(--line);background:#fafbfc;color:#7b8699;font-size:11.5px}.site-footer strong{color:#253047;font-size:14.5px}.site-footer p{margin:4px 0 0}.site-footer a{text-decoration:none}.site-footer a:hover{color:var(--brand)}.footer-links{display:flex;gap:16px;flex-wrap:wrap}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}@media(max-width:980px){.site-header nav{gap:13px}.site-header nav a{font-size:12px}.hero,.home-hero{grid-template-columns:1fr}.hero-panel{min-height:auto}.home-stat-row{grid-template-columns:repeat(2,minmax(0,1fr))}.home-grid,.feature-grid,.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.region-link-grid,.detail-list-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section-heading,.home-section-head{align-items:flex-start;flex-direction:column;gap:10px}}@media(max-width:760px){.site-topbar{display:none}.site-header{min-height:58px;padding:0 16px}.site-header nav{display:none}.mobile-nav{display:block;position:sticky;top:58px;z-index:45;overflow-x:auto;padding:8px 12px;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);scrollbar-width:none}.mobile-nav::-webkit-scrollbar{display:none}.header-cta{min-height:38px;padding:0 13px;font-size:12.5px}.brand{font-size:16px}.brand-mark{width:26px;height:26px}.page-shell{padding:18px 14px 70px}.hero>div:first-child,.home-hero-main{padding:26px 20px;border-radius:17px}.hero h1,.home-hero h1,.list-hero h1{font-size:2rem;line-height:1.14}.hero p,.home-hero p,.list-hero p{font-size:13.5px;line-height:1.72}.list-hero{padding:24px 2px 20px}.breadcrumb{overflow-x:auto;white-space:nowrap;padding-bottom:2px}.home-grid,.feature-grid,.service-grid,.image-grid,.split,.support-stats,.process-grid,.home-stat-row,.quick-grid,.region-link-grid,.detail-list-grid,.scenario-grid{grid-template-columns:1fr}.soft-section{padding:20px 15px;border-radius:17px}.section,.home-section{margin:46px 0}.section-heading,.home-section-head{margin-bottom:18px}.hero-card,.support-box{padding:20px;border-radius:16px}.service-card,.feature-card,.home-link-card{padding:17px}.service-card-top{margin-bottom:16px}.placeholder{aspect-ratio:4/3;padding:18px;border-radius:12px}.cta-row{gap:8px;margin-top:18px}.cta-row .btn{width:100%}.final-cta{align-items:stretch;flex-direction:column;padding:24px 20px;border-radius:16px}.final-cta .btn{width:100%}.site-footer{align-items:flex-start;flex-direction:column;padding:26px 16px}.footer-links{gap:12px 16px}}
+
+/* Unified navy site header, matching the redesigned homepage. */
+.site-header{background:#151e2b!important;border-bottom:1px solid #293447!important;color:#fff!important}
+.site-header nav a{color:#f1f5f9!important}
+.site-header nav a:hover{color:#93c5fd!important}
+.site-header .brand{background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}
+.site-header .brand-logo-default{display:none!important}
+.site-header .brand-logo-home{display:block!important;height:60px!important;max-width:210px!important;object-fit:contain!important}
+@media(max-width:760px){.site-header .brand-logo-home{height:46px!important;max-width:160px!important}.mobile-nav{background:#151e2b!important;border-color:#29364b!important}.mobile-nav a{background:#202d40!important;color:#fff!important;border-color:#3a4960!important}}
+
+/* Keep the shared top information strip identical on homepage and subpages. */
+.site-topbar{background:#0d1623!important;color:#a9b7cb!important;border-bottom:1px solid #243147!important}
+
+/* Homepage consultation + work-status sections: match the dark hero palette. */
+body:has(.home-redesign) .estimate-lead{position:relative;isolation:isolate;width:100%;max-width:none;margin:0;padding:65px max(20px,calc((100% - 1140px)/2)) 72px;box-sizing:border-box;background:linear-gradient(105deg,rgba(5,15,29,.95),rgba(5,16,31,.88)),url('/images/work-status/서면 음식점 철거.webp') center/cover no-repeat;color:#fff}
+body:has(.home-redesign) .estimate-lead-head{margin-bottom:30px}
+body:has(.home-redesign) .estimate-lead-head>span{color:#4ba5ff!important;letter-spacing:.18em}
+body:has(.home-redesign) .estimate-lead-head h2{color:#fff!important;font-size:clamp(25px,3.5vw,42px)!important;line-height:1.3}
+body:has(.home-redesign) .estimate-lead-head p,body:has(.home-redesign) .estimate-lead-head p b{color:#d2ddec!important;line-height:1.7}
+body:has(.home-redesign) .estimate-form{max-width:980px;margin:0 auto;border:1px solid #2675e9!important;border-radius:16px!important;background:rgba(9,25,47,.94)!important;box-shadow:0 20px 55px rgba(0,0,0,.32)!important;padding:34px 40px!important;color:#fff!important}
+body:has(.home-redesign) .estimate-grid{border-bottom-color:#3b4d64!important}
+body:has(.home-redesign) .estimate-grid label,body:has(.home-redesign) .estimate-grid label>span{color:#f3f7ff!important}
+body:has(.home-redesign) .estimate-grid input,body:has(.home-redesign) .estimate-grid select{background:#13243a!important;border:1px solid #43566f!important;border-radius:8px!important;color:#f7faff!important;min-height:45px!important}
+body:has(.home-redesign) .estimate-grid input::placeholder{color:#aab8cb!important}
+body:has(.home-redesign) .estimate-grid select option{background:#13243a;color:#fff}
+body:has(.home-redesign) .estimate-agreements,body:has(.home-redesign) .estimate-agreements label,body:has(.home-redesign) .estimate-agreements label span{color:#e1e9f5!important}
+body:has(.home-redesign) .estimate-agreements a{color:#62b3ff!important}
+body:has(.home-redesign) .estimate-form>button[type=submit]{border-radius:10px!important;background:linear-gradient(90deg,#0b72ff,#0055f3)!important;color:#fff!important;min-height:52px!important;font-weight:800!important;box-shadow:0 8px 24px rgba(0,85,243,.26)}
+body:has(.home-redesign) .estimate-result{color:#fff!important}
+body:has(.home-redesign) .seo-image-section{background:linear-gradient(125deg,#081421,#101f32)!important;color:#f5f9ff!important;border-color:#22354d!important}
+body:has(.home-redesign) .seo-image-section .seo-image-head h2{color:#fff!important}
+body:has(.home-redesign) .seo-image-section .seo-image-head span{color:#4ca5ff!important}
+body:has(.home-redesign) .seo-image-section .seo-image-head p{color:#bfcde0!important}
+@media(max-width:760px){body:has(.home-redesign) .estimate-lead{padding:42px 16px 48px}body:has(.home-redesign) .estimate-form{padding:22px 17px!important;border-radius:12px!important}body:has(.home-redesign) .estimate-grid{grid-template-columns:1fr!important;gap:14px!important}body:has(.home-redesign) .estimate-lead-head h2{font-size:26px!important}}
+
+/* Seamless single-color background for homepage estimate and work gallery. */
+body:has(.home-redesign) .estimate-lead{background:#0b1624!important;background-image:none!important}
+body:has(.home-redesign) .seo-image-section{background:#0b1624!important;background-image:none!important;border-top:0!important}
+
+/* Shared dark footer, inspired by the approved design reference. */
+.site-footer{display:block!important;padding:0!important;background:#091b2d!important;color:#c1d0e3!important;border-top:1px solid #1d3958!important;font-size:14px!important}
+.site-footer .footer-shell{width:min(1240px,calc(100% - 40px));padding:55px 0 24px}
+.site-footer .footer-quick-nav{border:0!important;padding:0 0 36px!important}
+.site-footer .footer-quick-grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important}
+.site-footer .footer-quick-link{position:relative;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:11px!important;min-height:110px!important;padding:19px 13px!important;background:#10263d!important;border:1px solid #284b71!important;border-radius:17px!important;color:#fff!important;transition:background .2s,transform .2s}
+.site-footer .footer-quick-link:hover{background:#173451!important;transform:translateY(-3px)}
+.site-footer .footer-quick-link .nav-icon{width:46px!important;height:46px!important;border-radius:50%!important;flex:0 0 46px!important}
+.site-footer .footer-quick-link .nav-icon svg{width:22px!important;height:22px!important}
+.site-footer .footer-quick-content{display:flex;flex-direction:column;gap:5px;min-width:0}
+.site-footer .footer-quick-content strong{color:#fff!important;font-size:15px!important;line-height:1.25}
+.site-footer .footer-quick-content small{font-size:11px;color:#b4c7df;line-height:1.45;word-break:keep-all}
+.site-footer .footer-quick-arrow{position:absolute;right:10px;bottom:10px;color:#61adff;border:1px solid #3374b7;border-radius:50%;width:24px;height:24px;display:grid;place-items:center}
+.site-footer .footer-company{position:relative;display:grid!important;grid-template-columns:220px minmax(0,1fr) 220px!important;gap:28px!important;align-items:center!important;padding:37px 0!important;border-top:1px solid #2b4662!important;border-bottom:1px solid #2b4662!important}
+.site-footer .footer-brand-panel{padding-right:22px;border-right:1px solid #36506b}
+.site-footer .footer-brand{border:0!important;padding:0!important;justify-content:flex-start!important}
+.site-footer .footer-logo{width:165px!important;max-height:110px!important}
+.site-footer .footer-brand-panel>p{margin:13px 0 0!important;font-size:12px;line-height:1.75;color:#b8c9dc}
+.site-footer .footer-company-title{color:#fff!important;font-size:23px!important;font-weight:850!important;margin:0 0 15px!important}
+.site-footer .footer-contact-row{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:9px!important;margin:0 0 18px!important}
+.site-footer .footer-contact-card{display:flex;align-items:center;gap:10px;min-width:0;padding:14px 11px;border:1px solid #345779;border-radius:12px;color:#e6f1ff!important;background:#10283f;text-decoration:none!important}
+.site-footer .footer-contact-card>span:first-child{display:grid;place-items:center;width:32px;height:32px;flex:0 0 32px;border-radius:50%;background:#173e6c;color:#6bb8ff;font-size:19px}
+.site-footer .footer-contact-card>span:last-child{display:flex;flex-direction:column;min-width:0}
+.site-footer .footer-contact-card small{font-size:11px;color:#a6bed8}
+.site-footer .footer-contact-card strong{font-size:13px!important;color:#fff!important;overflow-wrap:anywhere;line-height:1.5}
+.site-footer .footer-business-line{color:#b7c9de!important;font-size:12px!important;line-height:1.8!important;margin:7px 0!important}
+.site-footer .footer-business-line strong{color:#f3f8ff!important;font-size:12px!important}
+.site-footer .footer-business-line a{color:#8dc3ff!important}
+.site-footer .footer-message{min-height:230px;align-self:stretch;display:flex;align-items:flex-end;justify-content:center;padding:20px;border-radius:12px;background:linear-gradient(0deg,rgba(5,22,41,.88),rgba(5,22,41,.45)),url('/images/work-status/서면 음식점 철거.webp') center/cover no-repeat}
+.site-footer .footer-message p{font-size:17px;color:#e6f4ff;text-align:center;line-height:1.7;transform:rotate(-3deg)}
+.site-footer .footer-message strong{color:#fff!important;font-size:19px!important}
+.site-footer .footer-bottom{padding-top:20px!important}
+.site-footer .footer-bottom-links a{color:#a8c0d9!important}
+.site-footer .footer-copy{color:#7f9bb8!important}
+@media(max-width:1050px){.site-footer .footer-company{grid-template-columns:190px minmax(0,1fr)!important}.site-footer .footer-message{display:none}.site-footer .footer-quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.site-footer .footer-contact-row{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:650px){.site-footer .footer-shell{width:calc(100% - 28px);padding:35px 0 24px}.site-footer .footer-quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.site-footer .footer-quick-link{min-height:98px!important;padding:12px 10px!important;gap:8px!important}.site-footer .footer-quick-link .nav-icon{width:36px!important;height:36px!important;flex-basis:36px!important}.site-footer .footer-quick-content strong{font-size:13px!important}.site-footer .footer-quick-content small{font-size:10px}.site-footer .footer-company{grid-template-columns:1fr!important;gap:22px!important;padding:27px 0!important}.site-footer .footer-brand-panel{border-right:0;border-bottom:1px solid #36506b;padding:0 0 20px}.site-footer .footer-company-title{font-size:20px!important}.site-footer .footer-contact-row{grid-template-columns:1fr!important}.site-footer .footer-bottom{align-items:flex-start;flex-direction:column;gap:10px}}
+
+/* Ensure footer text stays legible against the shared dark background. */
+body .site-footer .footer-company-title{color:#f8fbff!important}
+body .site-footer .footer-brand-panel p,body .site-footer .footer-business-line{color:#c1d0e3!important}
+body .site-footer .footer-business-line strong{color:#fff!important}
+body .site-footer .footer-bottom-links a{color:#b9cee4!important}
+body .site-footer .footer-copy{color:#9cb2ca!important}
+body .site-footer .footer-company{border-top-color:#34516c!important;border-bottom-color:#34516c!important}
+
+/* Two-column footer after removing the decorative image card. */
+.site-footer .footer-company{grid-template-columns:220px minmax(0,1fr)!important}
+@media(max-width:1050px){.site-footer .footer-company{grid-template-columns:190px minmax(0,1fr)!important}}
+@media(max-width:650px){.site-footer .footer-company{grid-template-columns:1fr!important}}
+
+/* Scroll reveal, animated accents and hover polish, inspired by modern demolition sites. */
+@media(prefers-reduced-motion:no-preference){
+ .motion-reveal{opacity:0;transform:translate3d(0,34px,0);filter:blur(3px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1),filter .7s ease;will-change:opacity,transform}
+ .motion-reveal.motion-visible{opacity:1;transform:translate3d(0,0,0);filter:blur(0);will-change:auto}
+ .home-redesign .explore-visual-card:hover,.home-redesign .guide-visual-card:hover,.home-redesign .home-region-card:hover,.site-footer .footer-quick-link:hover{transition:transform .24s ease,background-color .24s ease,border-color .24s ease,box-shadow .24s ease!important;transform:translateY(-5px)!important}
+ .home-redesign .home-section-head h2 .gradient-text{background-image:linear-gradient(90deg,#3d98ff,#8bcaff,#3d98ff)!important;background-size:200% 100%!important;background-clip:text!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:home-accent-shimmer 7s ease-in-out infinite}
+ @keyframes home-accent-shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+ .home-redesign .home-section-head h2::after{content:"";display:block;width:58px;height:3px;border-radius:4px;margin-top:12px;background:linear-gradient(90deg,#2078ff,#6dc7ff);transform-origin:left;animation:home-rule-in 1.1s ease both}
+ @keyframes home-rule-in{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+ .home-redesign .home-section .btn,.home-redesign .final-cta .btn,.site-footer .footer-contact-card{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important}
+ .home-redesign .home-section .btn:hover,.home-redesign .final-cta .btn:hover{transform:translateY(-3px)!important;box-shadow:0 9px 24px rgba(0,102,255,.25)!important}
+ .home-redesign .explore-visual-card .explore-image img,.home-redesign .guide-visual-card .explore-image img{transition:transform .55s cubic-bezier(.2,.8,.2,1)!important}
+ .home-redesign .explore-visual-card:hover .explore-image img,.home-redesign .guide-visual-card:hover .explore-image img{transform:scale(1.055)!important}
+ .site-footer .footer-quick-link:hover .footer-quick-arrow{transform:translateX(3px)}
+ .site-footer .footer-quick-arrow{transition:transform .2s ease}
+}
+@media(prefers-reduced-motion:reduce){.motion-reveal{opacity:1!important;transform:none!important;filter:none!important;animation:none!important;transition:none!important}}
+
+/* Typography motion: gentle staggered rise, underline and hero glow. */
+@media(prefers-reduced-motion:no-preference){
+ .home-redesign .home-hero h1{animation:home-title-arrive .9s cubic-bezier(.2,.8,.2,1) both}
+ .home-redesign .home-hero-main>p{animation:home-title-arrive .85s .17s cubic-bezier(.2,.8,.2,1) both}
+ .home-redesign .home-hero-main>.cta-row{animation:home-title-arrive .85s .31s cubic-bezier(.2,.8,.2,1) both}
+ @keyframes home-title-arrive{from{opacity:0;transform:translateY(24px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+ .home-redesign .home-section-head.motion-reveal h2,.home-redesign .home-section-head.motion-reveal p{transition:opacity .65s ease,transform .7s cubic-bezier(.22,1,.36,1)!important;opacity:0;transform:translateY(17px)}
+ .home-redesign .home-section-head.motion-reveal p{transition-delay:.14s!important}
+ .home-redesign .home-section-head.motion-visible h2,.home-redesign .home-section-head.motion-visible p{opacity:1;transform:translateY(0)}
+ .home-redesign .home-section-head h2 .gradient-text{position:relative}
+ .home-redesign .home-section-head h2 .gradient-text::after{content:"";position:absolute;bottom:-5px;left:0;width:100%;height:2px;border-radius:4px;background:linear-gradient(90deg,#258aff,#75c7ff,transparent);transform:scaleX(0);transform-origin:left;transition:transform .8s .3s cubic-bezier(.2,.8,.2,1)}
+ .home-redesign .home-section-head.motion-visible h2 .gradient-text::after{transform:scaleX(1)}
+ .home-redesign .home-process-support h3,.home-redesign .final-cta h2{letter-spacing:-.04em}
+}

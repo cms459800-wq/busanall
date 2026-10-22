@@ -184,3 +184,25 @@ body:has(.home-redesign) .site-header .brand-logo-home{max-width:100%;object-fit
 .home-redesign .home-region-grid .home-region-compact-arrow{font-size:14px!important;line-height:1!important;margin:0!important}
 @media(max-width:900px){.home-redesign .home-region-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
 @media(max-width:650px){.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.home-redesign .home-region-grid .home-region-card{height:46px!important;min-height:46px!important;padding:8px!important}.home-redesign .home-region-grid .home-region-compact-label strong{font-size:11px!important}}
+
+/* Five-step process flow inspired by supplied reference. */
+.home-redesign .home-process-section{padding-top:55px;padding-bottom:55px}
+.home-redesign .home-process-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;margin:27px 0 28px}
+.home-redesign .home-process-flow-unit{position:relative;min-width:0}
+.home-redesign .home-process-flow-card{display:flex;align-items:center;gap:12px;min-height:115px;height:100%;padding:16px 12px;border-radius:16px;background:#fff;box-shadow:0 7px 25px rgba(23,50,90,.075);border:1px solid #edf1f8;box-sizing:border-box}
+.home-redesign .home-process-circle{display:grid;place-items:center;flex:0 0 55px;width:55px;height:55px;border-radius:50%;background:#1267f5;color:#fff}
+.home-redesign .home-process-circle svg{width:26px!important;height:26px!important;max-width:26px!important;max-height:26px!important;stroke:currentColor!important}
+.home-redesign .home-process-copy{min-width:0;display:flex;flex-direction:column;gap:4px}
+.home-redesign .home-process-copy small{color:#7787a0;font-weight:800;font-size:11px}
+.home-redesign .home-process-copy strong{color:#10223d;font-size:14px;line-height:1.35;font-weight:900;word-break:keep-all}
+.home-redesign .home-process-copy p{margin:0;color:#65768c;font-size:11px;line-height:1.55;word-break:keep-all}
+.home-redesign .home-process-next{position:absolute;right:-20px;top:50%;transform:translateY(-50%);color:#1475ff;font-size:21px;font-weight:900;z-index:2}
+.home-redesign .home-process-support{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:30px 34px;border-radius:17px;background:#e4efff}
+.home-redesign .home-process-support span{display:block;color:#1769e7;font-size:16px;font-weight:800}
+.home-redesign .home-process-support h3{color:#1461dd;font-size:clamp(20px,2.5vw,31px);line-height:1.3;margin:4px 0 8px;letter-spacing:-.04em}
+.home-redesign .home-process-support p{margin:0;color:#425572;font-size:13px;line-height:1.7}
+.home-redesign .home-process-support-actions{display:flex;flex-wrap:wrap;gap:10px;flex-shrink:0}
+.home-redesign .home-process-support-actions .btn{border-radius:10px;white-space:nowrap}
+.home-redesign .home-process-support-actions .btn-glass{background:#fff;color:#1461dd;border-color:#fff}
+@media(max-width:1100px){.home-redesign .home-process-flow{gap:13px}.home-redesign .home-process-flow-card{flex-direction:column;text-align:center;min-height:150px;padding:14px 8px}.home-redesign .home-process-next{right:-13px}.home-redesign .home-process-circle{flex-basis:48px;width:48px;height:48px}.home-redesign .home-process-support{flex-direction:column;align-items:flex-start}}
+@media(max-width:650px){.home-redesign .home-process-flow{grid-template-columns:1fr;gap:9px}.home-redesign .home-process-flow-card{flex-direction:row;text-align:left;min-height:76px;padding:12px 15px}.home-redesign .home-process-next{display:none}.home-redesign .home-process-circle{flex-basis:47px;width:47px;height:47px}.home-redesign .home-process-copy strong{font-size:15px}.home-redesign .home-process-support{padding:23px 18px;gap:18px}.home-redesign .home-process-support-actions{width:100%}.home-redesign .home-process-support-actions .btn{flex:1;text-align:center;font-size:12px;padding:11px 9px}}

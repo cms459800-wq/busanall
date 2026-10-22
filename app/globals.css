@@ -90,3 +90,8 @@ body .site-footer .footer-business-line strong{color:#fff!important}
 body .site-footer .footer-bottom-links a{color:#b9cee4!important}
 body .site-footer .footer-copy{color:#9cb2ca!important}
 body .site-footer .footer-company{border-top-color:#34516c!important;border-bottom-color:#34516c!important}
+
+/* Two-column footer after removing the decorative image card. */
+.site-footer .footer-company{grid-template-columns:220px minmax(0,1fr)!important}
+@media(max-width:1050px){.site-footer .footer-company{grid-template-columns:190px minmax(0,1fr)!important}}
+@media(max-width:650px){.site-footer .footer-company{grid-template-columns:1fr!important}}

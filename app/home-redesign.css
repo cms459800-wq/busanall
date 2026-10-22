@@ -127,3 +127,30 @@ body:has(.home-redesign) .site-header .brand-logo-home{max-width:100%;object-fit
  .home-redesign .home-night-icon{font-size:19px}
  .home-redesign .home-night-chat{font-size:16px}
 }
+
+/* Reference-inspired landing page refinements */
+.home-redesign .home-hero{min-height:650px;background-image:linear-gradient(90deg,rgba(3,9,17,.84),rgba(5,13,24,.58)),url('/images/work-status/서면 음식점 철거.webp');background-position:center}
+.home-redesign .home-hero-main{max-width:850px}
+.home-redesign .home-hero .eyebrow-chip{font-size:12px;letter-spacing:.18em}
+.home-redesign .home-hero h1{font-weight:900;letter-spacing:-.055em;text-shadow:0 3px 24px rgba(0,0,0,.25)}
+.home-trust-section{background:linear-gradient(115deg,#080e15,#171f2a);color:#fff;padding:66px 22px}
+.home-trust-inner{max-width:1140px;margin:auto;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:70px}
+.home-trust-intro .section-kicker{color:#4d9dff}
+.home-trust-intro h2{font-size:clamp(28px,3.5vw,45px);line-height:1.25;letter-spacing:-.05em;margin:14px 0}
+.home-trust-intro h2 span{color:#399bff}
+.home-trust-intro p{color:#c6d0dd;line-height:1.85;font-size:15px}
+.home-trust-intro>a{display:inline-block;margin-top:16px;color:#8cc4ff;font-weight:800;text-decoration:none}
+.home-trust-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+.home-trust-grid a{display:flex;flex-direction:column;align-items:flex-start;min-height:165px;padding:23px;border-radius:13px;background:#202933;color:#fff;text-decoration:none;transition:background .2s,transform .2s}
+.home-trust-grid a:hover{background:#2a3747;transform:translateY(-3px)}
+.home-trust-grid a>span{color:#e7f2ff;font-size:27px;margin-bottom:11px}
+.home-trust-grid strong{font-size:17px;letter-spacing:-.025em}
+.home-trust-grid p{color:#b4c0ce;font-size:12px;line-height:1.65;margin:8px 0 0}
+.home-redesign .home-projects{background:#f7faff}
+.home-redesign .home-project-card{box-shadow:0 10px 30px rgba(23,45,76,.1);transition:transform .2s,box-shadow .2s}
+.home-redesign .home-project-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(23,45,76,.16)}
+.home-redesign .explore-visual-card{text-align:center}
+.home-redesign .explore-visual-card .explore-image{border-radius:20px}
+.home-redesign .home-region-card{background:#fff;border-radius:12px;padding:17px}
+@media(max-width:900px){.home-trust-inner{grid-template-columns:1fr;gap:28px}.home-trust-section{padding:46px 20px}}
+@media(max-width:600px){.home-redesign .home-hero{min-height:550px}.home-trust-section{padding:38px 14px}.home-trust-grid{gap:8px}.home-trust-grid a{min-height:155px;padding:15px}.home-trust-grid strong{font-size:14px}.home-trust-grid p{font-size:11px}.home-trust-intro h2{font-size:29px}}

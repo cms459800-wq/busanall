@@ -334,3 +334,8 @@ body:has(.home-redesign){background:#081b2b!important}
 .home-redesign .home-hero h1 .hero-white-ending{color:#fff!important;-webkit-text-fill-color:#fff!important}
 @keyframes hero-red-line-draw{from{background-size:0 4px}to{background-size:100% 4px}}
 @media(prefers-reduced-motion:reduce){.home-redesign .home-hero h1 .hero-red-underline{animation:none!important;background-size:100% 4px!important}}
+
+/* Final hero headline palette: white / blue with animated red underline / white. */
+.home-redesign .home-hero h1{color:#fff!important}
+.home-redesign .home-hero h1 .hero-red-underline{color:#4a9fff!important;-webkit-text-fill-color:#4a9fff!important}
+.home-redesign .home-hero h1 .hero-white-ending{color:#fff!important;-webkit-text-fill-color:#fff!important}

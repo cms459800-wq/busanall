@@ -1,5 +1,6 @@
 import "./globals.css";
 import SeoImageRail from "@/components/SeoImageRail";
+import SiteMotion from "@/components/SiteMotion";
 
 const baseUrl="https://www.lastwar.co.kr";
 const inquiryUrl="https://open.kakao.com/o/ssjJI0Pi";
@@ -79,5 +80,6 @@ export default function RootLayout({children}:{children:React.ReactNode}){
    <div className="footer-bottom"><div className="footer-bottom-links"><a href="/estimate">견적 준비정보</a><a href={inquiryUrl}>현장견적 문의</a><a href="/company">회사정보</a><a href="/privacy">개인정보처리 안내</a></div><p className="footer-copy">© 2026 올바른. All rights reserved.</p></div>
   </div></footer>
   <div className="mobile-action-bar" aria-label="빠른 상담"><a className="mobile-action-call" href="tel:01066484886" aria-label="010-6648-4886 전화상담"><span className="action-icon"><Icon type="phone"/></span>전화상담</a><a className="mobile-action-estimate" href={inquiryUrl}><span className="action-icon"><Icon type="estimate"/></span>무료견적 문의</a></div>
+ <SiteMotion/>
  </body></html>;
 }

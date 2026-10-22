@@ -70,3 +70,8 @@ body:has(.home-redesign) .site-header .brand-logo{
   body:has(.home-redesign) .site-header .brand{min-height:46px;padding:4px 9px;border-radius:9px}
   body:has(.home-redesign) .site-header .brand-logo{height:41px;max-width:142px}
 }
+
+/* Transparent header logo: no white plaque, preserve the existing footer logo. */
+body:has(.home-redesign) .site-header .brand{background:transparent;box-shadow:none;border:0;padding:0 8px 0 0;min-height:70px;overflow:visible}
+body:has(.home-redesign) .site-header .brand-logo{height:68px;max-width:235px;width:auto;object-fit:contain;object-position:left center}
+@media(max-width:760px){body:has(.home-redesign) .site-header .brand{min-height:58px;padding:0 4px 0 0}body:has(.home-redesign) .site-header .brand-logo{height:56px;max-width:178px}}

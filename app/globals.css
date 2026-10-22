@@ -19,3 +19,25 @@
 
 /* Keep the shared top information strip identical on homepage and subpages. */
 .site-topbar{background:#0d1623!important;color:#a9b7cb!important;border-bottom:1px solid #243147!important}
+
+/* Homepage consultation + work-status sections: match the dark hero palette. */
+body:has(.home-redesign) .estimate-lead{position:relative;isolation:isolate;width:100%;max-width:none;margin:0;padding:65px max(20px,calc((100% - 1140px)/2)) 72px;box-sizing:border-box;background:linear-gradient(105deg,rgba(5,15,29,.95),rgba(5,16,31,.88)),url('/images/work-status/서면 음식점 철거.webp') center/cover no-repeat;color:#fff}
+body:has(.home-redesign) .estimate-lead-head{margin-bottom:30px}
+body:has(.home-redesign) .estimate-lead-head>span{color:#4ba5ff!important;letter-spacing:.18em}
+body:has(.home-redesign) .estimate-lead-head h2{color:#fff!important;font-size:clamp(25px,3.5vw,42px)!important;line-height:1.3}
+body:has(.home-redesign) .estimate-lead-head p,body:has(.home-redesign) .estimate-lead-head p b{color:#d2ddec!important;line-height:1.7}
+body:has(.home-redesign) .estimate-form{max-width:980px;margin:0 auto;border:1px solid #2675e9!important;border-radius:16px!important;background:rgba(9,25,47,.94)!important;box-shadow:0 20px 55px rgba(0,0,0,.32)!important;padding:34px 40px!important;color:#fff!important}
+body:has(.home-redesign) .estimate-grid{border-bottom-color:#3b4d64!important}
+body:has(.home-redesign) .estimate-grid label,body:has(.home-redesign) .estimate-grid label>span{color:#f3f7ff!important}
+body:has(.home-redesign) .estimate-grid input,body:has(.home-redesign) .estimate-grid select{background:#13243a!important;border:1px solid #43566f!important;border-radius:8px!important;color:#f7faff!important;min-height:45px!important}
+body:has(.home-redesign) .estimate-grid input::placeholder{color:#aab8cb!important}
+body:has(.home-redesign) .estimate-grid select option{background:#13243a;color:#fff}
+body:has(.home-redesign) .estimate-agreements,body:has(.home-redesign) .estimate-agreements label,body:has(.home-redesign) .estimate-agreements label span{color:#e1e9f5!important}
+body:has(.home-redesign) .estimate-agreements a{color:#62b3ff!important}
+body:has(.home-redesign) .estimate-form>button[type=submit]{border-radius:10px!important;background:linear-gradient(90deg,#0b72ff,#0055f3)!important;color:#fff!important;min-height:52px!important;font-weight:800!important;box-shadow:0 8px 24px rgba(0,85,243,.26)}
+body:has(.home-redesign) .estimate-result{color:#fff!important}
+body:has(.home-redesign) .seo-image-section{background:linear-gradient(125deg,#081421,#101f32)!important;color:#f5f9ff!important;border-color:#22354d!important}
+body:has(.home-redesign) .seo-image-section .seo-image-head h2{color:#fff!important}
+body:has(.home-redesign) .seo-image-section .seo-image-head span{color:#4ca5ff!important}
+body:has(.home-redesign) .seo-image-section .seo-image-head p{color:#bfcde0!important}
+@media(max-width:760px){body:has(.home-redesign) .estimate-lead{padding:42px 16px 48px}body:has(.home-redesign) .estimate-form{padding:22px 17px!important;border-radius:12px!important}body:has(.home-redesign) .estimate-grid{grid-template-columns:1fr!important;gap:14px!important}body:has(.home-redesign) .estimate-lead-head h2{font-size:26px!important}}

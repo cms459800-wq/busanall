@@ -328,3 +328,9 @@ body:has(.home-redesign){background:#081b2b!important}
 .home-redesign .closure-support-card,.home-redesign .closure-support-step{height:100%!important;box-sizing:border-box!important}
 .home-redesign .final-cta{background-position:center 58%!important;box-shadow:0 9px 26px rgba(0,36,92,.23)!important}
 @media(max-width:760px){.home-redesign .home-section-head{align-items:flex-start!important}.home-redesign .closure-support-grid,.home-redesign .closure-support-steps{grid-template-columns:1fr!important}.home-redesign .guide-visual-card .explore-image,.home-redesign .explore-visual-card .explore-image{aspect-ratio:1.35!important}}
+
+/* Hero service phrase: animated red underline and white ending. */
+.home-redesign .home-hero h1 .hero-red-underline{position:relative;display:inline;box-decoration-break:clone;-webkit-box-decoration-break:clone;color:#f7fbff!important;-webkit-text-fill-color:#f7fbff!important;background:linear-gradient(#f04444,#f04444) left calc(100% - 2px)/0 4px no-repeat;animation:hero-red-line-draw 1.15s .8s cubic-bezier(.2,.8,.2,1) forwards}
+.home-redesign .home-hero h1 .hero-white-ending{color:#fff!important;-webkit-text-fill-color:#fff!important}
+@keyframes hero-red-line-draw{from{background-size:0 4px}to{background-size:100% 4px}}
+@media(prefers-reduced-motion:reduce){.home-redesign .home-hero h1 .hero-red-underline{animation:none!important;background-size:100% 4px!important}}

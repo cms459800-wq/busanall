@@ -174,3 +174,13 @@ body:has(.home-redesign) .site-header .brand-logo-home{max-width:100%;object-fit
 .home-redesign .home-region-compact-arrow{font-size:17px;font-weight:700;color:#2675ff;flex-shrink:0}
 @media(max-width:900px){.home-redesign .home-region-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:650px){.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.home-redesign .home-region-card{min-height:49px;padding:10px 9px}.home-redesign .home-region-compact-label strong{font-size:12px}.home-redesign .home-region-compact-label svg{width:15px;height:15px}}
+
+/* Fix oversized location icons caused by legacy region-card SVG styling. */
+.home-redesign .home-region-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:9px!important}
+.home-redesign .home-region-grid .home-region-card{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;min-height:48px!important;height:48px!important;padding:9px 12px!important;gap:8px!important;border-radius:8px!important;box-sizing:border-box!important}
+.home-redesign .home-region-grid .home-region-compact-label{display:inline-flex!important;flex-direction:row!important;align-items:center!important;gap:6px!important;min-width:0!important}
+.home-redesign .home-region-grid .home-region-compact-label svg{display:block!important;width:17px!important;height:17px!important;min-width:17px!important;min-height:17px!important;max-width:17px!important;max-height:17px!important;flex:0 0 17px!important;stroke:#1475f9!important;stroke-width:2!important}
+.home-redesign .home-region-grid .home-region-compact-label strong{font-size:12px!important;font-weight:800!important;line-height:1.25!important;margin:0!important;white-space:nowrap!important}
+.home-redesign .home-region-grid .home-region-compact-arrow{font-size:14px!important;line-height:1!important;margin:0!important}
+@media(max-width:900px){.home-redesign .home-region-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(max-width:650px){.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.home-redesign .home-region-grid .home-region-card{height:46px!important;min-height:46px!important;padding:8px!important}.home-redesign .home-region-grid .home-region-compact-label strong{font-size:11px!important}}

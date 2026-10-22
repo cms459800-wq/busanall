@@ -1,0 +1,48 @@
+/* Main-page-only visual redesign. Existing copy, URLs, assets and shared pages are preserved. */
+body:has(.home-redesign) {background:#fff}
+.home-redesign.page-shell{max-width:none;padding:0 0 72px}
+.home-redesign .home-hero{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:center;min-height:570px;margin:0;padding:100px max(24px,calc((100vw - 1140px)/2));background:linear-gradient(90deg,rgba(4,10,19,.82),rgba(4,10,19,.55)),url('/images/work-status/서면 음식점 철거.webp') center/cover no-repeat;color:#fff}
+.home-redesign .home-hero-main{max-width:850px;text-align:center;background:transparent;border:0;box-shadow:none;padding:32px 0}
+.home-redesign .home-hero h1{color:#fff;font-size:clamp(38px,5.3vw,72px);line-height:1.16}
+.home-redesign .home-hero h1 .gradient-text{color:#4a9fff}
+.home-redesign .home-hero p{color:#e1e9f3;margin:0 auto;font-size:clamp(14px,1.5vw,18px)}
+.home-redesign .home-hero .cta-row{justify-content:center}
+.home-redesign .home-hero .eyebrow-chip{background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.2);color:#9bc6ff}
+.home-redesign .home-hero .home-stat-row{margin-top:35px}
+.home-redesign .home-hero .home-stat{background:rgba(9,19,31,.65);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px)}
+.home-redesign .home-hero .home-stat strong{color:#fff}
+.home-redesign .home-hero .home-stat span{color:#b8c6d6}
+.home-redesign .hero-panel{display:none}
+.home-redesign .home-section,.home-redesign .final-cta{width:min(1160px,calc(100% - 40px));margin:68px auto}
+.home-redesign .home-section h2{font-size:clamp(26px,3.2vw,39px)}
+.home-redesign .soft-section{padding:0;background:transparent;border:0}
+.home-redesign .explore-visual-grid{gap:15px}
+.home-redesign .explore-visual-card{padding:15px;border:1px solid #edf1f7;border-radius:18px;background:#fff;box-shadow:0 10px 30px rgba(16,35,64,.06)}
+.home-redesign .explore-image{border-radius:15px}
+.home-redesign .explore-visual-card h3{font-size:17px;margin:12px 0 3px}
+.home-redesign .guide-visual-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.home-redesign .guide-visual-card{padding:14px;border:1px solid #e9edf5;border-radius:17px;box-shadow:0 7px 25px rgba(16,35,64,.05)}
+.home-redesign .guide-visual-card .explore-image{width:100%;max-width:none;aspect-ratio:16/9}
+.home-redesign .home-region-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.home-redesign .home-region-card{padding:16px;border-radius:12px}
+.home-redesign .home-region-card strong{font-size:16px}
+.home-redesign .process-grid{gap:12px}
+.home-redesign .process-step{padding:23px;border-radius:17px}
+.home-redesign .final-cta{background:linear-gradient(110deg,#063eac,#1769ff);border-radius:18px;padding:38px}
+.home-redesign .home-projects{padding:64px max(20px,calc((100vw - 1160px)/2));background:#f7faff}
+.home-redesign .home-projects-inner{max-width:1160px;margin:auto}
+.home-redesign .home-projects h2{font-size:clamp(25px,3vw,36px);margin:5px 0 22px}
+.home-redesign .home-projects-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.home-redesign .home-project-card{overflow:hidden;background:white;border-radius:16px;border:1px solid #e7edf5;text-decoration:none;box-shadow:0 9px 28px rgba(20,40,70,.07)}
+.home-redesign .home-project-card img{display:block;width:100%;height:155px;object-fit:cover}
+.home-redesign .home-project-card-body{padding:16px}
+.home-redesign .home-project-card small{color:#2563eb;font-weight:800}
+.home-redesign .home-project-card strong{display:block;margin-top:5px;font-size:16px;color:#14253e}
+.home-redesign .home-projects-all{display:inline-block;margin-top:19px;color:#1769ff;font-weight:800;text-decoration:none}
+body:has(.home-redesign) .site-header{background:rgba(13,22,35,.96);border-bottom-color:rgba(255,255,255,.08)}
+body:has(.home-redesign) .site-header nav a{color:#e4e9f2}
+body:has(.home-redesign) .site-header nav a:hover{color:#73b5ff}
+body:has(.home-redesign) .site-topbar{background:#0d1623;color:#a9b7cb;border-color:#243147}
+@media(max-width:900px){.home-redesign .home-projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-redesign .home-region-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.home-redesign .home-hero{min-height:570px;padding:70px 18px}.home-redesign .home-hero h1{font-size:clamp(34px,9vw,52px)}.home-redesign .home-hero .home-stat-row{grid-template-columns:repeat(2,1fr)}.home-redesign .home-section,.home-redesign .final-cta{width:calc(100% - 28px);margin:48px auto}.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-redesign .guide-visual-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-redesign .home-projects{padding:46px 14px}.home-redesign .home-project-card img{height:125px}.home-redesign .home-project-card-body{padding:12px}.home-redesign .home-project-card strong{font-size:14px}.home-redesign .final-cta{padding:25px}body:has(.home-redesign) .mobile-nav{background:#101c2e!important;border-color:#243147!important}body:has(.home-redesign) .mobile-nav a{background:#18273c;color:#fff;border-color:#34445c}}
+@media(max-width:420px){.home-redesign .home-projects-grid{gap:9px}.home-redesign .home-project-card img{height:105px}.home-redesign .home-hero .home-stat{padding:10px}}

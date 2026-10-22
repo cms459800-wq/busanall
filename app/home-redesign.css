@@ -339,3 +339,8 @@ body:has(.home-redesign){background:#081b2b!important}
 .home-redesign .home-hero h1{color:#fff!important}
 .home-redesign .home-hero h1 .hero-red-underline{color:#4a9fff!important;-webkit-text-fill-color:#4a9fff!important}
 .home-redesign .home-hero h1 .hero-white-ending{color:#fff!important;-webkit-text-fill-color:#fff!important}
+
+/* Slightly larger hero phone and Kakao consultation buttons. */
+.home-redesign .home-hero .cta-row .btn{min-height:60px!important;padding:17px 28px!important;font-size:16px!important;font-weight:850!important;border-radius:12px!important;line-height:1.4!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.home-redesign .home-hero .cta-row{gap:14px!important}
+@media(max-width:650px){.home-redesign .home-hero .cta-row .btn{min-height:54px!important;padding:14px 18px!important;font-size:14px!important}.home-redesign .home-hero .cta-row{gap:10px!important}}

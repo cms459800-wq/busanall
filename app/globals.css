@@ -16,3 +16,6 @@
 .site-header .brand-logo-default{display:none!important}
 .site-header .brand-logo-home{display:block!important;height:60px!important;max-width:210px!important;object-fit:contain!important}
 @media(max-width:760px){.site-header .brand-logo-home{height:46px!important;max-width:160px!important}.mobile-nav{background:#151e2b!important;border-color:#29364b!important}.mobile-nav a{background:#202d40!important;color:#fff!important;border-color:#3a4960!important}}
+
+/* Keep the shared top information strip identical on homepage and subpages. */
+.site-topbar{background:#0d1623!important;color:#a9b7cb!important;border-bottom:1px solid #243147!important}

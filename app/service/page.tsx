@@ -23,7 +23,7 @@ const serviceSchema = {
     "@type": "ListItem",
     position: i + 1,
     name: item.primary,
-    url: `https://www.parcelout.kr/service/${slug}`
+    url: `https://www.lastwar.co.kr/service/${slug}`
   }))
 };
 
@@ -82,29 +82,96 @@ const featuredSet = new Set<string>(featuredOrder);
 const orderedServices=[...featuredOrder.map(slug=>[slug,services[slug]] as const),...Object.entries(services).filter(([slug])=>!featuredSet.has(slug))];
 
 const servicePageCss = `
-.service-hero{position:relative;overflow:hidden;padding:72px 56px;border:1px solid #e4ebf5;border-radius:28px;background:linear-gradient(135deg,#f8fbff 0%,#fff 52%,#f2f7ff 100%);box-shadow:0 16px 42px rgba(15,35,65,.055)}.service-hero:after{content:"";position:absolute;right:-90px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(47,112,255,.13),rgba(47,112,255,0) 68%);pointer-events:none}.service-hero h1{position:relative;z-index:1;max-width:760px}.service-hero p{position:relative;z-index:1;max-width:720px}.service-hero .cta-row{position:relative;z-index:1}.service-support{border:1px solid #e5ebf3;border-radius:24px;background:linear-gradient(135deg,#f8fbff,#fff);box-shadow:0 10px 30px rgba(15,35,65,.045)}.service-support h2{max-width:720px}.service-final-cta{overflow:hidden;border-radius:26px;box-shadow:0 18px 42px rgba(15,35,65,.13)}
-
-.service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.service-directory-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;min-height:214px;padding:24px;border:1px solid #e4eaf2;border-radius:18px;background:#fff;box-shadow:0 8px 24px rgba(15,35,65,.055);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
-.service-directory-card:before{display:none}
-.service-directory-card:hover{transform:translateY(-4px);border-color:#cfd8e6;box-shadow:0 14px 32px rgba(15,23,42,.09)}
-.service-directory-card .service-card-top{display:flex;width:100%;align-items:center;justify-content:space-between;margin-bottom:20px}
-.service-directory-icon{display:grid;place-items:center;width:58px;height:58px;border-radius:15px;background:#f1f6ff!important;color:#123b84!important;border:1px solid #e2eafb;box-shadow:none;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
-.service-directory-icon svg{width:32px;height:32px;stroke-width:1.75}
-.service-directory-card:hover .service-directory-icon{transform:translateY(-2px);border-color:var(--icon-border);box-shadow:0 7px 16px rgba(15,23,42,.08)}
-.service-directory-card .service-card-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid #dfe8f7;border-radius:50%;background:#fff;color:#1769ff;font-size:16px;transition:transform .18s ease,border-color .18s ease,color .18s ease,background .18s ease}
-.service-directory-card:hover .service-card-arrow{transform:translate(2px,-2px);border-color:#cbd5e1;color:#0f172a;background:#fff}
-.service-directory-card strong{display:block;margin:0 0 8px;font-size:17px;letter-spacing:-.025em;color:#111827}.service-directory-card>span:not(.service-number){display:-webkit-box;max-width:100%;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:12.5px;line-height:1.65;color:#667085}.service-number{position:absolute;top:31px;left:96px;color:#57708f;font-size:11px;font-weight:800;letter-spacing:.08em}
-.tone-blue{--icon-bg:#eef4ff;--icon-border:#d8e5ff;--icon-color:#2458d8}.tone-orange{--icon-bg:#fff4e8;--icon-border:#f8ddbc;--icon-color:#a9570a}.tone-brown{--icon-bg:#f8f1eb;--icon-border:#ead8ca;--icon-color:#8a4b2a}.tone-green{--icon-bg:#edf9f2;--icon-border:#d1eddd;--icon-color:#18794e}.tone-indigo{--icon-bg:#eef0ff;--icon-border:#dadcff;--icon-color:#4c51bf}.tone-purple{--icon-bg:#f5f0ff;--icon-border:#e5d9ff;--icon-color:#7048c8}.tone-pink{--icon-bg:#fff1f7;--icon-border:#f5d8e7;--icon-color:#b4236c}.tone-cyan{--icon-bg:#ecf9fb;--icon-border:#d0edf1;--icon-color:#087b8c}.tone-rose{--icon-bg:#fff0f3;--icon-border:#f7d7df;--icon-color:#b4234d}.tone-violet{--icon-bg:#f7f0ff;--icon-border:#e8d8fb;--icon-color:#7a3eb1}.tone-red{--icon-bg:#fff1f0;--icon-border:#f3d3d0;--icon-color:#b42318}.tone-teal{--icon-bg:#edf9f7;--icon-border:#d3ece7;--icon-color:#0f766e}.tone-sky{--icon-bg:#eef8ff;--icon-border:#d5eafb;--icon-color:#1373a9}.tone-emerald{--icon-bg:#ecf9f3;--icon-border:#cfeadd;--icon-color:#147d5a}.tone-slate{--icon-bg:#f1f4f7;--icon-border:#dde3ea;--icon-color:#475467}.tone-amber{--icon-bg:#fff8df;--icon-border:#f4e5a7;--icon-color:#946200}.tone-charcoal{--icon-bg:#f1f3f5;--icon-border:#d9dee4;--icon-color:#343a40}
-@media(max-width:980px){.service-hero{padding:56px 38px}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.service-hero{padding:38px 22px;border-radius:20px}.service-support{border-radius:20px}.service-final-cta{border-radius:20px}.service-grid{grid-template-columns:1fr;gap:12px}.service-directory-card{min-height:190px;padding:20px}.service-directory-icon{width:54px;height:54px;border-radius:14px}.service-directory-icon svg{width:27px;height:27px}.service-directory-card strong{font-size:16px}.service-number{top:28px;left:88px}.service-directory-card>span:not(.service-number){font-size:12px}.service-directory-card .service-card-arrow{width:32px;height:32px}}
+.service-redesign{max-width:none!important;width:100%;padding:0 0 55px!important;background:#081b2b;color:#eef6ff;overflow:hidden}
+.service-redesign .service-container{width:min(1150px,calc(100% - 36px));margin:auto}
+.service-redesign .service-hero{min-height:435px;display:flex;align-items:center;border:0;border-radius:0;padding:70px max(22px,calc((100vw - 1150px)/2));background:linear-gradient(90deg,#06182bf5 0%,#06213be0 48%,#061b2a4d 100%),url('/images/work-status/서면 음식점 철거.webp') center/cover no-repeat;box-shadow:none}
+.service-redesign .service-hero-inner{width:min(850px,100%)}
+.service-redesign .service-breadcrumb{font-size:12px;color:#63b6ff;font-weight:800;margin-bottom:15px}
+.service-redesign .service-hero h1{font-size:clamp(32px,4vw,54px);line-height:1.27;letter-spacing:-.045em;color:#fff;margin:12px 0 16px;font-weight:900}
+.service-redesign .service-hero .service-highlight{color:#40b5ff;position:relative;display:inline;box-decoration-break:clone;-webkit-box-decoration-break:clone;background:linear-gradient(#f34450,#f34450) left bottom/0 4px no-repeat;animation:service-underline 1.1s .6s ease forwards}
+@keyframes service-underline{to{background-size:100% 4px}}
+.service-redesign .service-hero p{font-size:15px;color:#d3e2f2;max-width:680px;line-height:1.8}
+.service-redesign .service-hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.service-redesign .service-hero .btn,.service-redesign .service-final-cta .btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:15px 24px;border-radius:11px;font-size:15px;font-weight:800;text-decoration:none}
+.service-redesign .service-hero .btn-glass{background:#fff;color:#16314b;border-color:#fff}
+.service-redesign .service-block{margin:58px auto}
+.service-redesign .service-section-heading{text-align:center;margin-bottom:27px}
+.service-redesign .service-kicker{display:block;color:#50aeff;font-size:11px;letter-spacing:.12em;font-weight:900;margin-bottom:9px}
+.service-redesign .service-section-heading h2{color:#fff;font-size:clamp(27px,3vw,38px);letter-spacing:-.04em;margin:0 0 11px}
+.service-redesign .service-section-heading h2 em{font-style:normal;color:#42b5ff}
+.service-redesign .service-section-heading p{color:#b5c9df;font-size:14px;margin:0;line-height:1.7}
+.service-redesign .service-featured-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.service-redesign .service-featured-card{position:relative;display:flex;flex-direction:column;min-width:0;background:#102a41;border:1px solid #2a5680;border-radius:12px;overflow:hidden;text-decoration:none;color:#fff;transition:transform .25s,border-color .25s,box-shadow .25s}
+.service-redesign .service-featured-card:hover{transform:translateY(-6px);border-color:#59b0ff;box-shadow:0 16px 32px #0004}
+.service-redesign .service-featured-photo{position:relative;height:150px;overflow:hidden}
+.service-redesign .service-featured-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.service-redesign .service-featured-card:hover img{transform:scale(1.07)}
+.service-redesign .service-featured-icon{display:grid;place-items:center;position:absolute;top:127px;left:15px;width:53px;height:53px;border-radius:50%;background:linear-gradient(140deg,#2688ff,#0954d7);box-shadow:0 7px 15px #001f4d70}
+.service-redesign .service-featured-icon svg{width:27px;height:27px}
+.service-redesign .service-featured-body{padding:40px 15px 18px;flex:1;position:relative}
+.service-redesign .service-featured-body strong{display:block;color:#fff;font-size:17px;margin-bottom:9px}
+.service-redesign .service-featured-body p{color:#c0d1e2;font-size:12px;line-height:1.7;margin:0 0 8px}
+.service-redesign .service-featured-arrow{position:absolute;right:13px;bottom:14px;color:#50aeff;font-size:20px}
+.service-redesign .service-process-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+.service-redesign .service-process-card{position:relative;min-height:160px;padding:22px 12px 17px;text-align:center;border:1px solid #28649d;border-radius:12px;background:#0c263d}
+.service-redesign .service-process-card:not(:last-child):after{content:"›";position:absolute;right:-16px;top:50%;transform:translateY(-50%);color:#39aaff;font-size:30px}
+.service-redesign .service-process-num{position:absolute;top:0;left:0;background:#30aaf9;color:#062540;font-size:12px;font-weight:900;padding:6px 9px;border-radius:10px 0 10px 0}
+.service-redesign .service-process-icon{display:grid;place-items:center;margin:0 auto 15px;width:56px;height:56px;border-radius:50%;background:#115fe0;color:white}
+.service-redesign .service-process-icon svg{width:28px;height:28px}
+.service-redesign .service-process-card strong{display:block;font-size:15px;color:white}
+.service-redesign .service-process-card p{font-size:12px;line-height:1.65;color:#c1d2e4;margin:8px 0 0}
+.service-redesign .service-benefit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.service-redesign .service-benefit{display:flex;align-items:center;gap:14px;background:#0d2a45;border:1px solid #2b5a86;border-radius:12px;padding:22px 17px}
+.service-redesign .service-benefit-symbol{display:grid;place-items:center;width:49px;height:49px;flex:0 0 49px;border-radius:50%;background:#125cda;color:#fff;font-size:24px;font-weight:900}
+.service-redesign .service-benefit strong{display:block;color:#fff;font-size:15px;margin-bottom:6px}
+.service-redesign .service-benefit p{font-size:12px;color:#c2d4e5;line-height:1.6;margin:0}
+.service-redesign .service-directory{padding-top:25px;border-top:1px solid #204362}
+.service-redesign .service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.service-redesign .service-directory-card{min-height:125px;padding:15px;background:#10283e;border:1px solid #2b4f70;border-radius:10px;box-shadow:none}
+.service-redesign .service-directory-card strong{font-size:14px;color:#fff}
+.service-redesign .service-directory-card>span:not(.service-number){font-size:11px;color:#bed0e2}
+.service-redesign .service-directory-icon{width:38px;height:38px;background:#1453a2!important;color:#eaf6ff!important;border-color:#276eae;border-radius:10px}
+.service-redesign .service-directory-icon svg{width:21px;height:21px}
+.service-redesign .service-directory-card .service-card-top{margin-bottom:8px}
+.service-redesign .service-directory-card .service-card-arrow{background:#102b46;color:#50acff;border-color:#2b5b83}
+.service-redesign .service-number{top:25px;left:64px;color:#7aaedc}
+.service-redesign .service-support{border:1px solid #315d85;background:linear-gradient(115deg,#102c47,#0a2137);padding:24px;border-radius:14px}
+.service-redesign .service-support h2{color:#fff}
+.service-redesign .service-support p{color:#bcd0e4}
+.service-redesign .service-final-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:230px;border:1px solid #3470a6;border-radius:14px;background:linear-gradient(90deg,#061e34a8 0%,#08223b 45%,#0a2844 100%),url('/images/work-status/부산진구 미용실 철거.webp') left center/cover no-repeat;padding:38px 42px}
+.service-redesign .service-final-cta h2{color:#fff;font-size:clamp(25px,3vw,35px);margin:0 0 9px}
+.service-redesign .service-final-cta h2 em{color:#43b5ff;font-style:normal}
+.service-redesign .service-final-cta p{color:#d0e0ef;font-size:13px}
+.service-redesign .service-final-cta .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+.service-redesign .service-final-cta .btn-glass{background:white;color:#102b45}
+@media(max-width:1050px){.service-redesign .service-featured-grid{grid-template-columns:repeat(3,1fr)}.service-redesign .service-process-grid{grid-template-columns:repeat(3,1fr)}.service-redesign .service-process-card:after{display:none}.service-redesign .service-benefit-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.service-redesign .service-hero{min-height:0;padding:60px 18px}.service-redesign .service-hero h1{font-size:clamp(29px,8vw,40px)}.service-redesign .service-hero .btn{min-height:50px;padding:12px 15px;font-size:13px}.service-redesign .service-block{margin:40px auto}.service-redesign .service-featured-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.service-redesign .service-featured-photo{height:115px}.service-redesign .service-featured-icon{top:96px;width:42px;height:42px}.service-redesign .service-featured-icon svg{width:22px;height:22px}.service-redesign .service-featured-body{padding:32px 12px 13px}.service-redesign .service-featured-body strong{font-size:14px}.service-redesign .service-featured-body p{font-size:11px}.service-redesign .service-process-grid{grid-template-columns:1fr;gap:10px}.service-redesign .service-process-card{min-height:0;display:flex;align-items:center;text-align:left;gap:15px;padding:15px 18px}.service-redesign .service-process-icon{margin:0;flex:0 0 48px;width:48px;height:48px}.service-redesign .service-process-card p{margin:3px 0 0}.service-redesign .service-benefit-grid{grid-template-columns:1fr;gap:10px}.service-redesign .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-redesign .service-final-cta{padding:27px 19px;flex-direction:column;align-items:flex-start}.service-redesign .service-final-cta .btn{min-height:48px;font-size:13px}.service-redesign .service-support{padding:20px 16px}}
+@media(prefers-reduced-motion:reduce){.service-redesign .service-hero .service-highlight{animation:none;background-size:100% 4px}}
 `;
-
+const featuredServices=[
+ {slug:"commercial-store",title:"상가 철거",description:"식당·카페·미용실 등 다양한 상가 철거",image:"/images/work-status/서면 음식점 철거.webp"},
+ {slug:"office",title:"사무실 철거",description:"사무실·학원·업무공간 철거",image:"/images/work-status/해운대 학원 원상복구.webp"},
+ {slug:"house",title:"주택 철거",description:"주택 내부 철거와 원상복구",image:"/images/work-status/부산진구 미용실 철거.webp"},
+ {slug:"factory",title:"공장 철거",description:"공장·창고·대형시설 철거 상담",image:"/images/work-status/덕천동 돈까스집.webp"},
+ {slug:"interior",title:"인테리어 철거",description:"내부 인테리어 및 부분 철거",image:"/images/work-status/동래구 횟집 원상복구.webp"}
+];
+const steps=[
+ {title:"상담 및 문의",desc:"전화 또는 카카오톡으로 현장 상담",icon:"commercial-store"},
+ {title:"현장 방문 견적",desc:"전문가의 정확한 현장 진단 및 견적",icon:"office"},
+ {title:"계약 진행",desc:"작업 범위 및 일정 확정",icon:"academy"},
+ {title:"철거 작업 진행",desc:"안전하고 꼼꼼한 철거 시공",icon:"factory"},
+ {title:"원상복구 및 완료",desc:"마무리 정리 및 사후 안내",icon:"interior"}
+];
 export default function Page(){
-  return <main className="page-shell">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(serviceSchema)}}/>
-    <style dangerouslySetInnerHTML={{__html:servicePageCss}}/>
-    <header className="list-hero service-hero"><div className="eyebrow-chip">SERVICE DIRECTORY</div><h1>업종에 따라 달라지는<br/><span className="gradient-text">철거 범위와 원상복구</span></h1><p>평수만으로 철거를 판단하기보다 업종별 설비, 마감, 폐기물, 반출 조건과 임대차 원상복구 범위를 함께 확인하세요.</p><div className="cta-row"><a className="btn btn-primary" href={inquiryUrl}>무료 현장견적 문의</a><a className="btn btn-glass" href="/estimate">견적 준비정보 6가지</a></div></header>
-    <section className="section"><div className="section-heading"><div><span className="section-kicker">ALL SERVICES</span><h2>업종별 <span className="gradient-text">철거 서비스</span></h2></div><p>각 페이지에서 철거 전 확인사항, 견적에 영향을 주는 항목, 작업 순서와 폐업지원 정보를 확인할 수 있습니다.</p></div><div className="service-grid">{orderedServices.map(([slug,item],i)=>{const tone=serviceTone[slug]??"blue";return <a key={slug} className={`service-card service-directory-card tone-${tone}`} href={`/service/${slug}`}><span className="service-number">{String(i+1).padStart(2,"0")}</span><div className="service-card-top"><span className="service-directory-icon"><ServiceIcon slug={slug}/></span><span className="service-card-arrow" aria-hidden="true">→</span></div><strong>{item.primary}</strong><span>{item.summary}</span></a>})}</div></section>
-    <section className="support-box section service-support"><span className="section-kicker">SERVICE SUPPORT</span><h2>폐업 예정이라면 철거 전에 지원 대상도 확인하세요</h2><p>점포철거비 지원은 임차관계, 폐업일, 면적, 인정비용과 증빙에 따라 달라지며 지원에서 제외되는 경우도 있습니다. 업종별 철거정보를 확인한 뒤 공사 전에 최신 지원조건을 함께 확인하세요.</p><div className="cta-row"><a className="btn btn-primary" href="/support">2026 지원 대상·제외조건 확인</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div></section>
-    <section className="final-cta service-final-cta"><div><span className="section-kicker">FIELD ESTIMATE</span><h2>어떤 항목을 철거해야 할지<br/>애매하다면 현장에서 확인하세요.</h2><p>업종과 면적, 층수, 설비, 반출동선, 원상복구 조건을 함께 확인하면 견적 범위를 더 구체적으로 정리할 수 있습니다.</p></div><a className="btn btn-light" href={inquiryUrl}>무료 현장견적 문의</a></section>
-  </main>;
+ return <main className="page-shell service-redesign">
+  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(serviceSchema)}}/>
+  <style dangerouslySetInnerHTML={{__html:servicePageCss}}/>
+  <header className="service-hero"><div className="service-hero-inner"><div className="service-breadcrumb">HOME &gt; 서비스 소개</div><span className="service-kicker">BUSAN DEMOLITION SERVICE</span><h1>부산 철거업체,<br/><span className="service-highlight">철거부터 원상복구 폐업지원금</span><br/>신청까지 원스톱 해드립니다.</h1><p>상가, 사무실, 주택, 공장 등 다양한 공간의 철거부터 원상복구까지 올바른 철거가 함께합니다. 폐업지원금은 대상 및 신청 요건 확인을 안내합니다.</p><div className="cta-row"><a className="btn btn-primary" href="tel:01066484886">☎ 전화문의: 010-6648-4886</a><a className="btn btn-glass" href={inquiryUrl}>● 사진 몇장으로 카톡문의: mx4885</a></div></div></header>
+  <section className="service-container service-block"><div className="service-section-heading"><span className="service-kicker">OLBAREUN DEMOLITION SERVICE</span><h2>올바른 철거 <em>서비스 분야</em></h2><p>다양한 현장 경험을 바탕으로 공간별 철거와 원상복구 범위를 안내합니다.</p></div><div className="service-featured-grid">{featuredServices.map(item=><a href={`/service/${item.slug}`} className="service-featured-card" key={item.slug}><div className="service-featured-photo"><img src={item.image} alt={item.title+" 관련 철거 현장"} loading="lazy"/></div><span className="service-featured-icon"><ServiceIcon slug={item.slug}/></span><div className="service-featured-body"><strong>{item.title}</strong><p>{item.description}</p><span className="service-featured-arrow" aria-hidden="true">→</span></div></a>)}</div></section>
+  <section className="service-container service-block"><div className="service-section-heading"><h2>한눈에 보는 <em>철거 진행 과정</em></h2><p>현장 상황에 맞춘 체계적인 절차로 안전하고 신속하게 진행합니다.</p></div><div className="service-process-grid">{steps.map((item,i)=><div className="service-process-card" key={item.title}><span className="service-process-num">{String(i+1).padStart(2,"0")}</span><span className="service-process-icon"><ServiceIcon slug={item.icon}/></span><div><strong>{item.title}</strong><p>{item.desc}</p></div></div>)}</div></section>
+  <section className="service-container service-block"><div className="service-section-heading"><h2>올바른 철거가 <em>특별한 이유</em></h2></div><div className="service-benefit-grid">{[{symbol:"✓",title:"안전한 시공",text:"현장 조건에 맞는 안전한 철거 절차 안내"},{symbol:"◷",title:"신속한 진행",text:"일정과 현장 상황을 고려한 작업 진행"},{symbol:"▤",title:"폐업지원금 연계",text:"신청 전 지원 조건과 준비 사항 안내"},{symbol:"👍",title:"합리적인 비용",text:"철거 범위에 따른 투명한 견적 상담"}].map(x=><div className="service-benefit" key={x.title}><span className="service-benefit-symbol">{x.symbol}</span><div><strong>{x.title}</strong><p>{x.text}</p></div></div>)}</div></section>
+  <section className="service-container service-block service-directory"><div className="service-section-heading"><span className="service-kicker">ALL SERVICES</span><h2>업종별 <em>철거 서비스 전체 보기</em></h2><p>기존 업종별 서비스 페이지도 그대로 이용할 수 있습니다.</p></div><div className="service-grid">{orderedServices.map(([slug,item],i)=>{const tone=serviceTone[slug]??"blue";return <a key={slug} className={`service-card service-directory-card tone-${tone}`} href={`/service/${slug}`}><span className="service-number">{String(i+1).padStart(2,"0")}</span><div className="service-card-top"><span className="service-directory-icon"><ServiceIcon slug={slug}/></span><span className="service-card-arrow" aria-hidden="true">→</span></div><strong>{item.primary}</strong><span>{item.summary}</span></a>})}</div></section>
+  <section className="service-container service-block service-support"><span className="service-kicker">SERVICE SUPPORT</span><h2>폐업 예정이라면 철거 전에 지원 대상도 확인하세요</h2><p>점포철거비 지원은 임차관계, 폐업일, 면적, 인정비용과 증빙에 따라 달라집니다. 공사 전에 최신 조건과 신청 순서를 확인하세요.</p><div className="cta-row"><a className="btn btn-primary" href="/support">지원 대상·제외조건 확인</a><a className="btn btn-glass" href="/guide/demolition-estimate-checklist">견적 비교 체크리스트</a></div></section>
+  <section className="service-container service-block service-final-cta"><div><span className="service-kicker">FREE FIELD ESTIMATE</span><h2>무료 <em>현장 견적</em> 신청하세요!</h2><p>사진 몇 장만으로도 철거 범위와 견적 상담을 시작할 수 있습니다.</p><div className="cta-row"><a className="btn btn-primary" href="tel:01066484886">☎ 전화문의: 010-6648-4886</a><a className="btn btn-glass" href={inquiryUrl}>● 카톡문의: mx4885</a></div></div></section>
+ </main>;
 }

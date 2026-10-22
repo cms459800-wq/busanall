@@ -154,3 +154,12 @@ body:has(.home-redesign) .site-header .brand-logo-home{max-width:100%;object-fit
 .home-redesign .home-region-card{background:#fff;border-radius:12px;padding:17px}
 @media(max-width:900px){.home-trust-inner{grid-template-columns:1fr;gap:28px}.home-trust-section{padding:46px 20px}}
 @media(max-width:600px){.home-redesign .home-hero{min-height:550px}.home-trust-section{padding:38px 14px}.home-trust-grid{gap:8px}.home-trust-grid a{min-height:155px;padding:15px}.home-trust-grid strong{font-size:14px}.home-trust-grid p{font-size:11px}.home-trust-intro h2{font-size:29px}}
+
+/* Animated metrics beneath trust statement */
+.home-trust-counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:28px 0 22px}
+.home-trust-counter{min-width:0;text-align:center;padding:0 10px;border-right:1px solid rgba(171,200,239,.35)}
+.home-trust-counter:first-child{padding-left:0}
+.home-trust-counter:last-child{border-right:0;padding-right:0}
+.home-trust-counter strong{display:block;color:#45a2ff;font-size:clamp(21px,2.3vw,36px);font-weight:900;letter-spacing:-.055em;line-height:1.25;text-shadow:0 0 16px rgba(49,133,255,.4);font-variant-numeric:tabular-nums;white-space:nowrap}
+.home-trust-counter span{display:block;color:#d5dfec;font-size:12px;margin-top:7px;white-space:nowrap}
+@media(max-width:600px){.home-trust-counters{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}.home-trust-counter:nth-child(2){border-right:0}.home-trust-counter strong{font-size:30px}.home-trust-counter span{font-size:12px}}

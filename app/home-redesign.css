@@ -102,3 +102,28 @@ body:has(.home-redesign) .site-header .brand-logo-home{display:block}
 
 .home-redesign .home-hero .home-night-notice{background-color:#071a32;border:2px solid #429aff;min-height:100px;padding:20px 24px;box-sizing:border-box;position:relative;z-index:2}
 .home-redesign .home-hero .home-night-notice p{color:#fff;font-weight:800;line-height:1.5}
+
+/* Final mobile layout polish: header, inquiry banner and estimate form. */
+body:has(.home-redesign) .site-header .brand{flex-shrink:0;max-width:48vw}
+body:has(.home-redesign) .site-header .brand-logo-home{max-width:100%;object-fit:contain}
+.home-redesign .home-night-notice{overflow:hidden}
+.home-redesign .home-night-notice p{overflow-wrap:break-word;word-break:keep-all}
+@media(max-width:760px){
+ body:has(.home-redesign) .site-header .brand{height:56px;min-height:0;max-width:46vw}
+ body:has(.home-redesign) .site-header .brand-logo-home{height:52px;max-width:100%}
+ .home-redesign .home-hero-main{width:100%;min-width:0;padding:12px 0}
+ .home-redesign .home-hero .cta-row{display:flex;flex-wrap:wrap;gap:10px}
+ .home-redesign .home-hero .cta-row .btn{max-width:100%;white-space:normal;text-align:center}
+ .home-redesign .home-night-notice{width:100%;gap:7px}
+ .home-redesign .home-night-icon{font-size:23px}
+ .home-redesign .home-night-chat{font-size:18px}
+ .home-redesign .home-projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body:has(.home-redesign) .estimate-lead{scroll-margin-top:120px}
+ body:has(.home-redesign) .estimate-form{max-width:100%;box-sizing:border-box}
+}
+@media(max-width:360px){
+ .home-redesign .home-night-notice{padding:12px 7px;gap:5px}
+ .home-redesign .home-night-notice p{font-size:12px}
+ .home-redesign .home-night-icon{font-size:19px}
+ .home-redesign .home-night-chat{font-size:16px}
+}

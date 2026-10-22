@@ -269,3 +269,37 @@ body:has(.home-redesign){background:#081b2b!important}
 .home-redesign .home-section .btn-glass:hover{background:#193e5e!important}
 .home-redesign .final-cta{border:1px solid #2c77cb!important}
 @media(max-width:760px){.home-redesign .home-section{margin-top:45px!important;margin-bottom:45px!important}.home-redesign .explore-visual-card h3,.home-redesign .guide-visual-card h3{font-size:14px!important;margin:10px 10px 4px!important}.home-redesign .explore-visual-card .explore-visual-meta,.home-redesign .guide-visual-card .explore-visual-meta{padding:0 10px 12px!important;font-size:11px!important}.home-redesign .closure-support{padding:20px 15px!important}}
+
+/* Fine alignment to approved navy mockup: tighter rhythm, uniform panels. */
+.home-redesign{--home-dark:#081b2b;--home-panel:#10273d;--home-border:#274967;--home-accent:#328dff}
+.home-redesign .home-section{width:min(1120px,calc(100% - 40px))!important;margin-top:48px!important;margin-bottom:48px!important}
+.home-redesign .home-section-head{margin-bottom:17px!important;gap:20px!important}
+.home-redesign .home-section-head h2{font-size:clamp(25px,2.5vw,33px)!important;line-height:1.28!important;letter-spacing:-.045em}
+.home-redesign .home-section-head p{max-width:420px!important;font-size:12px!important;line-height:1.75!important}
+.home-redesign .explore-visual-grid,.home-redesign .guide-visual-grid{margin-top:17px!important;gap:13px!important}
+.home-redesign .guide-visual-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.home-redesign .explore-visual-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.home-redesign .explore-visual-card,.home-redesign .guide-visual-card{border-radius:10px!important;background:var(--home-panel)!important;border-color:var(--home-border)!important;transition:transform .2s ease,border-color .2s ease}
+.home-redesign .explore-visual-card .explore-image,.home-redesign .guide-visual-card .explore-image{aspect-ratio:1.55!important}
+.home-redesign .home-region-grid{margin-top:16px!important;gap:8px!important}
+.home-redesign .home-region-grid .home-region-card{height:43px!important;min-height:43px!important;padding:8px 12px!important;background:#0e2940!important;border:1px solid #244c6b!important}
+.home-redesign .home-region-grid .home-region-compact-label svg{width:15px!important;height:15px!important;min-width:15px!important;min-height:15px!important;max-width:15px!important;max-height:15px!important;flex:0 0 15px!important}
+.home-redesign .home-process-flow{margin:17px 0 18px!important;gap:16px!important}
+.home-redesign .home-process-flow-card{min-height:96px!important;padding:12px!important;border-radius:11px!important}
+.home-redesign .home-process-circle{flex:0 0 44px!important;width:44px!important;height:44px!important}
+.home-redesign .home-process-copy strong{font-size:12px!important}
+.home-redesign .home-process-copy p{font-size:10px!important}
+.home-redesign .home-process-next{right:-14px!important;font-size:17px!important}
+.home-redesign .home-process-support{padding:23px 26px!important;border-radius:12px!important}
+.home-redesign .home-process-support h3{font-size:24px!important}
+.home-redesign .closure-support{border-radius:14px!important;padding:27px!important}
+.home-redesign .closure-support-grid{gap:11px!important;margin:18px 0!important}
+.home-redesign .closure-support-card{padding:17px!important;border-radius:11px!important}
+.home-redesign .closure-support-card strong{font-size:17px!important}
+.home-redesign .closure-support-warning{padding:13px 16px!important;border-radius:10px!important}
+.home-redesign .closure-support-steps{gap:10px!important;margin-top:13px!important}
+.home-redesign .closure-support-step{padding:13px!important;border-radius:9px!important}
+.home-redesign .final-cta{width:min(1120px,calc(100% - 40px))!important;margin:48px auto!important;min-height:155px!important;padding:25px 31px!important;border-radius:12px!important}
+.home-redesign .final-cta h2{font-size:clamp(23px,2.5vw,30px)!important}
+@media(max-width:900px){.home-redesign .explore-visual-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.home-redesign .home-process-flow-card{flex-direction:column!important;text-align:center!important;min-height:140px!important}.home-redesign .home-process-next{right:-12px!important}}
+@media(max-width:650px){.home-redesign .home-section{width:calc(100% - 28px)!important;margin-top:38px!important;margin-bottom:38px!important}.home-redesign .explore-visual-grid,.home-redesign .guide-visual-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.home-redesign .home-process-flow{grid-template-columns:1fr!important;gap:9px!important}.home-redesign .home-process-flow-card{flex-direction:row!important;text-align:left!important;min-height:70px!important}.home-redesign .home-process-next{display:none!important}.home-redesign .home-process-support{padding:20px 16px!important}.home-redesign .home-process-support h3{font-size:20px!important}.home-redesign .closure-support{padding:18px 13px!important}.home-redesign .final-cta{width:calc(100% - 28px)!important;padding:23px 17px!important}}

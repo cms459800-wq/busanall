@@ -91,3 +91,11 @@ body:has(.home-redesign) .site-header .brand-logo-home{display:block}
 .home-redesign .hero-panel .quick-card b{color:#fff;font-size:12px}
 .home-redesign .hero-panel .quick-card span{color:#b5c6dc;font-size:10px}
 @media(max-width:760px){.home-redesign .hero-panel .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-redesign .hero-panel .hero-card{padding:14px}.home-redesign .home-hero{padding-top:56px;padding-bottom:48px}}
+
+/* After-hours inquiry banner replacing the four homepage stat cards. */
+.home-redesign .home-night-notice{display:flex;align-items:center;justify-content:center;gap:20px;width:min(100%,900px);margin:32px auto 0;padding:21px 26px;border:1px solid #4d9dff;border-radius:19px;background:rgba(5,18,37,.91);box-shadow:0 10px 28px rgba(0,0,0,.25);color:#fff;text-align:center}
+.home-redesign .home-night-notice p{margin:0;color:#fff;font-size:clamp(16px,2vw,23px);font-weight:800;line-height:1.5;letter-spacing:-.035em}
+.home-redesign .home-night-notice strong{color:#ffd12b;font-weight:900}
+.home-redesign .home-night-icon{font-size:44px;line-height:1;color:#dbeaff;flex:none}
+.home-redesign .home-night-chat{font-size:31px;line-height:1;flex:none}
+@media(max-width:760px){.home-redesign .home-night-notice{gap:9px;margin-top:22px;padding:15px 10px;border-radius:14px}.home-redesign .home-night-notice p{font-size:clamp(13px,3.4vw,17px);line-height:1.55}.home-redesign .home-night-icon{font-size:26px}.home-redesign .home-night-chat{font-size:20px}}

@@ -303,3 +303,28 @@ body:has(.home-redesign){background:#081b2b!important}
 .home-redesign .final-cta h2{font-size:clamp(23px,2.5vw,30px)!important}
 @media(max-width:900px){.home-redesign .explore-visual-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.home-redesign .home-process-flow-card{flex-direction:column!important;text-align:center!important;min-height:140px!important}.home-redesign .home-process-next{right:-12px!important}}
 @media(max-width:650px){.home-redesign .home-section{width:calc(100% - 28px)!important;margin-top:38px!important;margin-bottom:38px!important}.home-redesign .explore-visual-grid,.home-redesign .guide-visual-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.home-redesign .home-region-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.home-redesign .home-process-flow{grid-template-columns:1fr!important;gap:9px!important}.home-redesign .home-process-flow-card{flex-direction:row!important;text-align:left!important;min-height:70px!important}.home-redesign .home-process-next{display:none!important}.home-redesign .home-process-support{padding:20px 16px!important}.home-redesign .home-process-support h3{font-size:20px!important}.home-redesign .closure-support{padding:18px 13px!important}.home-redesign .final-cta{width:calc(100% - 28px)!important;padding:23px 17px!important}}
+
+/* Final mockup fidelity: consistent dark surfaces, compact image cards and typography. */
+.home-redesign.page-shell{background:#081b2b!important;color:#e9f4ff!important}
+.home-redesign .home-section .section-kicker{display:inline-block;font-size:10px!important;font-weight:900!important;letter-spacing:.16em!important;margin-bottom:8px!important}
+.home-redesign .home-section-head{align-items:end!important}
+.home-redesign .home-section-head h2{font-weight:900!important;text-wrap:balance}
+.home-redesign .home-section-head p{color:#9fb7d0!important}
+.home-redesign .guide-visual-card,.home-redesign .explore-visual-card{display:flex!important;flex-direction:column!important;min-height:0!important}
+.home-redesign .guide-visual-card .explore-image,.home-redesign .explore-visual-card .explore-image{aspect-ratio:1.7!important;overflow:hidden!important;background:#0d253b!important}
+.home-redesign .guide-visual-card .explore-image img,.home-redesign .explore-visual-card .explore-image img{object-fit:cover!important}
+.home-redesign .guide-visual-card h3,.home-redesign .explore-visual-card h3{font-weight:850!important;letter-spacing:-.025em!important}
+.home-redesign .guide-visual-card .explore-visual-meta,.home-redesign .explore-visual-card .explore-visual-meta{margin-top:auto!important;gap:9px!important;line-height:1.5!important}
+.home-redesign .guide-visual-card .explore-visual-meta span:first-child,.home-redesign .explore-visual-card .explore-visual-meta span:first-child{overflow-wrap:anywhere}
+.home-redesign .home-region-grid .home-region-card{box-shadow:0 2px 7px rgba(0,0,0,.09)!important}
+.home-redesign .home-region-grid .home-region-compact-label strong{font-weight:750!important;letter-spacing:-.03em!important}
+.home-redesign .home-process-section .home-process-flow-card{box-shadow:0 5px 18px rgba(0,0,0,.09)!important}
+.home-redesign .home-process-circle{background:linear-gradient(145deg,#247bff,#0051e0)!important;box-shadow:0 4px 12px rgba(0,99,255,.22)!important}
+.home-redesign .home-process-copy{gap:3px!important}
+.home-redesign .home-process-support{box-shadow:0 7px 22px rgba(0,40,105,.2)!important}
+.home-redesign .closure-support-head{align-items:center!important}
+.home-redesign .closure-support-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.home-redesign .closure-support-steps{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.home-redesign .closure-support-card,.home-redesign .closure-support-step{height:100%!important;box-sizing:border-box!important}
+.home-redesign .final-cta{background-position:center 58%!important;box-shadow:0 9px 26px rgba(0,36,92,.23)!important}
+@media(max-width:760px){.home-redesign .home-section-head{align-items:flex-start!important}.home-redesign .closure-support-grid,.home-redesign .closure-support-steps{grid-template-columns:1fr!important}.home-redesign .guide-visual-card .explore-image,.home-redesign .explore-visual-card .explore-image{aspect-ratio:1.35!important}}

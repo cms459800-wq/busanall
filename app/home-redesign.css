@@ -344,3 +344,35 @@ body:has(.home-redesign){background:#081b2b!important}
 .home-redesign .home-hero .cta-row .btn{min-height:60px!important;padding:17px 28px!important;font-size:16px!important;font-weight:850!important;border-radius:12px!important;line-height:1.4!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
 .home-redesign .home-hero .cta-row{gap:14px!important}
 @media(max-width:650px){.home-redesign .home-hero .cta-row .btn{min-height:54px!important;padding:14px 18px!important;font-size:14px!important}.home-redesign .home-hero .cta-row{gap:10px!important}}
+
+/* Dark comparison section, matched to approved visual concept. */
+.home-redesign .home-compare{position:relative;isolation:isolate;padding:56px 20px 60px;background:#06192b url('/images/work-status/서면 음식점 철거.webp') center/cover no-repeat;color:#fff;overflow:hidden}
+.home-redesign .home-compare:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(2,17,32,.83),rgba(3,23,43,.96) 35%,rgba(3,23,43,.94) 67%,rgba(2,17,32,.77))}
+.home-redesign .home-compare-wrap{max-width:1120px;margin:0 auto}
+.home-redesign .home-compare-heading{text-align:center;margin-bottom:29px}
+.home-redesign .home-compare-eyebrow{display:inline-flex;align-items:center;border:1px solid #527390;border-radius:100px;padding:7px 16px;font-size:12px;color:#e3effb;background:rgba(3,23,44,.6);margin-bottom:15px}
+.home-redesign .home-compare-heading h2{color:#fff!important;font-size:clamp(29px,3.7vw,48px)!important;line-height:1.28!important;letter-spacing:-.055em!important;font-weight:900!important;margin:0 0 13px!important}
+.home-redesign .home-compare-heading h2 span{color:#20a6ff!important}
+.home-redesign .home-compare-heading p{color:#e1e9f3!important;font-size:15px!important;line-height:1.7!important;margin:0!important}
+.home-redesign .home-compare-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.06fr);gap:24px;align-items:stretch;position:relative;max-width:1050px;margin:auto}
+.home-redesign .home-compare-bad,.home-redesign .home-compare-good{min-width:0;border-radius:20px;padding:23px 22px 24px;box-sizing:border-box}
+.home-redesign .home-compare-bad{background:linear-gradient(135deg,rgba(48,66,84,.94),rgba(24,43,63,.94));border:1px solid rgba(186,207,229,.35);box-shadow:0 10px 25px rgba(0,0,0,.18)}
+.home-redesign .home-compare-bad-heading{display:flex;justify-content:center;align-items:center;gap:13px;min-height:56px;color:#fff;font-size:19px;font-weight:850}
+.home-redesign .home-compare-alert{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(#cdd8e4,#8196aa);color:#fff;font-size:24px;font-weight:900}
+.home-redesign .home-compare-list{display:flex;flex-direction:column;gap:9px;margin-top:16px}
+.home-redesign .home-compare-bad-row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:12px;align-items:center;min-height:52px;color:#e7f0fa;font-size:13px;line-height:1.5}
+.home-redesign .home-compare-bad-row b{display:grid;place-items:center;min-height:42px;padding:7px 8px;border-radius:8px;background:#405970;color:#fff;font-size:13px}
+.home-redesign .home-compare-bad-row span{border:1px solid rgba(177,200,222,.25);background:rgba(8,29,49,.24);border-radius:9px;padding:11px 12px}
+.home-redesign .home-compare-good{background:linear-gradient(145deg,#eff9ff,#cde7ff);border:2px solid #61b9ff;box-shadow:0 0 23px rgba(43,147,255,.35),0 10px 28px rgba(0,0,0,.18);color:#071c38}
+.home-redesign .home-compare-logo{height:60px;display:flex;align-items:center;justify-content:center}
+.home-redesign .home-compare-logo img{width:auto;height:auto;max-width:230px;max-height:60px;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(255,255,255,.4))}
+.home-redesign .home-compare-good-row{display:flex;align-items:center;gap:12px;min-height:52px;background:rgba(255,255,255,.9);border-radius:11px;padding:10px 13px;color:#14253c;font-size:13px;line-height:1.55}
+.home-redesign .home-compare-good-row b{color:#075bd6;font-weight:900}
+.home-redesign .home-compare-check{display:grid;place-items:center;flex:0 0 31px;width:31px;height:31px;border-radius:50%;background:#0c6bfa;color:#fff;font-size:19px;font-weight:900}
+.home-redesign .home-compare-vs{position:absolute;z-index:2;left:50%;top:53%;transform:translate(-50%,-50%);width:55px;height:55px;border:2px solid #cce8ff;border-radius:50%;display:grid;place-items:center;background:#096ef0;box-shadow:0 6px 18px #001d4e80;color:white;font-size:31px}
+.home-redesign .home-compare-actions{display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin-top:24px}
+.home-redesign .home-compare-button{display:inline-flex;justify-content:center;align-items:center;padding:12px 21px;min-height:45px;border-radius:10px;background:#1677f5;color:white!important;font-weight:800;font-size:13px;text-decoration:none;border:1px solid #4d9dff;transition:transform .2s,box-shadow .2s}
+.home-redesign .home-compare-button:hover{transform:translateY(-3px);box-shadow:0 9px 23px #005ee344}
+.home-redesign .home-compare-button-outline{background:#0a233c;border-color:#5b88b2}
+@media(max-width:760px){.home-redesign .home-compare{padding:42px 14px}.home-redesign .home-compare-columns{grid-template-columns:1fr;gap:15px}.home-redesign .home-compare-vs{left:50%;top:50%;width:40px;height:40px;font-size:25px;transform:translate(-50%,-50%) rotate(90deg)}.home-redesign .home-compare-bad,.home-redesign .home-compare-good{padding:17px 13px;border-radius:15px}.home-redesign .home-compare-bad-row{grid-template-columns:66px minmax(0,1fr);gap:7px;font-size:12px}.home-redesign .home-compare-bad-row b{font-size:12px}.home-redesign .home-compare-good-row{font-size:12px;padding:9px}.home-redesign .home-compare-heading p{font-size:13px!important}}
+@media(prefers-reduced-motion:reduce){.home-redesign .home-compare-button{transition:none!important}}

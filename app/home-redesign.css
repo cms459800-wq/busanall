@@ -206,3 +206,18 @@ body:has(.home-redesign) .site-header .brand-logo-home{max-width:100%;object-fit
 .home-redesign .home-process-support-actions .btn-glass{background:#fff;color:#1461dd;border-color:#fff}
 @media(max-width:1100px){.home-redesign .home-process-flow{gap:13px}.home-redesign .home-process-flow-card{flex-direction:column;text-align:center;min-height:150px;padding:14px 8px}.home-redesign .home-process-next{right:-13px}.home-redesign .home-process-circle{flex-basis:48px;width:48px;height:48px}.home-redesign .home-process-support{flex-direction:column;align-items:flex-start}}
 @media(max-width:650px){.home-redesign .home-process-flow{grid-template-columns:1fr;gap:9px}.home-redesign .home-process-flow-card{flex-direction:row;text-align:left;min-height:76px;padding:12px 15px}.home-redesign .home-process-next{display:none}.home-redesign .home-process-circle{flex-basis:47px;width:47px;height:47px}.home-redesign .home-process-copy strong{font-size:15px}.home-redesign .home-process-support{padding:23px 18px;gap:18px}.home-redesign .home-process-support-actions{width:100%}.home-redesign .home-process-support-actions .btn{flex:1;text-align:center;font-size:12px;padding:11px 9px}}
+
+/* Final free-consultation banner: demolition photo with blue overlay. */
+.home-redesign .final-cta{position:relative;display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:190px;box-sizing:border-box;padding:35px 42px;border-radius:18px;overflow:hidden;color:#fff;background:linear-gradient(90deg,rgba(2,31,83,.96) 0%,rgba(5,53,139,.85) 47%,rgba(1,47,119,.9) 100%),url('/images/work-status/서면 음식점 철거.webp') center 55%/cover no-repeat!important;box-shadow:0 15px 30px rgba(2,36,94,.13)}
+.home-redesign .final-cta>div:first-child{min-width:0;flex:1}
+.home-redesign .final-cta .section-kicker{color:#60bbff!important;letter-spacing:.15em;font-weight:800}
+.home-redesign .final-cta h2{color:#fff!important;font-size:clamp(23px,2.7vw,36px);line-height:1.3;letter-spacing:-.04em;margin:10px 0}
+.home-redesign .final-cta h2 em{font-style:normal;color:#36b6ff}
+.home-redesign .final-cta p{color:#e5efff!important;line-height:1.7;font-size:13px;margin:0;max-width:700px}
+.home-redesign .final-cta .cta-row{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-shrink:0;margin:0}
+.home-redesign .final-cta .cta-row .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 19px;border-radius:10px;font-weight:850;text-align:center;white-space:nowrap;text-decoration:none}
+.home-redesign .final-cta .cta-row .btn-light{background:#fff!important;color:#0758da!important;border:1px solid #fff!important}
+.home-redesign .final-cta .cta-row .btn-primary{background:#0664fa!important;color:#fff!important;border:1px solid #0664fa!important}
+@media(max-width:900px){.home-redesign .final-cta{flex-direction:column;align-items:flex-start;padding:28px 25px}.home-redesign .final-cta .cta-row{justify-content:flex-start;flex-wrap:wrap}}
+@media(max-width:600px){.home-redesign .final-cta{padding:26px 18px;min-height:0}.home-redesign .final-cta h2{font-size:25px}.home-redesign .final-cta p{font-size:12px}.home-redesign .final-cta .cta-row{width:100%;gap:8px}.home-redesign .final-cta .cta-row .btn{flex:1;min-width:0;padding:11px 8px;font-size:12px}}
+#home-estimate-form{scroll-margin-top:115px}

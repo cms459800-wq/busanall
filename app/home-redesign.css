@@ -75,3 +75,19 @@ body:has(.home-redesign) .site-header .brand-logo{
 body:has(.home-redesign) .site-header .brand{background:transparent;box-shadow:none;border:0;padding:0 8px 0 0;min-height:70px;overflow:visible}
 body:has(.home-redesign) .site-header .brand-logo{height:68px;max-width:235px;width:auto;object-fit:contain;object-position:left center}
 @media(max-width:760px){body:has(.home-redesign) .site-header .brand{min-height:58px;padding:0 4px 0 0}body:has(.home-redesign) .site-header .brand-logo{height:56px;max-width:178px}}
+
+/* Homepage-only logo selection; keep the original logo on all subpages. */
+.site-header .brand-logo-home{display:none}
+body:has(.home-redesign) .site-header .brand-logo-default{display:none}
+body:has(.home-redesign) .site-header .brand-logo-home{display:block}
+/* Restore the existing quick-check links rather than hiding functionality. */
+.home-redesign .home-hero{flex-wrap:wrap;gap:18px}
+.home-redesign .hero-panel{display:block;width:min(100%,760px);min-height:0}
+.home-redesign .hero-panel .hero-card{padding:18px 22px;background:rgba(7,17,31,.72);border:1px solid rgba(255,255,255,.2);box-shadow:none;backdrop-filter:blur(10px)}
+.home-redesign .hero-panel .hero-card-icon{display:none}
+.home-redesign .hero-panel .hero-card>strong{font-size:16px;color:#fff;margin:5px 0 10px}
+.home-redesign .hero-panel .quick-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.home-redesign .hero-panel .quick-card{padding:12px 9px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.home-redesign .hero-panel .quick-card b{color:#fff;font-size:12px}
+.home-redesign .hero-panel .quick-card span{color:#b5c6dc;font-size:10px}
+@media(max-width:760px){.home-redesign .hero-panel .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-redesign .hero-panel .hero-card{padding:14px}.home-redesign .home-hero{padding-top:56px;padding-bottom:48px}}

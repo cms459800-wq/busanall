@@ -376,3 +376,35 @@ body:has(.home-redesign){background:#081b2b!important}
 .home-redesign .home-compare-button-outline{background:#0a233c;border-color:#5b88b2}
 @media(max-width:760px){.home-redesign .home-compare{padding:42px 14px}.home-redesign .home-compare-columns{grid-template-columns:1fr;gap:15px}.home-redesign .home-compare-vs{left:50%;top:50%;width:40px;height:40px;font-size:25px;transform:translate(-50%,-50%) rotate(90deg)}.home-redesign .home-compare-bad,.home-redesign .home-compare-good{padding:17px 13px;border-radius:15px}.home-redesign .home-compare-bad-row{grid-template-columns:66px minmax(0,1fr);gap:7px;font-size:12px}.home-redesign .home-compare-bad-row b{font-size:12px}.home-redesign .home-compare-good-row{font-size:12px;padding:9px}.home-redesign .home-compare-heading p{font-size:13px!important}}
 @media(prefers-reduced-motion:reduce){.home-redesign .home-compare-button{transition:none!important}}
+
+/* Premium image-matched comparison: panoramic demolition backdrop, glass card and luminous solution card. */
+.home-redesign .home-compare{padding:56px 24px 65px!important;background-image:linear-gradient(90deg,rgba(2,18,35,.44),rgba(2,18,35,.87) 30%,rgba(2,18,35,.85) 72%,rgba(2,18,35,.38)),url('/images/work-status/서면 음식점 철거.webp')!important;background-position:center!important;background-size:cover!important;border-top:1px solid rgba(65,154,255,.25);border-bottom:1px solid rgba(65,154,255,.25)}
+.home-redesign .home-compare:before{background:linear-gradient(180deg,rgba(3,20,37,.18),rgba(2,16,30,.46))!important;pointer-events:none}
+.home-redesign .home-compare:after{content:"";position:absolute;right:3%;top:0;width:230px;height:180px;opacity:.22;pointer-events:none;background-image:radial-gradient(#35a6ff 1.2px,transparent 1.2px);background-size:16px 16px;mask-image:linear-gradient(to bottom,#000,transparent)}
+.home-redesign .home-compare-wrap{max-width:1160px!important}
+.home-redesign .home-compare-heading{margin-bottom:30px!important}
+.home-redesign .home-compare-heading h2{font-size:clamp(33px,4.1vw,55px)!important;line-height:1.2!important;text-shadow:0 4px 18px #00192d70}
+.home-redesign .home-compare-heading h2 span{color:#1c9cff!important}
+.home-redesign .home-compare-heading p{font-size:15px!important;color:#d7e6f4!important}
+.home-redesign .home-compare-columns{max-width:1100px!important;gap:26px!important}
+.home-redesign .home-compare-bad,.home-redesign .home-compare-good{border-radius:22px!important;padding:22px 24px 23px!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .3s ease,box-shadow .3s ease}
+.home-redesign .home-compare-bad:hover,.home-redesign .home-compare-good:hover{transform:translateY(-5px)}
+.home-redesign .home-compare-bad{background:linear-gradient(145deg,rgba(29,49,70,.91),rgba(16,35,54,.88))!important;border:1px solid rgba(181,211,239,.27)!important;box-shadow:inset 0 1px rgba(255,255,255,.12),0 18px 42px #0006!important}
+.home-redesign .home-compare-bad-heading{min-height:57px!important;font-size:20px!important;letter-spacing:-.035em}
+.home-redesign .home-compare-alert{background:#dbe8f5!important;color:#244b71!important;box-shadow:0 3px 13px #0003}
+.home-redesign .home-compare-list{gap:9px!important;margin-top:16px!important}
+.home-redesign .home-compare-bad-row{grid-template-columns:85px minmax(0,1fr)!important;gap:10px!important;min-height:54px!important;font-size:13px!important}
+.home-redesign .home-compare-bad-row b{background:rgba(98,124,148,.18)!important;border:1px solid rgba(187,213,236,.18);min-height:49px!important;border-radius:10px!important}
+.home-redesign .home-compare-bad-row span{background:rgba(8,27,47,.43)!important;border:1px solid rgba(155,192,223,.15)!important;min-height:49px;display:flex;align-items:center;padding:10px 14px!important}
+.home-redesign .home-compare-good{background:linear-gradient(135deg,#e8f6ff 0%,#d3eaff 60%,#e8f5ff 100%)!important;border:2px solid #7acbff!important;box-shadow:0 0 0 1px #55baff66,0 0 35px #168cff88,0 20px 50px #0006!important}
+.home-redesign .home-compare-logo{height:57px!important;gap:12px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.home-redesign .home-compare-logo img{width:68px!important;max-width:68px!important;height:53px!important;max-height:53px!important;object-fit:contain!important;filter:drop-shadow(0 1px 1px #2d5d8e30)}
+.home-redesign .home-compare-logo strong{font-size:clamp(23px,2.5vw,33px);font-weight:950;letter-spacing:-.055em;color:#0c2847;white-space:nowrap}
+.home-redesign .home-compare-good-row{min-height:54px!important;background:rgba(255,255,255,.89)!important;border:1px solid rgba(144,198,243,.34);box-shadow:0 2px 8px #2d6c9d10;border-radius:11px!important;font-size:13px!important;padding:10px 14px!important}
+.home-redesign .home-compare-good-row b{color:#0866e8!important}
+.home-redesign .home-compare-check{background:linear-gradient(145deg,#158dff,#0754dd)!important;box-shadow:0 3px 10px #0866e834}
+.home-redesign .home-compare-vs{top:53%!important;width:57px!important;height:57px!important;border:2px solid #c9eaff!important;background:linear-gradient(145deg,#1595ff,#0752d5)!important;box-shadow:0 0 24px #168fff99,0 6px 18px #001d4e80!important}
+.home-redesign .home-compare-actions{margin-top:26px!important}
+.home-redesign .home-compare-button{min-height:48px!important;padding:13px 23px!important;font-size:14px!important}
+@media(max-width:760px){.home-redesign .home-compare{padding:42px 14px 47px!important}.home-redesign .home-compare-columns{grid-template-columns:1fr!important;gap:20px!important}.home-redesign .home-compare-bad,.home-redesign .home-compare-good{padding:17px 13px!important;border-radius:16px!important}.home-redesign .home-compare-bad-row{grid-template-columns:69px minmax(0,1fr)!important;gap:7px!important;font-size:12px!important}.home-redesign .home-compare-bad-row b{font-size:12px!important}.home-redesign .home-compare-good-row{font-size:12px!important;padding:9px!important}.home-redesign .home-compare-vs{top:50%!important;width:43px!important;height:43px!important;font-size:24px!important;transform:translate(-50%,-50%) rotate(90deg)!important}.home-redesign .home-compare-logo img{width:55px!important;height:46px!important}.home-redesign .home-compare-logo strong{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.home-redesign .home-compare-bad,.home-redesign .home-compare-good{transition:none!important}}

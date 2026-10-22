@@ -99,3 +99,6 @@ body:has(.home-redesign) .site-header .brand-logo-home{display:block}
 .home-redesign .home-night-icon{font-size:44px;line-height:1;color:#dbeaff;flex:none}
 .home-redesign .home-night-chat{font-size:31px;line-height:1;flex:none}
 @media(max-width:760px){.home-redesign .home-night-notice{gap:9px;margin-top:22px;padding:15px 10px;border-radius:14px}.home-redesign .home-night-notice p{font-size:clamp(13px,3.4vw,17px);line-height:1.55}.home-redesign .home-night-icon{font-size:26px}.home-redesign .home-night-chat{font-size:20px}}
+
+.home-redesign .home-hero .home-night-notice{background-color:#071a32;border:2px solid #429aff;min-height:100px;padding:20px 24px;box-sizing:border-box;position:relative;z-index:2}
+.home-redesign .home-hero .home-night-notice p{color:#fff;font-weight:800;line-height:1.5}

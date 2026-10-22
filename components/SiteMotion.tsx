@@ -7,6 +7,10 @@ export default function SiteMotion(){
   if(typeof window==="undefined"||!window.IntersectionObserver)return;
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   const selectors=[
+   ".home-redesign .home-compare-heading",
+   ".home-redesign .home-compare-bad",
+   ".home-redesign .home-compare-good",
+   ".home-redesign .home-compare-actions",
    ".home-redesign .home-section-head",
    ".home-redesign .home-hero h1",
    ".home-redesign .home-hero-main > p",

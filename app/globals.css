@@ -41,3 +41,7 @@ body:has(.home-redesign) .seo-image-section .seo-image-head h2{color:#fff!import
 body:has(.home-redesign) .seo-image-section .seo-image-head span{color:#4ca5ff!important}
 body:has(.home-redesign) .seo-image-section .seo-image-head p{color:#bfcde0!important}
 @media(max-width:760px){body:has(.home-redesign) .estimate-lead{padding:42px 16px 48px}body:has(.home-redesign) .estimate-form{padding:22px 17px!important;border-radius:12px!important}body:has(.home-redesign) .estimate-grid{grid-template-columns:1fr!important;gap:14px!important}body:has(.home-redesign) .estimate-lead-head h2{font-size:26px!important}}
+
+/* Seamless single-color background for homepage estimate and work gallery. */
+body:has(.home-redesign) .estimate-lead{background:#0b1624!important;background-image:none!important}
+body:has(.home-redesign) .seo-image-section{background:#0b1624!important;background-image:none!important;border-top:0!important}

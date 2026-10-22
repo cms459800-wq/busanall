@@ -82,3 +82,11 @@ body:has(.home-redesign) .seo-image-section{background:#0b1624!important;backgro
 .site-footer .footer-copy{color:#7f9bb8!important}
 @media(max-width:1050px){.site-footer .footer-company{grid-template-columns:190px minmax(0,1fr)!important}.site-footer .footer-message{display:none}.site-footer .footer-quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.site-footer .footer-contact-row{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:650px){.site-footer .footer-shell{width:calc(100% - 28px);padding:35px 0 24px}.site-footer .footer-quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.site-footer .footer-quick-link{min-height:98px!important;padding:12px 10px!important;gap:8px!important}.site-footer .footer-quick-link .nav-icon{width:36px!important;height:36px!important;flex-basis:36px!important}.site-footer .footer-quick-content strong{font-size:13px!important}.site-footer .footer-quick-content small{font-size:10px}.site-footer .footer-company{grid-template-columns:1fr!important;gap:22px!important;padding:27px 0!important}.site-footer .footer-brand-panel{border-right:0;border-bottom:1px solid #36506b;padding:0 0 20px}.site-footer .footer-company-title{font-size:20px!important}.site-footer .footer-contact-row{grid-template-columns:1fr!important}.site-footer .footer-bottom{align-items:flex-start;flex-direction:column;gap:10px}}
+
+/* Ensure footer text stays legible against the shared dark background. */
+body .site-footer .footer-company-title{color:#f8fbff!important}
+body .site-footer .footer-brand-panel p,body .site-footer .footer-business-line{color:#c1d0e3!important}
+body .site-footer .footer-business-line strong{color:#fff!important}
+body .site-footer .footer-bottom-links a{color:#b9cee4!important}
+body .site-footer .footer-copy{color:#9cb2ca!important}
+body .site-footer .footer-company{border-top-color:#34516c!important;border-bottom-color:#34516c!important}

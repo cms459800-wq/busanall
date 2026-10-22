@@ -30,6 +30,13 @@ export default function SiteMotion(){
    ".home-redesign .home-process-support",
    ".home-redesign .final-cta",
    ".home-redesign .home-trust-grid > a",
+   ".service-redesign .service-section-heading",
+   ".service-redesign .service-featured-card",
+   ".service-redesign .service-process-card",
+   ".service-redesign .service-benefit",
+   ".service-redesign .service-directory-card",
+   ".service-redesign .service-support",
+   ".service-redesign .service-final-cta",
    ".site-footer .footer-quick-link",
    ".site-footer .footer-contact-card"
   ];

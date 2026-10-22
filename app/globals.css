@@ -95,3 +95,21 @@ body .site-footer .footer-company{border-top-color:#34516c!important;border-bott
 .site-footer .footer-company{grid-template-columns:220px minmax(0,1fr)!important}
 @media(max-width:1050px){.site-footer .footer-company{grid-template-columns:190px minmax(0,1fr)!important}}
 @media(max-width:650px){.site-footer .footer-company{grid-template-columns:1fr!important}}
+
+/* Scroll reveal, animated accents and hover polish, inspired by modern demolition sites. */
+@media(prefers-reduced-motion:no-preference){
+ .motion-reveal{opacity:0;transform:translate3d(0,34px,0);filter:blur(3px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1),filter .7s ease;will-change:opacity,transform}
+ .motion-reveal.motion-visible{opacity:1;transform:translate3d(0,0,0);filter:blur(0);will-change:auto}
+ .home-redesign .explore-visual-card:hover,.home-redesign .guide-visual-card:hover,.home-redesign .home-region-card:hover,.site-footer .footer-quick-link:hover{transition:transform .24s ease,background-color .24s ease,border-color .24s ease,box-shadow .24s ease!important;transform:translateY(-5px)!important}
+ .home-redesign .home-section-head h2 .gradient-text{background-image:linear-gradient(90deg,#3d98ff,#8bcaff,#3d98ff)!important;background-size:200% 100%!important;background-clip:text!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:home-accent-shimmer 7s ease-in-out infinite}
+ @keyframes home-accent-shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+ .home-redesign .home-section-head h2::after{content:"";display:block;width:58px;height:3px;border-radius:4px;margin-top:12px;background:linear-gradient(90deg,#2078ff,#6dc7ff);transform-origin:left;animation:home-rule-in 1.1s ease both}
+ @keyframes home-rule-in{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+ .home-redesign .home-section .btn,.home-redesign .final-cta .btn,.site-footer .footer-contact-card{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important}
+ .home-redesign .home-section .btn:hover,.home-redesign .final-cta .btn:hover{transform:translateY(-3px)!important;box-shadow:0 9px 24px rgba(0,102,255,.25)!important}
+ .home-redesign .explore-visual-card .explore-image img,.home-redesign .guide-visual-card .explore-image img{transition:transform .55s cubic-bezier(.2,.8,.2,1)!important}
+ .home-redesign .explore-visual-card:hover .explore-image img,.home-redesign .guide-visual-card:hover .explore-image img{transform:scale(1.055)!important}
+ .site-footer .footer-quick-link:hover .footer-quick-arrow{transform:translateX(3px)}
+ .site-footer .footer-quick-arrow{transition:transform .2s ease}
+}
+@media(prefers-reduced-motion:reduce){.motion-reveal{opacity:1!important;transform:none!important;filter:none!important;animation:none!important;transition:none!important}}

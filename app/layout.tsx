@@ -70,7 +70,7 @@ export default function RootLayout({children}:{children:React.ReactNode}){
   <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(organizationSchema)}}/>
   <style dangerouslySetInnerHTML={{__html:shellCss}}/>
   <div className="site-topbar">부산 16개 구·군 · 업종별 철거 · 원상복구 · 상담 010-6648-4886</div>
-  <header className="site-header"><a className="brand" href="/" aria-label="올바른 철거 홈"><img className="brand-logo" src="/images/brand/logo-header.webp" alt="올바른 철거"/></a><nav aria-label="주요 메뉴">{navItems.map(([href,label])=><a href={href} key={href}>{label}</a>)}</nav><a className="header-cta" href={inquiryUrl}><span className="action-icon"><Icon type="estimate"/></span>무료견적</a></header>
+  <header className="site-header"><a className="brand" href="/" aria-label="올바른 철거 홈"><img className="brand-logo brand-logo-default" src="/images/brand/logo.png" alt="올바른 철거"/><img className="brand-logo brand-logo-home" src="/images/brand/logo-header.webp" alt="올바른 철거"/></a><nav aria-label="주요 메뉴">{navItems.map(([href,label])=><a href={href} key={href}>{label}</a>)}</nav><a className="header-cta" href={inquiryUrl}><span className="action-icon"><Icon type="estimate"/></span>무료견적</a></header>
   <nav className="mobile-nav" aria-label="모바일 주요 메뉴"><div className="mobile-nav-inner">{navItems.map(([href,label,type,tone])=><a href={href} key={href}><span className={`nav-icon nav-tone-${tone}`}><Icon type={type}/></span>{label}</a>)}</div></nav>
   {children}<SeoImageRail/>
   <footer className="site-footer"><div className="footer-shell">
